@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Your Neighbourhood Plant Guy</title>
+
+<style>
+
+/* ---------------- GLOBAL STYLES ---------------- */
+
+body {
+    margin: 0;
+    font-family: 'Segoe UI', sans-serif;
+    background: #f7fafc;
+    color: #2d2d2d;
+    line-height: 1.6;
+}
+
+section {
+    padding: 70px 20px;
+    max-width: 1100px;
+    margin: auto;
+}
+
+h1, h2, h3 {
+    margin-bottom: 20px;
+    font-weight: 700;
+}
+
+button, .btn {
+    background: #4cc28a;
+    color: white;
+    padding: 14px 26px;
+    border-radius: 30px;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: 0.2s;
+}
+
+button:hover, .btn:hover {
+    background: #3aa876;
+}
+
+/* ---------------- HERO ---------------- */
+
+.hero {
+    text-align: center;
+    padding: 120px 20px;
+    background: linear-gradient(135deg, #c7b7ff, #8fd3fe, #6fe7c3);
+    color: #1f1f1f;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+}
+
+.hero img {
+    width: 240px;
+    height: 240px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+.hero-buttons {
+    margin-top: 25px;
+}
+
+.hero-buttons .btn {
+    margin: 10px;
+}
+
+/* ---------------- SERVICES ---------------- */
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+    gap: 20px;
+}
+
+.service-card {
+    background: white;
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+    text-align: center;
+    font-size: 1.05rem;
+}
+
+/* ---------------- GALLERY ---------------- */
+
+.gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 20px;
+}
+
+.gallery img {
+    width: 100%;
+    border-radius: 20px;
+}
+
+/* ---------------- ABOUT ---------------- */
+
+.about {
+    text-align: center;
+}
+
+.about img {
+    width: 240px;
+    border-radius: 50%;
+    margin-bottom: 20px;
+}
+
+/* ---------------- CONTACT ---------------- */
+
+.contact-box {
+    background: white;
+    padding: 30px;
+    border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 14px;
+    margin: 10px 0 20px;
+    border-radius: 12px;
+    border: 1px solid #ccc;
+    font-size: 1rem;
+}
+
+textarea {
+    height: 120px;
+}
+
+/* ---------------- FOOTER ---------------- */
+
+footer {
+    text-align: center;
+    padding: 40px 20px;
+    background: #e8f5ef;
+    margin-top: 40px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+}
+
+</style>
+</head>
+
+<body>
+
+<!-- ---------------- HERO SECTION ---------------- -->
+
+<section class="hero">
+    <img src="avatar.jpg" alt="Trevor Avatar">
+    <h1>Your Neighbourhood Plant Guy 🌱</h1>
+    <p>Friendly service, clean ECO Friendly work, and a yard that feels good to come home to.</p>
+
+ <p style="margin-top:20px;">
+        📞 905-252-7619<br>
+        📧 YourNeighbourhoodPlanyGuy@gmail.com<br>
+        📍 Bradford, Ontario
+    </p>
+
+<audio controls autoplay loop>
+  <source src="Your Neighbourhood Plant Guy.mp3" type="audio/mpeg">
+</audio>
+
+    <div class="hero-buttons">
+        <a href="tel:905-252-7619" class="btn">Call Now</a>
+        <a href="#contact" class="btn">Get a Free Quote</a>
+    </div>
+</section>
+
+<!-- ---------------- SERVICES ---------------- -->
+
+<section id="services">
+    <h2>What I Can Help You With</h2>
+    <p>We provide a wide variety of services to meet all your yard care needs.</p>
+
+    <div class="services-grid">
+        <div class="service-card">Lawn Cutting & Trimming</div>
+        <div class="service-card">Garden Cleanup and Maintenance</div>
+        <div class="service-card">Mulching & Edging</div>
+        <div class="service-card">Hedge, Shrub & Tree Trimming</div>
+        <div class="service-card">Mosquito and tick control</div>
+        <div class="service-card">Tree and bush Removal</div>
+        <div class="service-card">Spray For Pest and Disease</div>
+        <div class="service-card">Design and Planting</div>
+    </div>
+</section>
+
+<!-- ---------------- GALLERY ---------------- -->
+
+<section id="gallery">
+    <h2>Beautiful Plants</h2>
+    <p>Helping you Take the Absolute Best Care of Your Plants.</p>
+
+    <div class="gallery">
+        <img src="flyer7.jpg" alt="">
+        <img src="after1.jpg" alt="">
+        <img src="before2.jpg" alt="">
+        <img src="after2.jpg" alt="">
+    </div>
+</section>
+
+<!-- ---------------- ABOUT ---------------- -->
+
+<section class="about">
+    <img src="avatar.jpg" alt="Trevor Avatar">
+    <h2>Hey, I’m Trevor 👋</h2>
+    <p>I’m the guy who actually enjoys yard work — so you don’t have to.</p>
+    <p>I serve the Bradford area with friendly, reliable and Eco friendly landscape care.</p>
+</section>
+
+<!-- ---------------- CONTACT ---------------- -->
+
+<section id="contact">
+    <h2>Let’s Make Your Yard Look Awesome</h2>
+
+    <div class="contact-box">
+        <form>
+            <input type="text" placeholder="Your Name">
+            <input type="text" placeholder="Address">
+            <input type="text" placeholder="Service Needed">
+            <textarea placeholder="Message"></textarea>
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <p style="margin-top:20px;">
+        📞 905-252-7619<br>
+        📧 YourNeighbourhoodPlanyGuy@gmail.com<br>
+        📍 Bradford, Ontario
+    </p>
+</section>
+
+<!-- ---------------- FOOTER ---------------- -->
+
+<footer>
+    <p>© 2026 Your Neighbourhood Plant Guy</p>
+</footer>
+
+</body>
+</html>
