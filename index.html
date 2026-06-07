@@ -219,13 +219,19 @@ footer {
     <h2>Let’s Make Your Yard Look Awesome</h2>
 
     <div class="contact-box">
-        <form>
-            <input type="text" placeholder="Your Name">
-            <input type="text" placeholder="Address">
-            <input type="text" placeholder="Service Needed">
-            <textarea placeholder="Message"></textarea>
-            <button type="submit">Send Message</button>
-        </form>
+
+<form action="https://formsubmit.co/YourNeighbourhoodPlantGuy@gmail.com" method="POST">
+    <!-- Required hidden fields -->
+    <input type="hidden" name="_captcha" value="false">
+    <input type="hidden" name="_template" value="table">
+
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="text" name="address" placeholder="Address" required>
+    <input type="text" name="service" placeholder="Service Needed" required>
+    <textarea name="message" placeholder="Message" required></textarea>
+
+    <button type="submit">Send Message</button>
+</form>
     </div>
 
     <p style="margin-top:20px;">
