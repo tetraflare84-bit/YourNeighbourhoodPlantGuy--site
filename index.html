@@ -1,252 +1,1585 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Your Neighbourhood Plant Guy</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Neighbourhood Plant Guy | Eco-Friendly Plant Care</title>
+  
+  <!-- Google Fonts & FontAwesome Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;800&family=Permanent+Marker&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
-<style>
+  <style>
+    :root {
+      --primary: #2d6a4f;
+      --primary-dark: #1b4332;
+      --primary-light: #52b788;
+      --accent: #ffb703;
+      --accent-orange: #fb8500;
+      --accent-red: #d90429;
+      --bg-cream: #fbf8f1;
+      --dark: #1f2421;
+      --card-bg: rgba(255, 255, 255, 0.88);
+      --glass-border: rgba(255, 255, 255, 0.5);
+      --shadow-3d: 0 15px 35px rgba(0, 0, 0, 0.15), 0 5px 15px rgba(0, 0, 0, 0.08);
+      --comic-font: 'Bangers', cursive, sans-serif;
+      --body-font: 'Outfit', sans-serif;
+    }
 
-/* ---------------- GLOBAL STYLES ---------------- */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      -webkit-tap-highlight-color: transparent;
+    }
 
-body {
-    margin: 0;
-    font-family: 'Segoe UI', sans-serif;
-    background: #f7fafc;
-    color: #2d2d2d;
-    line-height: 1.6;
-}
+    body {
+      font-family: var(--body-font);
+      background-color: var(--bg-cream);
+      color: var(--dark);
+      overflow-x: hidden;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
 
-section {
-    padding: 70px 20px;
-    max-width: 1100px;
-    margin: auto;
-}
+    /* Animated Canvas Background */
+    #leafCanvas {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: 1;
+    }
 
-h1, h2, h3 {
-    margin-bottom: 20px;
-    font-weight: 700;
-}
+    /* Ambient Decorative Gradients */
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(circle at 10% 20%, rgba(82, 183, 136, 0.18) 0%, transparent 40%),
+                  radial-gradient(circle at 90% 80%, rgba(251, 133, 0, 0.15) 0%, transparent 45%);
+      z-index: 0;
+      pointer-events: none;
+    }
 
-button, .btn {
-    background: #4cc28a;
-    color: white;
-    padding: 14px 26px;
-    border-radius: 30px;
-    border: none;
-    cursor: pointer;
-    font-size: 1rem;
-    transition: 0.2s;
-}
+    /* Top Social & Quick Contacts Bar */
+    .top-bar {
+      position: relative;
+      z-index: 50;
+      background: var(--primary-dark);
+      color: #fff;
+      padding: 6px 1.5rem;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.88rem;
+      border-bottom: 2px solid var(--accent);
+    }
+    .top-bar-contact {
+      display: flex;
+      gap: 1.2rem;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .top-bar-contact a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: color 0.2s ease;
+    }
+    .top-bar-contact a:hover {
+      color: var(--accent);
+    }
+    .top-bar-socials {
+      display: flex;
+      gap: 0.8rem;
+      align-items: center;
+    }
+    .top-bar-socials a {
+      color: #fff;
+      background: rgba(255, 255, 255, 0.12);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      font-size: 0.85rem;
+      transition: all 0.25s ease;
+    }
+    .top-bar-socials a:hover {
+      background: var(--accent);
+      color: var(--dark);
+      transform: translateY(-2px) scale(1.1);
+    }
 
-button:hover, .btn:hover {
-    background: #3aa876;
-}
+    /* Header & 3D Navigation */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 40;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--glass-border);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
 
-/* ---------------- HERO ---------------- */
+    .nav-container {
+      max-width: 1350px;
+      margin: 0 auto;
+      padding: 0.6rem 1.2rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
 
-.hero {
-    text-align: center;
-    padding: 120px 20px;
-    background: linear-gradient(135deg, #c7b7ff, #8fd3fe, #6fe7c3);
-    color: #1f1f1f;
-    border-bottom-left-radius: 40px;
-    border-bottom-right-radius: 40px;
-}
+    .brand-logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    .brand-avatar {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      background: #fff;
+      object-fit: cover;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+      transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    .brand-logo:hover .brand-avatar {
+      transform: scale(1.12) rotate(6deg);
+    }
+    .brand-title {
+      font-family: var(--comic-font);
+      font-size: 1.7rem;
+      letter-spacing: 0.5px;
+      color: var(--primary-dark);
+      text-shadow: 1px 1px 0 var(--accent);
+      line-height: 1;
+    }
+    .brand-subtitle {
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: var(--accent-orange);
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
 
-.hero img {
-    width: 240px;
-    height: 240px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-}
+    nav {
+      display: flex;
+      gap: 0.4rem;
+      align-items: center;
+    }
 
-.hero-buttons {
-    margin-top: 25px;
-}
+    .nav-btn {
+      background: transparent;
+      border: none;
+      padding: 0.5rem 0.9rem;
+      font-family: var(--body-font);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--dark);
+      border-radius: 20px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+      position: relative;
+    }
 
-.hero-buttons .btn {
-    margin: 10px;
-}
+    .nav-btn:hover {
+      background: rgba(82, 183, 136, 0.15);
+      color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
 
-/* ---------------- SERVICES ---------------- */
+    .nav-btn.active {
+      background: var(--primary);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(45, 106, 79, 0.35);
+    }
 
-.services-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
-    gap: 20px;
-}
+    .mobile-menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      font-size: 1.6rem;
+      color: var(--primary-dark);
+      cursor: pointer;
+    }
 
-.service-card {
-    background: white;
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-    text-align: center;
-    font-size: 1.05rem;
-}
+    /* Main Viewport Container (SPA Sections) */
+    main {
+      flex: 1;
+      position: relative;
+      z-index: 10;
+      max-width: 1350px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 1.5rem 1.2rem 6rem;
+      perspective: 1200px;
+    }
 
-/* ---------------- GALLERY ---------------- */
+    .page-section {
+      display: none;
+      animation: page3dIn 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      transform-origin: center top;
+    }
+    .page-section.active {
+      display: block;
+    }
 
-.gallery {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 20px;
-}
+    @keyframes page3dIn {
+      0% {
+        opacity: 0;
+        transform: rotateX(8deg) translateY(25px) scale(0.98);
+      }
+      100% {
+        opacity: 1;
+        transform: rotateX(0deg) translateY(0) scale(1);
+      }
+    }
 
-.gallery img {
-    width: 100%;
-    border-radius: 20px;
-}
+    /* 3D Tilt Card Base */
+    .tilt-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      border: 1px solid var(--glass-border);
+      box-shadow: var(--shadow-3d);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      transition: transform 0.2s ease, box-shadow 0.25s ease;
+      transform-style: preserve-3d;
+      overflow: hidden;
+    }
+    .tilt-card:hover {
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.2);
+    }
 
-/* ---------------- ABOUT ---------------- */
+    /* Hero Section */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 2.5rem;
+    }
+    .hero-banner {
+      padding: 2.5rem;
+      position: relative;
+      background: linear-gradient(135deg, rgba(45, 106, 79, 0.95), rgba(27, 67, 50, 0.95)), url('Comics And Posters/Cover And Back.png') center/cover;
+      color: #fff;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: var(--accent);
+      color: var(--dark);
+      font-weight: 800;
+      font-size: 0.82rem;
+      padding: 5px 14px;
+      border-radius: 30px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1rem;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+    }
+    .hero-title {
+      font-family: var(--comic-font);
+      font-size: 3.5rem;
+      line-height: 1.05;
+      letter-spacing: 1px;
+      margin-bottom: 0.8rem;
+      text-shadow: 2px 2px 0 var(--dark);
+    }
+    .hero-title span {
+      color: var(--accent);
+    }
+    .hero-tagline {
+      font-size: 1.15rem;
+      opacity: 0.95;
+      margin-bottom: 1.6rem;
+      line-height: 1.5;
+    }
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .btn-primary {
+      background: var(--accent-orange);
+      color: #fff;
+      font-family: var(--comic-font);
+      font-size: 1.3rem;
+      letter-spacing: 0.5px;
+      padding: 0.7rem 1.6rem;
+      border-radius: 30px;
+      text-decoration: none;
+      border: 2px solid #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(251, 133, 0, 0.4);
+      transition: all 0.25s ease;
+    }
+    .btn-primary:hover {
+      background: #e07400;
+      transform: translateY(-3px) scale(1.03);
+    }
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-weight: 700;
+      padding: 0.7rem 1.4rem;
+      border-radius: 30px;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: all 0.25s ease;
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-3px);
+    }
 
-.about {
-    text-align: center;
-}
+    .hero-poster-card {
+      position: relative;
+      cursor: pointer;
+      border: 4px solid #fff;
+    }
+    .hero-poster-card img {
+      width: 100%;
+      height: 100%;
+      max-height: 420px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .hero-poster-card:hover img {
+      transform: scale(1.04);
+    }
 
-.about img {
-    width: 240px;
-    border-radius: 50%;
-    margin-bottom: 20px;
-}
+    /* Section Titles */
+    .section-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .section-header h2 {
+      font-family: var(--comic-font);
+      font-size: 2.8rem;
+      color: var(--primary-dark);
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 0 var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-header p {
+      color: #555;
+      font-size: 1.05rem;
+      max-width: 650px;
+      margin: 0.3rem auto 0;
+    }
 
-/* ---------------- CONTACT ---------------- */
+    /* Services Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 1.3rem;
+      margin-top: 2rem;
+    }
+    .service-box {
+      background: #fff;
+      padding: 1.5rem;
+      border-radius: 16px;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .service-box:hover {
+      transform: translateY(-6px);
+      border-color: var(--primary-light);
+      box-shadow: 0 12px 25px rgba(45, 106, 79, 0.15);
+    }
+    .service-icon {
+      width: 56px;
+      height: 56px;
+      margin: 0 auto 1rem;
+      background: rgba(82, 183, 136, 0.15);
+      color: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .service-box h3 {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+      color: var(--primary-dark);
+    }
+    .service-box p {
+      font-size: 0.88rem;
+      color: #666;
+    }
 
-.contact-box {
-    background: white;
-    padding: 30px;
-    border-radius: 20px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.06);
-}
+    /* Responsive Media Grids */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 1.5rem;
+    }
+    .media-card {
+      background: #fff;
+      border-radius: 14px;
+      overflow: hidden;
+      box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+      border: 1px solid rgba(0,0,0,0.06);
+      transition: all 0.3s ease;
+      cursor: pointer;
+      display: flex;
+      flex-direction: column;
+    }
+    .media-card:hover {
+      transform: translateY(-5px) scale(1.01);
+      box-shadow: 0 14px 28px rgba(0,0,0,0.12);
+    }
+    .media-thumb-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 75%;
+      background: #000;
+      overflow: hidden;
+    }
+    .media-thumb-wrap img, 
+    .media-thumb-wrap video {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .media-card:hover .media-thumb-wrap img {
+      transform: scale(1.06);
+    }
+    .media-type-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: rgba(0, 0, 0, 0.65);
+      color: #fff;
+      padding: 4px 8px;
+      border-radius: 6px;
+      font-size: 0.75rem;
+      font-weight: 600;
+      backdrop-filter: blur(4px);
+      display: flex;
+      align-items: center;
+      gap: 4px;
+    }
+    .media-info {
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .media-title {
+      font-weight: 700;
+      font-size: 1rem;
+      color: var(--dark);
+    }
 
-input, textarea {
-    width: 100%;
-    padding: 14px;
-    margin: 10px 0 20px;
-    border-radius: 12px;
-    border: 1px solid #ccc;
-    font-size: 1rem;
-}
+    /* Video Shorts Grid */
+    .video-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 1.8rem;
+    }
+    .video-card {
+      background: #fff;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      border: 2px solid rgba(0,0,0,0.05);
+    }
+    .video-frame-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 125%; /* 4:5 for YouTube Shorts aesthetic */
+      background: #111;
+    }
+    .video-frame-wrap iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: none;
+    }
+    .video-card-title {
+      padding: 0.9rem 1.1rem;
+      font-weight: 700;
+      font-size: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      color: var(--primary-dark);
+      background: #fafafa;
+    }
 
-textarea {
-    height: 120px;
-}
+    /* Quote Request Form & Interactive Calculator */
+    .quote-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+    .quote-form-card, .contact-card {
+      background: #fff;
+      padding: 2rem;
+      border-radius: 18px;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+    }
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 600;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      color: var(--dark);
+    }
+    .form-control {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border-radius: 10px;
+      border: 1.5px solid #dde2e5;
+      font-family: var(--body-font);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15);
+    }
+    .services-checklist {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.6rem;
+      margin-top: 0.4rem;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 500;
+      cursor: pointer;
+    }
+    .checkbox-label input {
+      accent-color: var(--primary);
+      width: 16px;
+      height: 16px;
+    }
 
-/* ---------------- FOOTER ---------------- */
+    /* Contact Details Cards */
+    .contact-hero-item {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      padding: 1.2rem;
+      background: #f8faf9;
+      border-radius: 12px;
+      margin-bottom: 1rem;
+      text-decoration: none;
+      color: var(--dark);
+      border: 1px solid rgba(45, 106, 79, 0.1);
+      transition: all 0.2s ease;
+    }
+    .contact-hero-item:hover {
+      background: rgba(82, 183, 136, 0.15);
+      transform: translateX(5px);
+    }
+    .contact-hero-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+    }
 
-footer {
-    text-align: center;
-    padding: 40px 20px;
-    background: #e8f5ef;
-    margin-top: 40px;
-    border-top-left-radius: 40px;
-    border-top-right-radius: 40px;
-}
+    /* Floating Continuous Music Player Bar */
+    .floating-music-bar {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      z-index: 100;
+      background: rgba(27, 67, 50, 0.94);
+      backdrop-filter: blur(12px);
+      -webkit-backdrop-filter: blur(12px);
+      border: 2px solid var(--accent);
+      border-radius: 40px;
+      padding: 8px 18px 8px 10px;
+      color: #fff;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      animation: floatWidget 4s ease-in-out infinite alternate;
+    }
+    @keyframes floatWidget {
+      0% { transform: translateY(0px); }
+      100% { transform: translateY(-6px); }
+    }
+    .vinyl-disc {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: #111;
+      border: 2px solid var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent);
+      font-size: 0.9rem;
+      animation: spinDisc 3s linear infinite;
+      animation-play-state: paused;
+    }
+    .vinyl-disc.playing {
+      animation-play-state: running;
+    }
+    @keyframes spinDisc {
+      100% { transform: rotate(360deg); }
+    }
+    .music-info {
+      display: flex;
+      flex-direction: column;
+    }
+    .music-title {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent);
+      white-space: nowrap;
+    }
+    .music-sub {
+      font-size: 0.7rem;
+      opacity: 0.8;
+      white-space: nowrap;
+    }
+    .music-controls {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .player-btn {
+      background: #fff;
+      border: none;
+      color: var(--primary-dark);
+      width: 32px;
+      height: 32px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      transition: transform 0.2s ease;
+    }
+    .player-btn:hover {
+      transform: scale(1.1);
+      background: var(--accent);
+    }
+    .vol-slider {
+      width: 55px;
+      accent-color: var(--accent);
+      cursor: pointer;
+    }
 
-</style>
+    /* Modal / Lightbox */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.88);
+      z-index: 200;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      backdrop-filter: blur(8px);
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-content {
+      max-width: 900px;
+      width: 100%;
+      max-height: 90vh;
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .modal-media-holder {
+      max-height: 80vh;
+      max-width: 100%;
+      border-radius: 12px;
+      box-shadow: 0 10px 40px rgba(0,0,0,0.5);
+      object-fit: contain;
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: -45px;
+      right: 0;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2rem;
+      cursor: pointer;
+    }
+
+    /* Filter Bar */
+    .filter-bar {
+      display: flex;
+      gap: 0.5rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 1.8rem;
+    }
+    .filter-pill {
+      background: #fff;
+      border: 1px solid #ddd;
+      padding: 0.4rem 1rem;
+      border-radius: 20px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    .filter-pill.active, .filter-pill:hover {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    /* Responsive Queries */
+    @media (max-width: 992px) {
+      .hero-grid, .quote-container {
+        grid-template-columns: 1fr;
+      }
+      .hero-banner {
+        padding: 1.8rem;
+      }
+      .hero-title {
+        font-size: 2.7rem;
+      }
+    }
+    @media (max-width: 768px) {
+      .top-bar {
+        justify-content: center;
+        gap: 0.5rem;
+      }
+      .mobile-menu-toggle {
+        display: block;
+      }
+      nav {
+        position: fixed;
+        top: 85px;
+        left: 0;
+        right: 0;
+        background: #fff;
+        flex-direction: column;
+        padding: 1.5rem;
+        box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+        display: none;
+      }
+      nav.open {
+        display: flex;
+      }
+      .nav-btn {
+        width: 100%;
+        justify-content: center;
+        padding: 0.8rem;
+      }
+      .services-checklist {
+        grid-template-columns: 1fr;
+      }
+      .floating-music-bar {
+        bottom: 10px;
+        right: 10px;
+        left: 10px;
+        justify-content: space-between;
+        border-radius: 20px;
+      }
+      .music-sub {
+        display: none;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<!-- ---------------- HERO SECTION ---------------- -->
+  <!-- Ambient canvas and background elements -->
+  <div class="ambient-bg"></div>
+  <canvas id="leafCanvas"></canvas>
 
-<section class="hero">
-    <img src="avatar.jpg" alt="Trevor Avatar">
-    <h1>Your Neighbourhood Plant Guy 🌱</h1>
-    <p>Friendly service, clean ECO Friendly work, and a yard that feels good to come home to.</p>
-
- <p style="margin-top:20px;">
-        📞 905-252-7619<br>
-        📧 YourNeighbourhoodPlantGuy@gmail.com<br>
-        📍 Bradford, Ontario
-    </p>
-
-<audio controls autoplay loop>
-  <source src="Your Neighbourhood Plant Guy.mp3" type="audio/mpeg">
-</audio>
-
-    <div class="hero-buttons">
-        <a href="tel:905-252-7619" class="btn">Call Now</a>
-        <a href="#contact" class="btn">Get a Free Quote</a>
+  <!-- Persistent Top Info Bar -->
+  <div class="top-bar">
+    <div class="top-bar-contact">
+      <a href="tel:9052527619"><i class="fa-solid fa-phone"></i> Office: 905-252-7619</a>
+      <a href="tel:9052523569"><i class="fa-solid fa-mobile-screen"></i> Cell: 905-252-3569</a>
+      <a href="mailto:YourNeighbourhoodPlantGuy@Gmail.com"><i class="fa-solid fa-envelope"></i> YourNeighbourhoodPlantGuy@Gmail.com</a>
     </div>
-</section>
-
-<!-- ---------------- SERVICES ---------------- -->
-
-<section id="services">
-    <h2>What I Can Help You With</h2>
-    <p>We provide a wide variety of services to meet all your yard care needs.</p>
-
-    <div class="services-grid">
-        <div class="service-card">Lawn Cutting & Trimming</div>
-        <div class="service-card">Garden Cleanup and Maintenance</div>
-        <div class="service-card">Mulching & Edging</div>
-        <div class="service-card">Hedge, Shrub & Tree Trimming</div>
-        <div class="service-card">Mosquito and tick control</div>
-        <div class="service-card">Tree and bush Removal</div>
-        <div class="service-card">Spray For Pest and Disease</div>
-        <div class="service-card">Design and Planting</div>
+    <div class="top-bar-socials">
+      <a href="https://www.youtube.com/@trevorauton2676" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://www.tiktok.com/@your.neighbourhoo8" target="_blank" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" title="Instagram & Threads"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" title="Threads"><i class="fa-brands fa-threads"></i></a>
+      <a href="https://www.facebook.com" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
     </div>
-</section>
+  </div>
 
-<!-- ---------------- GALLERY ---------------- -->
+  <!-- Header Navigation -->
+  <header>
+    <div class="nav-container">
+      <div class="brand-logo" onclick="navigateTo('home')">
+        <img src="Comics And Posters/PLANT GUY LOGO transparent.png" alt="Logo" class="brand-avatar" onerror="this.src='Comics And Posters/Fall Bike AD.png'"/>
+        <div>
+          <div class="brand-title">Your Neighbourhood Plant Guy</div>
+          <div class="brand-subtitle">Eco-Friendly Plant Care • 25 Yrs Experience</div>
+        </div>
+      </div>
 
-<section id="gallery">
-    <h2>Beautiful Plants</h2>
-    <p>Helping you Take the Absolute Best Care of Your Plants.</p>
+      <button class="mobile-menu-toggle" onclick="toggleMobileNav()"><i class="fa-solid fa-bars"></i></button>
 
-    <div class="gallery">
-        <img src="flyer7.jpg" alt="">
-        <img src="after1.jpg" alt="">
-        <img src="before2.jpg" alt="">
-        <img src="after2.jpg" alt="">
+      <nav id="navMenu">
+        <button class="nav-btn active" onclick="navigateTo('home')"><i class="fa-solid fa-house"></i> Home</button>
+        <button class="nav-btn" onclick="navigateTo('gallery')"><i class="fa-solid fa-seedling"></i> Plant Gallery</button>
+        <button class="nav-btn" onclick="navigateTo('jobs')"><i class="fa-solid fa-tree"></i> Completed Jobs</button>
+        <button class="nav-btn" onclick="navigateTo('videos')"><i class="fa-solid fa-clapperboard"></i> Videos</button>
+        <button class="nav-btn" onclick="navigateTo('comics')"><i class="fa-solid fa-book-open"></i> Comics & Posters</button>
+        <button class="nav-btn" onclick="navigateTo('quote')"><i class="fa-solid fa-calculator"></i> Request Quote</button>
+        <button class="nav-btn" onclick="navigateTo('contact')"><i class="fa-solid fa-address-book"></i> Contact</button>
+      </nav>
     </div>
-</section>
+  </header>
 
-<!-- ---------------- ABOUT ---------------- -->
+  <!-- MAIN SPA CONTENT AREA -->
+  <main>
+    
+    <!-- 1. HOME SECTION -->
+    <section id="section-home" class="page-section active">
+      <div class="hero-grid">
+        <div class="hero-banner tilt-card">
+          <div class="badge-pill"><i class="fa-solid fa-award"></i> 25 Years of Horticultural Experience</div>
+          <h1 class="hero-title">ECO-FRIENDLY <span>PLANT CARE</span> &amp; GARDEN HEALTH</h1>
+          <p class="hero-tagline">From your weeds to your trees and everything in between — Trevor Auton is your reliable neighbourhood specialist for organic pest management, pruning, and seasonal vitality.</p>
+          
+          <div class="hero-cta-group">
+            <button class="btn-primary" onclick="navigateTo('quote')"><i class="fa-solid fa-clipboard-check"></i> Request Free Quote</button>
+            <button class="btn-secondary" onclick="navigateTo('gallery')"><i class="fa-solid fa-leaf"></i> Explore Plant Gallery</button>
+          </div>
+        </div>
 
-<section class="about">
-    <img src="avatar.jpg" alt="Trevor Avatar">
-    <h2>Hey, I’m Trevor 👋</h2>
-    <p>I’m the guy who actually enjoys yard work — so you don’t have to.</p>
-    <p>I serve the Bradford area with friendly, reliable and Eco friendly landscape care.</p>
-</section>
+        <div class="hero-poster-card tilt-card" onclick="navigateTo('comics')">
+          <img src="Comics And Posters/Wagon V3.jpg" alt="Your Neighbourhood Plant Guy Art" onerror="this.src='Comics And Posters/Cover And Back.png'"/>
+        </div>
+      </div>
 
-<!-- ---------------- CONTACT ---------------- -->
+      <!-- Services Overview -->
+      <div class="section-header">
+        <h2><i class="fa-solid fa-spa"></i> Specialized Services</h2>
+        <p>Complete eco-friendly property management and horticultural care tailored to your yard.</p>
+      </div>
 
-<section id="contact">
-    <h2>Let’s Make Your Yard Look Awesome</h2>
+      <div class="services-grid">
+        <div class="service-box tilt-card">
+          <div class="service-icon"><i class="fa-solid fa-bug-slash"></i></div>
+          <h3>Pest &amp; Disease Control</h3>
+          <p>Organic, safe, and effective treatments targeting garden pathogens without harming pollinators.</p>
+        </div>
 
-    <div class="contact-box">
+        <div class="service-box tilt-card">
+          <div class="service-icon"><i class="fa-solid fa-scissors"></i></div>
+          <h3>Pruning &amp; Shaping</h3>
+          <p>Precision hedge trimming, fruit tree pruning, and shaping for vibrant, healthy growth.</p>
+        </div>
 
-<form action="https://formsubmit.co/73b22e353367c66cd966f38aa3c9e393" method="POST">
-    <!-- Required hidden fields -->
-    <input type="hidden" name="_captcha" value="false">
-    <input type="hidden" name="_template" value="table">
+        <div class="service-box tilt-card">
+          <div class="service-icon"><i class="fa-solid fa-shield-virus"></i></div>
+          <h3>Mosquito &amp; Tick Defense</h3>
+          <p>Eco-friendly yard barrier sprays to keep your outdoor living area comfortable and safe.</p>
+        </div>
 
-    <input type="text" name="name" placeholder="Your Name" required>
-    <input type="text" name="contact" placeholder="Your Phone or E-Mail Address" required>
-    <input type="text" name="address" placeholder="Address" required>
-    <input type="text" name="service" placeholder="Service Needed">
-    <textarea name="message" placeholder="Message"></textarea>
+        <div class="service-box tilt-card">
+          <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+          <h3>Troubled Boxwoods</h3>
+          <p>Specialized treatments and rejuvenation programs for struggling or blight-affected boxwoods.</p>
+        </div>
 
-    <button type="submit">Request Quote</button>
-</form>
+        <div class="service-box tilt-card">
+          <div class="service-icon"><i class="fa-solid fa-plant-wilt"></i></div>
+          <h3>Removals &amp; Cleanups</h3>
+          <p>Full property cleanups, overgrown shrub removals, and complete seasonal transitions.</p>
+        </div>
+
+        <div class="service-box tilt-card">
+          <div class="service-icon"><i class="fa-solid fa-house-chimney-window"></i></div>
+          <h3>Houseplants &amp; Design</h3>
+          <p>Custom garden designs, planting installations, and dedicated indoor houseplant diagnosis.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. PLANT GALLERY SECTION -->
+    <section id="section-gallery" class="page-section">
+      <div class="section-header">
+        <h2><i class="fa-solid fa-images"></i> Plant Gallery</h2>
+        <p>Live photos and video captures directly from our plant identification and health catalog.</p>
+      </div>
+
+      <div class="filter-bar">
+        <button class="filter-pill active" onclick="filterGallery('all')">All Plants</button>
+        <button class="filter-pill" onclick="filterGallery('image')">Photos</button>
+        <button class="filter-pill" onclick="filterGallery('video')">Video Clips</button>
+      </div>
+
+      <div class="media-grid" id="galleryGrid">
+        <!-- Rendered Dynamically via JS from Plant Gallery folder -->
+      </div>
+    </section>
+
+    <!-- 3. COMPLETED JOBS SECTION -->
+    <section id="section-jobs" class="page-section">
+      <div class="section-header">
+        <h2><i class="fa-solid fa-clipboard-check"></i> Completed Jobs &amp; Projects</h2>
+        <p>A showcase of recent transformations, pruning results, and healthy landscape projects.</p>
+      </div>
+
+      <div class="media-grid" id="jobsGrid">
+        <!-- Rendered Dynamically via JS -->
+      </div>
+    </section>
+
+    <!-- 4. VIDEOS SECTION -->
+    <section id="section-videos" class="page-section">
+      <div class="section-header">
+        <h2><i class="fa-solid fa-circle-play"></i> Featured Video Shorts</h2>
+        <p>Watch tips, job walkthroughs, and stories directly from the field.</p>
+      </div>
+
+      <div class="video-grid" id="videoEmbedsGrid">
+        <!-- Rendered dynamically from Videos.txt config -->
+      </div>
+    </section>
+
+    <!-- 5. COMICS & POSTERS SECTION -->
+    <section id="section-comics" class="page-section">
+      <div class="section-header">
+        <h2><i class="fa-solid fa-book-open"></i> Comics &amp; Posters</h2>
+        <p>The adventures of Plant Guy and Plant Kid! Explore comic issues, posters, and flyers.</p>
+      </div>
+
+      <div class="media-grid" id="comicsGrid">
+        <!-- Rendered Dynamically from Comics And Posters folder -->
+      </div>
+    </section>
+
+    <!-- 6. REQUEST QUOTE SECTION -->
+    <section id="section-quote" class="page-section">
+      <div class="section-header">
+        <h2><i class="fa-solid fa-calculator"></i> Request a Free Quote</h2>
+        <p>Tell us about your property and plant care needs for an accurate, eco-friendly quote.</p>
+      </div>
+
+      <div class="quote-container">
+        <div class="quote-form-card tilt-card">
+          <form id="quoteForm" onsubmit="handleQuoteSubmit(event)">
+            <div class="form-group">
+              <label><i class="fa-solid fa-user"></i> Full Name *</label>
+              <input type="text" id="qName" class="form-control" placeholder="e.g. Jane Doe" required />
+            </div>
+
+            <div class="form-group">
+              <label><i class="fa-solid fa-phone"></i> Phone Number *</label>
+              <input type="tel" id="qPhone" class="form-control" placeholder="e.g. 905-252-XXXX" required />
+            </div>
+
+            <div class="form-group">
+              <label><i class="fa-solid fa-envelope"></i> Email Address *</label>
+              <input type="email" id="qEmail" class="form-control" placeholder="yourname@gmail.com" required />
+            </div>
+
+            <div class="form-group">
+              <label><i class="fa-solid fa-location-dot"></i> City / Neighbourhood</label>
+              <input type="text" id="qCity" class="form-control" placeholder="e.g. Bradford / Newmarket / York Region" />
+            </div>
+
+            <div class="form-group">
+              <label><i class="fa-solid fa-list-check"></i> Services Needed</label>
+              <div class="services-checklist">
+                <label class="checkbox-label"><input type="checkbox" name="srv" value="Pest & Disease" /> Pest &amp; Disease</label>
+                <label class="checkbox-label"><input type="checkbox" name="srv" value="Pruning & Shaping" /> Pruning &amp; Shaping</label>
+                <label class="checkbox-label"><input type="checkbox" name="srv" value="Mosquito / Ticks" /> Mosquito &amp; Ticks</label>
+                <label class="checkbox-label"><input type="checkbox" name="srv" value="Troubled Boxwoods" /> Troubled Boxwoods</label>
+                <label class="checkbox-label"><input type="checkbox" name="srv" value="Garden Maintenance" /> Garden Maintenance</label>
+                <label class="checkbox-label"><input type="checkbox" name="srv" value="Cleanups / Removal" /> Cleanups &amp; Removal</label>
+              </div>
+            </div>
+
+            <div class="form-group">
+              <label><i class="fa-solid fa-comment-dots"></i> Project Details &amp; Plant Condition</label>
+              <textarea id="qNotes" class="form-control" rows="3" placeholder="Tell us about the shrubs, trees, or plants needing care..."></textarea>
+            </div>
+
+            <button type="submit" class="btn-primary" style="width: 100%; justify-content: center;">
+              <i class="fa-solid fa-paper-plane"></i> Send Quote Request
+            </button>
+          </form>
+        </div>
+
+        <div class="contact-card tilt-card" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <h3 style="font-family: var(--comic-font); font-size: 2rem; color: var(--primary-dark); margin-bottom: 1rem;">
+              Direct Inquiries
+            </h3>
+            <p style="margin-bottom: 1.5rem; color: #555; line-height: 1.6;">
+              Prefer to chat or send photos directly? Call or text Trevor Auton today for quick consultations on plant health and diagnosis!
+            </p>
+
+            <a href="tel:9052527619" class="contact-hero-item">
+              <div class="contact-hero-icon"><i class="fa-solid fa-phone"></i></div>
+              <div>
+                <strong>Office Line</strong>
+                <div>905-252-7619</div>
+              </div>
+            </a>
+
+            <a href="tel:9052523569" class="contact-hero-item">
+              <div class="contact-hero-icon"><i class="fa-solid fa-comment-sms"></i></div>
+              <div>
+                <strong>Cell / Text Direct</strong>
+                <div>905-252-3569</div>
+              </div>
+            </a>
+
+            <a href="mailto:YourNeighbourhoodPlantGuy@Gmail.com" class="contact-hero-item">
+              <div class="contact-hero-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div>
+                <strong>Direct Email</strong>
+                <div>YourNeighbourhoodPlantGuy@Gmail.com</div>
+              </div>
+            </a>
+          </div>
+
+          <div style="background: rgba(255, 183, 3, 0.2); padding: 1.2rem; border-radius: 12px; border-left: 4px solid var(--accent-orange); margin-top: 1rem;">
+            <strong>🌿 Eco-Promise:</strong> We strictly prioritize natural balance, pollinator safety, and long-term soil vitality.
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 7. CONTACT SECTION -->
+    <section id="section-contact" class="page-section">
+      <div class="section-header">
+        <h2><i class="fa-solid fa-handshake"></i> Get In Touch</h2>
+        <p>Reach out across our socials or call our local lines anytime.</p>
+      </div>
+
+      <div style="max-width: 800px; margin: 0 auto;">
+        <div class="contact-card tilt-card">
+          <div style="text-align: center; margin-bottom: 2rem;">
+            <img src="Comics And Posters/PLANT GUY LOGO transparent.png" alt="Plant Guy" style="width: 100px; height: 100px; margin-bottom: 0.5rem;" onerror="this.style.display='none'"/>
+            <h3 style="font-family: var(--comic-font); font-size: 2.2rem; color: var(--primary-dark);">Trevor Auton</h3>
+            <p style="font-weight: 600; color: var(--accent-orange);">Horticultural Specialist • 25 Years Experience</p>
+          </div>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem;">
+            <a href="tel:9052527619" class="contact-hero-item">
+              <div class="contact-hero-icon"><i class="fa-solid fa-phone"></i></div>
+              <div><strong>Office:</strong> 905-252-7619</div>
+            </a>
+            <a href="tel:9052523569" class="contact-hero-item">
+              <div class="contact-hero-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+              <div><strong>Cell:</strong> 905-252-3569</div>
+            </a>
+            <a href="mailto:YourNeighbourhoodPlantGuy@Gmail.com" class="contact-hero-item" style="grid-column: 1 / -1;">
+              <div class="contact-hero-icon"><i class="fa-solid fa-envelope"></i></div>
+              <div><strong>Email:</strong> YourNeighbourhoodPlantGuy@Gmail.com</div>
+            </a>
+          </div>
+
+          <div style="margin-top: 1.5rem; text-align: center;">
+            <h4 style="font-size: 1rem; margin-bottom: 1rem;">Connect on Social Media</h4>
+            <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
+              <a href="https://www.youtube.com/@trevorauton2676" target="_blank" class="btn-secondary" style="color: #c4302b; border-color: #ddd; background: #fff;"><i class="fa-brands fa-youtube"></i> YouTube</a>
+              <a href="https://www.tiktok.com/@your.neighbourhoo8" target="_blank" class="btn-secondary" style="color: #000; border-color: #ddd; background: #fff;"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+              <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" class="btn-secondary" style="color: #e1306c; border-color: #ddd; background: #fff;"><i class="fa-brands fa-instagram"></i> Threads / IG</a>
+              <a href="https://www.facebook.com" target="_blank" class="btn-secondary" style="color: #1877f2; border-color: #ddd; background: #fff;"><i class="fa-brands fa-facebook"></i> Facebook</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- PERSISTENT THEME SONG AUDIO ELEMENT -->
+  <audio id="themeAudio" loop preload="auto">
+    <source src="Your Neighbourhood Plant Guy.mp3" type="audio/mpeg" />
+  </audio>
+
+  <!-- FLOATING CONTINUOUS MUSIC PLAYER BAR -->
+  <div class="floating-music-bar" id="musicBar">
+    <div class="vinyl-disc" id="vinylDisc">
+      <i class="fa-solid fa-music"></i>
     </div>
+    <div class="music-info">
+      <span class="music-title">Your Neighbourhood Plant Guy</span>
+      <span class="music-sub">Official Theme Song 🎶</span>
+    </div>
+    <div class="music-controls">
+      <button class="player-btn" id="playPauseBtn" onclick="toggleThemeSong()" title="Play / Pause Theme Song">
+        <i class="fa-solid fa-play" id="playIcon"></i>
+      </button>
+      <input type="range" class="vol-slider" min="0" max="1" step="0.05" value="0.7" onchange="adjustVolume(this.value)" title="Volume" />
+    </div>
+  </div>
 
-    <p style="margin-top:20px;">
-        📞 905-252-7619<br>
-        📧 YourNeighbourhoodPlantGuy@gmail.com<br>
-        📍 Bradford, Ontario
-    </p>
-</section>
+  <!-- MEDIA LIGHTBOX MODAL -->
+  <div class="modal-overlay" id="mediaModal" onclick="closeModal(event)">
+    <div class="modal-content">
+      <button class="modal-close-btn" onclick="closeModalDirect()">&times;</button>
+      <div id="modalBody" style="width: 100%; display: flex; justify-content: center;"></div>
+    </div>
+  </div>
 
-<!-- ---------------- FOOTER ---------------- -->
+  <script>
+    /* =================================================================
+       1. DATA ARRAYS (Mapped to your folder structure and txt files)
+       ================================================================= */
+    
+    // Plant Gallery items (from 'Plant Gallery/' folder)
+    const plantGalleryItems = [
+      { name: 'Barberry', type: 'video', src: 'Plant Gallery/Barberry 2.mp4' },
+      { name: 'Barberry', type: 'image', src: 'Plant Gallery/Barberry.jpg' },
+      { name: 'Beech', type: 'image', src: 'Plant Gallery/Beech 1.jpg' },
+      { name: 'Cup Plant', type: 'video', src: 'Plant Gallery/Cup Plant 1.mp4' },
+      { name: 'Dead Nettle', type: 'image', src: 'Plant Gallery/Dead Nettle.jpg' },
+      { name: 'Euonymus', type: 'video', src: 'Plant Gallery/Euynonomous.mp4' },
+      { name: 'False Sunflower', type: 'video', src: 'Plant Gallery/False Sunflower.mp4' },
+      { name: 'Hydrangea', type: 'video', src: 'Plant Gallery/Hydrangea.mp4' },
+      { name: 'Juniper', type: 'video', src: 'Plant Gallery/Juniper 1.mp4' },
+      { name: 'Onion Plant', type: 'image', src: 'Plant Gallery/Onion.jpg' },
+      { name: 'Peony Bloom', type: 'video', src: 'Plant Gallery/Peony 2.mp4' },
+      { name: 'Peony Close-up', type: 'image', src: 'Plant Gallery/Peony 3.jpg' },
+      { name: 'Peony Garden', type: 'video', src: 'Plant Gallery/Peony.mp4' },
+      { name: 'Phlox', type: 'video', src: 'Plant Gallery/Phlox.mp4' },
+      { name: 'Potentilla', type: 'video', src: 'Plant Gallery/Potentillia.mp4' },
+      { name: 'Roses Special', type: 'image', src: 'Plant Gallery/Roses 1 (2).jpg' },
+      { name: 'Roses Growth', type: 'video', src: 'Plant Gallery/Roses 1 (4).mp4' },
+      { name: 'Roses Collection', type: 'image', src: 'Plant Gallery/Roses 1 (6).jpg' }
+    ];
 
-<footer>
-    <p>© 2026 Your Neighbourhood Plant Guy</p>
-</footer>
+    // Comics & Posters (from 'Comics And Posters/' folder)
+    const comicsItems = [
+      { title: 'Carrot Fest Capers Cover', src: 'Comics And Posters/Cover And Back.png' },
+      { title: 'Comic Inside Page 1 & 2', src: 'Comics And Posters/Comic Landscape Raw Inside.jpg' },
+      { title: 'Comic Landscape Full', src: 'Comics And Posters/Comic Landscape Raw.jpg' },
+      { title: 'Fall Bike Special AD', src: 'Comics And Posters/Fall Bike AD.png' },
+      { title: 'Canada Day Comic Episode', src: 'Comics And Posters/Pages 1 and 2.png' },
+      { title: 'Seasonal Flyer 9', src: 'Comics And Posters/Flyer 9.png' },
+      { title: 'Seasonal Flyer 13', src: 'Comics And Posters/Flyer 13.jpg' },
+      { title: 'Fall Consultation Flyer', src: 'Comics And Posters/Flyer Fall.jpg' },
+      { title: 'Eco-Friendly Bicycle V2', src: 'Comics And Posters/bicycle V2.png' },
+      { title: 'Business Card V2', src: 'Comics And Posters/Business card Final V2.png' },
+      { title: 'Wagon Harvest V3', src: 'Comics And Posters/Wagon V3.jpg' }
+    ];
 
+    // Completed Jobs showcase items
+    const jobsItems = [
+      { title: 'Property Transition & Bush Trimming', src: 'Comics And Posters/Flyer Fall.jpg', desc: 'Complete garden bed overhaul, dead foliage clearing and preparation.' },
+      { title: 'Hedge Shaping & Pest Treatment', src: 'Plant Gallery/Roses 1 (2).jpg', desc: 'Precision aesthetic hedge trim with organic disease barrier.' },
+      { title: 'Greenhaven Community Cleanup', src: 'Comics And Posters/Pages 1 and 2.png', desc: 'Tree branch clearance and ornamental bed revitalizing.' },
+      { title: 'Seasonal Boxwood Care', src: 'Plant Gallery/Beech 1.jpg', desc: 'Deep root organic nutrition and blight prevention spray.' }
+    ];
+
+    // YouTube Shorts from Videos.txt
+    const videoEmbeds = [
+      { title: 'Helping A Neighbour In Need', id: 'pUmsDLkJtxs' },
+      { title: 'Veggie Wall', id: 'fdCM0eTC6nI' },
+      { title: 'Getting To That Job', id: 't_9DbYG62co' },
+      { title: 'This Week In Bloom - Jun 5', id: 'R5i0cTrad18' },
+      { title: 'This Week In Bloom - Jun 12', id: 'XSpd7foH4kE' },
+      { title: 'The OG Theme And Flyer', id: 'O6oX_CrK0cQ' }
+    ];
+
+    /* =================================================================
+       2. SPA NAVIGATION LOGIC
+       ================================================================= */
+    function navigateTo(sectionId) {
+      document.querySelectorAll('.page-section').forEach(sec => sec.classList.remove('active'));
+      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
+
+      const target = document.getElementById('section-' + sectionId);
+      if (target) {
+        target.classList.add('active');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      }
+
+      // Sync active button
+      const activeBtn = Array.from(document.querySelectorAll('.nav-btn')).find(b => 
+        b.getAttribute('onclick') && b.getAttribute('onclick').includes(sectionId)
+      );
+      if (activeBtn) activeBtn.classList.add('active');
+
+      // Close mobile menu if open
+      document.getElementById('navMenu').classList.remove('open');
+    }
+
+    function toggleMobileNav() {
+      document.getElementById('navMenu').classList.toggle('open');
+    }
+
+    /* =================================================================
+       3. DYNAMIC RENDERING FUNCTIONS
+       ================================================================= */
+    function renderGallery(filter = 'all') {
+      const container = document.getElementById('galleryGrid');
+      container.innerHTML = '';
+
+      const filtered = plantGalleryItems.filter(item => filter === 'all' || item.type === filter);
+
+      filtered.forEach((item) => {
+        const card = document.createElement('div');
+        card.className = 'media-card tilt-card';
+        card.onclick = () => openModal(item);
+
+        if (item.type === 'video') {
+          card.innerHTML = `
+            <div class="media-thumb-wrap">
+              <video src="${item.src}#t=0.5" preload="metadata" muted></video>
+              <div class="media-type-badge"><i class="fa-solid fa-play"></i> Video</div>
+            </div>
+            <div class="media-info">
+              <div class="media-title">${item.name}</div>
+              <i class="fa-solid fa-expand" style="color: var(--primary);"></i>
+            </div>
+          `;
+        } else {
+          card.innerHTML = `
+            <div class="media-thumb-wrap">
+              <img src="${item.src}" alt="${item.name}" loading="lazy" />
+              <div class="media-type-badge"><i class="fa-solid fa-camera"></i> Photo</div>
+            </div>
+            <div class="media-info">
+              <div class="media-title">${item.name}</div>
+              <i class="fa-solid fa-expand" style="color: var(--primary);"></i>
+            </div>
+          `;
+        }
+        container.appendChild(card);
+      });
+      init3DTilt();
+    }
+
+    function filterGallery(type) {
+      document.querySelectorAll('.filter-pill').forEach(pill => pill.classList.remove('active'));
+      event.target.classList.add('active');
+      renderGallery(type);
+    }
+
+    function renderComics() {
+      const container = document.getElementById('comicsGrid');
+      container.innerHTML = '';
+
+      comicsItems.forEach(item => {
+        const card = document.createElement('div');
+        card.className = 'media-card tilt-card';
+        card.onclick = () => openModal({ type: 'image', src: item.src, name: item.title });
+
+        card.innerHTML = `
+          <div class="media-thumb-wrap" style="padding-top: 110%;">
+            <img src="${item.src}" alt="${item.title}" loading="lazy" onerror="this.src='Comics And Posters/Cover And Back.png'" />
+            <div class="media-type-badge" style="background: var(--accent-orange);"><i class="fa-solid fa-book"></i> Comic Art</div>
+          </div>
+          <div class="media-info">
+            <div class="media-title">${item.title}</div>
+            <i class="fa-solid fa-magnifying-glass-plus" style="color: var(--accent-orange);"></i>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function renderJobs() {
+      const container = document.getElementById('jobsGrid');
+      container.innerHTML = '';
+
+      jobsItems.forEach(job => {
+        const card = document.createElement('div');
+        card.className = 'media-card tilt-card';
+        card.onclick = () => openModal({ type: 'image', src: job.src, name: job.title });
+
+        card.innerHTML = `
+          <div class="media-thumb-wrap">
+            <img src="${job.src}" alt="${job.title}" loading="lazy" />
+            <div class="media-type-badge" style="background: var(--primary);"><i class="fa-solid fa-check-double"></i> Completed</div>
+          </div>
+          <div class="media-info" style="flex-direction: column; align-items: flex-start; gap: 4px;">
+            <div class="media-title">${job.title}</div>
+            <p style="font-size: 0.82rem; color: #666;">${job.desc}</p>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    function renderVideos() {
+      const container = document.getElementById('videoEmbedsGrid');
+      container.innerHTML = '';
+
+      videoEmbeds.forEach(v => {
+        const card = document.createElement('div');
+        card.className = 'video-card tilt-card';
+        card.innerHTML = `
+          <div class="video-card-title">
+            <i class="fa-brands fa-youtube" style="color: #ff0000; font-size: 1.2rem;"></i>
+            <span>${v.title}</span>
+          </div>
+          <div class="video-frame-wrap">
+            <iframe 
+              src="https://www.youtube-nocookie.com/embed/${v.id}?rel=0" 
+              title="${v.title}" 
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+              allowfullscreen>
+            </iframe>
+          </div>
+        `;
+        container.appendChild(card);
+      });
+    }
+
+    /* =================================================================
+       4. AUDIO PLAYER LOGIC (Continuous SPA Theme Song)
+       ================================================================= */
+    const themeAudio = document.getElementById('themeAudio');
+    const playIcon = document.getElementById('playIcon');
+    const vinylDisc = document.getElementById('vinylDisc');
+
+    function toggleThemeSong() {
+      if (themeAudio.paused) {
+        themeAudio.play().then(() => {
+          playIcon.className = 'fa-solid fa-pause';
+          vinylDisc.classList.add('playing');
+        }).catch(err => {
+          console.log("Audio play blocked or needs user click first:", err);
+        });
+      } else {
+        themeAudio.pause();
+        playIcon.className = 'fa-solid fa-play';
+        vinylDisc.classList.remove('playing');
+      }
+    }
+
+    function adjustVolume(val) {
+      themeAudio.volume = parseFloat(val);
+    }
+
+    // Try auto-play smoothly on first touch/interaction
+    document.addEventListener('click', function initAudioOnce() {
+      if (themeAudio.paused && themeAudio.currentTime === 0) {
+        themeAudio.volume = 0.6;
+        themeAudio.play().then(() => {
+          playIcon.className = 'fa-solid fa-pause';
+          vinylDisc.classList.add('playing');
+        }).catch(() => {});
+      }
+      document.removeEventListener('click', initAudioOnce);
+    }, { once: true });
+
+    /* =================================================================
+       5. MODAL LIGHTBOX
+       ================================================================= */
+    function openModal(item) {
+      const modal = document.getElementById('mediaModal');
+      const body = document.getElementById('modalBody');
+
+      if (item.type === 'video') {
+        body.innerHTML = `
+          <video controls autoplay class="modal-media-holder" style="background:#000;">
+            <source src="${item.src}" type="video/mp4">
+            Your browser does not support the video tag.
+          </video>
+        `;
+      } else {
+        body.innerHTML = `<img src="${item.src}" alt="${item.name || 'Poster'}" class="modal-media-holder" />`;
+      }
+      modal.classList.add('active');
+    }
+
+    function closeModal(e) {
+      if (e.target.id === 'mediaModal') {
+        closeModalDirect();
+      }
+    }
+
+    function closeModalDirect() {
+      const modal = document.getElementById('mediaModal');
+      const body = document.getElementById('modalBody');
+      const video = body.querySelector('video');
+      if (video) video.pause();
+      modal.classList.remove('active');
+      body.innerHTML = '';
+    }
+
+    /* =================================================================
+       6. 3D CARD PARALLAX TILT EFFECT
+       ================================================================= */
+    function init3DTilt() {
+      const cards = document.querySelectorAll('.tilt-card');
+      cards.forEach(card => {
+        card.addEventListener('mousemove', (e) => {
+          const rect = card.getBoundingClientRect();
+          const x = e.clientX - rect.left;
+          const y = e.clientY - rect.top;
+          const centerX = rect.width / 2;
+          const centerY = rect.height / 2;
+          const rotateX = ((y - centerY) / centerY) * -7;
+          const rotateY = ((x - centerX) / centerX) * 7;
+
+          card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+        });
+
+        card.addEventListener('mouseleave', () => {
+          card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+        });
+      });
+    }
+
+    /* =================================================================
+       7. FLOATING LEAF CANVAS ANIMATION
+       ================================================================= */
+    const canvas = document.getElementById('leafCanvas');
+    const ctx = canvas.getContext('2d');
+    let leaves = [];
+
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
+    }
+    window.addEventListener('resize', resizeCanvas);
+    resizeCanvas();
+
+    class Leaf {
+      constructor() {
+        this.reset();
+      }
+      reset() {
+        this.x = Math.random() * canvas.width;
+        this.y = -20;
+        this.size = Math.random() * 12 + 8;
+        this.speedY = Math.random() * 1.2 + 0.6;
+        this.speedX = Math.sin(Math.random() * Math.PI) * 0.8 - 0.4;
+        this.rotation = Math.random() * 360;
+        this.rotSpeed = (Math.random() - 0.5) * 2;
+        this.color = Math.random() > 0.4 ? 'rgba(82, 183, 136, 0.35)' : 'rgba(251, 133, 0, 0.3)';
+      }
+      update() {
+        this.y += this.speedY;
+        this.x += this.speedX + Math.sin(this.y * 0.015);
+        this.rotation += this.rotSpeed;
+        if (this.y > canvas.height + 20) this.reset();
+      }
+      draw() {
+        ctx.save();
+        ctx.translate(this.x, this.y);
+        ctx.rotate((this.rotation * Math.PI) / 180);
+        ctx.fillStyle = this.color;
+        ctx.beginPath();
+        ctx.moveTo(0, -this.size);
+        ctx.quadraticCurveTo(this.size * 0.8, 0, 0, this.size);
+        ctx.quadraticCurveTo(-this.size * 0.8, 0, 0, -this.size);
+        ctx.fill();
+        ctx.restore();
+      }
+    }
+
+    for (let i = 0; i < 22; i++) leaves.push(new Leaf());
+
+    function animateLeaves() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      leaves.forEach(l => {
+        l.update();
+        l.draw();
+      });
+      requestAnimationFrame(animateLeaves);
+    }
+    animateLeaves();
+
+    /* =================================================================
+       8. QUOTE FORM SUBMISSION
+       ================================================================= */
+    function handleQuoteSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('qName').value;
+      const phone = document.getElementById('qPhone').value;
+      const email = document.getElementById('qEmail').value;
+      const city = document.getElementById('qCity').value;
+      const notes = document.getElementById('qNotes').value;
+
+      const checkedServices = Array.from(document.querySelectorAll('input[name="srv"]:checked'))
+                                   .map(el => el.value)
+                                   .join(', ');
+
+      const subject = encodeURIComponent(`New Quote Request from ${name}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nCity/Area: ${city}\n\nServices Interested In:\n${checkedServices || 'General Inquiry'}\n\nProject Notes:\n${notes}`
+      );
+
+      // Open email client ready with formatted message
+      window.location.href = `mailto:YourNeighbourhoodPlantGuy@Gmail.com?subject=${subject}&body=${body}`;
+    }
+
+    /* Initialize all views on load */
+    window.addEventListener('DOMContentLoaded', () => {
+      renderGallery();
+      renderComics();
+      renderJobs();
+      renderVideos();
+      init3DTilt();
+    });
+  </script>
 </body>
 </html>
