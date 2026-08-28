@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact Trevor Auton | Your Neighbourhood Plant Guy</title>
+  <meta name="description" content="Get in touch with Trevor Auton at Your Neighbourhood Plant Guy. Call, text, or email for horticultural consulting, garden maintenance, and eco-friendly plant care in Bradford and York Region." />
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #2d6a4f;
+      --primary-dark: #1b4332;
+      --primary-light: #52b788;
+      --accent: #ffb703;
+      --accent-orange: #fb8500;
+      --bg-cream: #fbf8f1;
+      --dark: #1f2421;
+      --card-bg: #ffffff;
+      --shadow-3d: 0 10px 25px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.04);
+      --comic-font: 'Bangers', cursive, sans-serif;
+      --body-font: 'Outfit', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--body-font);
+      background-color: var(--bg-cream);
+      color: var(--dark);
+      padding: 2rem 1.5rem 5rem;
+      max-width: 1250px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .header-section {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    .header-section h1 {
+      font-family: var(--comic-font);
+      font-size: 3.2rem;
+      color: var(--primary-dark);
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 0 var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-section p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 650px;
+      margin: 0.4rem auto 0;
+    }
+
+    /* Layout Grid */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 2.2rem;
+      box-shadow: var(--shadow-3d);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    /* Profile Header */
+    .profile-header {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      margin-bottom: 1.8rem;
+      padding-bottom: 1.2rem;
+      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+    }
+    .profile-avatar {
+      width: 75px;
+      height: 75px;
+      border-radius: 50%;
+      border: 3px solid var(--accent);
+      object-fit: cover;
+      background: #fff;
+    }
+    .profile-name {
+      font-family: var(--comic-font);
+      font-size: 2rem;
+      color: var(--primary-dark);
+      line-height: 1;
+    }
+    .profile-role {
+      font-size: 0.88rem;
+      font-weight: 700;
+      color: var(--accent-orange);
+      letter-spacing: 0.5px;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+
+    /* Contact Links */
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.1rem 1.2rem;
+      background: #f8faf9;
+      border-radius: 14px;
+      margin-bottom: 1rem;
+      text-decoration: none;
+      color: var(--dark);
+      border: 1px solid rgba(45, 106, 79, 0.1);
+      transition: all 0.25s ease;
+    }
+    .contact-item:hover {
+      background: rgba(82, 183, 136, 0.15);
+      transform: translateX(6px);
+      border-color: var(--primary-light);
+    }
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+    .contact-label {
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      font-weight: 800;
+      color: #777;
+      letter-spacing: 0.5px;
+    }
+    .contact-val {
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--primary-dark);
+    }
+
+    /* Social Grid */
+    .social-section-title {
+      font-family: var(--comic-font);
+      font-size: 1.5rem;
+      color: var(--primary-dark);
+      margin: 1.5rem 0 1rem;
+    }
+    .social-buttons-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+    }
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 0.75rem 1rem;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.9rem;
+      border: 1px solid #e2e8f0;
+      background: #fff;
+      transition: all 0.2s ease;
+      color: var(--dark);
+    }
+    .social-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+    }
+    .social-btn.youtube:hover { color: #ff0000; border-color: #ff0000; }
+    .social-btn.tiktok:hover { color: #000; border-color: #000; }
+    .social-btn.threads:hover { color: #e1306c; border-color: #e1306c; }
+    .social-btn.facebook:hover { color: #1877f2; border-color: #1877f2; }
+
+    /* Form Card */
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      color: var(--dark);
+    }
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      border: 1.5px solid #dde2e5;
+      font-family: var(--body-font);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15);
+    }
+    .btn-send {
+      width: 100%;
+      background: var(--accent-orange);
+      color: #fff;
+      font-family: var(--comic-font);
+      font-size: 1.35rem;
+      letter-spacing: 0.5px;
+      padding: 0.8rem;
+      border-radius: 30px;
+      border: 2px solid #fff;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(251, 133, 0, 0.35);
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+    }
+    .btn-send:hover {
+      background: #e07400;
+      transform: translateY(-2px);
+    }
+
+    /* Service Area Pill */
+    .service-area-box {
+      margin-top: 1.5rem;
+      background: rgba(255, 183, 3, 0.15);
+      border-left: 4px solid var(--accent-orange);
+      padding: 1rem 1.2rem;
+      border-radius: 10px;
+      font-size: 0.9rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 850px) {
+      .contact-grid { grid-template-columns: 1fr; }
+      .header-section h1 { font-size: 2.6rem; }
+      .social-buttons-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Section Header -->
+  <div class="header-section">
+    <h1><i class="fa-solid fa-address-book"></i> Get In Touch</h1>
+    <p>Have questions about your shrubs, trees, or seasonal garden care? Reach out directly or send us a quick note below.</p>
+  </div>
+
+  <div class="contact-grid">
+    
+    <!-- Direct Contact Details -->
+    <div class="card">
+      <div class="profile-header">
+        <img src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" alt="Trevor Auton Logo" class="profile-avatar" />
+        <div>
+          <div class="profile-name">Trevor Auton</div>
+          <div class="profile-role">Horticultural Specialist • 25 Years Exp.</div>
+        </div>
+      </div>
+
+      <a href="tel:9052527619" class="contact-item">
+        <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+        <div>
+          <div class="contact-label">Office Line</div>
+          <div class="contact-val">905-252-7619</div>
+        </div>
+      </a>
+
+      <a href="tel:9052523569" class="contact-item">
+        <div class="contact-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+        <div>
+          <div class="contact-label">Cell / Direct Text</div>
+          <div class="contact-val">905-252-3569</div>
+        </div>
+      </a>
+
+      <a href="mailto:YourNeighbourhoodPlantGuy@Gmail.com" class="contact-item">
+        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+        <div>
+          <div class="contact-label">Email Inquiries</div>
+          <div class="contact-val" style="font-size: 0.95rem;">YourNeighbourhoodPlantGuy@Gmail.com</div>
+        </div>
+      </a>
+
+      <div class="social-section-title">Follow &amp; Subscribe</div>
+      <div class="social-buttons-grid">
+        <a href="https://www.youtube.com/@trevorauton2676" target="_blank" class="social-btn youtube">
+          <i class="fa-brands fa-youtube" style="color: #ff0000; font-size: 1.2rem;"></i> YouTube
+        </a>
+        <a href="https://www.tiktok.com/@your.neighbourhoo8" target="_blank" class="social-btn tiktok">
+          <i class="fa-brands fa-tiktok" style="font-size: 1.2rem;"></i> TikTok
+        </a>
+        <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" class="social-btn threads">
+          <i class="fa-brands fa-instagram" style="color: #e1306c; font-size: 1.2rem;"></i> Instagram / Threads
+        </a>
+        <a href="https://www.facebook.com" target="_blank" class="social-btn facebook">
+          <i class="fa-brands fa-facebook-f" style="color: #1877f2; font-size: 1.2rem;"></i> Facebook
+        </a>
+      </div>
+
+      <div class="service-area-box">
+        <strong>📍 Primary Service Areas:</strong> Bradford West Gwillimbury, Newmarket, East Gwillimbury, and surrounding York Simcoe communities.
+      </div>
+    </div>
+
+    <!-- Quick Message Form -->
+    <div class="card">
+      <h2 style="font-family: var(--comic-font); font-size: 2.2rem; color: var(--primary-dark); margin-bottom: 0.5rem;">
+        Send a Message
+      </h2>
+      <p style="color: #666; font-size: 0.92rem; margin-bottom: 1.5rem;">
+        Fill out this form and it will open directly in your preferred email client ready to send.
+      </p>
+
+      <form onsubmit="handleContactSubmit(event)">
+        <div class="form-group">
+          <label><i class="fa-solid fa-user"></i> Your Name *</label>
+          <input type="text" id="cName" class="form-control" placeholder="e.g. Sarah Jenkins" required />
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-phone"></i> Phone Number *</label>
+          <input type="tel" id="cPhone" class="form-control" placeholder="e.g. 905-252-XXXX" required />
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-envelope"></i> Email Address *</label>
+          <input type="email" id="cEmail" class="form-control" placeholder="name@example.com" required />
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-location-dot"></i> City / Neighbourhood</label>
+          <input type="text" id="cLocation" class="form-control" placeholder="e.g. Bradford / Bond Head / Holland Landing" />
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-comment-dots"></i> How can we help?</label>
+          <textarea id="cMessage" class="form-control" rows="4" placeholder="Tell us about your shrubs, trees, pest concerns, or seasonal maintenance..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn-send">
+          <i class="fa-solid fa-paper-plane"></i> Send Direct Message
+        </button>
+      </form>
+    </div>
+
+  </div>
+
+  <script>
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('cName').value;
+      const phone = document.getElementById('cPhone').value;
+      const email = document.getElementById('cEmail').value;
+      const location = document.getElementById('cLocation').value;
+      const message = document.getElementById('cMessage').value;
+
+      const subject = encodeURIComponent(`Inquiry from ${name} - Your Neighbourhood Plant Guy`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nLocation: ${location}\n\nMessage:\n${message}`
+      );
+
+      window.location.href = `mailto:YourNeighbourhoodPlantGuy@Gmail.com?subject=${subject}&body=${body}`;
+    }
+  </script>
+</body>
+</html>

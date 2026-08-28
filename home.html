@@ -1,0 +1,379 @@
+code
+Html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Your Neighbourhood Plant Guy | Eco-Friendly Plant Care &amp; Property Management</title>
+  <meta name="description" content="25 years of horticultural experience offering eco-friendly plant care, pruning, pest & disease control, troubled boxwoods, and seasonal cleanups in Bradford and York Region." />
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #2d6a4f;
+      --primary-dark: #1b4332;
+      --primary-light: #52b788;
+      --accent: #ffb703;
+      --accent-orange: #fb8500;
+      --accent-red: #d90429;
+      --bg-cream: #fbf8f1;
+      --dark: #1f2421;
+      --card-bg: rgba(255, 255, 255, 0.92);
+      --shadow-3d: 0 15px 35px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
+      --comic-font: 'Bangers', cursive, sans-serif;
+      --body-font: 'Outfit', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--body-font);
+      background-color: var(--bg-cream);
+      color: var(--dark);
+      padding: 1.5rem 1.5rem 5rem;
+      max-width: 1350px;
+      margin: 0 auto;
+      overflow-x: hidden;
+    }
+
+    /* 3D Tilt Card Base */
+    .tilt-card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      border: 1px solid rgba(255, 255, 255, 0.6);
+      box-shadow: var(--shadow-3d);
+      transition: transform 0.2s ease, box-shadow 0.25s ease;
+      transform-style: preserve-3d;
+      overflow: hidden;
+    }
+    .tilt-card:hover {
+      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.18);
+    }
+
+    /* Hero Section */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 2rem;
+      align-items: center;
+      margin-bottom: 3rem;
+    }
+
+    .hero-banner {
+      padding: 2.8rem;
+      background: linear-gradient(135deg, rgba(45, 106, 79, 0.96), rgba(27, 67, 50, 0.98)),
+                  url('https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Cover%20And%20Back.png') center/cover;
+      color: #fff;
+    }
+
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: var(--dark);
+      font-weight: 800;
+      font-size: 0.85rem;
+      padding: 6px 16px;
+      border-radius: 30px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      margin-bottom: 1.2rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    }
+
+    .hero-title {
+      font-family: var(--comic-font);
+      font-size: 3.6rem;
+      line-height: 1.05;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      text-shadow: 2px 2px 0 var(--dark);
+    }
+    .hero-title span { color: var(--accent); }
+
+    .hero-tagline {
+      font-size: 1.15rem;
+      opacity: 0.95;
+      margin-bottom: 1.8rem;
+      line-height: 1.6;
+    }
+
+    .hero-cta-group {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+
+    .btn-primary {
+      background: var(--accent-orange);
+      color: #fff;
+      font-family: var(--comic-font);
+      font-size: 1.35rem;
+      letter-spacing: 0.5px;
+      padding: 0.75rem 1.8rem;
+      border-radius: 30px;
+      text-decoration: none;
+      border: 2px solid #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(251, 133, 0, 0.4);
+      transition: all 0.25s ease;
+    }
+    .btn-primary:hover {
+      background: #e07400;
+      transform: translateY(-3px) scale(1.03);
+    }
+
+    .btn-secondary {
+      background: rgba(255, 255, 255, 0.15);
+      color: #fff;
+      font-weight: 700;
+      font-size: 1rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 30px;
+      text-decoration: none;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      backdrop-filter: blur(4px);
+      transition: all 0.25s ease;
+    }
+    .btn-secondary:hover {
+      background: rgba(255, 255, 255, 0.25);
+      transform: translateY(-3px);
+    }
+
+    .hero-poster-card {
+      position: relative;
+      cursor: pointer;
+      border: 4px solid #fff;
+    }
+    .hero-poster-card img {
+      width: 100%;
+      height: 100%;
+      max-height: 440px;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .hero-poster-card:hover img {
+      transform: scale(1.04);
+    }
+
+    /* Section Titles */
+    .section-header {
+      text-align: center;
+      margin-bottom: 2.2rem;
+    }
+    .section-header h2 {
+      font-family: var(--comic-font);
+      font-size: 2.9rem;
+      color: var(--primary-dark);
+      letter-spacing: 1px;
+      text-shadow: 1px 1px 0 var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .section-header p {
+      color: #555;
+      font-size: 1.1rem;
+      max-width: 700px;
+      margin: 0.3rem auto 0;
+    }
+
+    /* Services Grid */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 1.4rem;
+      margin-bottom: 3.5rem;
+    }
+    .service-box {
+      background: #fff;
+      padding: 1.8rem 1.5rem;
+      border-radius: 18px;
+      border: 1px solid rgba(0,0,0,0.06);
+      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
+      text-align: center;
+      transition: all 0.3s ease;
+    }
+    .service-box:hover {
+      transform: translateY(-8px);
+      border-color: var(--primary-light);
+      box-shadow: 0 14px 28px rgba(45, 106, 79, 0.15);
+    }
+    .service-icon {
+      width: 60px;
+      height: 60px;
+      margin: 0 auto 1.1rem;
+      background: rgba(82, 183, 136, 0.15);
+      color: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.6rem;
+    }
+    .service-box h3 {
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 0.5rem;
+      color: var(--primary-dark);
+    }
+    .service-box p {
+      font-size: 0.9rem;
+      color: #666;
+      line-height: 1.5;
+    }
+
+    /* Feature Banner */
+    .feature-banner {
+      background: linear-gradient(135deg, #fff, #f4faf6);
+      border-radius: 20px;
+      padding: 2.2rem;
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 2rem;
+      align-items: center;
+      border: 2px solid var(--accent);
+    }
+    .feature-text h3 {
+      font-family: var(--comic-font);
+      font-size: 2.2rem;
+      color: var(--primary-dark);
+      margin-bottom: 0.4rem;
+    }
+    .feature-text p {
+      color: #555;
+      font-size: 1rem;
+      line-height: 1.5;
+    }
+
+    @media (max-width: 900px) {
+      .hero-grid { grid-template-columns: 1fr; }
+      .feature-banner { grid-template-columns: 1fr; text-align: center; }
+      .hero-banner { padding: 2rem; }
+      .hero-title { font-size: 2.8rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Hero Grid -->
+  <div class="hero-grid">
+    <div class="hero-banner tilt-card">
+      <div class="badge-pill"><i class="fa-solid fa-award"></i> 25 Years Horticultural Specialist</div>
+      <h1 class="hero-title">ECO-FRIENDLY <span>PLANT CARE</span> &amp; GARDEN HEALTH</h1>
+      <p class="hero-tagline">
+        From your weeds to your trees and everything in between — Trevor Auton is your neighbourhood expert for organic pest &amp; disease management, pruning, lawn revival, and seasonal vitality.
+      </p>
+      
+      <div class="hero-cta-group">
+        <a href="quote.html" class="btn-primary" onclick="navParent('quote')"><i class="fa-solid fa-calculator"></i> Request Free Quote</a>
+        <a href="gallery.html" class="btn-secondary" onclick="navParent('gallery')"><i class="fa-solid fa-leaf"></i> View Plant Gallery</a>
+      </div>
+    </div>
+
+    <div class="hero-poster-card tilt-card" onclick="navParent('comics')">
+      <img src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Wagon%20V3.jpg" alt="Your Neighbourhood Plant Guy Art" />
+    </div>
+  </div>
+
+  <!-- Services Section -->
+  <div class="section-header">
+    <h2><i class="fa-solid fa-spa"></i> Specialized Services</h2>
+    <p>Professional, chemical-conscious garden maintenance and plant healthcare designed for Ontario landscapes.</p>
+  </div>
+
+  <div class="services-grid">
+    <div class="service-box tilt-card">
+      <div class="service-icon"><i class="fa-solid fa-bug-slash"></i></div>
+      <h3>Pest &amp; Disease Control</h3>
+      <p>Targeted organic treatments for fungus, blight, insects, and soil pathogens without harming pollinators.</p>
+    </div>
+
+    <div class="service-box tilt-card">
+      <div class="service-icon"><i class="fa-solid fa-scissors"></i></div>
+      <h3>Pruning &amp; Shaping</h3>
+      <p>Expert hedge trimming, fruit tree structural pruning, and aesthetic shrub contouring.</p>
+    </div>
+
+    <div class="service-box tilt-card">
+      <div class="service-icon"><i class="fa-solid fa-shield-virus"></i></div>
+      <h3>Mosquito &amp; Tick Barrier</h3>
+      <p>Eco-friendly perimeter sprays creating comfortable, pest-free outdoor sitting areas.</p>
+    </div>
+
+    <div class="service-box tilt-card">
+      <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
+      <h3>Troubled Boxwoods</h3>
+      <p>Specialized diagnosis, blight rescue treatments, and multi-stage nutrient rejuvenation programs.</p>
+    </div>
+
+    <div class="service-box tilt-card">
+      <div class="service-icon"><i class="fa-solid fa-plant-wilt"></i></div>
+      <h3>Removals &amp; Cleanups</h3>
+      <p>Full property cleanups, overgrown shrub removals, and complete seasonal transitions.</p>
+    </div>
+
+    <div class="service-box tilt-card">
+      <div class="service-icon"><i class="fa-solid fa-house-chimney-window"></i></div>
+      <h3>Houseplants &amp; Design</h3>
+      <p>Custom garden designs, planting installations, and dedicated indoor houseplant diagnosis.</p>
+    </div>
+  </div>
+
+  <!-- Bottom CTA Banner -->
+  <div class="feature-banner tilt-card">
+    <div class="feature-text">
+      <h3>Ready to Revitalize Your Garden?</h3>
+      <p>Get a personalized assessment tailored to your yard's soil, exposure, and seasonal plant requirements.</p>
+    </div>
+    <div>
+      <a href="quote.html" class="btn-primary" onclick="navParent('quote')">
+        <i class="fa-solid fa-clipboard-check"></i> Get Started
+      </a>
+    </div>
+  </div>
+
+  <script>
+    // Tell parent frame to update navigation active state
+    function navParent(pageKey) {
+      if (window.parent && window.parent.loadPage) {
+        window.parent.loadPage(`${pageKey}.html`, pageKey);
+      }
+    }
+
+    // 3D Tilt Effect
+    const cards = document.querySelectorAll('.tilt-card');
+    cards.forEach(card => {
+      card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        const rotateX = ((y - centerY) / centerY) * -6;
+        const rotateY = ((x - centerX) / centerX) * 6;
+        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
+      });
+
+      card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
+      });
+    });
+  </script>
+</body>
+</html>

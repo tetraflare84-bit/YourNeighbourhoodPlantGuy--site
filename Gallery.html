@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Plant Gallery | Your Neighbourhood Plant Guy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #2d6a4f;
+      --primary-dark: #1b4332;
+      --bg-cream: #fbf8f1;
+      --comic-font: 'Bangers', cursive, sans-serif;
+      --body-font: 'Outfit', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: var(--body-font); background: var(--bg-cream); padding: 2rem 1.5rem 5rem; max-width: 1300px; margin: 0 auto; }
+    .header-section { text-align: center; margin-bottom: 2rem; }
+    .header-section h1 { font-family: var(--comic-font); font-size: 3rem; color: var(--primary-dark); }
+    
+    .filter-bar { display: flex; gap: 0.5rem; justify-content: center; margin-bottom: 2rem; }
+    .filter-pill {
+      background: #fff; border: 1px solid #ddd; padding: 0.4rem 1.2rem; border-radius: 20px;
+      font-weight: 700; cursor: pointer; transition: 0.2s;
+    }
+    .filter-pill.active, .filter-pill:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+    .media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.5rem; }
+    .media-card { background: #fff; border-radius: 14px; overflow: hidden; box-shadow: 0 6px 18px rgba(0,0,0,0.06); cursor: pointer; transition: 0.3s; }
+    .media-card:hover { transform: translateY(-5px); box-shadow: 0 12px 25px rgba(0,0,0,0.12); }
+    .media-thumb-wrap { position: relative; width: 100%; padding-top: 75%; background: #000; }
+    .media-thumb-wrap img, .media-thumb-wrap video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+    .media-info { padding: 1rem; display: flex; justify-content: space-between; align-items: center; font-weight: 700; }
+
+    /* Lightbox */
+    .modal-overlay { position: fixed; inset: 0; background: rgba(0,0,0,0.85); z-index: 200; display: none; align-items: center; justify-content: center; padding: 1rem; }
+    .modal-overlay.active { display: flex; }
+    .modal-media { max-height: 85vh; max-width: 90%; border-radius: 12px; }
+  </style>
+</head>
+<body>
+
+  <div class="header-section">
+    <h1><i class="fa-solid fa-seedling"></i> Plant Gallery</h1>
+  </div>
+
+  <div class="filter-bar">
+    <button class="filter-pill active" onclick="render('all', this)">All Plants</button>
+    <button class="filter-pill" onclick="render('image', this)">Photos</button>
+    <button class="filter-pill" onclick="render('video', this)">Video Clips</button>
+  </div>
+
+  <div class="media-grid" id="galleryGrid"></div>
+
+  <div class="modal-overlay" id="modal" onclick="this.classList.remove('active'); document.getElementById('mBody').innerHTML='';">
+    <div id="mBody"></div>
+  </div>
+
+  <script>
+    const B2 = 'https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite';
+    const items = [
+      { name: 'Barberry', type: 'video', file: 'Barberry 2.mp4' },
+      { name: 'Barberry', type: 'image', file: 'Barberry.jpg' },
+      { name: 'Beech', type: 'image', file: 'Beech 1.jpg' },
+      { name: 'Cup Plant', type: 'video', file: 'Cup Plant 1.mp4' },
+      { name: 'Dead Nettle', type: 'image', file: 'Dead Nettle.jpg' },
+      { name: 'Euonymus', type: 'video', file: 'Euynonomous.mp4' },
+      { name: 'False Sunflower', type: 'video', file: 'False Sunflower.mp4' },
+      { name: 'Hydrangea', type: 'video', file: 'Hydrangea.mp4' },
+      { name: 'Juniper', type: 'video', file: 'Juniper 1.mp4' },
+      { name: 'Onion Plant', type: 'image', file: 'Onion.jpg' },
+      { name: 'Peony Bloom', type: 'video', file: 'Peony 2.mp4' },
+      { name: 'Peony Close-up', type: 'image', file: 'Peony 3.jpg' },
+      { name: 'Peony Garden', type: 'video', file: 'Peony.mp4' },
+      { name: 'Phlox', type: 'video', file: 'Phlox.mp4' },
+      { name: 'Potentilla', type: 'video', file: 'Potentillia.mp4' },
+      { name: 'Roses Special', type: 'image', file: 'Roses 1 (2).jpg' },
+      { name: 'Roses Growth', type: 'video', file: 'Roses 1 (4).mp4' },
+      { name: 'Roses Collection', type: 'image', file: 'Roses 1 (6).jpg' }
+    ];
+
+    function render(filter = 'all', btn) {
+      if (btn) {
+        document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+        btn.classList.add('active');
+      }
+      const grid = document.getElementById('galleryGrid');
+      grid.innerHTML = '';
+      items.filter(i => filter === 'all' || i.type === filter).forEach(item => {
+        const url = `${B2}/${encodeURIComponent(item.file)}`;
+        const card = document.createElement('div');
+        card.className = 'media-card';
+        card.onclick = () => {
+          const m = document.getElementById('modal');
+          const mb = document.getElementById('mBody');
+          mb.innerHTML = item.type === 'video' 
+            ? `<video src="${url}" controls autoplay class="modal-media"></video>`
+            : `<img src="${url}" class="modal-media" />`;
+          m.classList.add('active');
+        };
+        card.innerHTML = `
+          <div class="media-thumb-wrap">
+            ${item.type === 'video' ? `<video src="${url}#t=0.5" muted></video>` : `<img src="${url}" loading="lazy"/>`}
+          </div>
+          <div class="media-info">
+            <span>${item.name}</span>
+            <i class="fa-solid fa-expand" style="color: var(--primary);"></i>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+    render();
+  </script>
+</body>
+</html>

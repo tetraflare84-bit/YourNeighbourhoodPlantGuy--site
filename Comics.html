@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Comics, Flyers &amp; Posters | Your Neighbourhood Plant Guy</title>
+  <meta name="description" content="Read the adventures of Plant Guy & Plant Kid in Carrot Fest Capers, Canada Day editions, and browse our seasonal eco-friendly flyers and art." />
+
+  <!-- Fonts & Icons -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #2d6a4f;
+      --primary-dark: #1b4332;
+      --primary-light: #52b788;
+      --accent: #ffb703;
+      --accent-orange: #fb8500;
+      --accent-red: #d90429;
+      --bg-cream: #fbf8f1;
+      --dark: #1f2421;
+      --card-bg: #ffffff;
+      --shadow-3d: 0 10px 25px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.04);
+      --comic-font: 'Bangers', cursive, sans-serif;
+      --body-font: 'Outfit', sans-serif;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: var(--body-font);
+      background-color: var(--bg-cream);
+      color: var(--dark);
+      padding: 2rem 1.5rem 5rem;
+      max-width: 1350px;
+      margin: 0 auto;
+    }
+
+    /* Header Section */
+    .header-section {
+      text-align: center;
+      margin-bottom: 2.2rem;
+    }
+    .header-section h1 {
+      font-family: var(--comic-font);
+      font-size: 3.2rem;
+      color: var(--primary-dark);
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 0 var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-section p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 700px;
+      margin: 0.4rem auto 0;
+      line-height: 1.5;
+    }
+
+    /* Filter Pills */
+    .filter-bar {
+      display: flex;
+      gap: 0.6rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .filter-pill {
+      background: #fff;
+      border: 2px solid #e2e8f0;
+      padding: 0.5rem 1.3rem;
+      border-radius: 30px;
+      font-family: var(--body-font);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--dark);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+    }
+    .filter-pill:hover {
+      border-color: var(--accent-orange);
+      color: var(--accent-orange);
+      transform: translateY(-2px);
+    }
+    .filter-pill.active {
+      background: var(--accent-orange);
+      border-color: var(--accent-orange);
+      color: #fff;
+      box-shadow: 0 6px 15px rgba(251, 133, 0, 0.35);
+    }
+
+    /* Comics & Posters Grid */
+    .comics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .comic-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow-3d);
+      border: 1px solid rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+      position: relative;
+    }
+    .comic-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.14);
+    }
+
+    .comic-thumb-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 118%; /* Comic aspect ratio */
+      background: #f0ede6;
+      overflow: hidden;
+    }
+    .comic-thumb-wrap img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .comic-card:hover .comic-thumb-wrap img {
+      transform: scale(1.05);
+    }
+
+    .badge-category {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(27, 67, 50, 0.85);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      backdrop-filter: blur(6px);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+    }
+    .badge-category.comic { background: rgba(217, 4, 41, 0.88); }
+    .badge-category.flyer { background: rgba(251, 133, 0, 0.9); }
+    .badge-category.brand { background: rgba(45, 106, 79, 0.9); }
+
+    .comic-info {
+      padding: 1.1rem 1.2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #fff;
+      border-top: 1px solid rgba(0,0,0,0.05);
+    }
+    .comic-title {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--primary-dark);
+      line-height: 1.2;
+    }
+    .comic-sub {
+      font-size: 0.8rem;
+      color: #777;
+      margin-top: 2px;
+    }
+    .zoom-indicator {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      background: rgba(255, 183, 3, 0.2);
+      color: var(--accent-orange);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.9rem;
+      flex-shrink: 0;
+      transition: background 0.2s ease, transform 0.2s ease;
+    }
+    .comic-card:hover .zoom-indicator {
+      background: var(--accent-orange);
+      color: #fff;
+      transform: scale(1.1);
+    }
+
+    /* Modal / Full-Screen Viewer */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      backdrop-filter: blur(10px);
+    }
+    .modal-overlay.active {
+      display: flex;
+      animation: modalFade 0.25s ease forwards;
+    }
+    @keyframes modalFade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    .modal-container {
+      position: relative;
+      max-width: 950px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .modal-image {
+      max-width: 100%;
+      max-height: 82vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 15px 50px rgba(0,0,0,0.6);
+      border: 2px solid rgba(255,255,255,0.15);
+    }
+    .modal-caption {
+      color: #fff;
+      font-size: 1.2rem;
+      font-family: var(--comic-font);
+      letter-spacing: 0.8px;
+      margin-top: 0.8rem;
+      text-align: center;
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: -45px;
+      right: 0;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2.2rem;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+    .modal-close-btn:hover {
+      transform: scale(1.2);
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .header-section h1 { font-size: 2.5rem; }
+      .comics-grid { grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Section Header -->
+  <div class="header-section">
+    <h1><i class="fa-solid fa-book-open"></i> Comics &amp; Posters</h1>
+    <p>Follow the adventures of Trevor &amp; Plant Kid, and explore our full collection of seasonal flyers, comics, and posters!</p>
+  </div>
+
+  <!-- Filter Pills -->
+  <div class="filter-bar">
+    <button class="filter-pill active" onclick="filterComics('all', this)"><i class="fa-solid fa-layer-group"></i> All Art</button>
+    <button class="filter-pill" onclick="filterComics('comic', this)"><i class="fa-solid fa-masks-theater"></i> Comic Episodes</button>
+    <button class="filter-pill" onclick="filterComics('flyer', this)"><i class="fa-solid fa-scroll"></i> Seasonal Flyers</button>
+    <button class="filter-pill" onclick="filterComics('brand', this)"><i class="fa-solid fa-id-card"></i> Cards &amp; Branding</button>
+  </div>
+
+  <!-- Comics Grid -->
+  <div class="comics-grid" id="comicsGrid">
+    <!-- Populated dynamically via JS from Backblaze B2 -->
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="modal-overlay" id="comicModal" onclick="closeModal(event)">
+    <div class="modal-container">
+      <button class="modal-close-btn" onclick="closeModalDirect()">&times;</button>
+      <img id="modalImg" src="" alt="Full view" class="modal-image" />
+      <div id="modalCaption" class="modal-caption"></div>
+    </div>
+  </div>
+
+  <script>
+    const B2_BASE = 'https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite';
+
+    // Helper for URLs
+    function getAssetUrl(filename) {
+      return `${B2_BASE}/${encodeURIComponent(filename)}`;
+    }
+
+    // Comics & Flyers Dataset
+    const comicsData = [
+      {
+        title: 'Carrot Fest Capers! Issue #1 Cover',
+        subtitle: 'Featuring The Neighbourhood Plant Guy & Boxer',
+        category: 'comic',
+        file: 'Cover And Back.png'
+      },
+      {
+        title: 'Carrot Fest Capers: Story Pages 1 & 2',
+        subtitle: 'Full Inside Spread & Dialogue',
+        category: 'comic',
+        file: 'Comic Landscape Raw Inside.jpg'
+      },
+      {
+        title: 'Carrot Fest Capers: Full Landscape',
+        subtitle: 'Complete Comic Panel Overview',
+        category: 'comic',
+        file: 'Comic Landscape Raw.jpg'
+      },
+      {
+        title: 'Canada Day Special Episode',
+        subtitle: 'Plant Guy & Plant Kid Save The Park!',
+        category: 'comic',
+        file: 'Pages 1 and 2.png'
+      },
+      {
+        title: 'Harvest Wagon & Seasonal Care',
+        subtitle: 'Fall Consultations & Soil Prep',
+        category: 'flyer',
+        file: 'Wagon V3.jpg'
+      },
+      {
+        title: 'Fall Bicycle Special AD',
+        subtitle: 'Eco-Friendly Route Consultations',
+        category: 'flyer',
+        file: 'Fall Bike AD.png'
+      },
+      {
+        title: 'Seasonal Services Flyer 9',
+        subtitle: 'Pruning, Trimming & Pest Defense',
+        category: 'flyer',
+        file: 'Flyer 9.png'
+      },
+      {
+        title: 'Specialty Services Flyer 13',
+        subtitle: 'Boxwood Care & Yard Cleanups',
+        category: 'flyer',
+        file: 'Flyer 13.jpg'
+      },
+      {
+        title: 'Autumn Consultation Flyer',
+        subtitle: 'Property Transitions & Soil Vitality',
+        category: 'flyer',
+        file: 'Flyer Fall.jpg'
+      },
+      {
+        title: 'Eco-Friendly Cargo Bike V2',
+        subtitle: 'Zero-Emission Neighbourhood Transport',
+        category: 'brand',
+        file: 'bicycle V2.png'
+      },
+      {
+        title: 'Official Business Card Final V2',
+        subtitle: 'Direct Contact & Service List',
+        category: 'brand',
+        file: 'Business card Final V2.png'
+      }
+    ];
+
+    function renderComics(filter = 'all') {
+      const grid = document.getElementById('comicsGrid');
+      grid.innerHTML = '';
+
+      const filtered = comicsData.filter(item => filter === 'all' || item.category === filter);
+
+      filtered.forEach(item => {
+        const fullUrl = getAssetUrl(item.file);
+        const card = document.createElement('div');
+        card.className = 'comic-card';
+        card.onclick = () => openModal(fullUrl, item.title);
+
+        let badgeLabel = 'Art';
+        if (item.category === 'comic') badgeLabel = 'Comic';
+        if (item.category === 'flyer') badgeLabel = 'Flyer';
+        if (item.category === 'brand') badgeLabel = 'Brand';
+
+        card.innerHTML = `
+          <div class="comic-thumb-wrap">
+            <img src="${fullUrl}" alt="${item.title}" loading="lazy" />
+            <span class="badge-category ${item.category}">${badgeLabel}</span>
+          </div>
+          <div class="comic-info">
+            <div>
+              <div class="comic-title">${item.title}</div>
+              <div class="comic-sub">${item.subtitle}</div>
+            </div>
+            <div class="zoom-indicator">
+              <i class="fa-solid fa-magnifying-glass-plus"></i>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterComics(cat, btn) {
+      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderComics(cat);
+    }
+
+    /* Modal Controls */
+    function openModal(src, title) {
+      const modal = document.getElementById('comicModal');
+      document.getElementById('modalImg').src = src;
+      document.getElementById('modalCaption').textContent = title;
+      modal.classList.add('active');
+    }
+
+    function closeModal(e) {
+      if (e.target.id === 'comicModal') closeModalDirect();
+    }
+
+    function closeModalDirect() {
+      const modal = document.getElementById('comicModal');
+      modal.classList.remove('active');
+      document.getElementById('modalImg').src = '';
+    }
+
+    // Initial render
+    window.addEventListener('DOMContentLoaded', () => renderComics('all'));
+  </script>
+</body>
+</html>

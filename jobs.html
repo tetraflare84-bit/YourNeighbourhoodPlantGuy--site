@@ -1,0 +1,445 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Completed Jobs &amp; Garden Projects | Your Neighbourhood Plant Guy</title>
+  <meta name="description" content="Explore real landscaping transformations, garden bed edging, mosquito-repelling native plantings, and property cleanups in Bradford and York Region by Trevor Auton." />
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #2d6a4f;
+      --primary-dark: #1b4332;
+      --primary-light: #52b788;
+      --accent: #ffb703;
+      --accent-orange: #fb8500;
+      --accent-red: #d90429;
+      --bg-cream: #fbf8f1;
+      --dark: #1f2421;
+      --card-bg: #ffffff;
+      --shadow-3d: 0 10px 25px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.04);
+      --comic-font: 'Bangers', cursive, sans-serif;
+      --body-font: 'Outfit', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--body-font);
+      background-color: var(--bg-cream);
+      color: var(--dark);
+      padding: 2rem 1.5rem 5rem;
+      max-width: 1350px;
+      margin: 0 auto;
+    }
+
+    /* Section Header */
+    .header-section {
+      text-align: center;
+      margin-bottom: 2.2rem;
+    }
+    .header-section h1 {
+      font-family: var(--comic-font);
+      font-size: 3.2rem;
+      color: var(--primary-dark);
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 0 var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-section p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 700px;
+      margin: 0.4rem auto 0;
+      line-height: 1.5;
+    }
+
+    /* Filter Pills */
+    .filter-bar {
+      display: flex;
+      gap: 0.6rem;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .filter-pill {
+      background: #fff;
+      border: 2px solid #e2e8f0;
+      padding: 0.5rem 1.3rem;
+      border-radius: 30px;
+      font-family: var(--body-font);
+      font-weight: 700;
+      font-size: 0.95rem;
+      color: var(--dark);
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.25s ease;
+      box-shadow: 0 4px 8px rgba(0,0,0,0.03);
+    }
+    .filter-pill:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+      transform: translateY(-2px);
+    }
+    .filter-pill.active {
+      background: var(--primary);
+      border-color: var(--primary);
+      color: #fff;
+      box-shadow: 0 6px 15px rgba(45, 106, 79, 0.35);
+    }
+
+    /* Jobs Grid */
+    .jobs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3.5rem;
+    }
+
+    .job-card {
+      background: var(--card-bg);
+      border-radius: 18px;
+      overflow: hidden;
+      box-shadow: var(--shadow-3d);
+      border: 1px solid rgba(0,0,0,0.06);
+      display: flex;
+      flex-direction: column;
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease;
+    }
+    .job-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 20px 35px rgba(0, 0, 0, 0.14);
+    }
+
+    .job-thumb-wrap {
+      position: relative;
+      width: 100%;
+      padding-top: 68%;
+      background: #000;
+      overflow: hidden;
+    }
+    .job-thumb-wrap img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .job-card:hover .job-thumb-wrap img {
+      transform: scale(1.06);
+    }
+
+    .badge-status {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      background: rgba(45, 106, 79, 0.9);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 4px 10px;
+      border-radius: 20px;
+      backdrop-filter: blur(6px);
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .job-info {
+      padding: 1.4rem;
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+    }
+    .job-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 0.5rem;
+      line-height: 1.25;
+    }
+    .job-desc {
+      font-size: 0.92rem;
+      color: #666;
+      line-height: 1.5;
+      margin-bottom: 1rem;
+    }
+    .job-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: 0.8rem;
+      border-top: 1px solid rgba(0,0,0,0.06);
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--accent-orange);
+    }
+
+    /* Bottom CTA Card */
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(45, 106, 79, 0.95), rgba(27, 67, 50, 0.98));
+      color: #fff;
+      border-radius: 20px;
+      padding: 2.5rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 2rem;
+      box-shadow: var(--shadow-3d);
+    }
+    .cta-text h3 {
+      font-family: var(--comic-font);
+      font-size: 2.3rem;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .cta-text p {
+      font-size: 1rem;
+      opacity: 0.92;
+      line-height: 1.5;
+    }
+    .btn-quote {
+      background: var(--accent-orange);
+      color: #fff;
+      font-family: var(--comic-font);
+      font-size: 1.35rem;
+      padding: 0.8rem 1.8rem;
+      border-radius: 30px;
+      text-decoration: none;
+      border: 2px solid #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      white-space: nowrap;
+      box-shadow: 0 8px 18px rgba(251, 133, 0, 0.4);
+      transition: all 0.25s ease;
+    }
+    .btn-quote:hover {
+      background: #e07400;
+      transform: translateY(-3px);
+    }
+
+    /* Lightbox Modal */
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.92);
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 1.5rem;
+      backdrop-filter: blur(8px);
+    }
+    .modal-overlay.active {
+      display: flex;
+    }
+    .modal-container {
+      position: relative;
+      max-width: 950px;
+      width: 100%;
+      max-height: 90vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .modal-img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      border-radius: 12px;
+      border: 2px solid rgba(255,255,255,0.15);
+    }
+    .modal-caption {
+      color: #fff;
+      font-size: 1.15rem;
+      font-weight: 700;
+      margin-top: 0.8rem;
+      text-align: center;
+    }
+    .modal-close-btn {
+      position: absolute;
+      top: -45px;
+      right: 0;
+      background: none;
+      border: none;
+      color: #fff;
+      font-size: 2.2rem;
+      cursor: pointer;
+    }
+
+    @media (max-width: 850px) {
+      .header-section h1 { font-size: 2.6rem; }
+      .cta-banner { flex-direction: column; text-align: center; }
+      .jobs-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Section Header -->
+  <div class="header-section">
+    <h1><i class="fa-solid fa-clipboard-check"></i> Completed Jobs</h1>
+    <p>Browse recent property transformations, garden revitalizations, and eco-friendly plantings across our local neighbourhood.</p>
+  </div>
+
+  <!-- Filter Pills -->
+  <div class="filter-bar">
+    <button class="filter-pill active" onclick="filterJobs('all', this)"><i class="fa-solid fa-layer-group"></i> All Projects</button>
+    <button class="filter-pill" onclick="filterJobs('planting', this)"><i class="fa-solid fa-seedling"></i> Garden Beds &amp; Planting</button>
+    <button class="filter-pill" onclick="filterJobs('edging', this)"><i class="fa-solid fa-scissors"></i> Edging &amp; Mulch</button>
+    <button class="filter-pill" onclick="filterJobs('mosquito', this)"><i class="fa-solid fa-shield-halved"></i> Mosquito Repelling Yards</button>
+  </div>
+
+  <!-- Jobs Grid -->
+  <div class="jobs-grid" id="jobsGrid">
+    <!-- Rendered dynamically from Backblaze B2 -->
+  </div>
+
+  <!-- Bottom CTA Banner -->
+  <div class="cta-banner">
+    <div class="cta-text">
+      <h3>Have a Garden Project in Mind?</h3>
+      <p>Whether you need a fresh garden edge, native plantings, or a full seasonal cleanup, let's make your yard thrive.</p>
+    </div>
+    <a href="quote.html" class="btn-quote" onclick="navParent('quote')">
+      <i class="fa-solid fa-paper-plane"></i> Request a Free Quote
+    </a>
+  </div>
+
+  <!-- Lightbox Modal -->
+  <div class="modal-overlay" id="jobModal" onclick="closeModal(event)">
+    <div class="modal-container">
+      <button class="modal-close-btn" onclick="closeModalDirect()">&times;</button>
+      <img id="modalImg" src="" alt="Job photo" class="modal-img" />
+      <div id="modalCaption" class="modal-caption"></div>
+    </div>
+  </div>
+
+  <script>
+    const B2_BASE = 'https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite';
+
+    function getB2Url(file) {
+      return `${B2_BASE}/${encodeURIComponent(file)}`;
+    }
+
+    const jobsData = [
+      {
+        title: 'Mosquito Repellant Sitting Oasis',
+        category: 'mosquito',
+        file: 'Ellen.jpg',
+        desc: 'Installed native, pollinator-safe mosquito-repelling foliage to create a clean, protected backyard sitting area.',
+        location: 'Bradford, ON'
+      },
+      {
+        title: 'Basic Back Fence Line Garden',
+        category: 'planting',
+        file: 'Rob.jpg',
+        desc: 'Constructed a fresh, low-maintenance garden border with perennial flowering shrubs along the rear fence line.',
+        location: 'Newmarket, ON'
+      },
+      {
+        title: 'Small Front Garden Revival',
+        category: 'edging',
+        file: 'Edge And Mulch.jpg',
+        desc: 'Crisp spade-cut turf trench edging combined with organic dark mulch for moisture retention and weed prevention.',
+        location: 'Bradford, ON'
+      },
+      {
+        title: 'Perennial Flowering Shrub Bed',
+        category: 'planting',
+        file: 'Roses 1 (2).jpg',
+        desc: 'Pruned, nourished, and reshaped existing rose and flowering shrub beds with pollinator-safe organic feeding.',
+        location: 'York Simcoe'
+      },
+      {
+        title: 'Structural Tree & Shrub Shaping',
+        category: 'edging',
+        file: 'Beech 1.jpg',
+        desc: 'Careful canopy thinning and deadwood removal on ornamental beech specimens to restore balanced sunlight.',
+        location: 'Bradford West Gwillimbury'
+      }
+    ];
+
+    function renderJobs(filter = 'all') {
+      const grid = document.getElementById('jobsGrid');
+      grid.innerHTML = '';
+
+      const filtered = jobsData.filter(j => filter === 'all' || j.category === filter);
+
+      filtered.forEach(job => {
+        const fullUrl = getB2Url(job.file);
+        const card = document.createElement('div');
+        card.className = 'job-card';
+        card.onclick = () => openModal(fullUrl, `${job.title} - ${job.location}`);
+
+        card.innerHTML = `
+          <div class="job-thumb-wrap">
+            <img src="${fullUrl}" alt="${job.title}" loading="lazy" />
+            <span class="badge-status"><i class="fa-solid fa-check"></i> Completed</span>
+          </div>
+          <div class="job-info">
+            <div>
+              <h3 class="job-title">${job.title}</h3>
+              <p class="job-desc">${job.desc}</p>
+            </div>
+            <div class="job-footer">
+              <span><i class="fa-solid fa-location-dot"></i> ${job.location}</span>
+              <span>View Full Photo <i class="fa-solid fa-arrow-right"></i></span>
+            </div>
+          </div>
+        `;
+        grid.appendChild(card);
+      });
+    }
+
+    function filterJobs(cat, btn) {
+      document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+      if (btn) btn.classList.add('active');
+      renderJobs(cat);
+    }
+
+    /* Modal Viewer */
+    function openModal(src, caption) {
+      const modal = document.getElementById('jobModal');
+      document.getElementById('modalImg').src = src;
+      document.getElementById('modalCaption').textContent = caption;
+      modal.classList.add('active');
+    }
+
+    function closeModal(e) {
+      if (e.target.id === 'jobModal') closeModalDirect();
+    }
+
+    function closeModalDirect() {
+      const modal = document.getElementById('jobModal');
+      modal.classList.remove('active');
+      document.getElementById('modalImg').src = '';
+    }
+
+    function navParent(pageKey) {
+      if (window.parent && window.parent.loadPage) {
+        window.parent.loadPage(`${pageKey}.html`, pageKey);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => renderJobs('all'));
+  </script>
+</body>
+</html>
