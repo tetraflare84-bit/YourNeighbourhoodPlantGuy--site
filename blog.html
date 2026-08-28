@@ -4,118 +4,394 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Plant Care &amp; Gardening Blog | Your Neighbourhood Plant Guy</title>
-  <meta name="description" content="Expert eco-friendly gardening tips, boxwood blight treatment, seasonal lawn care, and pruning advice by Trevor Auton in Bradford, Ontario." />
+  <meta name="description" content="Expert eco-friendly gardening advice, seasonal lawn care, fall planting, and root fortification tips for Bradford, Ontario by Trevor Auton." />
 
+  <!-- Google Fonts & FontAwesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
     :root {
       --primary: #2d6a4f;
       --primary-dark: #1b4332;
+      --primary-light: #52b788;
       --accent: #ffb703;
       --accent-orange: #fb8500;
+      --accent-red: #d90429;
       --bg-cream: #fbf8f1;
       --dark: #1f2421;
+      --card-bg: #ffffff;
+      --shadow-3d: 0 12px 30px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.04);
       --comic-font: 'Bangers', cursive, sans-serif;
       --body-font: 'Outfit', sans-serif;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
+
     body {
       font-family: var(--body-font);
-      background: var(--bg-cream);
+      background-color: var(--bg-cream);
       color: var(--dark);
-      padding: 2rem 1.5rem 5rem;
-      max-width: 1200px;
+      padding: 2rem 1.5rem 6rem;
+      max-width: 960px;
       margin: 0 auto;
+      line-height: 1.7;
+      position: relative;
     }
-    .header-section { text-align: center; margin-bottom: 3rem; }
-    .header-section h1 {
-      font-family: var(--comic-font); font-size: 3rem; color: var(--primary-dark); letter-spacing: 1px;
-    }
-    .header-section p { font-size: 1.1rem; color: #666; margin-top: 0.5rem; }
 
-    .blog-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-      gap: 2rem;
+    /* Header */
+    .blog-header {
+      text-align: center;
+      margin-bottom: 3rem;
     }
-    .blog-card {
-      background: #fff;
-      border-radius: 18px;
-      overflow: hidden;
-      box-shadow: 0 10px 25px rgba(0,0,0,0.06);
-      border: 1px solid rgba(0,0,0,0.06);
+    .blog-header h1 {
+      font-family: var(--comic-font);
+      font-size: 3.4rem;
+      color: var(--primary-dark);
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 0 var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .blog-header p {
+      font-size: 1.15rem;
+      color: #555;
+      max-width: 650px;
+      margin: 0.4rem auto 0;
+    }
+
+    /* Continuous Blog Feed Stream */
+    .blog-stream {
       display: flex;
       flex-direction: column;
+      gap: 3.5rem;
+    }
+
+    .article-post {
+      background: var(--card-bg);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-3d);
+      border: 1px solid rgba(0, 0, 0, 0.06);
       transition: transform 0.25s ease;
     }
-    .blog-card:hover { transform: translateY(-6px); }
-    .blog-img { width: 100%; height: 200px; object-fit: cover; }
-    .blog-content { padding: 1.5rem; flex: 1; display: flex; flex-direction: column; }
-    .blog-tag {
-      align-self: flex-start;
-      background: rgba(82, 183, 136, 0.2);
-      color: var(--primary-dark);
-      font-weight: 700;
-      font-size: 0.75rem;
-      padding: 4px 10px;
-      border-radius: 20px;
-      text-transform: uppercase;
-      margin-bottom: 0.8rem;
+
+    .article-hero-img-wrap {
+      position: relative;
+      width: 100%;
+      height: 380px;
+      background: #2b3a33;
+      overflow: hidden;
     }
-    .blog-title { font-size: 1.3rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 0.6rem; }
-    .blog-excerpt { font-size: 0.92rem; color: #555; line-height: 1.6; margin-bottom: 1.2rem; flex: 1; }
-    .read-more-btn {
-      color: var(--accent-orange); font-weight: 700; text-decoration: none; display: inline-flex; align-items: center; gap: 6px;
+    .article-hero-img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s ease;
+    }
+    .article-post:hover .article-hero-img {
+      transform: scale(1.03);
+    }
+
+    .post-badge {
+      position: absolute;
+      top: 20px;
+      left: 20px;
+      background: var(--accent-orange);
+      color: #fff;
+      font-weight: 800;
+      font-size: 0.82rem;
+      padding: 6px 14px;
+      border-radius: 30px;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    }
+
+    .article-body {
+      padding: 2.5rem 2.8rem;
+    }
+
+    .post-meta {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      font-size: 0.88rem;
+      font-weight: 600;
+      color: #777;
+      margin-bottom: 1rem;
+    }
+    .post-meta span { display: inline-flex; align-items: center; gap: 6px; }
+
+    .article-title {
+      font-family: var(--comic-font);
+      font-size: 2.8rem;
+      color: var(--primary-dark);
+      letter-spacing: 0.5px;
+      line-height: 1.15;
+      margin-bottom: 1.4rem;
+    }
+
+    .article-intro {
+      font-size: 1.15rem;
+      font-weight: 500;
+      color: #333;
+      margin-bottom: 2rem;
+      padding-bottom: 1.5rem;
+      border-bottom: 2px dashed rgba(82, 183, 136, 0.3);
+    }
+
+    /* Content Sub-blocks */
+    .content-point {
+      margin-bottom: 1.8rem;
+      display: flex;
+      gap: 1.2rem;
+      align-items: flex-start;
+    }
+    .point-icon {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: rgba(82, 183, 136, 0.18);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.2rem;
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+    .point-text h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+      margin-bottom: 0.35rem;
+    }
+    .point-text p {
+      font-size: 1rem;
+      color: #4a5568;
+    }
+
+    .article-conclusion {
+      margin-top: 2.2rem;
+      padding: 1.5rem 1.8rem;
+      background: rgba(255, 183, 3, 0.15);
+      border-left: 5px solid var(--accent-orange);
+      border-radius: 12px;
+    }
+    .article-conclusion h3 {
+      font-family: var(--comic-font);
+      font-size: 1.8rem;
+      color: var(--primary-dark);
+      margin-bottom: 0.4rem;
+    }
+    .article-conclusion p {
+      font-size: 1rem;
+      color: #333;
+    }
+
+    /* Author Footer */
+    .article-author-card {
+      margin-top: 2.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid #edf2f7;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 1rem;
+    }
+    .author-info {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .author-avatar {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 2px solid var(--accent);
+      object-fit: cover;
+    }
+    .author-name {
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: var(--primary-dark);
+    }
+    .author-role {
+      font-size: 0.8rem;
+      color: #666;
+    }
+
+    .btn-ask {
+      background: var(--accent-orange);
+      color: #fff;
+      font-family: var(--comic-font);
+      font-size: 1.25rem;
+      letter-spacing: 0.5px;
+      padding: 0.6rem 1.4rem;
+      border-radius: 30px;
+      text-decoration: none;
+      border: 2px solid #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      box-shadow: 0 4px 12px rgba(251, 133, 0, 0.35);
+      transition: all 0.2s ease;
+    }
+    .btn-ask:hover {
+      background: #e07400;
+      transform: translateY(-2px);
+    }
+
+    @media (max-width: 768px) {
+      .blog-header h1 { font-size: 2.6rem; }
+      .article-hero-img-wrap { height: 250px; }
+      .article-body { padding: 1.5rem; }
+      .article-title { font-size: 2.2rem; }
+      .content-point { flex-direction: column; gap: 0.6rem; }
     }
   </style>
 </head>
 <body>
 
-  <div class="header-section">
-    <h1><i class="fa-solid fa-newspaper"></i> The Plant Guy Blog</h1>
-    <p>Seasonal advice, plant health updates, and eco-friendly tips for Ontario gardeners.</p>
+  <!-- Section Header -->
+  <div class="blog-header">
+    <h1><i class="fa-solid fa-newspaper"></i> The Plant Guy Journal</h1>
+    <p>Seasonal insights, local soil tips, and eco-friendly horticultural advice for Bradford and York Simcoe.</p>
   </div>
 
-  <div class="blog-grid">
-    <!-- Article 1 -->
-    <article class="blog-card">
-      <img src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Wagon%20V3.jpg" alt="Fall Garden Preparation" class="blog-img" />
-      <div class="blog-content">
-        <span class="blog-tag">Seasonal Prep</span>
-        <h2 class="blog-title">Fall Garden Transition: Setting Up for Spring Bloom</h2>
-        <p class="blog-excerpt">Preparing perennials, clearing diseased leaves, and enriching soil with compost before the first frost ensures vibrant growth when spring returns.</p>
-        <a href="javascript:void(0)" class="read-more-btn">Read Full Guide <i class="fa-solid fa-arrow-right"></i></a>
-      </div>
-    </article>
+  <!-- Continuous Article Stream -->
+  <div class="blog-stream">
 
-    <!-- Article 2 -->
-    <article class="blog-card">
-      <img src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Barberry.jpg" alt="Boxwood and Shrub Health" class="blog-img" />
-      <div class="blog-content">
-        <span class="blog-tag">Plant Health</span>
-        <h2 class="blog-title">Reviving Troubled Boxwoods Without Harsh Chemicals</h2>
-        <p class="blog-excerpt">Boxwood leaf miner and blight can devastate your hedges. Here is our 3-step eco-friendly revitalization plan to restore deep green vitality.</p>
-        <a href="javascript:void(0)" class="read-more-btn">Read Full Guide <i class="fa-solid fa-arrow-right"></i></a>
+    <!-- ================= POST 1 ================= -->
+    <article class="article-post">
+      <div class="article-hero-img-wrap">
+        <img src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Wagon%20V3.jpg" alt="Fall Leaves on Trees in Bradford Yard" class="article-hero-img" />
+        <span class="post-badge"><i class="fa-solid fa-leaf"></i> Seasonal Advisory</span>
       </div>
-    </article>
 
-    <!-- Article 3 -->
-    <article class="blog-card">
-      <img src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Ellen.jpg" alt="Mosquito Repellent Native Plants" class="blog-img" />
-      <div class="blog-content">
-        <span class="blog-tag">Eco Defense</span>
-        <h2 class="blog-title">Designing a Mosquito-Repelling Backyard Sitting Oasis</h2>
-        <p class="blog-excerpt">Combine natural barrier plantings with native pollinator-safe treatments to enjoy your backyard patio completely bite-free all summer.</p>
-        <a href="javascript:void(0)" class="read-more-btn">Read Full Guide <i class="fa-solid fa-arrow-right"></i></a>
+      <div class="article-body">
+        <div class="post-meta">
+          <span><i class="fa-solid fa-calendar-day"></i> Early Fall Edition</span>
+          <span><i class="fa-solid fa-location-dot"></i> Bradford, ON</span>
+          <span><i class="fa-solid fa-user-pen"></i> Trevor Auton</span>
+        </div>
+
+        <h2 class="article-title">Fall Has Come Early!!!</h2>
+
+        <p class="article-intro">
+          With the consistently cool weather and twice weekly showers in the lovely town we call Bradford, our silent friends the plants are certainly getting ready for an early winter’s slumber. As the daylight shortens and temperatures steadily drop, taking proactive steps right now will dictate how vigorously your trees, shrubs, and perennials wake up next spring.
+        </p>
+
+        <!-- Point 1 -->
+        <div class="content-point">
+          <div class="point-icon"><i class="fa-solid fa-seedling"></i></div>
+          <div class="point-text">
+            <h3>Prime Timing for Fall Planting &amp; Transplanting</h3>
+            <p>
+              Thanks to the unseasonably cool and moist weather, the standard fall planting window has arrived earlier than expected. Cooler air temps prevent heat stress and transpirational shock on the canopy, allowing new perennials, shrubs, and trees to concentrate 100% of their metabolic energy on root establishment rather than sustaining foliage against scorching heat.
+            </p>
+          </div>
+        </div>
+
+        <!-- Point 2 -->
+        <div class="content-point">
+          <div class="point-icon"><i class="fa-solid fa-cloud-rain"></i></div>
+          <div class="point-text">
+            <h3>Take Advantage of Well-Hydrated Soil</h3>
+            <p>
+              Our regular rain showers have left the local ground thoroughly hydrated deep down into the root zones. Soil that is consistently damp is much easier to work, dig, and aerate. More importantly, well-hydrated plant tissues and damp root balls insulate significantly better against unexpected early frosts compared to bone-dry autumn soil.
+            </p>
+          </div>
+        </div>
+
+        <!-- Point 3 -->
+        <div class="content-point">
+          <div class="point-icon"><i class="fa-solid fa-bone"></i></div>
+          <div class="point-text">
+            <h3>Fortify Root Systems with Bonemeal</h3>
+            <p>
+              High-nitrogen fertilizers should be set aside now so we don't stimulate tender, frost-susceptible green growth. Instead, apply organic <strong>Bonemeal</strong>. Packed with natural phosphorus and calcium, bonemeal encourages slow, deep root elongation throughout the fall, giving your plants a sturdy anchor and massive nutrient reserves to draw upon before the ground freezes.
+            </p>
+          </div>
+        </div>
+
+        <!-- Point 4 -->
+        <div class="content-point">
+          <div class="point-icon"><i class="fa-solid fa-layer-group"></i></div>
+          <div class="point-text">
+            <h3>Insulate Root Zones with Fresh Mulch</h3>
+            <p>
+              Applying a 2 to 3-inch layer of clean, organic mulch around the drip-line acts as a thermal blanket. Mulch buffers your delicate root systems against rapid temperature swings and harsh "freeze-thaw" cycles that heave roots out of the soil during early winter. Just remember to keep mulch pulled back 2 inches from tree trunks and stems!
+            </p>
+          </div>
+        </div>
+
+        <!-- Point 5 -->
+        <div class="content-point">
+          <div class="point-icon"><i class="fa-solid fa-scissors"></i></div>
+          <div class="point-text">
+            <h3>Lawn Repair &amp; Season-Closing Fortification</h3>
+            <p>
+              Now is the ultimate window for lawn rehabilitation. Cool nights and warm ground temperatures make ideal conditions for core aeration, overseeding thin patches, and applying a slow-release fall turf fertilizer. Repairing summer stress now guarantees dense, weed-resistant turf when melting snow departs in April.
+            </p>
+          </div>
+        </div>
+
+        <!-- Point 6 -->
+        <div class="content-point">
+          <div class="point-icon"><i class="fa-solid fa-shield-virus"></i></div>
+          <div class="point-text">
+            <h3>Diligence with Diseased Plant Material Cleanup</h3>
+            <p>
+              Do not let blighted, spotted, or mildewed leaves sit on your garden beds over the winter. Fungal spores and garden pests happily overwinter in damp leaf debris, ready to re-infect emerging buds next season. Rake, prune, and safely dispose of affected foliage off-site rather than adding it to your backyard compost pile.
+            </p>
+          </div>
+        </div>
+
+        <!-- Conclusion -->
+        <div class="article-conclusion">
+          <h3><i class="fa-solid fa-thumbs-up"></i> Summary &amp; Next Steps</h3>
+          <p>
+            An early fall gives us a head start to safeguard our gardens. By transplanting early, fortifying roots with bonemeal, laying protective mulch, and cleaning up diseased debris, you ensure your yard emerges lush, vibrant, and resilient next spring. If you need a hand assessing your shrubs or completing your fall cleanup, your Neighbourhood Plant Guy is always here to help!
+          </p>
+        </div>
+
+        <!-- Author Footer -->
+        <div class="article-author-card">
+          <div class="author-info">
+            <img src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" alt="Trevor Auton" class="author-avatar" />
+            <div>
+              <div class="author-name">Trevor Auton</div>
+              <div class="author-role">Horticultural Specialist • Your Neighbourhood Plant Guy</div>
+            </div>
+          </div>
+          <a href="quote.html" class="btn-ask" onclick="navParent('quote')">
+            <i class="fa-solid fa-comments"></i> Book Fall Consultation
+          </a>
+        </div>
+
       </div>
     </article>
+    <!-- ================= END POST 1 ================= -->
+
+    <!-- TO ADD FUTURE POSTS: Duplicate the <article class="article-post">...</article> block above and paste it right here! -->
+
   </div>
 
-<!-- ================= LEAF ANIMATION CANVAS & SCRIPT ================= -->
+  <script>
+    function navParent(pageKey) {
+      if (window.parent && window.parent.loadPage) {
+        window.parent.loadPage(`${pageKey}.html`, pageKey);
+      }
+    }
+  </script>
+
+  <!-- ================= LEAF ANIMATION CANVAS & SCRIPT ================= -->
   <canvas id="leafCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;"></canvas>
 
   <script>
@@ -180,7 +456,6 @@
     })();
   </script>
   <!-- ================================================================= -->
-
 
 </body>
 </html>
