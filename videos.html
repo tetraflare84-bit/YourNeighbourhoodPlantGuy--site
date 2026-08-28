@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Videos &amp; Shorts | Your Neighbourhood Plant Guy</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary-dark: #1b4332;
+      --bg-cream: #fbf8f1;
+      --comic-font: 'Bangers', cursive, sans-serif;
+      --body-font: 'Outfit', sans-serif;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: var(--body-font); background: var(--bg-cream); padding: 2rem 1.5rem 5rem;
+      max-width: 1300px; margin: 0 auto;
+    }
+    .header-section { text-align: center; margin-bottom: 2.5rem; }
+    .header-section h1 { font-family: var(--comic-font); font-size: 3rem; color: var(--primary-dark); }
+    .video-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 1.8rem;
+    }
+    .video-card {
+      background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+      border: 2px solid rgba(0,0,0,0.05);
+    }
+    .video-card-title {
+      padding: 0.9rem 1.1rem; font-weight: 700; font-size: 1rem; display: flex; align-items: center; gap: 8px; color: var(--primary-dark);
+    }
+    .video-frame-wrap { position: relative; width: 100%; padding-top: 125%; background: #000; }
+    .video-frame-wrap iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+  </style>
+</head>
+<body>
+
+  <div class="header-section">
+    <h1><i class="fa-solid fa-clapperboard"></i> Featured Video Shorts</h1>
+  </div>
+
+  <div class="video-grid" id="videoEmbedsGrid"></div>
+
+  <script>
+    const videoEmbeds = [
+      { title: 'Helping A Neighbour In Need', id: 'pUmsDLkJtxs' },
+      { title: 'Veggie Wall', id: 'fdCM0eTC6nI' },
+      { title: 'Getting To That Job', id: 't_9DbYG62co' },
+      { title: 'This Week In Bloom - Jun 5', id: 'R5i0cTrad18' },
+      { title: 'This Week In Bloom - Jun 12', id: 'XSpd7foH4kE' },
+      { title: 'The OG Theme And Flyer', id: 'O6oX_CrK0cQ' }
+    ];
+
+    const container = document.getElementById('videoEmbedsGrid');
+    videoEmbeds.forEach(v => {
+      const card = document.createElement('div');
+      card.className = 'video-card';
+      card.innerHTML = `
+        <div class="video-card-title">
+          <i class="fa-brands fa-youtube" style="color: #ff0000; font-size: 1.2rem;"></i>
+          <span>${v.title}</span>
+        </div>
+        <div class="video-frame-wrap">
+          <iframe 
+            src="https://www.youtube-nocookie.com/embed/${v.id}?rel=0" 
+            title="${v.title}" 
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+            allowfullscreen>
+          </iframe>
+        </div>
+      `;
+      container.appendChild(card);
+    });
+  </script>
+</body>
+</html>
