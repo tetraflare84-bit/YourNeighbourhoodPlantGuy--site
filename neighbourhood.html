@@ -41,10 +41,17 @@
       font-weight: 700;
       text-decoration: none;
       margin-bottom: 1.5rem;
-      padding: 6px 14px;
+      padding: 8px 18px;
       background: #fff;
-      border-radius: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+      border-radius: 25px;
+      border: 1px solid rgba(0,0,0,0.08);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      transition: all 0.2s ease;
+    }
+    .back-btn:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: translateX(-3px);
     }
     .hero-card {
       background: #fff;
@@ -86,13 +93,13 @@
     .cta-box {
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: #fff;
-      padding: 2rem;
+      padding: 2.2rem;
       border-radius: 20px;
       text-align: center;
     }
     .cta-box h2 {
       font-family: var(--comic-font);
-      font-size: 2.4rem;
+      font-size: 2.5rem;
       color: var(--accent);
       margin-bottom: 0.5rem;
     }
@@ -109,94 +116,113 @@
       align-items: center;
       gap: 8px;
       margin-top: 1rem;
+      box-shadow: 0 6px 16px rgba(251, 133, 0, 0.4);
+      transition: transform 0.2s ease;
+    }
+    .btn-quote:hover {
+      transform: translateY(-2px);
+      background: #e07400;
+    }
+
+    @media (max-width: 768px) {
+      .guide-grid { grid-template-columns: 1fr; }
+      .hero-card h1 { font-size: 2.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <a href="home.html" class="back-btn"><i class="fa-solid fa-arrow-left"></i> Back to Interactive Map</a>
+  <a href="home.html" class="back-btn" onclick="navParent('home')"><i class="fa-solid fa-arrow-left"></i> Back to Interactive Map</a>
 
   <div class="hero-card">
     <span style="font-weight: 800; color: var(--accent-orange); text-transform: uppercase;" id="zoneTag">Bradford Microclimate Profile</span>
-    <h1 id="zoneTitle">Summerlyn Village</h1>
+    <h1 id="zoneTitle">Dreamfields</h1>
     <p id="zoneSummary" style="font-size: 1.1rem; color: #555;">Detailed horticultural analysis, soil depth profile, and eco-friendly seasonal strategies.</p>
   </div>
 
   <div class="guide-grid">
     <div class="guide-box">
       <h3><i class="fa-solid fa-layer-group" style="color: var(--primary);"></i> Soil Structure &amp; Drainage</h3>
-      <p id="soilDetail">Subdivision grading in this sector has left dense, compacted clay under shallow top dressings. Water tends to sit around root crowns in spring and fall, leading to root fungal vulnerabilities.</p>
+      <p id="soilDetail">New construction grading with heavy clay and silt subsoil. Water tends to pool beneath shallow builder sod, requiring core aeration and organic matter incorporation.</p>
     </div>
 
     <div class="guide-box">
-      <h3><i class="fa-solid fa-wind" style="color: var(--accent-orange);"></i> Wind &amp; Winter Desiccation</h3>
-      <p id="windDetail">Open perimeter exposures generate steady winter winds that dry out broadleaf evergreens like boxwoods and cedar hedges before root systems can draw moisture from frozen ground.</p>
+      <h3><i class="fa-solid fa-wind" style="color: var(--accent-orange);"></i> Wind &amp; Exposure</h3>
+      <p id="windDetail">Directly exposed to open prairie winds from surrounding northern and western farmland, causing winter desiccation on young shrubs.</p>
     </div>
 
     <div class="guide-box">
-      <h3><i class="fa-solid fa-shield-virus" style="color: var(--accent-red);"></i> Recommended Disease &amp; Pest Strategy</h3>
-      <p id="pestDetail">Utilize pollinator-safe organic fungicide sprays during humid weeks, aerate compacted lawn cores, and mulch tree drip-lines 3 inches deep to insulate sensitive feeder roots.</p>
+      <h3><i class="fa-solid fa-shield-virus" style="color: var(--accent-red);"></i> Pest &amp; Disease Strategy</h3>
+      <p id="pestDetail">Routine lawn grub monitoring, soil inoculation, and protective dormant oil sprays for young ornamental trees and perimeter hedges.</p>
     </div>
 
     <div class="guide-box">
-      <h3><i class="fa-solid fa-seedling" style="color: var(--primary-light);"></i> Ideal Native &amp; Resilient Species</h3>
-      <p id="plantDetail">Hydrangeas, Coneflowers, Ninebark, Serviceberry, and Russian Sage perform exceptionally well under these specific localized soil and sun conditions.</p>
+      <h3><i class="fa-solid fa-seedling" style="color: var(--primary-light);"></i> Recommended Species</h3>
+      <p id="plantDetail">Ninebark, Hydrangea Paniculata, Coneflowers, Serviceberry, and winter-mulched hybrid boxwoods.</p>
     </div>
   </div>
 
   <div class="cta-box">
-    <h2>Need Professional Care For Your Yard in <span id="ctaArea">This Area</span>?</h2>
-    <p>Trevor Auton has 25 years of horticultural experience specializing right in your neighbourhood.</p>
-    <a href="quote.html" class="btn-quote"><i class="fa-solid fa-calculator"></i> Get a Free Customized Quote</a>
+    <h2>Need Professional Plant Care in <span id="ctaArea">Dreamfields</span>?</h2>
+    <p>Trevor Auton brings 25 years of specialized horticultural experience directly to your yard.</p>
+    <a href="quote.html" class="btn-quote" onclick="navParent('quote')"><i class="fa-solid fa-calculator"></i> Get a Free Customized Quote</a>
   </div>
 
   <script>
     const profiles = {
+      'dreamfields': {
+        title: 'Dreamfields',
+        summary: 'North-West neighbourhood along Line 8 and Professor Day Drive, bordered by open agricultural land with dense clay soils and open wind exposure.',
+        soil: 'Heavy construction-graded clay subsoil with shallow top dressings, prone to surface compaction and seasonal water pooling.',
+        wind: 'High exposure to prevailing west and north winds from open farmland, increasing winter foliage burn on sensitive evergreens.',
+        pest: 'Lawn grub migration from adjacent fields and box tree moth / leaf miner watch on newly established hedges.',
+        plant: 'Ninebark, Hydrangea Paniculata, Rudbeckia, Serviceberry, Russian Sage, and wind-sheltered Boxwood hybrids.'
+      },
       'summerlyn': {
         title: 'Summerlyn Village',
-        summary: 'North-West subdivision known for open wind exposure, modern construction grading, and clay-rich soil.',
-        soil: 'Compacted clay subsoil requiring deep core aeration and generous organic matter / bonemeal enrichment.',
-        wind: 'Strong prevailing westerly winds cause winter burn on exposed boxwoods and tender hedge varieties.',
-        pest: 'Seasonal boxwood blight watch and organic lawn grub / insect defense programs.',
-        plant: 'Ninebark, Hydrangea Paniculata, Russian Sage, and hardy Boxwood hybrids with proper thermal mulching.'
+        summary: 'West-Central subdivision around the BWG Leisure Centre, Wandering Glider Trail, and Sideroad 10, featuring modern grading and active family yards.',
+        soil: 'Compacted clay subsoil requiring deep core aeration, thatch removal, and generous organic matter / bonemeal root enrichment.',
+        wind: 'Steady westerly winds from Sideroad 10 fields causing winter burn on exposed boxwoods and tender hedge varieties.',
+        pest: 'Seasonal boxwood blight and box tree moth monitoring, plus lawn grub and surface insect defense.',
+        plant: 'Hardy Boxwoods with thermal root mulching, Coneflowers, Ninebark, Lilacs, and Panicle Hydrangeas.'
+      },
+      'grandview': {
+        title: 'Line 8 / Grandview',
+        summary: 'North-East elevated corridor near Barrie Street and Reali’s No Frills, characterized by sunny slope exposures and fast-draining soils.',
+        soil: 'Glacial till mixed with gravelly loam, offering rapid drainage on sloped garden beds that can dry out rapidly in midsummer.',
+        wind: 'Ridge exposure with direct summer heat; needs moisture retention mulching around ornamental trees.',
+        pest: 'Spider mites on evergreens during dry spells and seasonal boxwood leaf miner prevention.',
+        plant: 'Beech trees, Juniper, Ornamental Grasses, Peonies, Emerald Cedars, and drought-resilient perennials.'
       },
       'downtown': {
         title: 'Downtown Bradford & Heritage Core',
-        summary: 'Historic central valley with mature tree canopies, rich sandy loam, and shaded garden microclimates.',
-        soil: 'Deep, crumbly sandy loam accumulated over decades of natural leaf decomposition.',
-        wind: 'Heavily sheltered from strong winds by surrounding architecture and 50+ foot mature maples.',
-        pest: 'High shade humidity encourages powdery mildew and fungal leaf spot on hostas and perennials.',
-        plant: 'Hostas, Japanese Forest Grass, Astilbe, Ferns, and shade-tolerant flowering Dogwoods.'
+        summary: 'Historic central valley with 50+ year mature tree canopies, rich aged sandy loam, and shaded garden microclimates.',
+        soil: 'Deep, rich sandy loam accumulated over decades of natural organic decomposition with high moisture capacity.',
+        wind: 'Sheltered from harsh prairie winds by mature maples, black walnuts, and surrounding architecture.',
+        pest: 'Dense canopy shade creates humidity that encourages powdery mildew and fungal leaf spot on perennials.',
+        plant: 'Hostas, Japanese Forest Grass, Astilbe, Ferns, Rhododendrons, and shade-tolerant flowering Dogwoods.'
+      },
+      'bradford-valley': {
+        title: 'Bradford Valley & South Hills',
+        summary: 'South-Central terraced hillside properties around the Care Community, featuring mixed sun exposure and tiered drainage.',
+        soil: 'Variable loam over silty clay sub-strata that benefits from regular aeration and organic compost dressing.',
+        wind: 'Gentle hillside airflow with moderate exposure to southern breezes.',
+        pest: 'Lawn grub activity and shade-related turf thinning under mature trees.',
+        plant: 'Flowering Crabapples, Daylilies, Russian Sage, Serviceberry, and layered perennial borders.'
       },
       'holland-marsh': {
-        title: 'Holland Marsh Edge',
-        summary: 'Low-lying canal basin characterized by world-famous high-organic peat muck and moisture-rich ground.',
-        soil: 'Ultra-fertile black muck soil that holds moisture exceptionally well but requires drainage awareness.',
-        wind: 'Valley humidity creates heavy morning dew and fog cycles.',
+        title: 'Marshview & Canal Basin',
+        summary: 'Low-lying canal basin edge characterized by world-famous high-organic peat black muck and moisture-rich ground.',
+        soil: 'Ultra-fertile black muck soil that holds moisture exceptionally well but requires proper aeration and drainage awareness.',
+        wind: 'Valley humidity creates heavy morning dew and persistent moisture cycles.',
         pest: 'High mosquito and standing-water insect activity requiring organic perimeter repellency barriers.',
-        plant: 'Native wetland perennials, Elderberry, River Birch, Citronella, and Lavender mosquito borders.'
-      },
-      'grandview': {
-        title: 'Grandview & Luxury Estates',
-        summary: 'North-East elevated ridge properties featuring spacious lawns, specimen ornamental trees, and formal gardens.',
-        soil: 'Glacial till mixed with gravelly loam allowing rapid drainage on sloped yard sections.',
-        wind: 'Ridge wind exposure combined with full southern sun exposure during midsummer months.',
-        pest: 'Spider mites on evergreens and seasonal boxwood leaf miner prevention.',
-        plant: 'Beech trees, Juniper, Ornamental Grasses, Peonies, and sculpted Emerald Cedars.'
-      },
-      'bond-head': {
-        title: 'Bond Head & West Country',
-        summary: 'Expansive rural acreage, perimeter agricultural hedgerows, and mixed mineral loam ground.',
-        soil: 'Rich mineral-dense agricultural loam capable of supporting deep-rooted fruit trees.',
-        wind: 'Full prairie and farm field wind exposure across large open property borders.',
-        pest: 'Tick and pest migration from tall grasslands and orchards requiring seasonal oil sprays.',
-        plant: 'Fruit trees (Apple, Pear), Native Maples, Lilacs, and hardy windbreak spruce lines.'
+        plant: 'Native wetland perennials, River Birch, Elderberry, Lavender, Bee Balm, and Citronella borders.'
       }
     };
 
     const params = new URLSearchParams(window.location.search);
-    const key = params.get('area') || 'summerlyn';
-    const data = profiles[key] || profiles['summerlyn'];
+    const key = params.get('area') || 'dreamfields';
+    const data = profiles[key] || profiles['dreamfields'];
 
     document.getElementById('zoneTitle').textContent = data.title;
     document.getElementById('ctaArea').textContent = data.title;
@@ -205,6 +231,12 @@
     document.getElementById('windDetail').textContent = data.wind;
     document.getElementById('pestDetail').textContent = data.pest;
     document.getElementById('plantDetail').textContent = data.plant;
+
+    function navParent(pageKey) {
+      if (window.parent && window.parent.loadPage) {
+        window.parent.loadPage(`${pageKey}.html`, pageKey);
+      }
+    }
   </script>
 
   <!-- ================= LEAF ANIMATION CANVAS & SCRIPT ================= -->
