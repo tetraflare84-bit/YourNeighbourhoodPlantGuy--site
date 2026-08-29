@@ -1,17 +1,15 @@
-code
-Html
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Neighbourhood Plant Guy | Eco-Friendly Plant Care &amp; Property Management</title>
-  <meta name="description" content="25 years of horticultural experience offering eco-friendly plant care, pruning, pest & disease control, troubled boxwoods, and seasonal cleanups in Bradford and York Region." />
+  <title>Interactive Bradford Map | Your Neighbourhood Plant Guy</title>
+  <meta name="description" content="Explore Bradford, Ontario soil conditions, street wireframes, and localized plant care with Your Neighbourhood Plant Guy interactive map." />
 
   <!-- Google Fonts & FontAwesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
 
   <style>
@@ -21,13 +19,12 @@ Html
       --primary-light: #52b788;
       --accent: #ffb703;
       --accent-orange: #fb8500;
-      --accent-red: #d90429;
+      --cyan-glow: #00f0ff;
       --bg-cream: #fbf8f1;
-      --dark: #1f2421;
-      --card-bg: rgba(255, 255, 255, 0.92);
-      --shadow-3d: 0 15px 35px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
+      --terminal-bg: #071510;
       --comic-font: 'Bangers', cursive, sans-serif;
       --body-font: 'Outfit', sans-serif;
+      --tech-font: 'Share Tech Mono', monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
@@ -35,347 +32,594 @@ Html
     body {
       font-family: var(--body-font);
       background-color: var(--bg-cream);
-      color: var(--dark);
-      padding: 1.5rem 1.5rem 5rem;
-      max-width: 1350px;
+      color: #1f2421;
+      padding: 1.5rem 1.2rem 5rem;
+      max-width: 1440px;
       margin: 0 auto;
       overflow-x: hidden;
+      position: relative;
     }
 
-    /* 3D Tilt Card Base */
-    .tilt-card {
-      background: var(--card-bg);
-      border-radius: 20px;
-      border: 1px solid rgba(255, 255, 255, 0.6);
-      box-shadow: var(--shadow-3d);
-      transition: transform 0.2s ease, box-shadow 0.25s ease;
-      transform-style: preserve-3d;
+    /* Top Title Header */
+    .map-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .badge-hud {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: var(--terminal-bg);
+      color: var(--cyan-glow);
+      border: 1px solid var(--cyan-glow);
+      padding: 6px 18px;
+      border-radius: 30px;
+      font-family: var(--tech-font);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.8rem;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
+    }
+    .radar-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--cyan-glow);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--cyan-glow);
+      animation: blink 1.2s infinite alternate;
+    }
+    @keyframes blink { 0% { opacity: 0.2; } 100% { opacity: 1; } }
+
+    .map-header h1 {
+      font-family: var(--comic-font);
+      font-size: 3.4rem;
+      color: var(--primary-dark);
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 0 var(--accent);
+      line-height: 1.1;
+    }
+    .map-header p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 780px;
+      margin: 0.5rem auto 0;
+    }
+
+    /* Grid Layout */
+    .map-viewport-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.85fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* Map Terminal Screen */
+    .map-screen-card {
+      background: var(--terminal-bg);
+      border: 2px solid var(--primary-light);
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    .terminal-top-bar {
+      position: absolute;
+      top: 12px;
+      left: 18px;
+      right: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--cyan-glow);
+      font-family: var(--tech-font);
+      font-size: 0.78rem;
+      letter-spacing: 1px;
+      z-index: 20;
+      pointer-events: none;
+      text-shadow: 0 0 8px rgba(0,0,0,0.8);
+    }
+
+    /* Relative Container Holding Image and SVG Overlay */
+    .map-interactive-wrapper {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-top: 100%; /* Matches square/near-square aerial aspect ratio */
       overflow: hidden;
     }
-    .tilt-card:hover {
-      box-shadow: 0 25px 45px rgba(0, 0, 0, 0.18);
+
+    /* Underlying Blue Wireframe Image Map */
+    .blueprint-source-img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      /* Boost contrast, darken background tones, and make blue wireframe pop */
+      filter: contrast(140%) brightness(85%) hue-rotate(185deg) saturate(160%);
+      z-index: 2;
     }
 
-    /* Hero Section */
-    .hero-grid {
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
-      gap: 2rem;
-      align-items: center;
-      margin-bottom: 3rem;
+    /* Topographic Grid / Scanline Filter */
+    .scanline-overlay {
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+                  linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+      background-size: 32px 32px;
+      pointer-events: none;
+      z-index: 5;
     }
 
-    .hero-banner {
-      padding: 2.8rem;
-      background: linear-gradient(135deg, rgba(45, 106, 79, 0.96), rgba(27, 67, 50, 0.98)),
-                  url('https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Cover%20And%20Back.png') center/cover;
-      color: #fff;
+    /* SVG Interactive Overlay mapped over exact coordinates */
+    .svg-interaction-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
     }
 
-    .badge-pill {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      background: var(--accent);
-      color: var(--dark);
-      font-weight: 800;
-      font-size: 0.85rem;
-      padding: 6px 16px;
-      border-radius: 30px;
-      text-transform: uppercase;
-      letter-spacing: 0.5px;
-      margin-bottom: 1.2rem;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-    }
-
-    .hero-title {
-      font-family: var(--comic-font);
-      font-size: 3.6rem;
-      line-height: 1.05;
-      letter-spacing: 1px;
-      margin-bottom: 1rem;
-      text-shadow: 2px 2px 0 var(--dark);
-    }
-    .hero-title span { color: var(--accent); }
-
-    .hero-tagline {
-      font-size: 1.15rem;
-      opacity: 0.95;
-      margin-bottom: 1.8rem;
-      line-height: 1.6;
-    }
-
-    .hero-cta-group {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-    }
-
-    .btn-primary {
-      background: var(--accent-orange);
-      color: #fff;
-      font-family: var(--comic-font);
-      font-size: 1.35rem;
-      letter-spacing: 0.5px;
-      padding: 0.75rem 1.8rem;
-      border-radius: 30px;
-      text-decoration: none;
-      border: 2px solid #fff;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+    .interactive-zone {
+      fill: rgba(0, 240, 255, 0.04);
+      stroke: rgba(0, 240, 255, 0.4);
+      stroke-width: 2;
+      stroke-dasharray: 6 3;
+      transition: all 0.35s ease;
       cursor: pointer;
-      box-shadow: 0 8px 18px rgba(251, 133, 0, 0.4);
-      transition: all 0.25s ease;
     }
-    .btn-primary:hover {
-      background: #e07400;
-      transform: translateY(-3px) scale(1.03);
+    .interactive-zone:hover, .interactive-zone.active {
+      fill: rgba(255, 183, 3, 0.32);
+      stroke: var(--accent);
+      stroke-width: 3.5;
+      stroke-dasharray: none;
+      filter: drop-shadow(0 0 14px rgba(255, 183, 3, 0.7));
     }
 
-    .btn-secondary {
-      background: rgba(255, 255, 255, 0.15);
-      color: #fff;
-      font-weight: 700;
-      font-size: 1rem;
-      padding: 0.75rem 1.5rem;
-      border-radius: 30px;
-      text-decoration: none;
-      border: 1px solid rgba(255, 255, 255, 0.4);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+    /* Pins */
+    .radar-pin {
       cursor: pointer;
-      backdrop-filter: blur(4px);
-      transition: all 0.25s ease;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
-    .btn-secondary:hover {
-      background: rgba(255, 255, 255, 0.25);
+    .radar-pin:hover, .radar-pin.active {
+      transform: scale(1.3);
+    }
+    .pin-pulse {
+      animation: radarPulse 2.2s infinite ease-out;
+      transform-origin: center;
+    }
+    @keyframes radarPulse {
+      0% { r: 6; opacity: 1; }
+      100% { r: 28; opacity: 0; }
+    }
+
+    .pin-title-label {
+      font-family: var(--comic-font);
+      font-size: 15px;
+      fill: #ffffff;
+      text-anchor: middle;
+      pointer-events: none;
+      letter-spacing: 0.8px;
+      text-shadow: 0 0 8px #000, 0 2px 4px #000;
+    }
+
+    /* Right-Side Live HUD Card */
+    .hud-info-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2.2rem;
+      border: 2px solid rgba(45, 106, 79, 0.2);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 1rem;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .hud-info-card:hover {
+      border-color: var(--accent-orange);
       transform: translateY(-3px);
     }
 
-    .hero-poster-card {
-      position: relative;
-      cursor: pointer;
-      border: 4px solid #fff;
-    }
-    .hero-poster-card img {
-      width: 100%;
-      height: 100%;
-      max-height: 440px;
-      object-fit: cover;
-      display: block;
-      transition: transform 0.4s ease;
-    }
-    .hero-poster-card:hover img {
-      transform: scale(1.04);
-    }
-
-    /* Section Titles */
-    .section-header {
-      text-align: center;
-      margin-bottom: 2.2rem;
-    }
-    .section-header h2 {
-      font-family: var(--comic-font);
-      font-size: 2.9rem;
-      color: var(--primary-dark);
-      letter-spacing: 1px;
-      text-shadow: 1px 1px 0 var(--accent);
-      display: inline-flex;
+    .hud-header {
+      display: flex;
       align-items: center;
-      gap: 12px;
+      gap: 14px;
+      margin-bottom: 1.2rem;
+      padding-bottom: 1.1rem;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.06);
     }
-    .section-header p {
-      color: #555;
-      font-size: 1.1rem;
-      max-width: 700px;
-      margin: 0.3rem auto 0;
-    }
-
-    /* Services Grid */
-    .services-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 1.4rem;
-      margin-bottom: 3.5rem;
-    }
-    .service-box {
-      background: #fff;
-      padding: 1.8rem 1.5rem;
-      border-radius: 18px;
-      border: 1px solid rgba(0,0,0,0.06);
-      box-shadow: 0 6px 16px rgba(0,0,0,0.05);
-      text-align: center;
-      transition: all 0.3s ease;
-    }
-    .service-box:hover {
-      transform: translateY(-8px);
-      border-color: var(--primary-light);
-      box-shadow: 0 14px 28px rgba(45, 106, 79, 0.15);
-    }
-    .service-icon {
-      width: 60px;
-      height: 60px;
-      margin: 0 auto 1.1rem;
-      background: rgba(82, 183, 136, 0.15);
-      color: var(--primary);
-      border-radius: 50%;
+    .hud-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--accent);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.6rem;
+      font-size: 1.7rem;
+      box-shadow: 0 6px 15px rgba(45, 106, 79, 0.25);
     }
-    .service-box h3 {
-      font-size: 1.15rem;
-      font-weight: 800;
-      margin-bottom: 0.5rem;
-      color: var(--primary-dark);
-    }
-    .service-box p {
-      font-size: 0.9rem;
-      color: #666;
-      line-height: 1.5;
-    }
-
-    /* Feature Banner */
-    .feature-banner {
-      background: linear-gradient(135deg, #fff, #f4faf6);
-      border-radius: 20px;
-      padding: 2.2rem;
-      display: grid;
-      grid-template-columns: 1fr auto;
-      gap: 2rem;
-      align-items: center;
-      border: 2px solid var(--accent);
-    }
-    .feature-text h3 {
+    .hud-title-wrap h2 {
       font-family: var(--comic-font);
       font-size: 2.2rem;
       color: var(--primary-dark);
-      margin-bottom: 0.4rem;
+      line-height: 1;
     }
-    .feature-text p {
-      color: #555;
-      font-size: 1rem;
+    .hud-title-wrap span {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--accent-orange);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
+
+    .spec-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 1rem;
+      background: #f8faf9;
+      padding: 0.9rem 1.1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .spec-item i {
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-top: 2px;
+    }
+    .spec-text strong {
+      display: block;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      color: #777;
+      letter-spacing: 0.5px;
+    }
+    .spec-text span {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1f2421;
+    }
+
+    .plant-guy-tip-box {
+      background: rgba(255, 183, 3, 0.18);
+      border-left: 4px solid var(--accent-orange);
+      padding: 1rem 1.2rem;
+      border-radius: 12px;
+      margin: 1.4rem 0 1.6rem;
+      font-size: 0.92rem;
       line-height: 1.5;
     }
 
-    @media (max-width: 900px) {
-      .hero-grid { grid-template-columns: 1fr; }
-      .feature-banner { grid-template-columns: 1fr; text-align: center; }
-      .hero-banner { padding: 2rem; }
-      .hero-title { font-size: 2.8rem; }
+    .btn-view-neighbourhood {
+      width: 100%;
+      background: var(--accent-orange);
+      color: #fff;
+      font-family: var(--comic-font);
+      font-size: 1.4rem;
+      letter-spacing: 0.5px;
+      padding: 0.85rem;
+      border-radius: 30px;
+      border: 2px solid #fff;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(251, 133, 0, 0.35);
+      transition: all 0.25s ease;
+    }
+    .btn-view-neighbourhood:hover {
+      background: #e07400;
+      transform: translateY(-2px);
+    }
+
+    .map-helper-tip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 1.2rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #666;
+    }
+
+    @media (max-width: 980px) {
+      .map-viewport-grid { grid-template-columns: 1fr; }
+      .map-header h1 { font-size: 2.7rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Hero Grid -->
-  <div class="hero-grid">
-    <div class="hero-banner tilt-card">
-      <div class="badge-pill"><i class="fa-solid fa-award"></i> 25 Years Horticultural Specialist</div>
-      <h1 class="hero-title">ECO-FRIENDLY <span>PLANT CARE</span> &amp; GARDEN HEALTH</h1>
-      <p class="hero-tagline">
-        From your weeds to your trees and everything in between — Trevor Auton is your neighbourhood expert for organic pest &amp; disease management, pruning, lawn revival, and seasonal vitality.
-      </p>
-      
-      <div class="hero-cta-group">
-        <a href="quote.html" class="btn-primary" onclick="navParent('quote')"><i class="fa-solid fa-calculator"></i> Request Free Quote</a>
-        <a href="gallery.html" class="btn-secondary" onclick="navParent('gallery')"><i class="fa-solid fa-leaf"></i> View Plant Gallery</a>
+  <!-- Header -->
+  <div class="map-header">
+    <div class="badge-hud">
+      <span class="radar-dot"></span> Bradford Blueprint &amp; Soil Radar
+    </div>
+    <h1>LOCAL SOIL &amp; SERVICE ZONES</h1>
+    <p>Every neighbourhood in Bradford has unique soil compaction, tree canopy shade, and wind profiles. Hover or click your neighbourhood on the blueprint to analyze your garden's needs!</p>
+  </div>
+
+  <!-- Main Viewport Grid -->
+  <div class="map-viewport-grid">
+    
+    <!-- Interactive Blueprint Terminal -->
+    <div class="map-screen-card">
+      <div class="terminal-top-bar">
+        <span><i class="fa-solid fa-crosshairs"></i> BRADFORD STREET BLUEPRINT LAYER</span>
+        <span><i class="fa-solid fa-signal"></i> 44.1167° N, 79.5667° W</span>
+      </div>
+
+      <div class="map-interactive-wrapper">
+        <!-- 1. The Underlying Blue Wireframe Image Map -->
+        <!-- Replace the src with your Backblaze file URL e.g. https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/bradford-map.png -->
+        <img 
+          id="blueprintImg" 
+          src="bradford-wireframe.png" 
+          alt="Bradford Street Blue Wireframe Map" 
+          class="blueprint-source-img" 
+          onerror="this.src='https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/bradford-wireframe.png'"
+        />
+
+        <!-- 2. Topographic Scanline Filter -->
+        <div class="scanline-overlay"></div>
+
+        <!-- 3. Precise SVG Interactive Overlay matching your screenshot layout -->
+        <svg class="svg-interaction-layer" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+          
+          <!-- SECTOR 1: Dreamfields (North-West, along Line 8 & Professor Day) -->
+          <polygon 
+            id="sector-dreamfields" 
+            class="interactive-zone" 
+            points="180,120 450,90 480,260 210,310" 
+            onclick="selectNeighbourhood('dreamfields')" 
+            onmouseenter="previewNeighbourhood('dreamfields')" 
+          />
+
+          <!-- SECTOR 2: Summerlyn Village & BWG Leisure Centre (West-Central) -->
+          <polygon 
+            id="sector-summerlyn" 
+            class="interactive-zone active" 
+            points="120,320 530,280 550,560 120,680" 
+            onclick="selectNeighbourhood('summerlyn')" 
+            onmouseenter="previewNeighbourhood('summerlyn')" 
+          />
+
+          <!-- SECTOR 3: Grandview & Line 8 Corridor (North-East near No Frills) -->
+          <polygon 
+            id="sector-grandview" 
+            class="interactive-zone" 
+            points="510,40 960,30 960,320 520,300" 
+            onclick="selectNeighbourhood('grandview')" 
+            onmouseenter="previewNeighbourhood('grandview')" 
+          />
+
+          <!-- SECTOR 4: Downtown Bradford Heritage Core (Center-East along Holland St) -->
+          <polygon 
+            id="sector-downtown" 
+            class="interactive-zone" 
+            points="540,320 950,330 900,560 550,560" 
+            onclick="selectNeighbourhood('downtown')" 
+            onmouseenter="previewNeighbourhood('downtown')" 
+          />
+
+          <!-- SECTOR 5: Bradford Valley & South Hills (Bottom Central) -->
+          <polygon 
+            id="sector-bradford-valley" 
+            class="interactive-zone" 
+            points="230,680 730,570 780,950 200,950" 
+            onclick="selectNeighbourhood('bradford-valley')" 
+            onmouseenter="previewNeighbourhood('bradford-valley')" 
+          />
+
+          <!-- SECTOR 6: Marshview & Simcoe Road Canal Edge (Bottom Right) -->
+          <polygon 
+            id="sector-holland-marsh" 
+            class="interactive-zone" 
+            points="730,570 960,560 960,950 780,950" 
+            onclick="selectNeighbourhood('holland-marsh')" 
+            onmouseenter="previewNeighbourhood('holland-marsh')" 
+          />
+
+          <!-- ================= PULSING RADAR PINS ================= -->
+
+          <!-- 1. Dreamfields Pin -->
+          <g class="radar-pin" id="pin-dreamfields" onclick="selectNeighbourhood('dreamfields')" onmouseenter="previewNeighbourhood('dreamfields')">
+            <circle class="pin-pulse" cx="310" cy="180" r="8" fill="#00f0ff" opacity="0.6"/>
+            <circle cx="310" cy="180" r="11" fill="#00f0ff" stroke="#fff" stroke-width="2.5"/>
+            <text x="310" y="150" class="pin-title-label">DREAMFIELDS</text>
+          </g>
+
+          <!-- 2. Summerlyn Village Pin -->
+          <g class="radar-pin active" id="pin-summerlyn" onclick="selectNeighbourhood('summerlyn')" onmouseenter="previewNeighbourhood('summerlyn')">
+            <circle class="pin-pulse" cx="300" cy="460" r="8" fill="#ffb703" opacity="0.6"/>
+            <circle cx="300" cy="460" r="12" fill="#fb8500" stroke="#fff" stroke-width="2.5"/>
+            <text x="300" y="430" class="pin-title-label">SUMMERLYN VILLAGE</text>
+          </g>
+
+          <!-- 3. Grandview & Line 8 Pin -->
+          <g class="radar-pin" id="pin-grandview" onclick="selectNeighbourhood('grandview')" onmouseenter="previewNeighbourhood('grandview')">
+            <circle class="pin-pulse" cx="740" cy="150" r="8" fill="#00f0ff" opacity="0.6"/>
+            <circle cx="740" cy="150" r="11" fill="#00f0ff" stroke="#fff" stroke-width="2.5"/>
+            <text x="740" y="120" class="pin-title-label">LINE 8 / GRANDVIEW</text>
+          </g>
+
+          <!-- 4. Downtown Bradford Pin -->
+          <g class="radar-pin" id="pin-downtown" onclick="selectNeighbourhood('downtown')" onmouseenter="previewNeighbourhood('downtown')">
+            <circle class="pin-pulse" cx="720" cy="420" r="8" fill="#ffb703" opacity="0.6"/>
+            <circle cx="720" cy="420" r="12" fill="#fb8500" stroke="#fff" stroke-width="2.5"/>
+            <text x="720" y="390" class="pin-title-label">DOWNTOWN BRADFORD</text>
+          </g>
+
+          <!-- 5. Bradford Valley Pin -->
+          <g class="radar-pin" id="pin-bradford-valley" onclick="selectNeighbourhood('bradford-valley')" onmouseenter="previewNeighbourhood('bradford-valley')">
+            <circle class="pin-pulse" cx="500" cy="780" r="8" fill="#00f0ff" opacity="0.6"/>
+            <circle cx="500" cy="780" r="11" fill="#00f0ff" stroke="#fff" stroke-width="2.5"/>
+            <text x="500" y="750" class="pin-title-label">BRADFORD VALLEY</text>
+          </g>
+
+          <!-- 6. Marshview / Holland Marsh Pin -->
+          <g class="radar-pin" id="pin-holland-marsh" onclick="selectNeighbourhood('holland-marsh')" onmouseenter="previewNeighbourhood('holland-marsh')">
+            <circle class="pin-pulse" cx="870" cy="740" r="8" fill="#00f0ff" opacity="0.6"/>
+            <circle cx="870" cy="740" r="11" fill="#00b4d8" stroke="#fff" stroke-width="2.5"/>
+            <text x="870" y="710" class="pin-title-label">MARSHVIEW BASIN</text>
+          </g>
+
+        </svg>
       </div>
     </div>
 
-    <div class="hero-poster-card tilt-card" onclick="navParent('comics')">
-      <img src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Wagon%20V3.jpg" alt="Your Neighbourhood Plant Guy Art" />
-    </div>
-  </div>
+    <!-- Live HUD Card Details -->
+    <div class="hud-info-card" id="hudCard">
+      <div class="hud-header">
+        <div class="hud-icon" id="hudIcon"><i class="fa-solid fa-tree"></i></div>
+        <div class="hud-title-wrap">
+          <h2 id="hudName">Summerlyn Village</h2>
+          <span id="hudSub">Zone: West-Central Corridor</span>
+        </div>
+      </div>
 
-  <!-- Services Section -->
-  <div class="section-header">
-    <h2><i class="fa-solid fa-spa"></i> Specialized Services</h2>
-    <p>Professional, chemical-conscious garden maintenance and plant healthcare designed for Ontario landscapes.</p>
-  </div>
+      <div class="spec-item">
+        <i class="fa-solid fa-layer-group"></i>
+        <div class="spec-text">
+          <strong>Primary Soil Profile</strong>
+          <span id="hudSoil">Compacted Subsoil with Heavy Clay Top Loam</span>
+        </div>
+      </div>
 
-  <div class="services-grid">
-    <div class="service-box tilt-card">
-      <div class="service-icon"><i class="fa-solid fa-bug-slash"></i></div>
-      <h3>Pest &amp; Disease Control</h3>
-      <p>Targeted organic treatments for fungus, blight, insects, and soil pathogens without harming pollinators.</p>
-    </div>
+      <div class="spec-item">
+        <i class="fa-solid fa-wind"></i>
+        <div class="spec-text">
+          <strong>Exposure &amp; Microclimate</strong>
+          <span id="hudClimate">Open westerly winds; rapid seasonal freeze-thaw cycles</span>
+        </div>
+      </div>
 
-    <div class="service-box tilt-card">
-      <div class="service-icon"><i class="fa-solid fa-scissors"></i></div>
-      <h3>Pruning &amp; Shaping</h3>
-      <p>Expert hedge trimming, fruit tree structural pruning, and aesthetic shrub contouring.</p>
-    </div>
+      <div class="spec-item">
+        <i class="fa-solid fa-triangle-exclamation" style="color: var(--accent-orange);"></i>
+        <div class="spec-text">
+          <strong>Common Plant Challenges</strong>
+          <span id="hudChallenge">Water pooling around root crowns, boxwood winter desiccation</span>
+        </div>
+      </div>
 
-    <div class="service-box tilt-card">
-      <div class="service-icon"><i class="fa-solid fa-shield-virus"></i></div>
-      <h3>Mosquito &amp; Tick Barrier</h3>
-      <p>Eco-friendly perimeter sprays creating comfortable, pest-free outdoor sitting areas.</p>
-    </div>
+      <div class="plant-guy-tip-box" id="hudTip">
+        <strong>🌿 Plant Guy Recommendation:</strong> Core aeration combined with organic bonemeal root fortifiers and a 3-inch cedar mulch insulation layer ensures strong winter survival in Summerlyn.
+      </div>
 
-    <div class="service-box tilt-card">
-      <div class="service-icon"><i class="fa-solid fa-wand-magic-sparkles"></i></div>
-      <h3>Troubled Boxwoods</h3>
-      <p>Specialized diagnosis, blight rescue treatments, and multi-stage nutrient rejuvenation programs.</p>
-    </div>
-
-    <div class="service-box tilt-card">
-      <div class="service-icon"><i class="fa-solid fa-plant-wilt"></i></div>
-      <h3>Removals &amp; Cleanups</h3>
-      <p>Full property cleanups, overgrown shrub removals, and complete seasonal transitions.</p>
-    </div>
-
-    <div class="service-box tilt-card">
-      <div class="service-icon"><i class="fa-solid fa-house-chimney-window"></i></div>
-      <h3>Houseplants &amp; Design</h3>
-      <p>Custom garden designs, planting installations, and dedicated indoor houseplant diagnosis.</p>
-    </div>
-  </div>
-
-  <!-- Bottom CTA Banner -->
-  <div class="feature-banner tilt-card">
-    <div class="feature-text">
-      <h3>Ready to Revitalize Your Garden?</h3>
-      <p>Get a personalized assessment tailored to your yard's soil, exposure, and seasonal plant requirements.</p>
-    </div>
-    <div>
-      <a href="quote.html" class="btn-primary" onclick="navParent('quote')">
-        <i class="fa-solid fa-clipboard-check"></i> Get Started
+      <a id="hudLink" href="neighbourhood.html?area=summerlyn" class="btn-view-neighbourhood">
+        <i class="fa-solid fa-compass"></i> View Neighbourhood Guide
       </a>
     </div>
+
+  </div>
+
+  <div class="map-helper-tip">
+    <i class="fa-solid fa-hand-pointer" style="color: var(--accent-orange);"></i> Click any highlighted zone or pulsing radar marker to explore complete soil profiles and localized garden care!
   </div>
 
   <script>
-    // Tell parent frame to update navigation active state
-    function navParent(pageKey) {
-      if (window.parent && window.parent.loadPage) {
-        window.parent.loadPage(`${pageKey}.html`, pageKey);
+    /* =================================================================
+       BRADFORD NEIGHBOURHOOD DATASET
+       ================================================================= */
+    const neighbourhoodData = {
+      'summerlyn': {
+        name: 'Summerlyn Village',
+        sub: 'Zone: West-Central Corridor (Near Leisure Centre)',
+        icon: 'fa-solid fa-house-chimney-window',
+        soil: 'Compacted Subsoil with Heavy Clay Top Loam',
+        climate: 'Open westerly winds from Sideroad 10 fields; fast freeze-thaw cycles',
+        challenge: 'Water pooling at foundation beds, root suffocation, boxwood desiccation',
+        tip: 'Core aeration combined with organic bonemeal root fortifiers and a 3-inch cedar mulch insulation layer ensures strong winter survival in Summerlyn.'
+      },
+      'dreamfields': {
+        name: 'Dreamfields',
+        sub: 'Zone: North-West Subdivision (Line 8 / Wandering Glider)',
+        icon: 'fa-solid fa-cloud-sun',
+        soil: 'Newer Construction Graded Clay & Dense Silt',
+        climate: 'Unsheltered perimeter prairie winds from open rural farmland',
+        challenge: 'Slow root development in new builder sod, winter frost heaving',
+        tip: 'Deep organic soil conditioning and slow-release phosphorus feeds build deep root anchors before early winter ground freezes.'
+      },
+      'grandview': {
+        name: 'Line 8 / Grandview',
+        sub: 'Zone: North-East Corridor (Near No Frills & Barrie St)',
+        icon: 'fa-solid fa-tree-city',
+        soil: 'Glacial Till Mixed with Gravelly Loam (Fast Drainage)',
+        climate: 'Elevated sunny slope exposure with direct midsummer heat and drying winds',
+        challenge: 'Rapid moisture loss in midsummer, troubled boxwood spider mites',
+        tip: 'Thick mulch moisture blankets combined with seasonal hedge shaping protect high-value specimen plants from drought.'
+      },
+      'downtown': {
+        name: 'Downtown Bradford',
+        sub: 'Zone: Historic Valley Core (Holland St & Simcoe Rd)',
+        icon: 'fa-solid fa-landmark',
+        soil: 'Mature Aged Sandy Loam Rich in Decomposed Organic Matter',
+        climate: 'Dense tree canopy shade; protected from harsh prairie winds',
+        challenge: 'Root competition with 50+ yr mature maples, powdery mildew, fungal spots',
+        tip: 'Selective canopy thinning to improve sunlight and pollinator-safe organic anti-fungal treatments keep shaded gardens lush and vibrant.'
+      },
+      'bradford-valley': {
+        name: 'Bradford Valley',
+        sub: 'Zone: South-Central Terraces & Care Community',
+        icon: 'fa-solid fa-mountain-sun',
+        soil: 'Variable Loam over Stiff Silty Clay Sub-strata',
+        climate: 'Mixed gentle hillside drainage with windward exposure',
+        challenge: 'Lawn grub migration and seasonal soil compaction in shaded yards',
+        tip: 'Fall lawn overseeding paired with organic perimeter pest barrier sprays maintains thick, weed-free grass along terraced properties.'
+      },
+      'holland-marsh': {
+        name: 'Marshview & Canal Basin',
+        sub: 'Zone: South Peat Basin / Marshview Blvd',
+        icon: 'fa-solid fa-wheat-awn',
+        soil: 'Famous High-Nitrogen Organic Peat Black Muck',
+        climate: 'High water table, morning valley humidity and persistent dew',
+        challenge: 'Over-saturation root rot, aggressive mosquito populations',
+        tip: 'Construct raised flower beds and install native mosquito-repelling borders (Citronella, Lavender, Bee Balm) for bite-free outdoor living.'
       }
+    };
+
+    let currentSelectedArea = 'summerlyn';
+
+    function previewNeighbourhood(areaKey) {
+      const data = neighbourhoodData[areaKey];
+      if (!data) return;
+
+      currentSelectedArea = areaKey;
+      document.getElementById('hudName').textContent = data.name;
+      document.getElementById('hudSub').textContent = data.sub;
+      document.getElementById('hudIcon').innerHTML = `<i class="${data.icon}"></i>`;
+      document.getElementById('hudSoil').textContent = data.soil;
+      document.getElementById('hudClimate').textContent = data.climate;
+      document.getElementById('hudChallenge').textContent = data.challenge;
+      document.getElementById('hudTip').innerHTML = `<strong>🌿 Plant Guy Recommendation:</strong> ${data.tip}`;
+      document.getElementById('hudLink').href = `neighbourhood.html?area=${areaKey}`;
+
+      // Update Visual Highlights
+      document.querySelectorAll('.interactive-zone').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.radar-pin').forEach(p => p.classList.remove('active'));
+
+      const sector = document.getElementById(`sector-${areaKey}`);
+      const pin = document.getElementById(`pin-${areaKey}`);
+      if (sector) sector.classList.add('active');
+      if (pin) pin.classList.add('active');
     }
 
-    // 3D Tilt Effect
-    const cards = document.querySelectorAll('.tilt-card');
-    cards.forEach(card => {
-      card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
-        const x = e.clientX - rect.left;
-        const y = e.clientY - rect.top;
-        const centerX = rect.width / 2;
-        const centerY = rect.height / 2;
-        const rotateX = ((y - centerY) / centerY) * -6;
-        const rotateY = ((x - centerX) / centerX) * 6;
-        card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-4px)`;
-      });
-
-      card.addEventListener('mouseleave', () => {
-        card.style.transform = 'perspective(1000px) rotateX(0deg) rotateY(0deg) translateY(0px)';
-      });
-    });
+    function selectNeighbourhood(areaKey) {
+      previewNeighbourhood(areaKey);
+      window.location.href = `neighbourhood.html?area=${areaKey}`;
+    }
   </script>
-<!-- ================= LEAF ANIMATION CANVAS & SCRIPT ================= -->
+
+  <!-- ================= LEAF ANIMATION CANVAS & SCRIPT ================= -->
   <canvas id="leafCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;"></canvas>
 
   <script>
@@ -393,9 +637,7 @@ Html
       resize();
 
       class Leaf {
-        constructor() {
-          this.reset();
-        }
+        constructor() { this.reset(); }
         reset() {
           this.x = Math.random() * canvas.width;
           this.y = -20;
@@ -439,6 +681,5 @@ Html
       animate();
     })();
   </script>
-  <!-- ================================================================= -->
 </body>
 </html>
