@@ -1,0 +1,391 @@
+code
+Html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Request a Quote | Your Neighbourhood Plant Guy</title>
+  <meta name="description" content="Request a free quote for eco-friendly plant care, hedge pruning, garden and property cleanups, lawn care and more in the Bradford area." />
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <style>
+    :root {
+      --primary: #2d6a4f;
+      --primary-dark: #1b4332;
+      --primary-light: #52b788;
+      --accent: #ffb703;
+      --accent-orange: #fb8500;
+      --bg-cream: #fbf8f1;
+      --dark: #1f2421;
+      --card-bg: #ffffff;
+      --shadow-3d: 0 12px 30px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.04);
+      --comic-font: 'Bangers', cursive, sans-serif;
+      --body-font: 'Outfit', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--body-font);
+      background-color: var(--bg-cream);
+      color: var(--dark);
+      padding: 2rem 1.5rem 5rem;
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+
+    .header-section {
+      text-align: center;
+      margin-bottom: 2.8rem;
+    }
+    .header-section h1 {
+      font-family: var(--comic-font);
+      font-size: 3.2rem;
+      color: var(--primary-dark);
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 0 var(--accent);
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .header-section p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 650px;
+      margin: 0.4rem auto 0;
+    }
+
+    .quote-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2.2rem;
+    }
+
+    .card {
+      background: var(--card-bg);
+      border-radius: 20px;
+      padding: 2.2rem;
+      box-shadow: var(--shadow-3d);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .form-group {
+      margin-bottom: 1.2rem;
+    }
+    .form-group label {
+      display: block;
+      font-weight: 700;
+      font-size: 0.9rem;
+      margin-bottom: 0.4rem;
+      color: var(--dark);
+    }
+    .form-control {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border-radius: 10px;
+      border: 1.5px solid #dde2e5;
+      font-family: var(--body-font);
+      font-size: 0.95rem;
+      outline: none;
+      transition: border-color 0.2s ease;
+    }
+    .form-control:focus {
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15);
+    }
+
+    .services-checklist {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.7rem;
+      margin-top: 0.4rem;
+      background: #f8faf9;
+      padding: 1rem;
+      border-radius: 12px;
+      border: 1px solid #eef2f0;
+    }
+    .checkbox-label {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font-size: 0.88rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+    .checkbox-label input {
+      accent-color: var(--primary);
+      width: 17px;
+      height: 17px;
+      cursor: pointer;
+    }
+
+    .btn-submit {
+      width: 100%;
+      background: var(--accent-orange);
+      color: #fff;
+      font-family: var(--comic-font);
+      font-size: 1.4rem;
+      letter-spacing: 0.5px;
+      padding: 0.85rem;
+      border-radius: 30px;
+      border: 2px solid #fff;
+      cursor: pointer;
+      box-shadow: 0 8px 18px rgba(251, 133, 0, 0.35);
+      transition: all 0.25s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      margin-top: 0.8rem;
+    }
+    .btn-submit:hover {
+      background: #e07400;
+      transform: translateY(-2px);
+    }
+
+    /* Right Side Direct Info */
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 1.2rem;
+      padding: 1.1rem 1.2rem;
+      background: #f8faf9;
+      border-radius: 14px;
+      margin-bottom: 1rem;
+      text-decoration: none;
+      color: var(--dark);
+      border: 1px solid rgba(45, 106, 79, 0.1);
+      transition: all 0.25s ease;
+    }
+    .contact-item:hover {
+      background: rgba(82, 183, 136, 0.15);
+      transform: translateX(6px);
+    }
+    .contact-icon {
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      background: var(--primary);
+      color: #fff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.25rem;
+      flex-shrink: 0;
+    }
+
+    .eco-badge-card {
+      background: rgba(255, 183, 3, 0.15);
+      border-left: 4px solid var(--accent-orange);
+      padding: 1.2rem;
+      border-radius: 12px;
+      margin-top: 1.5rem;
+      font-size: 0.92rem;
+      line-height: 1.6;
+    }
+
+    @media (max-width: 900px) {
+      .quote-grid { grid-template-columns: 1fr; }
+      .header-section h1 { font-size: 2.6rem; }
+      .services-checklist { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <div class="header-section">
+    <h1><i class="fa-solid fa-calculator"></i> Request a Free Quote</h1>
+    <p>Tell us about your property and plant care goals. We will prepare an accurate, eco-friendly estimate.</p>
+  </div>
+
+  <div class="quote-grid">
+
+    <!-- Quote Form -->
+    <div class="card">
+      <form onsubmit="handleQuoteSubmit(event)">
+        <div class="form-group">
+          <label><i class="fa-solid fa-user"></i> Full Name *</label>
+          <input type="text" id="qName" class="form-control" placeholder="e.g. Robert Smith" required />
+        </div>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">
+          <div class="form-group">
+            <label><i class="fa-solid fa-phone"></i> Phone Number *</label>
+            <input type="tel" id="qPhone" class="form-control" placeholder="e.g. 905-252-XXXX" required />
+          </div>
+          <div class="form-group">
+            <label><i class="fa-solid fa-envelope"></i> Email Address *</label>
+            <input type="email" id="qEmail" class="form-control" placeholder="name@example.com" required />
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-location-dot"></i> City / Neighbourhood</label>
+          <input type="text" id="qCity" class="form-control" placeholder="e.g. Downtown, Summerlynn, etc..." />
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-list-check"></i> Services Required (Select all that apply)</label>
+          <div class="services-checklist">
+            <label class="checkbox-label"><input type="checkbox" name="srv" value="Pest & Disease Control" /> Pest &amp; Disease Control</label>
+            <label class="checkbox-label"><input type="checkbox" name="srv" value="Hedge & Shrub Pruning" /> Hedge &amp; Shrub Pruning</label>
+            <label class="checkbox-label"><input type="checkbox" name="srv" value="Mosquito & Tick Defense" /> Mosquito &amp; Tick Defense</label>
+            <label class="checkbox-label"><input type="checkbox" name="srv" value="Troubled Boxwood Care" /> Troubled Boxwoods</label>
+            <label class="checkbox-label"><input type="checkbox" name="srv" value="Garden Maintenance" /> Garden Maintenance</label>
+            <label class="checkbox-label"><input type="checkbox" name="srv" value="Yard Cleanup & Removals" /> Cleanup &amp; Removals</label>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label><i class="fa-solid fa-comment-dots"></i> Project Notes / Shrub &amp; Tree Details</label>
+          <textarea id="qNotes" class="form-control" rows="3" placeholder="Tell us about the condition of your plants, yard size, or any specific challenges..."></textarea>
+        </div>
+
+        <button type="submit" class="btn-submit">
+          <i class="fa-solid fa-paper-plane"></i> Submit Quote Request
+        </button>
+      </form>
+    </div>
+
+    <!-- Direct Contact & Guarantee Side -->
+    <div class="card" style="display: flex; flex-direction: column; justify-content: space-between;">
+      <div>
+        <h2 style="font-family: var(--comic-font); font-size: 2.2rem; color: var(--primary-dark); margin-bottom: 0.5rem;">
+          Prefer a Direct Consultation?
+        </h2>
+        <p style="color: #666; font-size: 0.95rem; line-height: 1.6; margin-bottom: 1.5rem;">
+          You can also call or text Trevor directly to discuss your garden or send photos for prompt diagnostic advice!
+        </p>
+
+        <a href="tel:9052527619" class="contact-item">
+          <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+          <div>
+            <div style="font-size: 0.78rem; text-transform: uppercase; font-weight: 800; color: #777;">Office Line</div>
+            <strong style="font-size: 1.1rem; color: var(--primary-dark);">905-252-7619</strong>
+          </div>
+        </a>
+
+        <a href="tel:9052523569" class="contact-item">
+          <div class="contact-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+          <div>
+            <div style="font-size: 0.78rem; text-transform: uppercase; font-weight: 800; color: #777;">Cell / Direct Text</div>
+            <strong style="font-size: 1.1rem; color: var(--primary-dark);">905-252-3569</strong>
+          </div>
+        </a>
+
+        <a href="mailto:YourNeighbourhoodPlantGuy@Gmail.com" class="contact-item">
+          <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div>
+            <div style="font-size: 0.78rem; text-transform: uppercase; font-weight: 800; color: #777;">Direct Email</div>
+            <strong style="font-size: 0.95rem; color: var(--primary-dark);">YourNeighbourhoodPlantGuy@Gmail.com</strong>
+          </div>
+        </a>
+      </div>
+
+      <div class="eco-badge-card">
+        <strong>🌿 Our Eco-Friendly Commitment:</strong>
+        <p style="margin-top: 4px; font-size: 0.88rem; color: #444;">
+          All efforts are made to use the most reasonable ECO forward solutions to each invividual property. Most jobs in our service area dont burn even a drop of gas.
+        </p>
+      </div>
+    </div>
+
+  </div>
+
+  <script>
+    function handleQuoteSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('qName').value;
+      const phone = document.getElementById('qPhone').value;
+      const email = document.getElementById('qEmail').value;
+      const city = document.getElementById('qCity').value;
+      const notes = document.getElementById('qNotes').value;
+
+      const checkedServices = Array.from(document.querySelectorAll('input[name="srv"]:checked'))
+                                   .map(el => el.value)
+                                   .join(', ');
+
+      const subject = encodeURIComponent(`Free Quote Request from ${name}`);
+      const body = encodeURIComponent(
+        `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nCity/Area: ${city}\n\nServices Requested:\n${checkedServices || 'General Consultation'}\n\nNotes / Plant Details:\n${notes}`
+      );
+
+      window.location.href = `mailto:YourNeighbourhoodPlantGuy@Gmail.com?subject=${subject}&body=${body}`;
+    }
+  </script>
+
+<!-- ================= LEAF ANIMATION CANVAS & SCRIPT ================= -->
+  <canvas id="leafCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;"></canvas>
+
+  <script>
+    (function initFallingLeaves() {
+      const canvas = document.getElementById('leafCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let leaves = [];
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      class Leaf {
+        constructor() {
+          this.reset();
+        }
+        reset() {
+          this.x = Math.random() * canvas.width;
+          this.y = -20;
+          this.size = Math.random() * 12 + 8;
+          this.speedY = Math.random() * 1.2 + 0.6;
+          this.speedX = Math.sin(Math.random() * Math.PI) * 0.8 - 0.4;
+          this.rotation = Math.random() * 360;
+          this.rotSpeed = (Math.random() - 0.5) * 2;
+          this.color = Math.random() > 0.4 ? 'rgba(82, 183, 136, 0.35)' : 'rgba(251, 133, 0, 0.3)';
+        }
+        update() {
+          this.y += this.speedY;
+          this.x += this.speedX + Math.sin(this.y * 0.015);
+          this.rotation += this.rotSpeed;
+          if (this.y > canvas.height + 20) this.reset();
+        }
+        draw() {
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.rotate((this.rotation * Math.PI) / 180);
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          ctx.moveTo(0, -this.size);
+          ctx.quadraticCurveTo(this.size * 0.8, 0, 0, this.size);
+          ctx.quadraticCurveTo(-this.size * 0.8, 0, 0, -this.size);
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+
+      for (let i = 0; i < 22; i++) leaves.push(new Leaf());
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        leaves.forEach(l => {
+          l.update();
+          l.draw();
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+  </script>
+  <!-- ================================================================= -->
+
+</body>
+</html>
