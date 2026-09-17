@@ -2,6 +2,9 @@
 # Ensures content pages are indexed while protecting Backblaze B2 egress bandwidth
 
 User-agent: *
+
+Sitemap: https://www.yourneighbourhoodplantguy.com/sitemap.xml
+
 # Allow search crawlers to index all website content and navigation pages
 Allow: /
 Allow: /index.html
@@ -20,8 +23,10 @@ Allow: /grandview.html
 Allow: /downtown.html
 Allow: /bradford-valley.html
 Allow: /holland-marsh.html
+Allow: /nav.css
+Allow: /nav.js
 
-# Conserve Backblaze B2 bandwidth: Disallow direct crawler asset downloading
+# Conserve bandwidth: Disallow direct crawler media downloading
 Disallow: /*.mp4$
 Disallow: /*.mov$
 Disallow: /*.mp3$
@@ -34,7 +39,7 @@ Disallow: /*?*autoplay=
 # Polite crawl delay to prevent bandwidth spikes
 Crawl-delay: 2
 
-# Googlebot-Video: prevent raw video scraping from external media storage
+# Googlebot-Video: prevent raw video stream scraping
 User-agent: Googlebot-Video
 Disallow: /*.mp4$
 Disallow: /*.mov$
