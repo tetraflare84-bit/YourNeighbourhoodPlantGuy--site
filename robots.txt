@@ -3,8 +3,6 @@
 
 User-agent: *
 
-Sitemap: https://www.yourneighbourhoodplantguy.com/sitemap.xml
-
 # Allow search crawlers to index all website content and navigation pages
 Allow: /
 Allow: /index.html
