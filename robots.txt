@@ -20,10 +20,8 @@ Allow: /grandview.html
 Allow: /downtown.html
 Allow: /bradford-valley.html
 Allow: /holland-marsh.html
-Allow: /nav.css
-Allow: /nav.js
 
-# Conserve bandwidth: Disallow direct crawler media downloading
+# Conserve Backblaze B2 bandwidth: Disallow direct crawler asset downloading
 Disallow: /*.mp4$
 Disallow: /*.mov$
 Disallow: /*.mp3$
@@ -36,7 +34,7 @@ Disallow: /*?*autoplay=
 # Polite crawl delay to prevent bandwidth spikes
 Crawl-delay: 2
 
-# Googlebot-Video: prevent raw video stream scraping
+# Googlebot-Video: prevent raw video scraping from external media storage
 User-agent: Googlebot-Video
 Disallow: /*.mp4$
 Disallow: /*.mov$
