@@ -3,14 +3,20 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Contact Trevor Auton | Your Neighbourhood Plant Guy</title>
-  <meta name="description" content="Get in touch with Trevor Auton at Your Neighbourhood Plant Guy. Call, text, or email for horticultural consulting, garden maintenance, and eco-friendly plant care in Bradford." />
+  <title>Contact Us | Your Neighbourhood Plant Guy</title>
+  <meta name="description" content="Get in touch with Trevor Auton at Your Neighbourhood Plant Guy. Office and cell phone lines, email, service area details, and social media channels." />
+  <meta property="og:title" content="Contact Us | Your Neighbourhood Plant Guy" />
+  <meta property="og:description" content="Get in touch with Trevor Auton at Your Neighbourhood Plant Guy in Bradford, Ontario." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Google Fonts & FontAwesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="nav.css" />
 
   <style>
     :root {
@@ -22,30 +28,30 @@
       --bg-cream: #fbf8f1;
       --dark: #1f2421;
       --card-bg: #ffffff;
-      --shadow-3d: 0 10px 25px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.04);
+      --shadow-3d: 0 12px 30px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.04);
       --comic-font: 'Bangers', cursive, sans-serif;
       --body-font: 'Outfit', sans-serif;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
     body {
       font-family: var(--body-font);
       background-color: var(--bg-cream);
       color: var(--dark);
-      padding: 2rem 1.5rem 5rem;
-      max-width: 1250px;
+      margin: 0;
+      line-height: 1.6;
+    }
+
+    .main-content {
+      padding: 2.5rem 1.5rem 6rem;
+      max-width: 1200px;
       margin: 0 auto;
     }
 
-    /* Header */
     .header-section {
       text-align: center;
-      margin-bottom: 3rem;
+      margin-bottom: 2.8rem;
     }
     .header-section h1 {
       font-family: var(--comic-font);
@@ -64,11 +70,10 @@
       margin: 0.4rem auto 0;
     }
 
-    /* Layout Grid */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 2rem;
+      gap: 2.2rem;
     }
 
     .card {
@@ -79,118 +84,36 @@
       border: 1px solid rgba(0, 0, 0, 0.06);
     }
 
-    /* Profile Header */
-    .profile-header {
+    .contact-channel {
       display: flex;
       align-items: center;
       gap: 1.2rem;
-      margin-bottom: 1.8rem;
-      padding-bottom: 1.2rem;
-      border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-    }
-    .profile-avatar {
-      width: 75px;
-      height: 75px;
-      border-radius: 50%;
-      border: 3px solid var(--accent);
-      object-fit: cover;
-      background: #fff;
-    }
-    .profile-name {
-      font-family: var(--comic-font);
-      font-size: 2rem;
-      color: var(--primary-dark);
-      line-height: 1;
-    }
-    .profile-role {
-      font-size: 0.88rem;
-      font-weight: 700;
-      color: var(--accent-orange);
-      letter-spacing: 0.5px;
-      text-transform: uppercase;
-      margin-top: 4px;
-    }
-
-    /* Contact Links */
-    .contact-item {
-      display: flex;
-      align-items: center;
-      gap: 1.2rem;
-      padding: 1.1rem 1.2rem;
+      padding: 1.1rem 1.3rem;
       background: #f8faf9;
       border-radius: 14px;
-      margin-bottom: 1rem;
+      margin-bottom: 1.2rem;
       text-decoration: none;
       color: var(--dark);
       border: 1px solid rgba(45, 106, 79, 0.1);
       transition: all 0.25s ease;
     }
-    .contact-item:hover {
+    .contact-channel:hover {
       background: rgba(82, 183, 136, 0.15);
       transform: translateX(6px);
-      border-color: var(--primary-light);
     }
     .contact-icon {
-      width: 48px;
-      height: 48px;
+      width: 50px;
+      height: 50px;
       border-radius: 50%;
       background: var(--primary);
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.25rem;
+      font-size: 1.3rem;
       flex-shrink: 0;
     }
-    .contact-label {
-      font-size: 0.78rem;
-      text-transform: uppercase;
-      font-weight: 800;
-      color: #777;
-      letter-spacing: 0.5px;
-    }
-    .contact-val {
-      font-size: 1.1rem;
-      font-weight: 700;
-      color: var(--primary-dark);
-    }
 
-    /* Social Grid */
-    .social-section-title {
-      font-family: var(--comic-font);
-      font-size: 1.5rem;
-      color: var(--primary-dark);
-      margin: 1.5rem 0 1rem;
-    }
-    .social-buttons-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0.8rem;
-    }
-    .social-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      padding: 0.75rem 1rem;
-      border-radius: 12px;
-      text-decoration: none;
-      font-weight: 700;
-      font-size: 0.9rem;
-      border: 1px solid #e2e8f0;
-      background: #fff;
-      transition: all 0.2s ease;
-      color: var(--dark);
-    }
-    .social-btn:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
-    }
-    .social-btn.youtube:hover { color: #ff0000; border-color: #ff0000; }
-    .social-btn.tiktok:hover { color: #000; border-color: #000; }
-    .social-btn.threads:hover { color: #e1306c; border-color: #e1306c; }
-    .social-btn.facebook:hover { color: #1877f2; border-color: #1877f2; }
-
-    /* Form Card */
     .form-group {
       margin-bottom: 1.2rem;
     }
@@ -215,14 +138,15 @@
       border-color: var(--primary);
       box-shadow: 0 0 0 3px rgba(45, 106, 79, 0.15);
     }
-    .btn-send {
+
+    .btn-submit {
       width: 100%;
       background: var(--accent-orange);
       color: #fff;
       font-family: var(--comic-font);
       font-size: 1.35rem;
       letter-spacing: 0.5px;
-      padding: 0.8rem;
+      padding: 0.85rem;
       border-radius: 30px;
       border: 2px solid #fff;
       cursor: pointer;
@@ -231,161 +155,233 @@
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      gap: 8px;
+      gap: 10px;
     }
-    .btn-send:hover {
+    .btn-submit:hover {
       background: #e07400;
       transform: translateY(-2px);
     }
 
-    /* Service Area Pill */
-    .service-area-box {
-      margin-top: 1.5rem;
-      background: rgba(255, 183, 3, 0.15);
-      border-left: 4px solid var(--accent-orange);
-      padding: 1rem 1.2rem;
-      border-radius: 10px;
-      font-size: 0.9rem;
-      line-height: 1.5;
+    .social-links-grid {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 1rem;
+    }
+    .social-btn {
+      padding: 0.6rem 1.1rem;
+      border-radius: 30px;
+      background: #f0f4f2;
+      color: var(--primary-dark);
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 0.88rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      border: 1px solid rgba(0,0,0,0.06);
+    }
+    .social-btn:hover {
+      background: var(--primary);
+      color: #fff;
+      transform: translateY(-2px);
     }
 
-    @media (max-width: 850px) {
+    @media (max-width: 800px) {
       .contact-grid { grid-template-columns: 1fr; }
       .header-section h1 { font-size: 2.6rem; }
-      .social-buttons-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Section Header -->
-  <div class="header-section">
-    <h1><i class="fa-solid fa-address-book"></i> Get In Touch</h1>
-    <p>Have questions about your shrubs, trees, or seasonal garden care? Reach out directly or send us a quick note below.</p>
+  <!-- Top Bar: Direct contact and socials -->
+  <div class="top-bar">
+    <div class="top-bar-contact">
+      <a href="tel:9052527619" title="Call Office"><i class="fa-solid fa-phone"></i> <span>Office: 905-252-7619</span></a>
+      <a href="tel:9052523569" title="Call or Text Cell"><i class="fa-solid fa-mobile-screen"></i> <span>Cell: 905-252-3569</span></a>
+      <a href="mailto:YourNeighbourhoodPlantGuy@Gmail.com" title="Send Email"><i class="fa-solid fa-envelope"></i> <span>YourNeighbourhoodPlantGuy@Gmail.com</span></a>
+      <span class="top-bar-badge"><i class="fa-solid fa-bolt"></i> 100% Eco-Friendly • Bradford, ON</span>
+    </div>
+    <div class="top-bar-socials">
+      <a href="https://www.youtube.com/@trevorauton2676" target="_blank" rel="noopener noreferrer" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://www.tiktok.com/@your.neighbourhoo8" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" rel="noopener noreferrer" title="Threads / Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" rel="noopener noreferrer" title="Threads"><i class="fa-brands fa-threads"></i></a>
+      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    </div>
   </div>
 
-  <div class="contact-grid">
-    
-    <!-- Direct Contact Details -->
-    <div class="card">
-      <div class="profile-header">
-        <img src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" alt="Trevor Auton Logo" class="profile-avatar" />
+  <!-- Persistent Site Header -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a class="brand-logo" href="index.html">
+        <img id="siteBrandLogo" src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" alt="Your Neighbourhood Plant Guy Logo" class="brand-avatar" width="48" height="48" />
         <div>
-          <div class="profile-name">Trevor Auton</div>
-          <div class="profile-role">Horticultural Specialist • 25 Years Exp.</div>
-        </div>
-      </div>
-
-      <a href="tel:9052527619" class="contact-item">
-        <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
-        <div>
-          <div class="contact-label">Office Line</div>
-          <div class="contact-val">905-252-7619</div>
+          <div class="brand-title">Your Neighbourhood Plant Guy</div>
+          <div class="brand-subtitle">Eco-Friendly Plant Care • 25 Yrs Experience</div>
         </div>
       </a>
 
-      <a href="tel:9052523569" class="contact-item">
-        <div class="contact-icon"><i class="fa-solid fa-mobile-screen"></i></div>
-        <div>
-          <div class="contact-label">Cell / Direct Text</div>
-          <div class="contact-val">905-252-3569</div>
-        </div>
-      </a>
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" onclick="toggleMobileNav()"><i class="fa-solid fa-bars"></i></button>
 
-      <a href="mailto:YourNeighbourhoodPlantGuy@Gmail.com" class="contact-item">
-        <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
-        <div>
-          <div class="contact-label">Email Inquiries</div>
-          <div class="contact-val" style="font-size: 0.95rem;">YourNeighbourhoodPlantGuy@Gmail.com</div>
-        </div>
-      </a>
+      <nav id="navMenu">
+        <a class="nav-btn" href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a class="nav-btn" href="gallery.html"><i class="fa-solid fa-seedling"></i> Plant Gallery</a>
+        <a class="nav-btn" href="jobs.html"><i class="fa-solid fa-tree"></i> Completed Jobs</a>
+        <a class="nav-btn" href="videos.html"><i class="fa-solid fa-clapperboard"></i> Videos</a>
+        <a class="nav-btn" href="comics.html"><i class="fa-solid fa-book-open"></i> Comics &amp; Posters</a>
+        <a class="nav-btn" href="blog.html"><i class="fa-solid fa-newspaper"></i> Blog</a>
+        <a class="nav-btn" href="about.html"><i class="fa-solid fa-user"></i> About Us</a>
+        <a class="nav-btn active" href="contact.html"><i class="fa-solid fa-address-book"></i> Contact</a>
+        <a class="nav-btn nav-btn-quote" href="quote.html"><i class="fa-solid fa-calculator"></i> Request Quote</a>
+      </nav>
+    </div>
+  </header>
 
-      <div class="social-section-title">Follow &amp; Subscribe</div>
-      <div class="social-buttons-grid">
-        <a href="https://www.youtube.com/@trevorauton2676" target="_blank" class="social-btn youtube">
-          <i class="fa-brands fa-youtube" style="color: #ff0000; font-size: 1.2rem;"></i> YouTube
-        </a>
-        <a href="https://www.tiktok.com/@your.neighbourhoo8" target="_blank" class="social-btn tiktok">
-          <i class="fa-brands fa-tiktok" style="font-size: 1.2rem;"></i> TikTok
-        </a>
-        <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" class="social-btn threads">
-          <i class="fa-brands fa-instagram" style="color: #e1306c; font-size: 1.2rem;"></i> Instagram / Threads
-        </a>
-        <a href="https://www.facebook.com" target="_blank" class="social-btn facebook">
-          <i class="fa-brands fa-facebook-f" style="color: #1877f2; font-size: 1.2rem;"></i> Facebook
-        </a>
-      </div>
-
-      <div class="service-area-box">
-        <strong>📍 Serving:</strong> Bradford West Gwillimbury.
-      </div>
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="header-section">
+      <h1><i class="fa-solid fa-address-book"></i> Get In Touch</h1>
+      <p>Have a question about a troubled shrub, need seasonal hedge work, or want to say hello? Reach out anytime!</p>
     </div>
 
-    <!-- Quick Message Form -->
-    <div class="card">
-      <h2 style="font-family: var(--comic-font); font-size: 2.2rem; color: var(--primary-dark); margin-bottom: 0.5rem;">
-        Send a Message
-      </h2>
-      <p style="color: #666; font-size: 0.92rem; margin-bottom: 1.5rem;">
-        Fill out this form and it will open directly in your preferred email client ready to send.
-      </p>
+    <div class="contact-grid">
 
-      <form onsubmit="handleContactSubmit(event)">
-        <div class="form-group">
-          <label><i class="fa-solid fa-user"></i> Your Name *</label>
-          <input type="text" id="cName" class="form-control" placeholder="e.g. Sarah Jenkins" required />
+      <!-- Direct Contact Details -->
+      <div class="card">
+        <h2 style="font-family: var(--comic-font); font-size: 2.2rem; color: var(--primary-dark); margin-bottom: 1rem;">
+          Direct Numbers &amp; Email
+        </h2>
+
+        <a href="tel:9052527619" class="contact-channel">
+          <div class="contact-icon"><i class="fa-solid fa-phone"></i></div>
+          <div>
+            <div style="font-size: 0.8rem; text-transform: uppercase; font-weight: 800; color: #777;">Office Telephone</div>
+            <strong style="font-size: 1.2rem; color: var(--primary-dark);">905-252-7619</strong>
+          </div>
+        </a>
+
+        <a href="tel:9052523569" class="contact-channel">
+          <div class="contact-icon"><i class="fa-solid fa-mobile-screen"></i></div>
+          <div>
+            <div style="font-size: 0.8rem; text-transform: uppercase; font-weight: 800; color: #777;">Cell / Direct Text</div>
+            <strong style="font-size: 1.2rem; color: var(--primary-dark);">905-252-3569</strong>
+          </div>
+        </a>
+
+        <a href="mailto:YourNeighbourhoodPlantGuy@Gmail.com" class="contact-channel">
+          <div class="contact-icon"><i class="fa-solid fa-envelope"></i></div>
+          <div>
+            <div style="font-size: 0.8rem; text-transform: uppercase; font-weight: 800; color: #777;">Email Address</div>
+            <strong style="font-size: 1.05rem; color: var(--primary-dark);">YourNeighbourhoodPlantGuy@Gmail.com</strong>
+          </div>
+        </a>
+
+        <div style="margin-top: 1.8rem;">
+          <h3 style="font-size: 1.1rem; font-weight: 800; color: var(--primary-dark); margin-bottom: 0.5rem;">Follow Our Adventures Online</h3>
+          <div class="social-links-grid">
+            <a href="https://www.youtube.com/@trevorauton2676" target="_blank" rel="noopener noreferrer" class="social-btn"><i class="fa-brands fa-youtube" style="color: #ff0000;"></i> YouTube</a>
+            <a href="https://www.tiktok.com/@your.neighbourhoo8" target="_blank" rel="noopener noreferrer" class="social-btn"><i class="fa-brands fa-tiktok"></i> TikTok</a>
+            <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" rel="noopener noreferrer" class="social-btn"><i class="fa-brands fa-instagram" style="color: #e1306c;"></i> Instagram</a>
+            <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" rel="noopener noreferrer" class="social-btn"><i class="fa-brands fa-threads"></i> Threads</a>
+          </div>
         </div>
+      </div>
 
-        <div class="form-group">
-          <label><i class="fa-solid fa-phone"></i> Phone Number *</label>
-          <input type="tel" id="cPhone" class="form-control" placeholder="e.g. 905-252-XXXX" required />
-        </div>
+      <!-- Quick Message Form -->
+      <div class="card">
+        <h2 style="font-family: var(--comic-font); font-size: 2.2rem; color: var(--primary-dark); margin-bottom: 1rem;">
+          Send a Quick Message
+        </h2>
 
-        <div class="form-group">
-          <label><i class="fa-solid fa-envelope"></i> Email Address *</label>
-          <input type="email" id="cEmail" class="form-control" placeholder="name@example.com" required />
-        </div>
+        <form onsubmit="handleContactSubmit(event)">
+          <div class="form-group">
+            <label><i class="fa-solid fa-user"></i> Your Name *</label>
+            <input type="text" id="cName" class="form-control" placeholder="e.g. Sarah Connor" required />
+          </div>
 
-        <div class="form-group">
-          <label><i class="fa-solid fa-location-dot"></i> City / Neighbourhood</label>
-          <input type="text" id="cLocation" class="form-control" placeholder="e.g. Bradford / Bond Head / Holland Landing" />
-        </div>
+          <div class="form-group">
+            <label><i class="fa-solid fa-envelope"></i> Email Address *</label>
+            <input type="email" id="cEmail" class="form-control" placeholder="name@example.com" required />
+          </div>
 
-        <div class="form-group">
-          <label><i class="fa-solid fa-comment-dots"></i> How can we help?</label>
-          <textarea id="cMessage" class="form-control" rows="4" placeholder="Tell us about your shrubs, trees, pest concerns, or seasonal maintenance..." required></textarea>
-        </div>
+          <div class="form-group">
+            <label><i class="fa-solid fa-tag"></i> Subject</label>
+            <input type="text" id="cSubject" class="form-control" placeholder="e.g. Question about my cedar hedge" />
+          </div>
 
-        <button type="submit" class="btn-send">
-          <i class="fa-solid fa-paper-plane"></i> Send Direct Message
-        </button>
-      </form>
+          <div class="form-group">
+            <label><i class="fa-solid fa-comment"></i> Your Message *</label>
+            <textarea id="cMessage" class="form-control" rows="4" placeholder="How can we help your yard today?" required></textarea>
+          </div>
+
+          <button type="submit" class="btn-submit">
+            <i class="fa-solid fa-paper-plane"></i> Send Message
+          </button>
+        </form>
+      </div>
+
     </div>
-
   </div>
 
-  <script>
-    function handleContactSubmit(e) {
-      e.preventDefault();
-      const name = document.getElementById('cName').value;
-      const phone = document.getElementById('cPhone').value;
-      const email = document.getElementById('cEmail').value;
-      const location = document.getElementById('cLocation').value;
-      const message = document.getElementById('cMessage').value;
+  <!-- Persistent Background Theme Song -->
+  <audio id="themeAudio" loop preload="none" src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Your%20Neighbourhood%20Plant%20Guy.mp3"></audio>
 
-      const subject = encodeURIComponent(`Inquiry from ${name} - Your Neighbourhood Plant Guy`);
-      const body = encodeURIComponent(
-        `Name: ${name}\nPhone: ${phone}\nEmail: ${email}\nLocation: ${location}\n\nMessage:\n${message}`
-      );
+  <!-- Music Widget -->
+  <div class="floating-music-bar">
+    <div class="vinyl-disc" id="vinylDisc"><i class="fa-solid fa-music"></i></div>
+    <div class="music-info">
+      <span class="music-title">Your Neighbourhood Plant Guy</span>
+      <span class="music-sub">Official Theme Song 🎶</span>
+    </div>
+    <div class="music-controls">
+      <button class="player-btn" aria-label="Play theme song" onclick="toggleThemeSong()"><i class="fa-solid fa-play" id="playIcon"></i></button>
+      <input type="range" class="vol-slider" min="0" max="1" step="0.05" value="0.7" onchange="adjustVolume(this.value)" aria-label="Volume slider" />
+    </div>
+  </div>
 
-      window.location.href = `mailto:YourNeighbourhoodPlantGuy@Gmail.com?subject=${subject}&body=${body}`;
-    }
-  </script>
-
-<!-- ================= LEAF ANIMATION CANVAS & SCRIPT ================= -->
   <canvas id="leafCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;"></canvas>
 
   <script>
+    function toggleMobileNav() {
+      const menu = document.getElementById('navMenu');
+      if (menu) menu.classList.toggle('open');
+    }
+
+    function handleContactSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('cName').value;
+      const email = document.getElementById('cEmail').value;
+      const subject = document.getElementById('cSubject').value || 'General Inquiry';
+      const message = document.getElementById('cMessage').value;
+
+      const mailSubject = encodeURIComponent(`${subject} - from ${name}`);
+      const body = encodeURIComponent(`From: ${name} (${email})\n\nMessage:\n${message}`);
+
+      window.location.href = `mailto:YourNeighbourhoodPlantGuy@Gmail.com?subject=${mailSubject}&body=${body}`;
+    }
+
+    const audio = document.getElementById('themeAudio');
+    const playIcon = document.getElementById('playIcon');
+    const disc = document.getElementById('vinylDisc');
+
+    function toggleThemeSong() {
+      if (audio.paused) {
+        audio.play().then(() => {
+          playIcon.className = 'fa-solid fa-pause';
+          disc.classList.add('playing');
+        }).catch(() => {});
+      } else {
+        audio.pause();
+        playIcon.className = 'fa-solid fa-play';
+        disc.classList.remove('playing');
+      }
+    }
+
+    function adjustVolume(v) { audio.volume = parseFloat(v); }
+
     (function initFallingLeaves() {
       const canvas = document.getElementById('leafCanvas');
       if (!canvas) return;
@@ -400,9 +396,7 @@
       resize();
 
       class Leaf {
-        constructor() {
-          this.reset();
-        }
+        constructor() { this.reset(); }
         reset() {
           this.x = Math.random() * canvas.width;
           this.y = -20;
@@ -446,7 +440,5 @@
       animate();
     })();
   </script>
-  <!-- ================================================================= -->
-
 </body>
 </html>

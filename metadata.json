@@ -1,0 +1,6 @@
+{
+  "name": "Your Neighbourhood Plant Guy",
+  "description": "Eco-friendly plant care, pruning, pest management, and horticultural consulting in Bradford and York Region by Trevor Auton.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

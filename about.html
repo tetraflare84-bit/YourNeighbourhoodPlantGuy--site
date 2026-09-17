@@ -1,0 +1,578 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>About Us | Your Neighbourhood Plant Guy</title>
+  <meta name="description" content="Meet Trevor Auton, Your Neighbourhood Plant Guy. 25 years of horticultural care, eco-friendly plant diagnostics, and community roots in Bradford, Ontario." />
+  <meta property="og:title" content="About Us | Your Neighbourhood Plant Guy" />
+  <meta property="og:description" content="Meet Trevor Auton, Your Neighbourhood Plant Guy. 25 years of horticultural care, eco-friendly plant diagnostics, and community roots in Bradford, Ontario." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="nav.css" />
+
+  <style>
+    :root {
+      --primary: #2d6a4f;
+      --primary-dark: #1b4332;
+      --primary-light: #52b788;
+      --accent: #ffb703;
+      --accent-orange: #fb8500;
+      --accent-red: #d90429;
+      --bg-cream: #fbf8f1;
+      --dark: #1f2421;
+      --card-bg: #ffffff;
+      --shadow-3d: 0 12px 30px rgba(0, 0, 0, 0.08), 0 4px 10px rgba(0, 0, 0, 0.04);
+      --comic-font: 'Bangers', cursive, sans-serif;
+      --body-font: 'Outfit', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: var(--body-font);
+      background-color: var(--bg-cream);
+      color: var(--dark);
+      line-height: 1.8;
+      position: relative;
+    }
+
+    .main-content {
+      padding: 2.5rem 1.5rem 6rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    /* Header */
+    .about-header {
+      text-align: center;
+      margin-bottom: 2.8rem;
+    }
+    .badge-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--primary-dark);
+      color: var(--accent);
+      border: 1px solid var(--accent);
+      padding: 6px 18px;
+      border-radius: 30px;
+      font-weight: 800;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      margin-bottom: 0.8rem;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    }
+    .about-header h1 {
+      font-family: var(--comic-font);
+      font-size: 3.5rem;
+      color: var(--primary-dark);
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 0 var(--accent);
+      line-height: 1.1;
+    }
+    .about-header p {
+      font-size: 1.15rem;
+      color: #555;
+      max-width: 750px;
+      margin: 0.4rem auto 0;
+    }
+
+    /* Main Story Grid */
+    .story-grid {
+      display: grid;
+      grid-template-columns: 1.15fr 0.85fr;
+      gap: 2.2rem;
+      align-items: start;
+      margin-bottom: 3rem;
+    }
+
+    .story-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      padding: 2.5rem;
+      box-shadow: var(--shadow-3d);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+    }
+
+    .story-card h2 {
+      font-family: var(--comic-font);
+      font-size: 2.4rem;
+      color: var(--primary-dark);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .story-card p {
+      font-size: 1.02rem;
+      color: #333;
+      margin-bottom: 1.2rem;
+    }
+
+    /* Profile Side Card */
+    .profile-card {
+      background: var(--card-bg);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow-3d);
+      border: 2px solid var(--accent);
+      text-align: center;
+    }
+
+    .profile-img-wrap {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      padding: 2.5rem 1.5rem 1.5rem;
+      position: relative;
+    }
+
+    .profile-avatar {
+      width: 140px;
+      height: 140px;
+      border-radius: 50%;
+      border: 4px solid #fff;
+      background: #fff;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+      object-fit: cover;
+      margin-bottom: 0.8rem;
+    }
+
+    .profile-name {
+      font-family: var(--comic-font);
+      font-size: 2.2rem;
+      color: #fff;
+      line-height: 1;
+      text-shadow: 1px 1px 0 var(--dark);
+    }
+
+    .profile-role {
+      font-size: 0.88rem;
+      font-weight: 800;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .profile-body {
+      padding: 1.8rem;
+      text-align: left;
+    }
+
+    .quote-callout {
+      background: rgba(255, 183, 3, 0.15);
+      border-left: 4px solid var(--accent-orange);
+      padding: 1.1rem 1.3rem;
+      border-radius: 12px;
+      font-style: italic;
+      font-weight: 600;
+      color: var(--primary-dark);
+      margin-bottom: 1.5rem;
+    }
+
+    .profile-stat-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0.8rem;
+      margin-bottom: 1.2rem;
+    }
+
+    .stat-pill {
+      background: #f8faf9;
+      border: 1px solid rgba(45, 106, 79, 0.12);
+      padding: 0.8rem;
+      border-radius: 14px;
+      text-align: center;
+    }
+    .stat-pill strong {
+      display: block;
+      font-family: var(--comic-font);
+      font-size: 1.8rem;
+      color: var(--primary);
+      line-height: 1;
+    }
+    .stat-pill span {
+      font-size: 0.76rem;
+      font-weight: 700;
+      color: #666;
+      text-transform: uppercase;
+    }
+
+    /* Community Roots Section */
+    .community-section {
+      background: #fff;
+      border-radius: 24px;
+      padding: 2.8rem;
+      box-shadow: var(--shadow-3d);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      margin-bottom: 3rem;
+    }
+
+    .community-header {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 2.5rem;
+    }
+    .community-header h2 {
+      font-family: var(--comic-font);
+      font-size: 2.8rem;
+      color: var(--primary-dark);
+      letter-spacing: 0.5px;
+    }
+
+    .community-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.8rem;
+    }
+
+    .community-box {
+      background: #f8faf9;
+      padding: 1.8rem;
+      border-radius: 18px;
+      border: 1px solid rgba(0,0,0,0.05);
+      display: flex;
+      flex-direction: column;
+      gap: 0.8rem;
+    }
+    .community-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 14px;
+      background: rgba(82, 183, 136, 0.2);
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+    }
+    .community-box h3 {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--primary-dark);
+    }
+    .community-box p {
+      font-size: 0.95rem;
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Bottom CTA Banner */
+    .cta-banner {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: #fff;
+      padding: 2.8rem;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: var(--shadow-3d);
+    }
+    .cta-banner h2 {
+      font-family: var(--comic-font);
+      font-size: 2.8rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+    .cta-banner p {
+      font-size: 1.1rem;
+      opacity: 0.92;
+      max-width: 650px;
+      margin: 0 auto 1.5rem;
+    }
+
+    .btn-cta {
+      background: var(--accent-orange);
+      color: #fff;
+      font-family: var(--comic-font);
+      font-size: 1.4rem;
+      letter-spacing: 0.5px;
+      padding: 0.85rem 2.2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      border: 2px solid #fff;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 8px 20px rgba(251, 133, 0, 0.4);
+      transition: all 0.25s ease;
+    }
+    .btn-cta:hover {
+      background: #e07400;
+      transform: translateY(-3px);
+    }
+
+    @media (max-width: 900px) {
+      .story-grid { grid-template-columns: 1fr; }
+      .about-header h1 { font-size: 2.8rem; }
+      .community-header h2 { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Top Bar: Direct contact and socials -->
+  <div class="top-bar">
+    <div class="top-bar-contact">
+      <a href="tel:9052527619" title="Call Office"><i class="fa-solid fa-phone"></i> <span>Office: 905-252-7619</span></a>
+      <a href="tel:9052523569" title="Call or Text Cell"><i class="fa-solid fa-mobile-screen"></i> <span>Cell: 905-252-3569</span></a>
+      <a href="mailto:YourNeighbourhoodPlantGuy@Gmail.com" title="Send Email"><i class="fa-solid fa-envelope"></i> <span>YourNeighbourhoodPlantGuy@Gmail.com</span></a>
+      <span class="top-bar-badge"><i class="fa-solid fa-bolt"></i> 100% Eco-Friendly • Bradford, ON</span>
+    </div>
+    <div class="top-bar-socials">
+      <a href="https://www.youtube.com/@trevorauton2676" target="_blank" rel="noopener noreferrer" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://www.tiktok.com/@your.neighbourhoo8" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" rel="noopener noreferrer" title="Threads / Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" rel="noopener noreferrer" title="Threads"><i class="fa-brands fa-threads"></i></a>
+      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    </div>
+  </div>
+
+  <!-- Persistent Site Header -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a class="brand-logo" href="index.html">
+        <img id="siteBrandLogo" src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" alt="Your Neighbourhood Plant Guy Logo" class="brand-avatar" width="48" height="48" />
+        <div>
+          <div class="brand-title">Your Neighbourhood Plant Guy</div>
+          <div class="brand-subtitle">Eco-Friendly Plant Care • 25 Yrs Experience</div>
+        </div>
+      </a>
+
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" onclick="toggleMobileNav()"><i class="fa-solid fa-bars"></i></button>
+
+      <nav id="navMenu">
+        <a class="nav-btn" href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a class="nav-btn" href="gallery.html"><i class="fa-solid fa-seedling"></i> Plant Gallery</a>
+        <a class="nav-btn" href="jobs.html"><i class="fa-solid fa-tree"></i> Completed Jobs</a>
+        <a class="nav-btn" href="videos.html"><i class="fa-solid fa-clapperboard"></i> Videos</a>
+        <a class="nav-btn" href="comics.html"><i class="fa-solid fa-book-open"></i> Comics &amp; Posters</a>
+        <a class="nav-btn" href="blog.html"><i class="fa-solid fa-newspaper"></i> Blog</a>
+        <a class="nav-btn active" href="about.html"><i class="fa-solid fa-user"></i> About Us</a>
+        <a class="nav-btn" href="contact.html"><i class="fa-solid fa-address-book"></i> Contact</a>
+        <a class="nav-btn nav-btn-quote" href="quote.html"><i class="fa-solid fa-calculator"></i> Request Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="about-header">
+      <div class="badge-pill"><i class="fa-solid fa-heart"></i> Passion for Plant Health</div>
+      <h1>MEET YOUR NEIGHBOURHOOD PLANT GUY</h1>
+      <p>Helping residents of the Bradford area take the absolute best care of their plants of all kinds — from your weeds to your trees and everything in between.</p>
+    </div>
+
+    <!-- Story & Profile Grid -->
+    <div class="story-grid">
+      
+      <!-- Origin Story & Philosophy -->
+      <div class="story-card">
+        <h2><i class="fa-solid fa-seedling"></i> 25 Years of Listening to Plants</h2>
+        
+        <p>
+          Twenty-five years ago, I took a job as a labourer for a mid-sized arboriculture provider. Almost immediately, I fell completely in love with the intricate complexities of plants as living, breathing beings with individual, diverse needs.
+        </p>
+
+        <p>
+          Although plants stand with a strong, silent stoicism, I quickly learned that they <em>do</em> speak to us — in a much subtler, fascinating language. They communicate through their stature, branch architecture, leaf color, root symptoms, and the minute differences between them and their neighbouring brethren.
+        </p>
+
+        <div class="quote-callout">
+          "Every plant in its place — thriving in the exact microclimate, soil, and environment it was meant to call home."
+        </div>
+
+        <p>
+          Over the past two and a half decades, I have dedicated my life to researching diverse plant varieties, honing the diagnostic skills required to truly read what a stressed plant is trying to tell me. I’ve had the privilege of studying under mentors across a wide range of botanical specialties — absorbing unique perspectives on how to deliver the highest standard of care, whether for a single ornamental specimen or an entire residential landscape.
+        </p>
+      </div>
+
+      <!-- Personal Profile Card -->
+      <div class="profile-card">
+        <div class="profile-img-wrap">
+          <img 
+            src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" 
+            alt="Trevor Auton - Your Neighbourhood Plant Guy" 
+            class="profile-avatar"
+            width="140"
+            height="140"
+          />
+          <div class="profile-name">Trevor Auton</div>
+          <div class="profile-role">Founder &amp; Horticultural Specialist</div>
+        </div>
+
+        <div class="profile-body">
+          <div class="profile-stat-row">
+            <div class="stat-pill">
+              <strong>25</strong>
+              <span>Years In Plant Care</span>
+            </div>
+            <div class="stat-pill">
+              <strong>100%</strong>
+              <span>Eco-Friendly &amp; Safe</span>
+            </div>
+          </div>
+
+          <p style="font-size: 0.92rem; color: #555; margin-bottom: 1.2rem;">
+            Dedicated to chemical-free pest control, precision tree and hedge pruning, troubled boxwood rescue, and sustainable soil enrichment across Bradford West Gwillimbury.
+          </p>
+
+          <a href="quote.html" class="btn-cta" style="width: 100%; justify-content: center; font-size: 1.15rem; padding: 0.7rem;">
+            <i class="fa-solid fa-calculator"></i> Request a Consultation
+          </a>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Community Roots & Presence -->
+    <div class="community-section">
+      <div class="community-header">
+        <div class="badge-pill" style="background: rgba(251, 133, 0, 0.15); color: var(--accent-orange); border-color: var(--accent-orange);">
+          <i class="fa-solid fa-users"></i> Rooted in Bradford
+        </div>
+        <h2>Out &amp; About in the Community</h2>
+        <p>Taking care of plants is only half the joy — the other half is connecting with the wonderful people who nurture our town!</p>
+      </div>
+
+      <div class="community-grid">
+        <div class="community-box">
+          <div class="community-icon"><i class="fa-solid fa-carrot"></i></div>
+          <h3>At the Bradford Farmers' Market</h3>
+          <p>You’ll often find me chatting with fellow gardeners at the market, swapping tips on local soil challenges, diagnosing troubled leaf samples, and sharing organic pest solutions with neighbours.</p>
+        </div>
+
+        <div class="community-box">
+          <div class="community-icon" style="background: rgba(251, 133, 0, 0.2); color: var(--accent-orange);"><i class="fa-solid fa-book-open"></i></div>
+          <h3>Comics at Local Festivals</h3>
+          <p>From <em>Carrot Fest Capers</em> to our Canada Day specials, I love sharing our adventures of the Plant Guy and Plant Kid through community comic books, bringing a fun, superhero spark to plant education.</p>
+        </div>
+
+        <div class="community-box">
+          <div class="community-icon" style="background: rgba(217, 4, 41, 0.15); color: var(--accent-red);"><i class="fa-solid fa-bicycle"></i></div>
+          <h3>Eco-Friendly Transit</h3>
+          <p>Whether cruising by on my cargo bike through Dreamfields, Summerlyn, or Downtown Bradford, I’m always around to answer a quick plant question and lend a knowledgeable hand to your yard.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- Bottom CTA Banner -->
+    <div class="cta-banner">
+      <h2>Let's Make Your Garden Thrive Together</h2>
+      <p>Whether you have a troubled tree, struggling boxwoods, or want a full seasonal yard plan, let’s give your plants the care they deserve.</p>
+      <a href="quote.html" class="btn-cta">
+        <i class="fa-solid fa-paper-plane"></i> Get Your Free Quote Today
+      </a>
+    </div>
+  </div>
+
+  <!-- Persistent Background Theme Song -->
+  <audio id="themeAudio" loop preload="none" src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Your%20Neighbourhood%20Plant%20Guy.mp3"></audio>
+
+  <!-- Music Widget -->
+  <div class="floating-music-bar">
+    <div class="vinyl-disc" id="vinylDisc"><i class="fa-solid fa-music"></i></div>
+    <div class="music-info">
+      <span class="music-title">Your Neighbourhood Plant Guy</span>
+      <span class="music-sub">Official Theme Song 🎶</span>
+    </div>
+    <div class="music-controls">
+      <button class="player-btn" aria-label="Play theme song" onclick="toggleThemeSong()"><i class="fa-solid fa-play" id="playIcon"></i></button>
+      <input type="range" class="vol-slider" min="0" max="1" step="0.05" value="0.7" onchange="adjustVolume(this.value)" aria-label="Volume slider" />
+    </div>
+  </div>
+
+  <!-- Leaf Canvas -->
+  <canvas id="leafCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;"></canvas>
+
+  <script>
+    function toggleMobileNav() {
+      const menu = document.getElementById('navMenu');
+      if (menu) menu.classList.toggle('open');
+    }
+
+    const audio = document.getElementById('themeAudio');
+    const playIcon = document.getElementById('playIcon');
+    const disc = document.getElementById('vinylDisc');
+
+    function toggleThemeSong() {
+      if (audio.paused) {
+        audio.play().then(() => {
+          playIcon.className = 'fa-solid fa-pause';
+          disc.classList.add('playing');
+        }).catch(() => {});
+      } else {
+        audio.pause();
+        playIcon.className = 'fa-solid fa-play';
+        disc.classList.remove('playing');
+      }
+    }
+
+    function adjustVolume(v) { audio.volume = parseFloat(v); }
+
+    (function initFallingLeaves() {
+      const canvas = document.getElementById('leafCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let leaves = [];
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      window.addEventListener('resize', resize);
+      resize();
+
+      class Leaf {
+        constructor() { this.reset(); }
+        reset() {
+          this.x = Math.random() * canvas.width;
+          this.y = -20;
+          this.size = Math.random() * 12 + 8;
+          this.speedY = Math.random() * 1.2 + 0.6;
+          this.speedX = Math.sin(Math.random() * Math.PI) * 0.8 - 0.4;
+          this.rotation = Math.random() * 360;
+          this.rotSpeed = (Math.random() - 0.5) * 2;
+          this.color = Math.random() > 0.4 ? 'rgba(82, 183, 136, 0.35)' : 'rgba(251, 133, 0, 0.3)';
+        }
+        update() {
+          this.y += this.speedY;
+          this.x += this.speedX + Math.sin(this.y * 0.015);
+          this.rotation += this.rotSpeed;
+          if (this.y > canvas.height + 20) this.reset();
+        }
+        draw() {
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.rotate((this.rotation * Math.PI) / 180);
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          ctx.moveTo(0, -this.size);
+          ctx.quadraticCurveTo(this.size * 0.8, 0, 0, this.size);
+          ctx.quadraticCurveTo(-this.size * 0.8, 0, 0, -this.size);
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+
+      for (let i = 0; i < 22; i++) leaves.push(new Leaf());
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        leaves.forEach(l => {
+          l.update();
+          l.draw();
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
+  </script>
+</body>
+</html>

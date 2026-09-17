@@ -1,17 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-<link rel="icon" type="image/png" href="/FAVICON.png">
 <head>
-<script src="https://analytics.ahrefs.com/analytics.js" data-key="BCDaDN1AFaIO/Cmo0awR5w" async></script>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Your Neighbourhood Plant Guy | Eco-Friendly Plant Care</title>
-  <meta name="description" content="Eco-friendly plant care, pruning, pest management, and horticultural consulting in Bradford and York Region by Trevor Auton." />
-  
+  <title>Your Neighbourhood Plant Guy | Eco-Friendly Plant Care & Bradford Soil Radar</title>
+  <meta name="description" content="Eco-friendly plant care, hedge pruning, pest management, and horticultural consulting in Bradford and York Region by Trevor Auton. Explore localized soil profiles." />
+  <meta property="og:title" content="Your Neighbourhood Plant Guy | Eco-Friendly Plant Care" />
+  <meta property="og:description" content="Eco-friendly plant care, pruning, pest management, and horticultural consulting in Bradford, Ontario by Trevor Auton." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts & FontAwesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;700;800&family=Share+Tech+Mono&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="nav.css" />
+
+  <!-- Structured Data (JSON-LD) for Local SEO -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HomeAndConstructionBusiness",
+    "name": "Your Neighbourhood Plant Guy",
+    "image": "https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png",
+    "description": "Eco-friendly plant care, hedge pruning, pest management, boxwood rescue, and horticultural consulting in Bradford and York Region by Trevor Auton.",
+    "telephone": "+1-905-252-7619",
+    "email": "YourNeighbourhoodPlantGuy@Gmail.com",
+    "address": {
+      "@type": "PostalAddress",
+      "addressLocality": "Bradford West Gwillimbury",
+      "addressRegion": "ON",
+      "addressCountry": "CA"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "44.1167",
+      "longitude": "-79.5667"
+    },
+    "areaServed": "Bradford West Gwillimbury, Newmarket, Simcoe County, York Region",
+    "priceRange": "$$"
+  }
+  </script>
 
   <style>
     :root {
@@ -20,187 +51,540 @@
       --primary-light: #52b788;
       --accent: #ffb703;
       --accent-orange: #fb8500;
+      --cyan-glow: #00f0ff;
       --bg-cream: #fbf8f1;
-      --dark: #1f2421;
+      --terminal-bg: #071510;
       --comic-font: 'Bangers', cursive, sans-serif;
       --body-font: 'Outfit', sans-serif;
+      --tech-font: 'Share Tech Mono', monospace;
     }
 
     * { box-sizing: border-box; margin: 0; padding: 0; }
 
-    html, body {
-      width: 100%;
-      height: 100%;
-      overflow: hidden; /* Main window doesn't scroll; frame scrolls seamlessly */
+    body {
       font-family: var(--body-font);
       background-color: var(--bg-cream);
-      display: flex;
-      flex-direction: column;
+      color: #1f2421;
+      margin: 0;
+      overflow-x: hidden;
+      position: relative;
+      line-height: 1.6;
     }
 
-    /* Fixed Top Bar */
-    .top-bar {
-      background: var(--primary-dark);
-      color: #fff;
-      padding: 6px 1.5rem;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.88rem;
-      border-bottom: 2px solid var(--accent);
-      z-index: 100;
-      flex-shrink: 0;
-    }
-    .top-bar-contact { display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap; }
-    .top-bar-contact a { color: #fff; text-decoration: none; font-weight: 600; display: inline-flex; align-items: center; gap: 6px; }
-    .top-bar-contact a:hover { color: var(--accent); }
-    .top-bar-socials { display: flex; gap: 0.8rem; }
-    .top-bar-socials a {
-      color: #fff; background: rgba(255,255,255,0.12); width: 28px; height: 28px; border-radius: 50%;
-      display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.25s;
-    }
-    .top-bar-socials a:hover { background: var(--accent); color: var(--dark); transform: scale(1.1); }
-
-    /* Fixed Header */
-    header {
-      background: rgba(255, 255, 255, 0.95);
-      border-bottom: 1px solid rgba(0,0,0,0.08);
-      box-shadow: 0 4px 15px rgba(0,0,0,0.04);
-      z-index: 90;
-      flex-shrink: 0;
-    }
-    .nav-container {
-      max-width: 1400px;
+    .main-content {
+      padding: 1.5rem 1.2rem 6rem;
+      max-width: 1440px;
       margin: 0 auto;
-      padding: 0.6rem 1.2rem;
-      display: flex;
+    }
+
+    /* Top Title Header */
+    .map-header {
+      text-align: center;
+      margin-bottom: 2rem;
+    }
+    .badge-hud {
+      display: inline-flex;
       align-items: center;
+      gap: 10px;
+      background: var(--terminal-bg);
+      color: var(--cyan-glow);
+      border: 1px solid var(--cyan-glow);
+      padding: 6px 18px;
+      border-radius: 30px;
+      font-family: var(--tech-font);
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      margin-bottom: 0.8rem;
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.25);
+    }
+    .radar-dot {
+      width: 8px;
+      height: 8px;
+      background: var(--cyan-glow);
+      border-radius: 50%;
+      box-shadow: 0 0 10px var(--cyan-glow);
+      animation: blink 1.2s infinite alternate;
+    }
+    @keyframes blink { 0% { opacity: 0.2; } 100% { opacity: 1; } }
+
+    .map-header h1 {
+      font-family: var(--comic-font);
+      font-size: 3.4rem;
+      color: var(--primary-dark);
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 0 var(--accent);
+      line-height: 1.1;
+    }
+    .map-header p {
+      font-size: 1.1rem;
+      color: #555;
+      max-width: 780px;
+      margin: 0.5rem auto 0;
+    }
+
+    /* Grid Layout */
+    .map-viewport-grid {
+      display: grid;
+      grid-template-columns: 1.4fr 0.85fr;
+      gap: 2rem;
+      align-items: start;
+    }
+
+    /* Map Terminal Screen */
+    .map-screen-card {
+      background: #000000;
+      border: 2px solid var(--primary-light);
+      border-radius: 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.35);
+    }
+
+    .terminal-top-bar {
+      position: absolute;
+      top: 12px;
+      left: 18px;
+      right: 18px;
+      display: flex;
       justify-content: space-between;
+      align-items: center;
+      color: #ffffff;
+      background: rgba(7, 21, 16, 0.75);
+      padding: 6px 14px;
+      border-radius: 12px;
+      font-family: var(--tech-font);
+      font-size: 0.78rem;
+      letter-spacing: 1px;
+      z-index: 20;
+      pointer-events: none;
+      backdrop-filter: blur(4px);
     }
-    .brand-logo { display: flex; align-items: center; gap: 12px; cursor: pointer; text-decoration: none; }
-    .brand-avatar {
-      width: 46px; height: 46px; border-radius: 50%; border: 3px solid var(--accent); background: #fff; object-fit: cover;
-    }
-    .brand-title {
-      font-family: var(--comic-font); font-size: 1.7rem; color: var(--primary-dark); text-shadow: 1px 1px 0 var(--accent); line-height: 1;
-    }
-    .brand-subtitle { font-size: 0.72rem; font-weight: 800; color: var(--accent-orange); letter-spacing: 1px; text-transform: uppercase; }
 
-    nav { display: flex; gap: 0.3rem; align-items: center; }
-    .nav-btn {
-      background: transparent; border: none; padding: 0.5rem 0.85rem; font-family: var(--body-font);
-      font-weight: 700; font-size: 0.92rem; color: var(--dark); border-radius: 20px; cursor: pointer;
-      display: inline-flex; align-items: center; gap: 6px; transition: all 0.2s ease; text-decoration: none;
+    .map-interactive-wrapper {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-top: 100%;
+      overflow: hidden;
     }
-    .nav-btn:hover { background: rgba(82, 183, 136, 0.15); color: var(--primary-dark); }
-    .nav-btn.active { background: var(--primary); color: #fff; box-shadow: 0 4px 12px rgba(45, 106, 79, 0.3); }
 
-    .mobile-menu-toggle { display: none; background: none; border: none; font-size: 1.6rem; color: var(--primary-dark); cursor: pointer; }
-
-    /* Seamless Frame Container */
-    #contentFrame {
-      flex: 1;
+    .blueprint-source-img {
+      position: absolute;
+      top: 0;
+      left: 0;
       width: 100%;
       height: 100%;
-      border: none;
-      background: transparent;
+      object-fit: cover;
+      filter: none;
+      z-index: 2;
     }
 
-    /* Continuous Music Player */
-    .floating-music-bar {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      z-index: 1000;
-      background: rgba(27, 67, 50, 0.95);
-      backdrop-filter: blur(12px);
-      border: 2px solid var(--accent);
-      border-radius: 40px;
-      padding: 8px 18px 8px 10px;
-      color: #fff;
+    .svg-interaction-layer {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 10;
+    }
+
+    .interactive-zone {
+      fill: rgba(0, 240, 255, 0.05);
+      stroke: rgba(0, 240, 255, 0.5);
+      stroke-width: 2;
+      stroke-dasharray: 6 3;
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+    .interactive-zone:hover, .interactive-zone.active {
+      fill: rgba(255, 183, 3, 0.35);
+      stroke: var(--accent);
+      stroke-width: 3.5;
+      stroke-dasharray: none;
+      filter: drop-shadow(0 0 14px rgba(255, 183, 3, 0.8));
+    }
+
+    .radar-pin {
+      cursor: pointer;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .radar-pin:hover, .radar-pin.active {
+      transform: scale(1.3);
+    }
+    .pin-pulse {
+      animation: radarPulse 2.2s infinite ease-out;
+      transform-origin: center;
+    }
+    @keyframes radarPulse {
+      0% { r: 6; opacity: 1; }
+      100% { r: 28; opacity: 0; }
+    }
+
+    .pin-title-label {
+      font-family: var(--comic-font);
+      font-size: 15px;
+      fill: #ffffff;
+      text-anchor: middle;
+      pointer-events: none;
+      letter-spacing: 0.8px;
+      text-shadow: 0 0 8px #000, 0 2px 4px #000;
+    }
+
+    .hud-info-card {
+      background: #ffffff;
+      border-radius: 24px;
+      padding: 2.2rem;
+      border: 2px solid rgba(45, 106, 79, 0.2);
+      box-shadow: 0 15px 35px rgba(0,0,0,0.08);
+      position: sticky;
+      top: 90px;
+      backdrop-filter: blur(10px);
+      transition: transform 0.3s ease, border-color 0.3s ease;
+    }
+    .hud-info-card:hover {
+      border-color: var(--accent-orange);
+      transform: translateY(-3px);
+    }
+
+    .hud-header {
       display: flex;
       align-items: center;
-      gap: 12px;
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.35);
+      gap: 14px;
+      margin-bottom: 1.2rem;
+      padding-bottom: 1.1rem;
+      border-bottom: 2px solid rgba(0, 0, 0, 0.06);
     }
-    .vinyl-disc {
-      width: 38px; height: 38px; border-radius: 50%; background: #111; border: 2px solid var(--accent);
-      display: flex; align-items: center; justify-content: center; color: var(--accent);
-      animation: spinDisc 3s linear infinite; animation-play-state: paused;
+    .hud-icon {
+      width: 56px;
+      height: 56px;
+      border-radius: 16px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--accent);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.7rem;
+      box-shadow: 0 6px 15px rgba(45, 106, 79, 0.25);
     }
-    .vinyl-disc.playing { animation-play-state: running; }
-    @keyframes spinDisc { 100% { transform: rotate(360deg); } }
-    .music-info { display: flex; flex-direction: column; }
-    .music-title { font-size: 0.8rem; font-weight: 700; color: var(--accent); }
-    .music-sub { font-size: 0.68rem; opacity: 0.8; }
-    .player-btn {
-      background: #fff; border: none; color: var(--primary-dark); width: 32px; height: 32px;
-      border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center;
+    .hud-title-wrap h2 {
+      font-family: var(--comic-font);
+      font-size: 2.2rem;
+      color: var(--primary-dark);
+      line-height: 1;
     }
-    .vol-slider { width: 50px; accent-color: var(--accent); cursor: pointer; }
+    .hud-title-wrap span {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: var(--accent-orange);
+      text-transform: uppercase;
+      letter-spacing: 0.6px;
+    }
 
-    @media (max-width: 900px) {
-      .mobile-menu-toggle { display: block; }
-      nav {
-        position: fixed; top: 85px; left: 0; right: 0; background: #fff;
-        flex-direction: column; padding: 1.2rem; box-shadow: 0 15px 30px rgba(0,0,0,0.15); display: none;
-      }
-      nav.open { display: flex; }
-      .nav-btn { width: 100%; justify-content: center; }
-      .top-bar-contact { font-size: 0.78rem; }
+    .spec-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      margin-bottom: 1rem;
+      background: #f8faf9;
+      padding: 0.9rem 1.1rem;
+      border-radius: 14px;
+      border: 1px solid rgba(0,0,0,0.04);
+    }
+    .spec-item i {
+      font-size: 1.25rem;
+      color: var(--primary);
+      margin-top: 2px;
+    }
+    .spec-text strong {
+      display: block;
+      font-size: 0.76rem;
+      text-transform: uppercase;
+      color: #777;
+      letter-spacing: 0.5px;
+    }
+    .spec-text span {
+      font-size: 0.95rem;
+      font-weight: 700;
+      color: #1f2421;
+    }
+
+    .plant-guy-tip-box {
+      background: rgba(255, 183, 3, 0.18);
+      border-left: 4px solid var(--accent-orange);
+      padding: 1rem 1.2rem;
+      border-radius: 12px;
+      margin: 1.4rem 0 1.6rem;
+      font-size: 0.92rem;
+      line-height: 1.5;
+    }
+
+    .btn-view-neighbourhood {
+      width: 100%;
+      background: var(--accent-orange);
+      color: #fff;
+      font-family: var(--comic-font);
+      font-size: 1.4rem;
+      letter-spacing: 0.5px;
+      padding: 0.85rem;
+      border-radius: 30px;
+      border: 2px solid #fff;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      text-decoration: none;
+      box-shadow: 0 8px 20px rgba(251, 133, 0, 0.35);
+      transition: all 0.25s ease;
+    }
+    .btn-view-neighbourhood:hover {
+      background: #e07400;
+      transform: translateY(-2px);
+    }
+
+    .map-helper-tip {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 1.2rem;
+      font-size: 0.92rem;
+      font-weight: 600;
+      color: #666;
+    }
+
+    @media (max-width: 980px) {
+      .map-viewport-grid { grid-template-columns: 1fr; }
+      .map-header h1 { font-size: 2.7rem; }
+      .hud-info-card { position: static; margin-top: 1.5rem; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Bar -->
+  <!-- Top Bar: Direct contact and socials -->
   <div class="top-bar">
     <div class="top-bar-contact">
-      <a href="tel:9052527619"><i class="fa-solid fa-phone"></i> Office: 905-252-7619</a>
-      <a href="tel:9052523569"><i class="fa-solid fa-mobile-screen"></i> Cell: 905-252-3569</a>
-      <a href="mailto:YourNeighbourhoodPlantGuy@Gmail.com"><i class="fa-solid fa-envelope"></i> YourNeighbourhoodPlantGuy@Gmail.com</a>
+      <a href="tel:9052527619" title="Call Office"><i class="fa-solid fa-phone"></i> <span>Office: 905-252-7619</span></a>
+      <a href="tel:9052523569" title="Call or Text Cell"><i class="fa-solid fa-mobile-screen"></i> <span>Cell: 905-252-3569</span></a>
+      <a href="mailto:YourNeighbourhoodPlantGuy@Gmail.com" title="Send Email"><i class="fa-solid fa-envelope"></i> <span>YourNeighbourhoodPlantGuy@Gmail.com</span></a>
+      <span class="top-bar-badge"><i class="fa-solid fa-bolt"></i> 100% Eco-Friendly • Bradford, ON</span>
     </div>
     <div class="top-bar-socials">
-      <a href="https://www.youtube.com/@trevorauton2676" target="_blank" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-      <a href="https://www.tiktok.com/@your.neighbourhoo8" target="_blank" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-      <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" title="Threads / Instagram"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" title="Threads"><i class="fa-brands fa-threads"></i></a>
-      <a href="https://www.facebook.com" target="_blank" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://www.youtube.com/@trevorauton2676" target="_blank" rel="noopener noreferrer" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://www.tiktok.com/@your.neighbourhoo8" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" rel="noopener noreferrer" title="Threads / Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" rel="noopener noreferrer" title="Threads"><i class="fa-brands fa-threads"></i></a>
+      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
     </div>
   </div>
 
-  <!-- Persistent Header -->
-  <header>
+  <!-- Persistent Header & Direct Navigation Menu -->
+  <header class="site-header">
     <div class="nav-container">
-      <div class="brand-logo" onclick="loadPage('home.html', 'home')">
-        <img id="siteBrandLogo" src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" alt="Plant Guy Logo" class="brand-avatar" />
+      <a class="brand-logo" href="index.html">
+        <img id="siteBrandLogo" src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" alt="Your Neighbourhood Plant Guy Logo" class="brand-avatar" width="48" height="48" />
         <div>
           <div class="brand-title">Your Neighbourhood Plant Guy</div>
           <div class="brand-subtitle">Eco-Friendly Plant Care • 25 Yrs Experience</div>
         </div>
-      </div>
+      </a>
 
-      <button class="mobile-menu-toggle" onclick="toggleMobileNav()"><i class="fa-solid fa-bars"></i></button>
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" onclick="toggleMobileNav()"><i class="fa-solid fa-bars"></i></button>
 
       <nav id="navMenu">
-        <button class="nav-btn active" data-page="home" onclick="loadPage('home.html', 'home')"><i class="fa-solid fa-house"></i> Home</button>
-        <button class="nav-btn" data-page="gallery" onclick="loadPage('gallery.html', 'gallery')"><i class="fa-solid fa-seedling"></i> Plant Gallery</button>
-        <button class="nav-btn" data-page="jobs" onclick="loadPage('jobs.html', 'jobs')"><i class="fa-solid fa-tree"></i> Completed Jobs</button>
-        <button class="nav-btn" data-page="videos" onclick="loadPage('videos.html', 'videos')"><i class="fa-solid fa-clapperboard"></i> Videos</button>
-        <button class="nav-btn" data-page="comics" onclick="loadPage('comics.html', 'comics')"><i class="fa-solid fa-book-open"></i> Comics &amp; Posters</button>
-        <button class="nav-btn" data-page="blog" onclick="loadPage('blog.html', 'blog')"><i class="fa-solid fa-newspaper"></i> Blog</button>
-        <button class="nav-btn" data-page="quote" onclick="loadPage('quote.html', 'quote')"><i class="fa-solid fa-calculator"></i> Request Quote</button>
-	<button class="nav-btn" data-page="about" onclick="loadPage('about.html', 'about')"><i class="fa-solid fa-user"></i> About Us</button>
-        <button class="nav-btn" data-page="contact" onclick="loadPage('contact.html', 'contact')"><i class="fa-solid fa-address-book"></i> Contact</button>
+        <a class="nav-btn active" href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a class="nav-btn" href="gallery.html"><i class="fa-solid fa-seedling"></i> Plant Gallery</a>
+        <a class="nav-btn" href="jobs.html"><i class="fa-solid fa-tree"></i> Completed Jobs</a>
+        <a class="nav-btn" href="videos.html"><i class="fa-solid fa-clapperboard"></i> Videos</a>
+        <a class="nav-btn" href="comics.html"><i class="fa-solid fa-book-open"></i> Comics &amp; Posters</a>
+        <a class="nav-btn" href="blog.html"><i class="fa-solid fa-newspaper"></i> Blog</a>
+        <a class="nav-btn" href="about.html"><i class="fa-solid fa-user"></i> About Us</a>
+        <a class="nav-btn" href="contact.html"><i class="fa-solid fa-address-book"></i> Contact</a>
+        <a class="nav-btn nav-btn-quote" href="quote.html"><i class="fa-solid fa-calculator"></i> Request Quote</a>
       </nav>
     </div>
   </header>
 
-  <!-- Seamless Edge-to-Edge Frame -->
-  <iframe id="contentFrame" name="contentFrame" src="home.html" title="Main Content"></iframe>
+  <!-- Main Content -->
+  <div class="main-content">
+    <div class="map-header">
+      <div class="badge-hud">
+        <span class="radar-dot"></span> Bradford Service Map &amp; Soil Radar
+      </div>
+      <h1>LOCAL SOIL &amp; SERVICE ZONES</h1>
+      <p>Every neighbourhood in Bradford has unique soil compaction, tree canopy shade, and wind profiles. Hover or click your neighbourhood on the map to view its dedicated guide!</p>
+    </div>
 
-  <!-- Persistent Background Theme Song -->
-  <audio id="themeAudio" loop preload="auto" src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Your%20Neighbourhood%20Plant%20Guy.mp3"></audio>
+    <!-- Map & HUD Viewport Grid -->
+    <div class="map-viewport-grid">
+      
+      <!-- Interactive Blueprint Terminal -->
+      <div class="map-screen-card">
+        <div class="terminal-top-bar">
+          <span><i class="fa-solid fa-crosshairs"></i> BRADFORD STREET BLUEPRINT LAYER</span>
+          <span><i class="fa-solid fa-signal"></i> 44.1167° N, 79.5667° W</span>
+        </div>
+
+        <div class="map-interactive-wrapper">
+          <img 
+            id="blueprintImg" 
+            src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/bradford-wireframe.png" 
+            alt="Bradford Street Blue Wireframe Map" 
+            class="blueprint-source-img" 
+          />
+
+          <!-- SVG Interactive Overlay -->
+          <svg class="svg-interaction-layer" viewBox="0 0 1000 1000" xmlns="http://www.w3.org/2000/svg">
+            
+            <!-- SECTOR 1: Dreamfields -->
+            <polygon 
+              id="sector-dreamfields" 
+              class="interactive-zone active" 
+              points="170,100 460,80 470,250 190,300" 
+              onclick="selectNeighbourhood('dreamfields')" 
+              onmouseenter="previewNeighbourhood('dreamfields')" 
+            />
+
+            <!-- SECTOR 2: Summerlyn Village -->
+            <polygon 
+              id="sector-summerlyn" 
+              class="interactive-zone" 
+              points="110,310 520,270 540,560 110,670" 
+              onclick="selectNeighbourhood('summerlyn')" 
+              onmouseenter="previewNeighbourhood('summerlyn')" 
+            />
+
+            <!-- SECTOR 3: Grandview & Line 8 Corridor -->
+            <polygon 
+              id="sector-grandview" 
+              class="interactive-zone" 
+              points="500,40 960,30 960,320 510,300" 
+              onclick="selectNeighbourhood('grandview')" 
+              onmouseenter="previewNeighbourhood('grandview')" 
+            />
+
+            <!-- SECTOR 4: Downtown Bradford Heritage Core -->
+            <polygon 
+              id="sector-downtown" 
+              class="interactive-zone" 
+              points="530,320 950,330 900,560 540,560" 
+              onclick="selectNeighbourhood('downtown')" 
+              onmouseenter="previewNeighbourhood('downtown')" 
+            />
+
+            <!-- SECTOR 5: Bradford Valley & South Hills -->
+            <polygon 
+              id="sector-bradford-valley" 
+              class="interactive-zone" 
+              points="220,680 730,570 780,950 190,950" 
+              onclick="selectNeighbourhood('bradford-valley')" 
+              onmouseenter="previewNeighbourhood('bradford-valley')" 
+            />
+
+            <!-- SECTOR 6: Marshview & Canal Basin -->
+            <polygon 
+              id="sector-holland-marsh" 
+              class="interactive-zone" 
+              points="730,570 960,560 960,950 780,950" 
+              onclick="selectNeighbourhood('holland-marsh')" 
+              onmouseenter="previewNeighbourhood('holland-marsh')" 
+            />
+
+            <!-- PULSING RADAR PINS -->
+            <g class="radar-pin active" id="pin-dreamfields" onclick="selectNeighbourhood('dreamfields')" onmouseenter="previewNeighbourhood('dreamfields')">
+              <circle class="pin-pulse" cx="280" cy="170" r="8" fill="#ffb703" opacity="0.6"/>
+              <circle cx="280" cy="170" r="11" fill="#fb8500" stroke="#fff" stroke-width="2.5"/>
+              <text x="280" y="140" class="pin-title-label">DREAMFIELDS</text>
+            </g>
+
+            <g class="radar-pin" id="pin-summerlyn" onclick="selectNeighbourhood('summerlyn')" onmouseenter="previewNeighbourhood('summerlyn')">
+              <circle class="pin-pulse" cx="300" cy="450" r="8" fill="#00f0ff" opacity="0.6"/>
+              <circle cx="300" cy="450" r="11" fill="#00f0ff" stroke="#fff" stroke-width="2.5"/>
+              <text x="300" y="420" class="pin-title-label">SUMMERLYN VILLAGE</text>
+            </g>
+
+            <g class="radar-pin" id="pin-grandview" onclick="selectNeighbourhood('grandview')" onmouseenter="previewNeighbourhood('grandview')">
+              <circle class="pin-pulse" cx="740" cy="150" r="8" fill="#00f0ff" opacity="0.6"/>
+              <circle cx="740" cy="150" r="11" fill="#00f0ff" stroke="#fff" stroke-width="2.5"/>
+              <text x="740" y="120" class="pin-title-label">LINE 8 / GRANDVIEW</text>
+            </g>
+
+            <g class="radar-pin" id="pin-downtown" onclick="selectNeighbourhood('downtown')" onmouseenter="previewNeighbourhood('downtown')">
+              <circle class="pin-pulse" cx="720" cy="420" r="8" fill="#00f0ff" opacity="0.6"/>
+              <circle cx="720" cy="420" r="11" fill="#00f0ff" stroke="#fff" stroke-width="2.5"/>
+              <text x="720" y="390" class="pin-title-label">DOWNTOWN BRADFORD</text>
+            </g>
+
+            <g class="radar-pin" id="pin-bradford-valley" onclick="selectNeighbourhood('bradford-valley')" onmouseenter="previewNeighbourhood('bradford-valley')">
+              <circle class="pin-pulse" cx="500" cy="780" r="8" fill="#00f0ff" opacity="0.6"/>
+              <circle cx="500" cy="780" r="11" fill="#00f0ff" stroke="#fff" stroke-width="2.5"/>
+              <text x="500" y="750" class="pin-title-label">BRADFORD VALLEY</text>
+            </g>
+
+            <g class="radar-pin" id="pin-holland-marsh" onclick="selectNeighbourhood('holland-marsh')" onmouseenter="previewNeighbourhood('holland-marsh')">
+              <circle class="pin-pulse" cx="870" cy="740" r="8" fill="#00f0ff" opacity="0.6"/>
+              <circle cx="870" cy="740" r="11" fill="#00b4d8" stroke="#fff" stroke-width="2.5"/>
+              <text x="870" y="710" class="pin-title-label">MARSHVIEW BASIN</text>
+            </g>
+
+          </svg>
+        </div>
+      </div>
+
+      <!-- Live HUD Card Details -->
+      <div class="hud-info-card" id="hudCard">
+        <div class="hud-header">
+          <div class="hud-icon" id="hudIcon"><i class="fa-solid fa-cloud-sun"></i></div>
+          <div class="hud-title-wrap">
+            <h2 id="hudName">Dreamfields</h2>
+            <span id="hudSub">Zone: North-West Subdivision</span>
+          </div>
+        </div>
+
+        <div class="spec-item">
+          <i class="fa-solid fa-layer-group"></i>
+          <div class="spec-text">
+            <strong>Primary Soil Profile</strong>
+            <span id="hudSoil">Newer Construction Graded Clay &amp; Dense Silt</span>
+          </div>
+        </div>
+
+        <div class="spec-item">
+          <i class="fa-solid fa-wind"></i>
+          <div class="spec-text">
+            <strong>Exposure &amp; Microclimate</strong>
+            <span id="hudClimate">Unsheltered perimeter prairie winds from open rural farmland</span>
+          </div>
+        </div>
+
+        <div class="spec-item">
+          <i class="fa-solid fa-triangle-exclamation" style="color: var(--accent-orange);"></i>
+          <div class="spec-text">
+            <strong>Common Plant Challenges</strong>
+            <span id="hudChallenge">Slow root development in new build sub-divisions, winter frost heaving</span>
+          </div>
+        </div>
+
+        <div class="plant-guy-tip-box" id="hudTip">
+          <strong>🌿 Plant Guy Recommendation:</strong> Deep organic soil conditioning and slow-release phosphorus feeds build deep root anchors before early winter ground freezes.
+        </div>
+
+        <a id="hudLink" href="dreamfields.html" class="btn-view-neighbourhood">
+          <i class="fa-solid fa-compass"></i> View Dreamfields Guide
+        </a>
+      </div>
+
+    </div>
+
+    <div class="map-helper-tip">
+      <i class="fa-solid fa-hand-pointer" style="color: var(--accent-orange);"></i> Click any highlighted zone or pulsing radar marker to open that neighbourhood's full guide!
+    </div>
+  </div>
+
+  <!-- Persistent Background Theme Song (preload="none" to prevent bot data download) -->
+  <audio id="themeAudio" loop preload="none" src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Your%20Neighbourhood%20Plant%20Guy.mp3"></audio>
 
   <!-- Music Widget -->
   <div class="floating-music-bar">
@@ -210,28 +594,152 @@
       <span class="music-sub">Official Theme Song 🎶</span>
     </div>
     <div class="music-controls">
-      <button class="player-btn" onclick="toggleThemeSong()"><i class="fa-solid fa-play" id="playIcon"></i></button>
-      <input type="range" class="vol-slider" min="0" max="1" step="0.05" value="0.7" onchange="adjustVolume(this.value)" />
+      <button class="player-btn" aria-label="Play theme song" onclick="toggleThemeSong()"><i class="fa-solid fa-play" id="playIcon"></i></button>
+      <input type="range" class="vol-slider" min="0" max="1" step="0.05" value="0.7" onchange="adjustVolume(this.value)" aria-label="Volume slider" />
     </div>
   </div>
 
+  <!-- Falling Leaves Animation Canvas -->
+  <canvas id="leafCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;"></canvas>
+
   <script>
-    function loadPage(pageUrl, pageKey) {
-      document.getElementById('contentFrame').src = pageUrl;
-      document.querySelectorAll('.nav-btn').forEach(btn => btn.classList.remove('active'));
-      const activeBtn = document.querySelector(`.nav-btn[data-page="${pageKey}"]`);
-      if (activeBtn) activeBtn.classList.add('active');
-      document.getElementById('navMenu').classList.remove('open');
-      
-      // Update browser history state for clean navigation
-      if (window.history.pushState) {
-        window.history.pushState({ page: pageKey }, '', `?page=${pageKey}`);
+    function toggleMobileNav() {
+      const menu = document.getElementById('navMenu');
+      if (menu) menu.classList.toggle('open');
+    }
+
+    const neighbourhoodData = {
+      'dreamfields': {
+        name: 'Dreamfields',
+        sub: 'Zone: North-West Subdivision (Line 8 / Professor Day)',
+        icon: 'fa-solid fa-cloud-sun',
+        page: 'dreamfields.html',
+        soil: 'Newer Construction Graded Clay & Dense Silt',
+        climate: 'Unsheltered perimeter prairie winds from open rural farmland',
+        challenge: 'Slow root development in new build sub-divisions, winter frost heaving',
+        tip: 'Deep organic soil conditioning and slow-release phosphorus feeds build deep root anchors before early winter ground freezes.'
+      },
+      'summerlyn': {
+        name: 'Summerlyn Village',
+        sub: 'Zone: West-Central Corridor (Near BWG Leisure Centre)',
+        icon: 'fa-solid fa-house-chimney-window',
+        page: 'summerlyn.html',
+        soil: 'Compacted Subsoil with Heavy Clay Top Loam',
+        climate: 'Open westerly winds from Sideroad 10 fields; fast freeze-thaw cycles',
+        challenge: 'Water pooling at foundation beds, root suffocation, boxwood desiccation',
+        tip: 'Core aeration combined with organic bonemeal root fortifiers and a 3-inch cedar mulch insulation layer help provide winter protection in Summerlyns open front yards.'
+      },
+      'grandview': {
+        name: 'Line 8 / Grandview',
+        sub: 'Zone: North-East Corridor (Near No Frills & Barrie St)',
+        icon: 'fa-solid fa-tree-city',
+        page: 'grandview.html',
+        soil: 'Glacial Till Mixed with Gravelly Loam (Fast Drainage)',
+        climate: 'Elevated sunny slope exposure with direct midsummer heat and drying winds',
+        challenge: 'Rapid moisture loss in midsummer, boxwoods troubled with spider mites/moth larvae',
+        tip: 'Thick mulched beds combined with seasonal hedge protection for high-value specimen plants from drought.'
+      },
+      'downtown': {
+        name: 'Downtown Bradford',
+        sub: 'Zone: Historic Valley Core (Holland St & Simcoe Rd)',
+        icon: 'fa-solid fa-landmark',
+        page: 'downtown.html',
+        soil: 'Mature Aged Sandy Loam Rich in Decomposed Organic Matter',
+        climate: 'Dense tree canopy shade; protected from harsh prairie winds',
+        challenge: 'Root competition with 50+ yr mature maples/walnuts in sandy soil, powdery mildew, fungal spots, and juglone',
+        tip: 'Selective canopy thinning to improve sunlight, soil amendment and selective fungal treatments for lush and vibrant shaded gardens.'
+      },
+      'bradford-valley': {
+        name: 'Bradford Valley',
+        sub: 'Zone: South-Central Terraces & Care Community',
+        icon: 'fa-solid fa-mountain-sun',
+        page: 'bradford-valley.html',
+        soil: 'Variable Loam over Stiff Silty Clay Sub-strate',
+        climate: 'Mixed gentle hillside drainage with windward exposure',
+        challenge: 'Lawn grub migration, harsh cool season frosts and seasonal soil compaction in shaded yards',
+        tip: 'Fall lawn overseeding paired with perimeter pest barrier sprays maintains thick, weed-free grass along terraced properties.'
+      },
+      'holland-marsh': {
+        name: 'Marshview & Canal Basin',
+        sub: 'Zone: South Peat Basin / Marshview Blvd',
+        icon: 'fa-solid fa-wheat-awn',
+        page: 'holland-marsh.html',
+        soil: 'Famous High-Nitrogen Organic Peat Black Muck',
+        climate: 'High water table, morning valley humidity and persistent dew',
+        challenge: 'Over-saturation root rot, aggressive mosquito populations',
+        tip: 'Construct raised flower beds, apply mosquito repelling spray around sitting areas/perimeter and install mosquito-repelling borders (Citronella, Lavender, Bee Balm) for comfortable outdoor living.'
+      }
+    };
+
+    function previewNeighbourhood(areaKey) {
+      const data = neighbourhoodData[areaKey];
+      if (!data) return;
+
+      document.getElementById('hudName').textContent = data.name;
+      document.getElementById('hudSub').textContent = data.sub;
+      document.getElementById('hudIcon').innerHTML = `<i class="${data.icon}"></i>`;
+      document.getElementById('hudSoil').textContent = data.soil;
+      document.getElementById('hudClimate').textContent = data.climate;
+      document.getElementById('hudChallenge').textContent = data.challenge;
+      document.getElementById('hudTip').innerHTML = `<strong>🌿 Plant Guy Recommendation:</strong> ${data.tip}`;
+      document.getElementById('hudLink').href = data.page;
+      document.getElementById('hudLink').innerHTML = `<i class="fa-solid fa-compass"></i> View ${data.name} Guide`;
+
+      document.querySelectorAll('.interactive-zone').forEach(s => s.classList.remove('active'));
+      document.querySelectorAll('.radar-pin').forEach(p => p.classList.remove('active'));
+
+      const sector = document.getElementById(`sector-${areaKey}`);
+      const pin = document.getElementById(`pin-${areaKey}`);
+      if (sector) sector.classList.add('active');
+      if (pin) pin.classList.add('active');
+    }
+
+    function selectNeighbourhood(areaKey) {
+      const data = neighbourhoodData[areaKey];
+      if (data && data.page) {
+        window.location.href = data.page;
       }
     }
 
+    // Mobile Navigation & Header Scroll
     function toggleMobileNav() {
-      document.getElementById('navMenu').classList.toggle('open');
+      const menu = document.getElementById('navMenu');
+      const toggleBtn = document.querySelector('.mobile-menu-toggle');
+      if (menu) {
+        const isOpen = menu.classList.toggle('open');
+        if (toggleBtn) {
+          toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+          const icon = toggleBtn.querySelector('i');
+          if (icon) icon.className = isOpen ? 'fa-solid fa-xmark' : 'fa-solid fa-bars';
+        }
+      }
     }
+
+    document.addEventListener('click', function(e) {
+      const menu = document.getElementById('navMenu');
+      const toggleBtn = document.querySelector('.mobile-menu-toggle');
+      if (menu && menu.classList.contains('open')) {
+        if (!menu.contains(e.target) && !toggleBtn.contains(e.target)) {
+          menu.classList.remove('open');
+          if (toggleBtn) {
+            toggleBtn.setAttribute('aria-expanded', 'false');
+            const icon = toggleBtn.querySelector('i');
+            if (icon) icon.className = 'fa-solid fa-bars';
+          }
+        }
+      }
+    });
+
+    window.addEventListener('scroll', function() {
+      const header = document.querySelector('.site-header');
+      if (header) {
+        if (window.scrollY > 15) {
+          header.classList.add('scrolled');
+        } else {
+          header.classList.remove('scrolled');
+        }
+      }
+    }, { passive: true });
 
     // Audio Controller
     const audio = document.getElementById('themeAudio');
@@ -243,7 +751,7 @@
         audio.play().then(() => {
           playIcon.className = 'fa-solid fa-pause';
           disc.classList.add('playing');
-        }).catch(err => console.log('Click to start audio'));
+        }).catch(() => {});
       } else {
         audio.pause();
         playIcon.className = 'fa-solid fa-play';
@@ -253,25 +761,65 @@
 
     function adjustVolume(v) { audio.volume = parseFloat(v); }
 
-    document.addEventListener('click', function startAudioOnce() {
-      if (audio.paused && audio.currentTime === 0) {
-        audio.volume = 0.6;
-        audio.play().then(() => {
-          playIcon.className = 'fa-solid fa-pause';
-          disc.classList.add('playing');
-        }).catch(() => {});
-      }
-      document.removeEventListener('click', startAudioOnce);
-    }, { once: true });
+    // Falling Leaves Canvas Animation
+    (function initFallingLeaves() {
+      const canvas = document.getElementById('leafCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      let leaves = [];
 
-    // Handle deep-linked query params e.g. index.html?page=blog
-    window.addEventListener('DOMContentLoaded', () => {
-      const params = new URLSearchParams(window.location.search);
-      const requested = params.get('page');
-      if (requested && ['home', 'gallery', 'jobs', 'videos', 'comics', 'blog', 'quote', 'contact'].includes(requested)) {
-        loadPage(`${requested}.html`, requested);
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
       }
-    });
+      window.addEventListener('resize', resize);
+      resize();
+
+      class Leaf {
+        constructor() { this.reset(); }
+        reset() {
+          this.x = Math.random() * canvas.width;
+          this.y = -20;
+          this.size = Math.random() * 12 + 8;
+          this.speedY = Math.random() * 1.2 + 0.6;
+          this.speedX = Math.sin(Math.random() * Math.PI) * 0.8 - 0.4;
+          this.rotation = Math.random() * 360;
+          this.rotSpeed = (Math.random() - 0.5) * 2;
+          this.color = Math.random() > 0.4 ? 'rgba(82, 183, 136, 0.35)' : 'rgba(251, 133, 0, 0.3)';
+        }
+        update() {
+          this.y += this.speedY;
+          this.x += this.speedX + Math.sin(this.y * 0.015);
+          this.rotation += this.rotSpeed;
+          if (this.y > canvas.height + 20) this.reset();
+        }
+        draw() {
+          ctx.save();
+          ctx.translate(this.x, this.y);
+          ctx.rotate((this.rotation * Math.PI) / 180);
+          ctx.fillStyle = this.color;
+          ctx.beginPath();
+          ctx.moveTo(0, -this.size);
+          ctx.quadraticCurveTo(this.size * 0.8, 0, 0, this.size);
+          ctx.quadraticCurveTo(-this.size * 0.8, 0, 0, -this.size);
+          ctx.fill();
+          ctx.restore();
+        }
+      }
+
+      for (let i = 0; i < 22; i++) leaves.push(new Leaf());
+
+      function animate() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        leaves.forEach(l => {
+          l.update();
+          l.draw();
+        });
+        requestAnimationFrame(animate);
+      }
+      animate();
+    })();
   </script>
 </body>
 </html>
+

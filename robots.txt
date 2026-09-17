@@ -1,0 +1,50 @@
+# robots.txt for Your Neighbourhood Plant Guy
+# Ensures content pages are indexed while protecting Backblaze B2 egress bandwidth
+
+User-agent: *
+# Allow search crawlers to index all website content and navigation pages
+Allow: /
+Allow: /index.html
+Allow: /home.html
+Allow: /about.html
+Allow: /blog.html
+Allow: /gallery.html
+Allow: /videos.html
+Allow: /jobs.html
+Allow: /comics.html
+Allow: /quote.html
+Allow: /contact.html
+Allow: /dreamfields.html
+Allow: /summerlyn.html
+Allow: /grandview.html
+Allow: /downtown.html
+Allow: /bradford-valley.html
+Allow: /holland-marsh.html
+Allow: /nav.css
+Allow: /nav.js
+
+# Conserve bandwidth: Disallow direct crawler media downloading
+Disallow: /*.mp4$
+Disallow: /*.mov$
+Disallow: /*.mp3$
+Disallow: /*.wav$
+Disallow: /*.zip$
+Disallow: /*.pdf$
+Disallow: /*?*download=
+Disallow: /*?*autoplay=
+
+# Polite crawl delay to prevent bandwidth spikes
+Crawl-delay: 2
+
+# Googlebot-Video: prevent raw video stream scraping
+User-agent: Googlebot-Video
+Disallow: /*.mp4$
+Disallow: /*.mov$
+
+# Googlebot-Image: disallow large binary media downloads
+User-agent: Googlebot-Image
+Disallow: /*.mp4$
+Disallow: /*.mp3$
+
+# Sitemap location
+Sitemap: https://yourneighbourhoodplantguy.ca/sitemap.xml

@@ -4,13 +4,20 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Plant Care &amp; Gardening Blog | Your Neighbourhood Plant Guy</title>
-  <meta name="description" content="Expert eco-friendly gardening advice, seasonal lawn care, fall planting, and root fortification tips for Bradford, Ontario by Trevor Auton." />
+  <meta name="description" content="Expert eco-friendly gardening advice, late September perennial cutback guide, spring bloom preservation, lawn care, and root fortification for Bradford, Ontario by Trevor Auton." />
+  <meta property="og:title" content="Plant Care &amp; Gardening Blog | Your Neighbourhood Plant Guy" />
+  <meta property="og:description" content="Expert eco-friendly gardening advice, late September perennial cutback guide, spring bloom preservation, and lawn care for Bradford, Ontario." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Wagon%20V3.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
 
   <!-- Google Fonts & FontAwesome -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="nav.css" />
+  <script src="nav.js" defer></script>
 
   <style>
     :root {
@@ -34,33 +41,234 @@
       font-family: var(--body-font);
       background-color: var(--bg-cream);
       color: var(--dark);
-      padding: 2rem 1.5rem 6rem;
-      max-width: 960px;
-      margin: 0 auto;
       line-height: 1.7;
       position: relative;
     }
 
-    /* Header */
-    .blog-header {
-      text-align: center;
-      margin-bottom: 3rem;
+    .main-content {
+      padding: 2.5rem 1.5rem 6rem;
+      max-width: 960px;
+      margin: 0 auto;
     }
-    .blog-header h1 {
-      font-family: var(--comic-font);
-      font-size: 3.4rem;
-      color: var(--primary-dark);
-      letter-spacing: 1px;
-      text-shadow: 2px 2px 0 var(--accent);
+
+    /* Hero Header Section */
+    .blog-header {
+      background: linear-gradient(135deg, rgba(19, 42, 30, 0.98) 0%, rgba(27, 67, 50, 0.96) 50%, rgba(45, 106, 79, 0.94) 100%);
+      color: #ffffff;
+      border-radius: 26px;
+      padding: 3.2rem 2rem 2.6rem;
+      text-align: center;
+      margin-bottom: 3.2rem;
+      box-shadow: 0 16px 36px rgba(0, 0, 0, 0.15), 0 0 25px rgba(255, 183, 3, 0.18);
+      border: 3px solid var(--accent);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .blog-header::before {
+      content: '';
+      position: absolute;
+      top: -60px;
+      right: -60px;
+      width: 260px;
+      height: 260px;
+      background: radial-gradient(circle, rgba(255, 183, 3, 0.22), transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .blog-header::after {
+      content: '';
+      position: absolute;
+      bottom: -70px;
+      left: -70px;
+      width: 240px;
+      height: 240px;
+      background: radial-gradient(circle, rgba(82, 183, 136, 0.25), transparent 70%);
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    .blog-badge {
       display: inline-flex;
       align-items: center;
-      gap: 12px;
-    }
-    .blog-header p {
+      gap: 8px;
+      background: var(--accent);
+      color: var(--primary-dark);
+      font-family: var(--comic-font);
       font-size: 1.15rem;
-      color: #555;
-      max-width: 650px;
-      margin: 0.4rem auto 0;
+      letter-spacing: 1px;
+      padding: 0.4rem 1.35rem;
+      border-radius: 25px;
+      margin-bottom: 1.1rem;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.2);
+      border: 2px solid #ffffff;
+      text-transform: uppercase;
+      position: relative;
+      z-index: 2;
+    }
+
+    .blog-header h1 {
+      font-family: var(--comic-font);
+      font-size: 3.6rem;
+      color: var(--accent);
+      letter-spacing: 1.5px;
+      text-shadow: 3px 3px 0 #132a1e, 0 0 25px rgba(255, 183, 3, 0.45);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 14px;
+      margin-bottom: 0.9rem;
+      line-height: 1.1;
+      position: relative;
+      z-index: 2;
+    }
+
+    .blog-header p {
+      font-size: 1.18rem;
+      color: #f1faee;
+      max-width: 760px;
+      margin: 0 auto 1.6rem;
+      font-weight: 300;
+      line-height: 1.65;
+      position: relative;
+      z-index: 2;
+    }
+
+    .blog-topics-row {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.55rem;
+      margin-bottom: 1.8rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .topic-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      background: rgba(255, 255, 255, 0.12);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(255, 255, 255, 0.28);
+      color: #ffffff;
+      padding: 0.35rem 0.95rem;
+      border-radius: 20px;
+      font-size: 0.85rem;
+      font-weight: 600;
+      letter-spacing: 0.3px;
+      transition: all 0.2s ease;
+      text-decoration: none;
+    }
+
+    .topic-pill:hover {
+      background: rgba(255, 255, 255, 0.22);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .blog-header-actions {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .blog-cta-primary {
+      background: var(--accent-orange);
+      color: #ffffff;
+      font-family: var(--comic-font);
+      font-size: 1.3rem;
+      padding: 0.75rem 2rem;
+      border-radius: 30px;
+      text-decoration: none;
+      border: 2px solid #ffffff;
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      box-shadow: 0 6px 18px rgba(251, 133, 0, 0.45);
+      transition: all 0.25s ease;
+    }
+
+    .blog-cta-primary:hover {
+      background: #e07400;
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(251, 133, 0, 0.55);
+      color: #ffffff;
+    }
+
+    .blog-cta-secondary {
+      background: rgba(255, 255, 255, 0.15);
+      color: #ffffff;
+      font-family: var(--comic-font);
+      font-size: 1.3rem;
+      padding: 0.75rem 1.8rem;
+      border-radius: 30px;
+      text-decoration: none;
+      border: 2px solid rgba(255, 255, 255, 0.5);
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      transition: all 0.25s ease;
+    }
+
+    .blog-cta-secondary:hover {
+      background: rgba(255, 255, 255, 0.28);
+      border-color: var(--accent);
+      color: var(--accent);
+      transform: translateY(-2px);
+    }
+
+    .blog-meta-footer {
+      margin-top: 1.6rem;
+      padding-top: 1.2rem;
+      border-top: 1px dashed rgba(255, 255, 255, 0.2);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+      font-size: 0.88rem;
+      color: rgba(255, 255, 255, 0.85);
+      position: relative;
+      z-index: 2;
+    }
+
+    .blog-meta-footer span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .blog-meta-footer i {
+      color: var(--accent);
+    }
+
+    @media (max-width: 768px) {
+      .blog-header {
+        padding: 2.2rem 1.2rem 2rem;
+        margin-bottom: 2.2rem;
+        border-radius: 20px;
+      }
+      .blog-header h1 {
+        font-size: 2.5rem;
+      }
+      .blog-header p {
+        font-size: 1.05rem;
+      }
+      .blog-cta-primary,
+      .blog-cta-secondary {
+        width: 100%;
+        justify-content: center;
+        font-size: 1.15rem;
+        padding: 0.65rem 1.4rem;
+      }
     }
 
     /* Continuous Blog Feed Stream */
@@ -144,7 +352,6 @@
       border-bottom: 2px dashed rgba(82, 183, 136, 0.3);
     }
 
-    /* Content Sub-blocks */
     .content-point {
       margin-bottom: 1.8rem;
       display: flex;
@@ -193,7 +400,6 @@
       color: #333;
     }
 
-    /* Author Footer */
     .article-author-card {
       margin-top: 2.5rem;
       padding-top: 1.5rem;
@@ -258,256 +464,430 @@
 </head>
 <body>
 
-  <!-- Section Header -->
-  <div class="blog-header">
-    <h1><i class="fa-solid fa-newspaper"></i> The Plant Guy Journal</h1>
-    <p>Seasonal insights, local soil tips, and eco-friendly horticultural advice for Bradford and York Simcoe.</p>
+  <!-- Top Bar: Direct contact and socials -->
+  <div class="top-bar">
+    <div class="top-bar-contact">
+      <a href="tel:9052527619" title="Call Office"><i class="fa-solid fa-phone"></i> <span>Office: 905-252-7619</span></a>
+      <a href="tel:9052523569" title="Call or Text Cell"><i class="fa-solid fa-mobile-screen"></i> <span>Cell: 905-252-3569</span></a>
+      <a href="mailto:YourNeighbourhoodPlantGuy@Gmail.com" title="Send Email"><i class="fa-solid fa-envelope"></i> <span>YourNeighbourhoodPlantGuy@Gmail.com</span></a>
+      <span class="top-bar-badge"><i class="fa-solid fa-bolt"></i> 100% Eco-Friendly • Bradford, ON</span>
+    </div>
+    <div class="top-bar-socials">
+      <a href="https://www.youtube.com/@trevorauton2676" target="_blank" rel="noopener noreferrer" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://www.tiktok.com/@your.neighbourhoo8" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" rel="noopener noreferrer" title="Threads / Instagram"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" rel="noopener noreferrer" title="Threads"><i class="fa-brands fa-threads"></i></a>
+      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+    </div>
   </div>
 
-  <!-- Continuous Article Stream -->
-  <div class="blog-stream">
+  <!-- Persistent Site Header -->
+  <header class="site-header">
+    <div class="nav-container">
+      <a class="brand-logo" href="index.html">
+        <img id="siteBrandLogo" src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" alt="Your Neighbourhood Plant Guy Logo" class="brand-avatar" width="48" height="48" />
+        <div>
+          <div class="brand-title">Your Neighbourhood Plant Guy</div>
+          <div class="brand-subtitle">Eco-Friendly Plant Care • 25 Yrs Experience</div>
+        </div>
+      </a>
 
-<!-- ================= POST 2 ================= -->
-    <article class="article-post">
-      <div class="article-hero-img-wrap">
-        <img src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Wagon%20V3.jpg" alt="Lawn Care and Fall Renovation in Bradford Yard" class="article-hero-img" />
-        <span class="post-badge"><i class="fa-solid fa-wheat-awn"></i> Turf Care Guide</span>
+      <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" onclick="toggleMobileNav()"><i class="fa-solid fa-bars"></i></button>
+
+      <nav id="navMenu">
+        <a class="nav-btn" href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+        <a class="nav-btn" href="gallery.html"><i class="fa-solid fa-seedling"></i> Plant Gallery</a>
+        <a class="nav-btn" href="jobs.html"><i class="fa-solid fa-tree"></i> Completed Jobs</a>
+        <a class="nav-btn" href="videos.html"><i class="fa-solid fa-clapperboard"></i> Videos</a>
+        <a class="nav-btn" href="comics.html"><i class="fa-solid fa-book-open"></i> Comics &amp; Posters</a>
+        <a class="nav-btn active" href="blog.html"><i class="fa-solid fa-newspaper"></i> Blog</a>
+        <a class="nav-btn" href="about.html"><i class="fa-solid fa-user"></i> About Us</a>
+        <a class="nav-btn" href="contact.html"><i class="fa-solid fa-address-book"></i> Contact</a>
+        <a class="nav-btn nav-btn-quote" href="quote.html"><i class="fa-solid fa-calculator"></i> Request Quote</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <div class="main-content">
+    <!-- Hero Header Section -->
+    <div class="blog-header">
+      <div class="blog-badge"><i class="fa-solid fa-book-open-reader"></i> Bradford Horticultural Field Journal • 2026 Edition</div>
+      <h1><i class="fa-solid fa-newspaper"></i> The Plant Guy Journal</h1>
+      <p>Seasonal insights, local soil tips, practical pruning science, and eco-friendly horticultural protocols tailored directly for Bradford, Holland Marsh, and Simcoe County properties.</p>
+      
+      <div class="blog-topics-row">
+        <a href="#post-pruning" class="topic-pill"><i class="fa-solid fa-scissors"></i> Pruning &amp; Perennials</a>
+        <a href="#post-lawn" class="topic-pill"><i class="fa-solid fa-wheat-awn"></i> Turf Winterization</a>
+        <a href="#post-perennials" class="topic-pill"><i class="fa-solid fa-seedling"></i> Deep Root Feeding</a>
+        <a href="#post-pruning" class="topic-pill"><i class="fa-solid fa-shield-virus"></i> Fungal Sanitization</a>
+        <a href="#post-pruning" class="topic-pill"><i class="fa-solid fa-feather"></i> Winter Bird Habitat</a>
       </div>
 
-      <div class="article-body">
-        <div class="post-meta">
-          <span><i class="fa-solid fa-calendar-day"></i> September Turf Edition</span>
-          <span><i class="fa-solid fa-location-dot"></i> Bradford, ON</span>
-          <span><i class="fa-solid fa-user-pen"></i> Trevor Auton</span>
+      <div class="blog-header-actions">
+        <a href="quote.html" class="blog-cta-primary"><i class="fa-solid fa-calendar-check"></i> Book Seasonal Garden Care</a>
+        <a href="#post-pruning" class="blog-cta-secondary"><i class="fa-solid fa-book-open"></i> Read Late Sept Playbook</a>
+      </div>
+
+      <div class="blog-meta-footer">
+        <span><i class="fa-solid fa-user-check"></i> Written by Trevor Auton</span>
+        <span><i class="fa-solid fa-certificate"></i> 25+ Years Eco-Horticultural Experience</span>
+        <span><i class="fa-solid fa-location-dot"></i> Bradford, Ontario</span>
+      </div>
+    </div>
+
+    <!-- Continuous Article Stream -->
+    <div class="blog-stream">
+
+      <!-- POST 3: Late September Pruning & Perennial Guide -->
+      <article class="article-post" id="post-pruning">
+        <div class="article-hero-img-wrap">
+          <img src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Roses%201%20(2).jpg" alt="Late September Perennial Pruning and Shrub Care in Bradford" class="article-hero-img" loading="lazy" />
+          <span class="post-badge"><i class="fa-solid fa-scissors"></i> Pruning &amp; Perennial Guide</span>
         </div>
 
-        <h2 class="article-title">Why September is the Ultimate Month for Lawn Winterization</h2>
-
-        <p class="article-intro">
-          If you only dedicate one month a year to intensive lawn care, make it September. While many homeowners mistakenly believe spring is the prime time for turf maintenance, early autumn offers the perfect combination of warm soil, cool evening temperatures, and reliable moisture. Taking the right steps right now builds deep, drought-proof root systems that will safely sleep through a harsh Ontario winter and wake up thick, green, and weed-free next spring.
-        </p>
-
-        <!-- Point 1 -->
-        <div class="content-point">
-          <div class="point-icon"><i class="fa-solid fa-broom"></i></div>
-          <div class="point-text">
-            <h3>Dethatch: Clear the Suffocating Barrier</h3>
-            <p>
-              Over the summer, dead grass stems, roots, and organic debris accumulate between the green blades and the soil surface. When this layer of thatch exceeds half an inch, it blocks water, fertilizer, and oxygen from reaching root level. Power raking or dethatching in early September strips away this matted sponge, letting your turf breathe and exposing bare soil for incoming seed.
-            </p>
+        <div class="article-body">
+          <div class="post-meta">
+            <span><i class="fa-solid fa-calendar-day"></i> Late September Edition</span>
+            <span><i class="fa-solid fa-location-dot"></i> Bradford, ON</span>
+            <span><i class="fa-solid fa-user-pen"></i> Trevor Auton</span>
           </div>
-        </div>
 
-        <!-- Point 2 -->
-        <div class="content-point">
-          <div class="point-icon"><i class="fa-solid fa-arrows-down-to-line"></i></div>
-          <div class="point-text">
-            <h3>Core Aeration: Relieve Soil Compaction</h3>
-            <p>
-              Summer foot traffic and heavy rains leave Southern Ontario’s clay soils densely compacted. Core aeration pulls 2 to 3-inch soil plugs out of the turf, decompressing the ground and creating open conduits for roots to stretch deeper. It also creates prime micro-pockets for grass seed and nutrients to settle directly into the root zone instead of washing away.
-            </p>
-          </div>
-        </div>
+          <h2 class="article-title">The Late September Pruning &amp; Perennial Playbook: What to Cut, What to Keep &amp; What to Protect</h2>
 
-        <!-- Point 3 -->
-        <div class="content-point">
-          <div class="point-icon"><i class="fa-solid fa-seedling"></i></div>
-          <div class="point-text">
-            <h3>Overseed &amp; Topdress for Dense Turf</h3>
-            <p>
-              September is the golden window for cool-season grasses like Kentucky Bluegrass and Turf-Type Tall Fescues. Soil is warm enough for fast germination, while the lack of scorching heat prevents tender seedlings from drying out. Pair your seed with a thin (1/4-inch) layer of high-grade compost or screened loam to lock in moisture and maximize seed-to-soil contact.
-            </p>
-          </div>
-        </div>
-
-        <!-- Point 4 -->
-        <div class="content-point">
-          <div class="point-icon"><i class="fa-solid fa-vial-circle-check"></i></div>
-          <div class="point-text">
-            <h3>Feed with a Winterizer (Root Strength Over Blade Growth)</h3>
-            <p>
-              Spring fertilizers focus on rapid green blade growth, but late-season fertilizers serve a completely different purpose. A quality fall "winterizer" fertilizer provides moderate slow-release nitrogen alongside higher levels of <strong>Potassium (K)</strong>. This fortifies cellular walls, stimulates root carbohydrates, and hardens the lawn against sub-zero freezing and crown rot over winter.
-            </p>
-          </div>
-        </div>
-
-        <!-- Point 5 -->
-        <div class="content-point">
-          <div class="point-icon"><i class="fa-solid fa-scissors"></i></div>
-          <div class="point-text">
-            <h3>When to Stop Cutting &amp; The Final Mower Height</h3>
-            <p>
-              Don't park the mower just because the calendar hits October! Keep mowing as long as the grass continues actively growing (typically until daytime temperatures consistently sit below 5°C to 7°C). On your final cut of the season (late October or early November), gradually drop your deck to roughly <strong>2 to 2.5 inches</strong>. Keeping it short prevents tall blades from bending under heavy snowpacks, drastically reducing the risk of destructive <em>Gray and Pink Snow Mold</em>.
-            </p>
-          </div>
-        </div>
-
-        <!-- Point 6 -->
-        <div class="content-point">
-          <div class="point-icon"><i class="fa-solid fa-leaf"></i></div>
-          <div class="point-text">
-            <h3>Keep Fallen Leaves Under Control</h3>
-            <p>
-              Never let large, wet tree leaves sit layered on your lawn for more than a few days. A wet mat of maple or oak leaves blocks sunlight from reaching late-season turf and traps excessive moisture, smothering new seedlings. Use your mower's mulching blade to shred dry leaves into fine flakes that nourish the soil, or rake and remove heavy accumulations.
-            </p>
-          </div>
-        </div>
-
-        <!-- Conclusion -->
-        <div class="article-conclusion">
-          <h3><i class="fa-solid fa-thumbs-up"></i> Summary &amp; Action Plan</h3>
-          <p>
-            The secret to a show-stopping lawn in May isn't what you do in spring—it is what you do in September. By mechanically dethatching, aerating, introducing fresh genetics through overseeding, and feeding root systems before dormancy, you build an ironclad defense against winter kill. If you need help with aeration, seed blends, or late-season nutrition, feel free to reach out to Your Neighbourhood Plant Guy!
+          <p class="article-intro">
+            As the calendar turns toward late September here in Bradford, the garden enters a crucial transitional phase. The mornings are crisp, dew clings to the foliage, and deciduous plants are winding down their seasonal photosynthetic engines. Homeowners often ask me: <em>"Trevor, should I just take the hedge shears and chop down every garden bed to the ground before winter?"</em> The short answer is: <strong>Definitely not!</strong> While late September is indeed an ideal window to cut back certain spent perennials, an indiscriminate haircut can rob you of spring flowers, invite severe winter crown rot, leave open wounds vulnerable to cold-season pathogens, or strip away vital winter sustenance for local songbirds. Here is your definitive, science-backed guide to smart late-September cutting, pruning, and garden winterization.
           </p>
-        </div>
 
-        <!-- Author Footer -->
-        <div class="article-author-card">
-          <div class="author-info">
-            <img src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" alt="Trevor Auton" class="author-avatar" />
-            <div>
-              <div class="author-name">Trevor Auton</div>
-              <div class="author-role">Horticultural Specialist • Your Neighbourhood Plant Guy</div>
+          <!-- Point 1 -->
+          <div class="content-point">
+            <div class="point-icon"><i class="fa-solid fa-seedling"></i></div>
+            <div class="point-text">
+              <h3>1. Why Late September is Prime Time for Certain Perennials</h3>
+              <p>
+                By late September in Southern Ontario, herbaceous perennials have finished translocating their energy reserves—sugars, starches, and vital carbohydrates—from their above-ground foliage downward into their crowns, rhizomes, and deep taproots. Once foliage has naturally turned yellow, brown, or collapsed into mush, it has completed its metabolic job for the year.
+              </p>
+              <p>
+                For soft-stemmed species like <strong>Hostas</strong>, <strong>Daylilies (Hemerocallis)</strong>, <strong>Peonies (Paeonia)</strong>, <strong>Solomon’s Seal</strong>, and <strong>Bleeding Hearts (Dicentra)</strong>, cutting foliage back to 2 to 3 inches above the soil line now is essential. If left in place, these watery leaves collapse into a sodden, slimy anaerobic mat under autumn rain and winter snow. This suffocating layer traps excess moisture around the crown, invites slug egg-laying, fosters crown rot, and turns spring garden cleanup into a frustrating, foul-smelling chore.
+              </p>
             </div>
           </div>
-          <a href="quote.html" class="btn-ask" onclick="navParent('quote')">
-            <i class="fa-solid fa-calendar-check"></i> Book Lawn Winterization
-          </a>
-        </div>
 
-      </div>
-    </article>
-    <!-- ================= END POST 2 ================= -->
-
-    <!-- ================= POST 1 ================= -->
-    <article class="article-post">
-      <div class="article-hero-img-wrap">
-        <img src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Wagon%20V3.jpg" alt="Fall Leaves on Trees in Bradford Yard" class="article-hero-img" />
-        <span class="post-badge"><i class="fa-solid fa-leaf"></i> Seasonal Advisory</span>
-      </div>
-
-      <div class="article-body">
-        <div class="post-meta">
-          <span><i class="fa-solid fa-calendar-day"></i> Early Fall Edition</span>
-          <span><i class="fa-solid fa-location-dot"></i> Bradford, ON</span>
-          <span><i class="fa-solid fa-user-pen"></i> Trevor Auton</span>
-        </div>
-
-        <h2 class="article-title">Fall Has Come Early!!!</h2>
-
-        <p class="article-intro">
-          With the consistently cool weather and twice weekly showers in the lovely town we call Bradford, our silent friends the plants are certainly getting ready for an early winter’s slumber. As the daylight shortens and temperatures steadily drop, taking proactive steps right now will dictate how vigorously your trees, shrubs, and perennials wake up next spring.
-        </p>
-
-        <!-- Point 1 -->
-        <div class="content-point">
-          <div class="point-icon"><i class="fa-solid fa-seedling"></i></div>
-          <div class="point-text">
-            <h3>Prime Timing for Fall Planting &amp; Transplanting</h3>
-            <p>
-              Thanks to the unseasonably cool and moist weather, the standard fall planting window has arrived earlier than expected. Cooler air temps prevent heat stress and transpirational shock on the canopy, allowing new perennials, shrubs, and trees to concentrate 100% of their metabolic energy on root establishment rather than sustaining foliage against scorching heat.
-            </p>
-          </div>
-        </div>
-
-        <!-- Point 2 -->
-        <div class="content-point">
-          <div class="point-icon"><i class="fa-solid fa-cloud-rain"></i></div>
-          <div class="point-text">
-            <h3>Take Advantage of Well-Hydrated Soil</h3>
-            <p>
-              Our regular rain showers have left the local ground thoroughly hydrated deep down into the root zones. Soil that is consistently damp is much easier to work, dig, and aerate. More importantly, well-hydrated plant tissues and damp root balls insulate significantly better against unexpected early frosts compared to bone-dry autumn soil.
-            </p>
-          </div>
-        </div>
-
-        <!-- Point 3 -->
-        <div class="content-point">
-          <div class="point-icon"><i class="fa-solid fa-bone"></i></div>
-          <div class="point-text">
-            <h3>Fortify Root Systems with Bonemeal</h3>
-            <p>
-              High-nitrogen fertilizers should be set aside now so we don't stimulate tender, frost-susceptible green growth. Instead, apply organic <strong>Bonemeal</strong>. Packed with natural phosphorus and calcium, bonemeal encourages slow, deep root elongation throughout the fall, giving your plants a sturdy anchor and massive nutrient reserves to draw upon before the ground freezes.
-            </p>
-          </div>
-        </div>
-
-        <!-- Point 4 -->
-        <div class="content-point">
-          <div class="point-icon"><i class="fa-solid fa-layer-group"></i></div>
-          <div class="point-text">
-            <h3>Insulate Root Zones with Fresh Mulch</h3>
-            <p>
-              Applying a 2 to 3-inch layer of clean, organic mulch around the drip-line acts as a thermal blanket. Mulch buffers your delicate root systems against rapid temperature swings and harsh "freeze-thaw" cycles that heave roots out of the soil during early winter. Just remember to keep mulch pulled back 2 inches from tree trunks and stems!
-            </p>
-          </div>
-        </div>
-
-        <!-- Point 5 -->
-        <div class="content-point">
-          <div class="point-icon"><i class="fa-solid fa-scissors"></i></div>
-          <div class="point-text">
-            <h3>Lawn Repair &amp; Season-Closing Fortification</h3>
-            <p>
-              Now is the ultimate window for lawn rehabilitation. Cool nights and warm ground temperatures make ideal conditions for core aeration, overseeding thin patches, and applying a slow-release fall turf fertilizer. Repairing summer stress now guarantees dense, weed-resistant turf when melting snow departs in April.
-            </p>
-          </div>
-        </div>
-
-        <!-- Point 6 -->
-        <div class="content-point">
-          <div class="point-icon"><i class="fa-solid fa-shield-virus"></i></div>
-          <div class="point-text">
-            <h3>Diligence with Diseased Plant Material Cleanup</h3>
-            <p>
-              Do not let blighted, spotted, or mildewed leaves sit on your garden beds over the winter. Fungal spores and garden pests happily overwinter in damp leaf debris, ready to re-infect emerging buds next season. Rake, prune, and safely dispose of affected foliage off-site rather than adding it to your backyard compost pile.
-            </p>
-          </div>
-        </div>
-
-        <!-- Conclusion -->
-        <div class="article-conclusion">
-          <h3><i class="fa-solid fa-thumbs-up"></i> Summary &amp; Next Steps</h3>
-          <p>
-            An early fall gives us a head start to safeguard our gardens. By transplanting early, fortifying roots with bonemeal, laying protective mulch, and cleaning up diseased debris, you ensure your yard emerges lush, vibrant, and resilient next spring. If you need a hand assessing your shrubs or completing your fall cleanup, your Neighbourhood Plant Guy is always here to help!
-          </p>
-        </div>
-
-        <!-- Author Footer -->
-        <div class="article-author-card">
-          <div class="author-info">
-            <img src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" alt="Trevor Auton" class="author-avatar" />
-            <div>
-              <div class="author-name">Trevor Auton</div>
-              <div class="author-role">Horticultural Specialist • Your Neighbourhood Plant Guy</div>
+          <!-- Point 2 -->
+          <div class="content-point">
+            <div class="point-icon"><i class="fa-solid fa-ban"></i></div>
+            <div class="point-text">
+              <h3>2. Hands Off Spring Bloomers: The "Old Wood" Preservation Rule</h3>
+              <p>
+                The biggest mistake garden enthusiasts make in autumn is shearing spring-flowering trees and shrubs. These plants are <strong>"old wood" bloomers</strong>—they formed their flower buds for next year throughout the warmth of July and August. If you take a trimmer or clippers to them in September or October, you will literally slice off every single bloom planned for next spring!
+              </p>
+              <p>
+                <strong>Never hard-prune or shear these in the fall:</strong>
+              </p>
+              <ul style="margin: 0.5rem 0 0.75rem 1.4rem; color: #444; line-height: 1.65;">
+                <li><strong>Bigleaf Hydrangeas (<em>Hydrangea macrophylla</em>)</strong>: Classic mopheads and lacecaps (including varieties like Endless Summer and Nikko Blue) hold next year’s buds on their top terminal canes. Fall cuts mean zero flowers in July! (Note: <em>Hydrangea paniculata</em> like Limelight and <em>Hydrangea arborescens</em> like Annabelle bloom on "new wood" and can wait until late winter or early spring).</li>
+                <li><strong>Oakleaf Hydrangea (<em>Hydrangea quercifolia</em>)</strong>: Flower buds are set on mature woody canes; protect them from autumn shears.</li>
+                <li><strong>Common &amp; French Lilacs (<em>Syringa</em>)</strong>: Plump flower buds are already formed at the tips of every branch.</li>
+                <li><strong>Forsythia, Flowering Quince (<em>Chaenomeles</em>), and Weigela</strong>: All early spring yellow and pink bloomers set their buds on old wood.</li>
+                <li><strong>Magnolias, Serviceberry (<em>Amelanchier</em>), Rhododendrons &amp; Azaleas</strong>: Fuzzy flower buds are already locked in place for spring display.</li>
+              </ul>
             </div>
           </div>
-          <a href="quote.html" class="btn-ask" onclick="navParent('quote')">
-            <i class="fa-solid fa-comments"></i> Book Fall Consultation
-          </a>
+
+          <!-- Point 3 -->
+          <div class="content-point">
+            <div class="point-icon"><i class="fa-solid fa-tree"></i></div>
+            <div class="point-text">
+              <h3>3. Structural Pruning &amp; Deadwood Removal Are Still Encouraged</h3>
+              <p>
+                While live flower buds on spring bloomers must be preserved, do not confuse flower preservation with leaving dangerous structural defects alone. Late September is an excellent opportunity for surgical deadwood removal and addressing the classic <strong>"Three D's": Dead, Damaged, and Diseased wood</strong>.
+              </p>
+              <p>
+                Removing dead branches, storm-cracked limbs, and rubbing or crossing branches before winter brings significant benefits: it reduces wind drag during November gales, prevents heavy wet snowfall and ice storms from ripping split branches down into healthy bark, and eliminates hollow deadwood where pests harbor. As long as you make clean cuts just outside the branch bark ridge and collar—without indiscriminately shearing live flower buds—structural maintenance protects the tree’s overall architecture.
+              </p>
+            </div>
+          </div>
+
+          <!-- Point 4 -->
+          <div class="content-point">
+            <div class="point-icon"><i class="fa-solid fa-snowflake"></i></div>
+            <div class="point-text">
+              <h3>4. Wait Until Late Winter for Hardiness, Pests &amp; Disease Defense</h3>
+              <p>
+                Certain woody trees, shrubs, and sub-shrubs must <strong>NOT</strong> be pruned in late September. Cutting them in early autumn leaves open wounds that cannot properly heal or compartmentalize before sub-zero temperatures hit, creating major hazards:
+              </p>
+              <ul style="margin: 0.5rem 0 0.75rem 1.4rem; color: #444; line-height: 1.65;">
+                <li><strong>Freeze Dieback on Semi-Woody Shrubs</strong>: Plants like <strong>Butterfly Bush (<em>Buddleja</em>)</strong>, <strong>Rose of Sharon (<em>Hibiscus syriacus</em>)</strong>, <strong>Bluebeard (<em>Caryopteris</em>)</strong>, and <strong>English Lavender</strong> have hollow or pithy stems. If you cut them back now, moisture and freezing cold will travel straight down the open hollow stems directly into the crown, frequently killing the plant during a -25°C Bradford freeze. Leaving the top growth intact provides critical natural thermal insulation. Wait until late April or early May when you see green nodes swelling!</li>
+                <li><strong>Fruit Trees &amp; Pathogen Entry</strong>: Pruning <strong>Apples, Pears, Plums, and Cherries</strong> in autumn leaves open cuts during damp, humid conditions when fungal cankers and bacterial pathogens (like Black Knot and Fireblight) are still active. Wait until late winter (late February to mid-March) while trees are deeply dormant and sap is just weeks away from actively healing cuts.</li>
+                <li><strong>Bleeder Trees &amp; Oak Wilt</strong>: Maples, Birches, and Dogwoods will bleed sap or attract vectoring beetles if pruned during transitional weather. Keep shears away until late winter dormancy.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Point 5 -->
+          <div class="content-point">
+            <div class="point-icon"><i class="fa-solid fa-shield-virus"></i></div>
+            <div class="point-text">
+              <h3>5. Sanitation Alert: Strip Out Fungal &amp; Diseased Debris</h3>
+              <p>
+                If any of your plants struggled this season with <strong>Powdery Mildew</strong> (common on Peonies, Summer Phlox, Monarda/Bee Balm, and Lilacs), <strong>Black Spot</strong> (Roses), <strong>Rust</strong> (Hollyhocks), or <strong>Botrytis Blight</strong>, autumn sanitation is your single most effective organic defense.
+              </p>
+              <p>
+                Microscopic fungal spores, spore cases (cleistothecia), and bacterial pathogens do not die over winter; they safely overwinter in fallen leaves, curled foliage, and decaying stems on the soil surface. In May, warm spring rains will splash these overwintered spores directly back up onto tender new shoots, restarting the disease cycle before your garden even hits full stride.
+              </p>
+              <p>
+                <strong>The Golden Rule of Autumn Sanitation:</strong> Cut diseased perennial foliage right down to the ground, meticulously rake up all dropped leaves around the drip line, and <em>bag and dispose of this material in municipal yard waste</em>. <strong>Never</strong> add fungal-infected foliage to your home compost bin—backyard compost piles rarely reach the sustained 60°C (140°F) core temperatures needed to sterilize fungal spores!
+              </p>
+            </div>
+          </div>
+
+          <!-- Point 6 -->
+          <div class="content-point">
+            <div class="point-icon"><i class="fa-solid fa-feather"></i></div>
+            <div class="point-text">
+              <h3>6. Winter Interest &amp; Bird Foraging vs. The Fertile Seed Dispersal Dilemma</h3>
+              <p>
+                What about ornamental grasses and seed-bearing perennials? Here is where horticultural art meets garden practicality—and there are two sides to consider:
+              </p>
+              <p>
+                <strong>Why You Might Want to LEAVE Them Standing for Winter:</strong>
+              </p>
+              <ul style="margin: 0.5rem 0 0.75rem 1.4rem; color: #444; line-height: 1.65;">
+                <li><strong>Architectural Winter Interest</strong>: Tall ornamental grasses like <strong>Karl Foerster Feather Reed Grass</strong>, <strong>Maiden Grass (<em>Miscanthus</em>)</strong>, and <strong>Switchgrass (<em>Panicum</em>)</strong> provide upright structure, kinetic motion, soothing rustling sounds in the winter wind, and gorgeous straw-gold contrast against fresh white snow.</li>
+                <li><strong>Vital Natural Bird Food</strong>: Leaving the seed heads of <strong>Purple Coneflower (<em>Echinacea purpurea</em>)</strong>, <strong>Black-Eyed Susan (<em>Rudbeckia</em>)</strong>, <strong>Sedum Autumn Joy</strong>, and <strong>Joe Pye Weed</strong> standing turns your garden into a high-energy winter dining lounge for American Goldfinches, Black-capped Chickadees, Juncos, and Cardinals.</li>
+                <li><strong>Native Pollinator Shelter</strong>: Solitary native bees and beneficial predator insects hollow out and overwinter inside upright sturdy flower stems.</li>
+              </ul>
+              <p>
+                <strong>Why You Might Want to CUT Them Down in Late September Anyway:</strong>
+              </p>
+              <ul style="margin: 0.5rem 0 0.75rem 1.4rem; color: #444; line-height: 1.65;">
+                <li><strong>Rampant &amp; Aggressive Seed Dispersal</strong>: Highly fertile heirloom cultivars and vigorous seeders (like certain Black-Eyed Susans, wild Bergamot, Sea Holly, and non-sterile ornamental grasses) will shed hundreds of fertile seeds over winter. Come May, your mulch beds, walkways, and lawn will be carpeted with thousands of unwanted seedlings, creating hours of tedious weeding.</li>
+                <li><strong>Heavy Snowpack Collapse</strong>: In wind-swept Bradford neighbourhoods like Dreamfields and Grandview, heavy wet lake-effect snow will snap and flatten delicate stems into an unsightly sodden tangle, smothering neighboring low-growing evergreen groundcovers and providing cozy tunnels for bark-gnawing voles and mice.</li>
+              </ul>
+              <p>
+                <strong>Trevor's Pro Compromise:</strong> Check your varieties! If they are sterile hybrids or well-behaved clumping varieties, leave them up for the birds and winter scenery. If you know a variety self-seeds aggressively in your soil, clip off the seed heads now (you can bundle and hang them near bird feeders away from garden beds!) while leaving the grassy foliage intact.
+              </p>
+            </div>
+          </div>
+
+          <!-- Conclusion -->
+          <div class="article-conclusion">
+            <h3><i class="fa-solid fa-thumbs-up"></i> Summary &amp; Trevor's Action Plan</h3>
+            <p>
+              Late September gardening isn’t about clearing the canvas with a blunt machete; it’s about strategic, thoughtful stewardship. Cut down the mushy hostas and daylilies, bag up all mildewed and blighted debris, protect your spring-blooming hydrangeas and lilacs from the shears, let tender shrubs shelter their own crowns until late winter, and weigh winter beauty against unwanted seed dispersal.
+            </p>
+            <p>
+              If you’re unsure whether a shrub in your yard blooms on old or new wood, or if you'd like an experienced hand preparing your property for winter, reach out to Your Neighbourhood Plant Guy today!
+            </p>
+          </div>
+
+          <!-- Author Footer -->
+          <div class="article-author-card">
+            <div class="author-info">
+              <img src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" alt="Trevor Auton" class="author-avatar" width="52" height="52" />
+              <div>
+                <div class="author-name">Trevor Auton</div>
+                <div class="author-role">Horticultural Specialist • Your Neighbourhood Plant Guy</div>
+              </div>
+            </div>
+            <a href="quote.html" class="btn-ask">
+              <i class="fa-solid fa-scissors"></i> Book Fall Garden Care
+            </a>
+          </div>
+
+        </div>
+      </article>
+
+      <!-- POST 2 -->
+      <article class="article-post" id="post-lawn">
+        <div class="article-hero-img-wrap">
+          <img src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Wagon%20V3.jpg" alt="Lawn Care and Fall Renovation in Bradford Yard" class="article-hero-img" loading="lazy" />
+          <span class="post-badge"><i class="fa-solid fa-wheat-awn"></i> Turf Care Guide</span>
         </div>
 
-      </div>
-    </article>
-    <!-- ================= END POST 1 ================= -->
+        <div class="article-body">
+          <div class="post-meta">
+            <span><i class="fa-solid fa-calendar-day"></i> September Turf Edition</span>
+            <span><i class="fa-solid fa-location-dot"></i> Bradford, ON</span>
+            <span><i class="fa-solid fa-user-pen"></i> Trevor Auton</span>
+          </div>
 
+          <h2 class="article-title">Why September is the Ultimate Month for Lawn Winterization</h2>
 
-    <!-- TO ADD FUTURE POSTS: Duplicate the <article class="article-post">...</article> block above and paste it right here! -->
+          <p class="article-intro">
+            If you only dedicate one month a year to intensive lawn care, make it September. While many homeowners mistakenly believe spring is the prime time for turf maintenance, early autumn offers the perfect combination of warm soil, cool evening temperatures, and reliable moisture. Taking the right steps right now builds deep, drought-proof root systems that will safely sleep through a harsh Ontario winter and wake up thick, green, and weed-free next spring.
+          </p>
 
+          <div class="content-point">
+            <div class="point-icon"><i class="fa-solid fa-broom"></i></div>
+            <div class="point-text">
+              <h3>Dethatch: Clear the Suffocating Barrier</h3>
+              <p>Over the summer, dead grass stems, roots, and organic debris accumulate between the green blades and the soil surface. Power raking or dethatching in early September strips away this matted sponge, letting your turf breathe and exposing bare soil for incoming seed.</p>
+            </div>
+          </div>
+
+          <div class="content-point">
+            <div class="point-icon"><i class="fa-solid fa-arrows-down-to-line"></i></div>
+            <div class="point-text">
+              <h3>Core Aeration: Relieve Soil Compaction</h3>
+              <p>Summer foot traffic and heavy rains leave Southern Ontario’s clay soils densely compacted. Core aeration pulls 2 to 3-inch soil plugs out of the turf, creating open conduits for roots to stretch deeper into the root zone.</p>
+            </div>
+          </div>
+
+          <div class="content-point">
+            <div class="point-icon"><i class="fa-solid fa-seedling"></i></div>
+            <div class="point-text">
+              <h3>Overseed &amp; Topdress for Dense Turf</h3>
+              <p>September is the golden window for cool-season grasses like Kentucky Bluegrass and Turf-Type Tall Fescues. Soil is warm enough for fast germination without scorching heat drying out tender shoots.</p>
+            </div>
+          </div>
+
+          <div class="content-point">
+            <div class="point-icon"><i class="fa-solid fa-vial-circle-check"></i></div>
+            <div class="point-text">
+              <h3>Feed with a Winterizer (Root Strength Over Blade Growth)</h3>
+              <p>A quality fall winterizer fertilizer provides moderate slow-release nitrogen alongside higher levels of Potassium (K), fortifying cellular walls against sub-zero freezing and crown rot over winter.</p>
+            </div>
+          </div>
+
+          <div class="content-point">
+            <div class="point-icon"><i class="fa-solid fa-scissors"></i></div>
+            <div class="point-text">
+              <h3>When to Stop Cutting &amp; The Final Mower Height</h3>
+              <p>On your final cut of the season, gradually drop your deck to roughly 2 to 2.5 inches. Keeping it short prevents tall blades from bending under heavy snowpacks, drastically reducing the risk of destructive snow mold.</p>
+            </div>
+          </div>
+
+          <div class="article-conclusion">
+            <h3><i class="fa-solid fa-thumbs-up"></i> Summary &amp; Action Plan</h3>
+            <p>The secret to a show-stopping lawn in May is what you do in September. If you need help with aeration, seed blends, or late-season nutrition, feel free to reach out to Your Neighbourhood Plant Guy!</p>
+          </div>
+
+          <div class="article-author-card">
+            <div class="author-info">
+              <img src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" alt="Trevor Auton" class="author-avatar" width="52" height="52" />
+              <div>
+                <div class="author-name">Trevor Auton</div>
+                <div class="author-role">Horticultural Specialist • Your Neighbourhood Plant Guy</div>
+              </div>
+            </div>
+            <a href="quote.html" class="btn-ask">
+              <i class="fa-solid fa-calendar-check"></i> Book Lawn Winterization
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <!-- POST 1 -->
+      <article class="article-post" id="post-perennials">
+        <div class="article-hero-img-wrap">
+          <img src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Wagon%20V3.jpg" alt="Fall Leaves on Trees in Bradford Yard" class="article-hero-img" loading="lazy" />
+          <span class="post-badge"><i class="fa-solid fa-leaf"></i> Seasonal Advisory</span>
+        </div>
+
+        <div class="article-body">
+          <div class="post-meta">
+            <span><i class="fa-solid fa-calendar-day"></i> Early Fall Edition</span>
+            <span><i class="fa-solid fa-location-dot"></i> Bradford, ON</span>
+            <span><i class="fa-solid fa-user-pen"></i> Trevor Auton</span>
+          </div>
+
+          <h2 class="article-title">Fall Has Come Early!!!</h2>
+
+          <p class="article-intro">
+            With the consistently cool weather and twice weekly showers in Bradford, our silent friends the plants are getting ready for winter’s slumber. As the daylight shortens, taking proactive steps right now will dictate how vigorously your trees, shrubs, and perennials wake up next spring.
+          </p>
+
+          <div class="content-point">
+            <div class="point-icon"><i class="fa-solid fa-seedling"></i></div>
+            <div class="point-text">
+              <h3>Prime Timing for Fall Planting &amp; Transplanting</h3>
+              <p>Cooler air temps prevent transpirational shock on the canopy, allowing new perennials, shrubs, and trees to concentrate energy on deep root establishment.</p>
+            </div>
+          </div>
+
+          <div class="content-point">
+            <div class="point-icon"><i class="fa-solid fa-bone"></i></div>
+            <div class="point-text">
+              <h3>Fortify Root Systems with Bonemeal</h3>
+              <p>Organic bonemeal encourages slow, deep root elongation throughout the fall, giving your plants a sturdy anchor and nutrient reserves before the ground freezes.</p>
+            </div>
+          </div>
+
+          <div class="content-point">
+            <div class="point-icon"><i class="fa-solid fa-layer-group"></i></div>
+            <div class="point-text">
+              <h3>Insulate Root Zones with Fresh Mulch</h3>
+              <p>Applying a 2 to 3-inch layer of clean, organic mulch around the drip-line buffers delicate root systems against rapid temperature swings and winter freeze-thaw cycles.</p>
+            </div>
+          </div>
+
+          <div class="article-conclusion">
+            <h3><i class="fa-solid fa-thumbs-up"></i> Summary &amp; Next Steps</h3>
+            <p>An early fall gives us a head start to safeguard our gardens. If you need a hand assessing your shrubs or completing your fall cleanup, your Neighbourhood Plant Guy is always here to help!</p>
+          </div>
+
+          <div class="article-author-card">
+            <div class="author-info">
+              <img src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" alt="Trevor Auton" class="author-avatar" width="52" height="52" />
+              <div>
+                <div class="author-name">Trevor Auton</div>
+                <div class="author-role">Horticultural Specialist • Your Neighbourhood Plant Guy</div>
+              </div>
+            </div>
+            <a href="quote.html" class="btn-ask">
+              <i class="fa-solid fa-comments"></i> Book Fall Consultation
+            </a>
+          </div>
+        </div>
+      </article>
+
+    </div>
   </div>
 
-  <script>
-    function navParent(pageKey) {
-      if (window.parent && window.parent.loadPage) {
-        window.parent.loadPage(`${pageKey}.html`, pageKey);
-      }
-    }
-  </script>
+  <!-- Persistent Background Theme Song -->
+  <audio id="themeAudio" loop preload="none" src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Your%20Neighbourhood%20Plant%20Guy.mp3"></audio>
 
-  <!-- ================= LEAF ANIMATION CANVAS & SCRIPT ================= -->
+  <!-- Music Widget -->
+  <div class="floating-music-bar">
+    <div class="vinyl-disc" id="vinylDisc"><i class="fa-solid fa-music"></i></div>
+    <div class="music-info">
+      <span class="music-title">Your Neighbourhood Plant Guy</span>
+      <span class="music-sub">Official Theme Song 🎶</span>
+    </div>
+    <div class="music-controls">
+      <button class="player-btn" aria-label="Play theme song" onclick="toggleThemeSong()"><i class="fa-solid fa-play" id="playIcon"></i></button>
+      <input type="range" class="vol-slider" min="0" max="1" step="0.05" value="0.7" onchange="adjustVolume(this.value)" aria-label="Volume slider" />
+    </div>
+  </div>
+
   <canvas id="leafCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;"></canvas>
 
   <script>
+    function toggleMobileNav() {
+      const menu = document.getElementById('navMenu');
+      if (menu) menu.classList.toggle('open');
+    }
+
+    const audio = document.getElementById('themeAudio');
+    const playIcon = document.getElementById('playIcon');
+    const disc = document.getElementById('vinylDisc');
+
+    function toggleThemeSong() {
+      if (audio.paused) {
+        audio.play().then(() => {
+          playIcon.className = 'fa-solid fa-pause';
+          disc.classList.add('playing');
+        }).catch(() => {});
+      } else {
+        audio.pause();
+        playIcon.className = 'fa-solid fa-play';
+        disc.classList.remove('playing');
+      }
+    }
+
+    function adjustVolume(v) { audio.volume = parseFloat(v); }
+
     (function initFallingLeaves() {
       const canvas = document.getElementById('leafCanvas');
       if (!canvas) return;
@@ -522,9 +902,7 @@
       resize();
 
       class Leaf {
-        constructor() {
-          this.reset();
-        }
+        constructor() { this.reset(); }
         reset() {
           this.x = Math.random() * canvas.width;
           this.y = -20;
@@ -568,7 +946,5 @@
       animate();
     })();
   </script>
-  <!-- ================================================================= -->
-
 </body>
 </html>
