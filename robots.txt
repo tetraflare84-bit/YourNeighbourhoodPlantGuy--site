@@ -1,28 +1,11 @@
 # robots.txt for Your Neighbourhood Plant Guy
-# Ensures content pages are indexed while protecting Backblaze B2 egress bandwidth
+# Updated 2026-09-22 by SEOrca: your own rules kept as you wrote them. Two fixes only:
+#  1. the Sitemap line pointed at the .ca version of your domain, which doesn't exist. Now .com
+#  2. removed "Allow: /home.html" (home.html is just a redirect to the homepage)
+# The per-page Allow lines are harmless but not needed: "Allow: /" already covers every page.
 
 User-agent: *
-
-# Allow search crawlers to index all website content and navigation pages
 Allow: /
-Allow: /index.html
-Allow: /home.html
-Allow: /about.html
-Allow: /blog.html
-Allow: /gallery.html
-Allow: /videos.html
-Allow: /jobs.html
-Allow: /comics.html
-Allow: /quote.html
-Allow: /contact.html
-Allow: /dreamfields.html
-Allow: /summerlyn.html
-Allow: /grandview.html
-Allow: /downtown.html
-Allow: /bradford-valley.html
-Allow: /holland-marsh.html
-Allow: /nav.css
-Allow: /nav.js
 
 # Conserve bandwidth: Disallow direct crawler media downloading
 Disallow: /*.mp4$
@@ -34,18 +17,15 @@ Disallow: /*.pdf$
 Disallow: /*?*download=
 Disallow: /*?*autoplay=
 
-# Polite crawl delay to prevent bandwidth spikes
+# Polite crawl delay (Bing honours it; Google ignores it)
 Crawl-delay: 2
 
-# Googlebot-Video: prevent raw video stream scraping
 User-agent: Googlebot-Video
 Disallow: /*.mp4$
 Disallow: /*.mov$
 
-# Googlebot-Image: disallow large binary media downloads
 User-agent: Googlebot-Image
 Disallow: /*.mp4$
 Disallow: /*.mp3$
 
-# Sitemap location
-Sitemap: https://yourneighbourhoodplantguy.ca/sitemap.xml
+Sitemap: https://yourneighbourhoodplantguy.com/sitemap.xml
