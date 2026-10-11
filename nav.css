@@ -451,7 +451,7 @@
   }
 }
 
-@media (max-width: 1024px) {
+@media (max-width: 1100px) {
   .mobile-menu-toggle {
     display: flex;
   }
@@ -549,5 +549,29 @@
 
   .vol-slider {
     display: none;
+  }
+}
+
+/* ==========================================================================
+   5. DESKTOP TWO-ROW NAVIGATION (above the 1100px hamburger breakpoint)
+   5 links on the top row, 4 on the bottom (Request Quote spans two columns)
+   ========================================================================== */
+@media (min-width: 1101px) {
+  #navMenu {
+    display: grid;
+    grid-template-columns: repeat(5, auto);
+    gap: 0.35rem 0.4rem;
+    justify-content: end;
+    min-width: 0;
+  }
+
+  .nav-btn {
+    justify-content: center;
+  }
+
+  .nav-btn[href*="quote.html"],
+  .nav-btn-quote {
+    grid-column: span 2;
+    margin-left: 0;
   }
 }
