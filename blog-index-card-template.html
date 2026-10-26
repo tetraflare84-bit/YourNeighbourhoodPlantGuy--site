@@ -1,0 +1,38 @@
+<!--
+  =====================================================================
+  BLOG INDEX CARD TEMPLATE  (not a page, just a snippet to copy)
+  =====================================================================
+  1. Open blog.html and find:   <div class="post-list">
+  2. Paste the card below directly under that line (newest post goes FIRST).
+  3. Edit the highlighted fields. The first card on the page automatically
+     becomes the large "Latest post" card, so there's nothing else to change.
+  4. Optional: add a topic pill in the green hero box at the top of blog.html:
+     <a href="YY-MM-DD%20Blog.html" class="topic-pill"><i class="fa-solid fa-seedling"></i> Topic</a>
+
+  IMPORTANT: file names contain a space, so write it as %20 in links
+  ("26-11-05 Blog.html" becomes href="26-11-05%20Blog.html").
+  =====================================================================
+-->
+
+<!-- ===== POST CARD: YY-MM-DD Blog.html ===== -->
+<article class="post-card">
+  <div class="post-card-img">
+    <!-- EDIT: image URL + alt text (use the same image as the post's hero) -->
+    <img src="PASTE-IMAGE-URL-HERE.jpg" alt="Describe the photo" loading="lazy" />
+    <!-- EDIT: icon + category label -->
+    <span class="post-badge"><i class="fa-solid fa-leaf"></i> Category Label</span>
+  </div>
+  <div class="post-card-body">
+    <div class="post-meta">
+      <!-- EDIT: date (keep datetime="YYYY-MM-DD") and edition name -->
+      <span><i class="fa-solid fa-calendar-day"></i> <time datetime="YYYY-MM-DD">Month D, YYYY</time></span>
+      <span><i class="fa-solid fa-newspaper"></i> Season Edition</span>
+      <span><i class="fa-solid fa-user-pen"></i> Trevor Auton</span>
+    </div>
+    <!-- EDIT: link to the post file + title -->
+    <h2 class="post-card-title"><a href="YY-MM-DD%20Blog.html">Your Post Title Here</a></h2>
+    <!-- EDIT: one or two sentences -->
+    <p class="post-card-excerpt">Two short sentences that make people want to read the post.</p>
+    <span class="post-card-more">Read Post <i class="fa-solid fa-arrow-right"></i></span>
+  </div>
+</article>

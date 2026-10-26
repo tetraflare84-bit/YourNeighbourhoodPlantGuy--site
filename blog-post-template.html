@@ -1,0 +1,200 @@
+<!--
+  =====================================================================
+  BLOG POST TEMPLATE  (copy this file, don't edit the original)
+  =====================================================================
+  1. Save a copy named by date:  YY-MM-DD Blog.html   (e.g. 26-11-05 Blog.html)
+  2. Press Ctrl+F and search for  EDIT  to jump to every spot that needs changing.
+  3. Delete any content block you don't need. Duplicate any you want more of.
+  4. Upload next to blog.css, blog.js and nav.css.
+  5. Add a card for it on blog.html (see blog-index-card-template.html).
+  6. Optional: on the previous newest post, point the "Newer post" box at this one.
+
+  Icons: any Font Awesome 6 free icon works, e.g. fa-seedling, fa-tree, fa-snowflake,
+  fa-droplet, fa-sun, fa-bug, fa-leaf, fa-scissors, fa-bone, fa-layer-group, fa-wheat-awn.
+  =====================================================================
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Short Title For Browser Tab | Your Neighbourhood Plant Guy</title>
+
+  <link rel="canonical" href="https://yourneighbourhoodplantguy.com/YY-MM-DD%20Blog.html" />
+  <meta property="og:url" content="https://yourneighbourhoodplantguy.com/YY-MM-DD%20Blog.html" />
+  <meta property="og:site_name" content="Your Neighbourhood Plant Guy" />
+  <meta property="og:locale" content="en_CA" />
+  <!-- EDIT: the <title>, canonical, description and og: lines in this head section must match this post -->
+  <meta name="description" content="One or two sentences (about 150 characters) for Google and link previews." />
+  <meta property="og:title" content="Short Title For Browser Tab | Your Neighbourhood Plant Guy" />
+  <meta property="og:description" content="One or two sentences (about 150 characters) for Google and link previews." />
+  <meta property="og:type" content="article" />
+  <meta property="og:image" content="PASTE-IMAGE-URL-HERE.jpg" />
+  <meta name="twitter:card" content="summary_large_image" />
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+  <link rel="stylesheet" href="nav.css" />
+  <link rel="stylesheet" href="blog.css" />
+  <script src="nav.js" defer></script>
+  <script src="blog.js" defer></script>
+</head>
+<body>
+
+  <!-- Top Bar: Direct contact and socials -->
+<div class="top-bar">
+  <div class="top-bar-contact">
+    <a href="tel:9052527619" title="Call Office"><i class="fa-solid fa-phone"></i> <span>Office: 905-252-7619</span></a>
+    <a href="tel:9052523569" title="Call or Text Cell"><i class="fa-solid fa-mobile-screen"></i> <span>Cell: 905-252-3569</span></a>
+    <a href="mailto:YourNeighbourhoodPlantGuy@Gmail.com" title="Send Email"><i class="fa-solid fa-envelope"></i> <span>YourNeighbourhoodPlantGuy@Gmail.com</span></a>
+    <span class="top-bar-badge"><i class="fa-solid fa-bolt"></i> 100% Eco-Friendly • Bradford, ON</span>
+  </div>
+  <div class="top-bar-socials">
+    <a href="https://www.youtube.com/@trevorauton2676" target="_blank" rel="noopener noreferrer" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
+    <a href="https://www.tiktok.com/@your.neighbourhoo8" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
+    <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" rel="noopener noreferrer" title="Threads / Instagram"><i class="fa-brands fa-instagram"></i></a>
+    <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" rel="noopener noreferrer" title="Threads"><i class="fa-brands fa-threads"></i></a>
+    <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+  </div>
+</div>
+
+<!-- Persistent Site Header -->
+<header class="site-header">
+  <div class="nav-container">
+    <a class="brand-logo" href="index.html">
+      <img id="siteBrandLogo" src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" alt="Your Neighbourhood Plant Guy Logo" class="brand-avatar" width="48" height="48" />
+      <div>
+        <div class="brand-title">Your Neighbourhood Plant Guy</div>
+        <div class="brand-subtitle">Eco-Friendly Plant Care • 25 Yrs Experience</div>
+      </div>
+    </a>
+
+    <button class="mobile-menu-toggle" aria-label="Toggle navigation menu" onclick="toggleMobileNav()"><i class="fa-solid fa-bars"></i></button>
+
+    <nav id="navMenu">
+      <a class="nav-btn" href="index.html"><i class="fa-solid fa-house"></i> Home</a>
+      <a class="nav-btn" href="gallery.html"><i class="fa-solid fa-seedling"></i> Plant Gallery</a>
+      <a class="nav-btn" href="jobs.html"><i class="fa-solid fa-tree"></i> Completed Jobs</a>
+      <a class="nav-btn" href="videos.html"><i class="fa-solid fa-clapperboard"></i> Videos</a>
+      <a class="nav-btn" href="comics.html"><i class="fa-solid fa-book-open"></i> Comics &amp; Posters</a>
+      <a class="nav-btn active" href="blog.html"><i class="fa-solid fa-newspaper"></i> Blog</a>
+      <a class="nav-btn" href="about.html"><i class="fa-solid fa-user"></i> About Us</a>
+      <a class="nav-btn" href="contact.html"><i class="fa-solid fa-address-book"></i> Contact</a>
+      <a class="nav-btn nav-btn-quote" href="quote.html"><i class="fa-solid fa-calculator"></i> Request Quote</a>
+    </nav>
+  </div>
+</header>
+
+  <div class="main-content">
+    <nav class="breadcrumb" aria-label="Breadcrumb"><a href="blog.html"><i class="fa-solid fa-arrow-left"></i> Back to The Plant Guy Journal</a></nav>
+
+    <article class="article-post">
+      <div class="article-hero-img-wrap">
+        <!-- EDIT: hero image URL + alt text -->
+        <img src="PASTE-IMAGE-URL-HERE.jpg" alt="Describe the photo" class="article-hero-img" fetchpriority="high" />
+        <!-- EDIT: badge icon + label -->
+        <span class="post-badge"><i class="fa-solid fa-leaf"></i> Category Label</span>
+      </div>
+
+      <div class="article-body">
+        <div class="post-meta">
+          <!-- EDIT: date (keep the datetime="YYYY-MM-DD" part in that format) and edition name -->
+          <span><i class="fa-solid fa-calendar-day"></i> <time datetime="YYYY-MM-DD">Month D, YYYY</time> &middot; Season Edition</span>
+          <span><i class="fa-solid fa-location-dot"></i> Bradford, ON</span>
+          <span><i class="fa-solid fa-user-pen"></i> Trevor Auton</span>
+        </div>
+
+        <!-- EDIT: title (one h1 per page) -->
+        <h1 class="article-title">Your Post Title Here</h1>
+
+        <!-- EDIT: opening paragraph -->
+        <p class="article-intro">
+          Write the opening paragraph here. Say what's happening in the garden right now and why it matters.
+        </p>
+
+        <!-- ===== CONTENT BLOCK: icon + heading + text. Copy/paste this block for each point. ===== -->
+        <div class="content-point">
+          <div class="point-icon"><i class="fa-solid fa-seedling"></i></div>
+          <div class="point-text">
+            <h3>Point Heading</h3>
+            <p>One or two paragraphs explaining this point. Use &lt;strong&gt; for bold plant names.</p>
+          </div>
+        </div>
+
+        <!-- ===== CONTENT BLOCK WITH A BULLET LIST (optional) ===== -->
+        <div class="content-point">
+          <div class="point-icon"><i class="fa-solid fa-scissors"></i></div>
+          <div class="point-text">
+            <h3>Point Heading With a List</h3>
+            <p>Lead-in sentence for the list.</p>
+            <ul class="point-list">
+              <li><strong>Plant or item</strong>: what to do with it.</li>
+              <li><strong>Plant or item</strong>: what to do with it.</li>
+            </ul>
+            <!-- Optional green tip box. Delete if not needed. -->
+            <div class="pro-tip"><strong>Trevor's Tip:</strong> A short practical tip goes here.</div>
+          </div>
+        </div>
+
+        <!-- ===== END OF CONTENT BLOCKS ===== -->
+
+        <!-- EDIT: summary box -->
+        <div class="article-conclusion">
+          <h3><i class="fa-solid fa-thumbs-up"></i> Summary &amp; Next Steps</h3>
+          <p>Wrap up in two or three sentences and invite readers to get in touch.</p>
+        </div>
+
+        <div class="article-author-card">
+          <div class="author-info">
+            <img src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" alt="Trevor Auton" class="author-avatar" width="52" height="52" />
+            <div>
+              <div class="author-name">Trevor Auton</div>
+              <div class="author-role">Horticultural Specialist &bull; Your Neighbourhood Plant Guy</div>
+            </div>
+          </div>
+          <!-- EDIT: button text (links to the quote page) -->
+          <a href="quote.html" class="btn-ask"><i class="fa-solid fa-comments"></i> Book a Consultation</a>
+        </div>
+      </div>
+    </article>
+
+    <!-- EDIT: set "Older post" to the previous newest post. Leave "Newer" as Coming soon. -->
+    <nav class="post-pager" aria-label="More blog posts">
+      <a class="pager-link pager-link--older" href="26-10-15%20Blog.html">
+        <span class="pager-label"><i class="fa-solid fa-arrow-left"></i> Older post</span>
+        <span class="pager-title">Fall Has Come Early: Planting, Bonemeal &amp; Mulch Tips</span>
+      </a>
+      <div class="pager-link pager-link--newer pager-link--empty">
+        <span class="pager-label">Newer post</span>
+        <span class="pager-title">Coming soon. Check back!</span>
+      </div>
+    </nav>
+    <div class="pager-back">
+      <a href="blog.html" class="btn-ask"><i class="fa-solid fa-newspaper"></i> Back to All Posts</a>
+    </div>
+  </div>
+
+  <!-- Persistent Background Theme Song -->
+  <audio id="themeAudio" loop preload="none" src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Your%20Neighbourhood%20Plant%20Guy.mp3"></audio>
+
+  <!-- Music Widget -->
+  <div class="floating-music-bar">
+    <div class="vinyl-disc" id="vinylDisc"><i class="fa-solid fa-music"></i></div>
+    <div class="music-info">
+      <span class="music-title">Your Neighbourhood Plant Guy</span>
+      <span class="music-sub">Official Theme Song 🎶</span>
+    </div>
+    <div class="music-controls">
+      <button class="player-btn" aria-label="Play theme song" onclick="toggleThemeSong()"><i class="fa-solid fa-play" id="playIcon"></i></button>
+      <input type="range" class="vol-slider" min="0" max="1" step="0.05" value="0.7" onchange="adjustVolume(this.value)" aria-label="Volume slider" />
+    </div>
+  </div>
+
+  <canvas id="leafCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;"></canvas>
+
+  <p class="hood-links">Neighbourhoods we serve: <a href="dreamfields.html">Dreamfields</a> · <a href="summerlyn.html">Summerlyn Village</a> · <a href="grandview.html">Grandview &amp; Line 8</a> · <a href="downtown.html">Downtown Bradford</a> · <a href="bradford-valley.html">Bradford Valley</a> · <a href="holland-marsh.html">Holland Marsh</a></p>
+</body>
+</html>
