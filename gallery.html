@@ -3,121 +3,220 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Garden &amp; Plant Gallery | Your Neighbourhood Plant Guy</title>
-
-<link rel="canonical" href="https://yourneighbourhoodplantguy.com/gallery.html" />
-<meta property="og:url" content="https://yourneighbourhoodplantguy.com/gallery.html" />
-<meta property="og:site_name" content="Your Neighbourhood Plant Guy" />
-<meta property="og:locale" content="en_CA" />
-
-  <meta name="description" content="Browse our living plant photo and video collection: perennials, shrubs, boxwood restorations and specimen plantings from real gardens in Bradford, ON." />
-
-  <!-- Robots directives: Index page content, but prevent automated bot egress data drains on Backblaze B2 assets -->
+  <title>Plant Gallery &amp; Guide Hub | Your Neighbourhood Plant Guy</title>
+  <link rel="canonical" href="https://yourneighbourhoodplantguy.com/gallery.html" />
+  <meta property="og:url" content="https://yourneighbourhoodplantguy.com/gallery.html" />
+  <meta property="og:site_name" content="Your Neighbourhood Plant Guy" />
+  <meta property="og:locale" content="en_CA" />
+  <meta name="description" content="Explore our master botanical guide of cold-hardy evergreens, flowering perennials, trees, shrubs, and garden edibles thriving in Bradford, ON." />
   <meta name="robots" content="index, follow, noimageindex, max-video-preview:0" />
-  <meta property="og:title" content="Plant Gallery | Your Neighbourhood Plant Guy" />
-  <meta property="og:description" content="Browse our living plant photo and video collection: perennials, shrubs, boxwood restorations and specimen plantings from real gardens in Bradford, ON." />
+  <meta property="og:title" content="Plant Gallery &amp; Guide Hub | Your Neighbourhood Plant Guy" />
   <meta property="og:type" content="website" />
-  <meta property="og:image" content="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Roses%201%20(2).jpg" />
+  <meta property="og:image" content="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" />
   <meta name="twitter:card" content="summary_large_image" />
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Bangers&family=Fraunces:ital,wght@1,400;1,600&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
-  <link rel="stylesheet" href="nav.css" />
 
   <style>
     :root {
       --primary: #2d6a4f;
       --primary-dark: #1b4332;
+      --primary-light: #d8f3dc;
       --accent: #ffb703;
       --accent-orange: #fb8500;
       --bg-cream: #fbf8f1;
+      --card-bg: #ffffff;
+      --ink: #26332b;
+      --ink-soft: #5b6860;
+      --border-subtle: #e2e8df;
+      --border-dark: #1b4332;
       --comic-font: 'Bangers', cursive, sans-serif;
       --body-font: 'Outfit', sans-serif;
+      --latin-font: 'Fraunces', Georgia, serif;
     }
+
     * { box-sizing: border-box; margin: 0; padding: 0; }
-    body { font-family: var(--body-font); background: var(--bg-cream); margin: 0; line-height: 1.6; }
-    
+    body { font-family: var(--body-font); background: var(--bg-cream); color: var(--ink); margin: 0; line-height: 1.6; }
+
+    .top-bar {
+      background: var(--primary-dark); color: #fff; padding: 0.45rem 1.5rem;
+      display: flex; justify-content: space-between; align-items: center; font-size: 0.85rem; flex-wrap: wrap; gap: 0.5rem;
+    }
+    .top-bar-contact { display: flex; align-items: center; gap: 1.2rem; flex-wrap: wrap; }
+    .top-bar-contact a { color: #d8f3dc; text-decoration: none; display: inline-flex; align-items: center; gap: 0.35rem; font-weight: 500; }
+    .top-bar-contact a:hover { color: var(--accent); }
+    .top-bar-badge { background: rgba(255, 183, 3, 0.2); color: var(--accent); padding: 0.15rem 0.6rem; border-radius: 12px; font-weight: 700; font-size: 0.78rem; }
+    .top-bar-socials { display: flex; gap: 0.8rem; align-items: center; }
+    .top-bar-socials a { color: #fff; font-size: 0.95rem; }
+    .top-bar-socials a:hover { color: var(--accent); }
+
+    .site-header { background: #fff; border-bottom: 2px solid var(--border-subtle); position: sticky; top: 0; z-index: 100; box-shadow: 0 4px 12px rgba(0,0,0,0.03); }
+    .nav-container { max-width: 1300px; margin: 0 auto; padding: 0.75rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+    .brand-logo { display: flex; align-items: center; gap: 0.85rem; text-decoration: none; color: var(--primary-dark); }
+    .brand-avatar { width: 46px; height: 46px; border-radius: 50%; object-fit: cover; border: 2px solid var(--primary); }
+    .brand-title { font-family: var(--comic-font); font-size: 1.65rem; line-height: 1; letter-spacing: 0.5px; }
+    .brand-subtitle { font-size: 0.78rem; color: var(--ink-soft); font-weight: 600; }
+
+    nav { display: flex; gap: 0.5rem; align-items: center; }
+    .nav-btn {
+      padding: 0.45rem 0.9rem; border-radius: 20px; text-decoration: none; color: var(--ink);
+      font-weight: 700; font-size: 0.92rem; display: inline-flex; align-items: center; gap: 0.35rem; transition: 0.2s;
+    }
+    .nav-btn:hover, .nav-btn.active { background: var(--primary-light); color: var(--primary-dark); }
+    .nav-btn-quote { background: var(--accent); color: var(--primary-dark); border: 1.5px solid var(--primary-dark); box-shadow: 2px 2px 0 var(--primary-dark); }
+    .nav-btn-quote:hover { background: var(--accent-orange); color: #fff; }
+    .mobile-menu-toggle { display: none; background: none; border: none; font-size: 1.6rem; color: var(--primary-dark); cursor: pointer; }
+
     .main-content { padding: 2.5rem 1.5rem 6rem; max-width: 1300px; margin: 0 auto; }
-    .header-section { text-align: center; margin-bottom: 2rem; }
-    .header-section h1 { font-family: var(--comic-font); font-size: 3.2rem; color: var(--primary-dark); }
-    .header-section p { font-size: 1.1rem; color: #555; max-width: 700px; margin: 0.4rem auto 0; }
-    
-    .filter-bar { display: flex; gap: 0.6rem; justify-content: center; flex-wrap: wrap; margin-bottom: 2.2rem; }
-    .filter-pill {
-      background: #fff; border: 1.5px solid #ddd; padding: 0.45rem 1.3rem; border-radius: 25px;
-      font-weight: 700; cursor: pointer; transition: 0.2s; font-family: var(--body-font); font-size: 0.95rem;
-    }
-    .filter-pill.active, .filter-pill:hover { background: var(--primary); color: #fff; border-color: var(--primary); }
+    .header-section { text-align: center; margin-bottom: 2.2rem; }
+    .header-section h1 { font-family: var(--comic-font); font-size: clamp(2.8rem, 6vw, 4rem); color: var(--primary-dark); letter-spacing: 0.5px; line-height: 1; }
+    .header-section p { font-size: 1.12rem; color: var(--ink-soft); max-width: 720px; margin: 0.5rem auto 0; }
 
-    .media-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 1.6rem; }
-    .media-card {
-      background: #fff; border-radius: 16px; overflow: hidden; box-shadow: 0 6px 18px rgba(0,0,0,0.06);
-      cursor: pointer; transition: transform 0.25s, box-shadow 0.25s; border: 1px solid rgba(0,0,0,0.06);
+    .hub-controls {
+      background: #ffffff; border: 2px solid var(--border-dark); border-radius: 20px;
+      padding: 1.6rem; margin-bottom: 2.5rem; box-shadow: 6px 6px 0 var(--accent);
     }
-    .media-card:hover { transform: translateY(-6px); box-shadow: 0 14px 28px rgba(0,0,0,0.12); }
-    .media-thumb-wrap { position: relative; width: 100%; padding-top: 75%; background: #1a2e22; overflow: hidden; }
-    .media-thumb-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; transition: transform 0.3s; }
-    .media-card:hover .media-thumb-wrap img { transform: scale(1.05); }
+    .search-row { display: flex; gap: 0.8rem; margin-bottom: 1.2rem; }
+    .search-input-wrap { position: relative; flex: 1; }
+    .search-input-wrap i { position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--primary); font-size: 1.15rem; }
+    .search-input {
+      width: 100%; padding: 0.85rem 2.8rem 0.85rem 2.8rem; border: 2px solid var(--border-subtle);
+      border-radius: 30px; font-family: var(--body-font); font-size: 1.05rem; font-weight: 600;
+      color: var(--ink); background: var(--bg-cream); outline: none; transition: 0.2s;
+    }
+    .search-input:focus { border-color: var(--primary); background: #fff; }
+    .search-clear {
+      position: absolute; right: 1rem; top: 50%; transform: translateY(-50%);
+      background: none; border: none; color: #999; font-size: 1.2rem; cursor: pointer; display: none;
+    }
+    .search-clear.active { display: block; }
 
-    /* Video card placeholder (prevents bot video buffer egress) */
-    .video-card-thumb {
+    .category-pills { display: flex; gap: 0.5rem; flex-wrap: wrap; margin-bottom: 1.2rem; }
+    .cat-btn {
+      background: #f4f7f4; border: 1.5px solid var(--border-subtle); padding: 0.45rem 1.15rem;
+      border-radius: 25px; font-weight: 700; font-size: 0.92rem; font-family: var(--body-font);
+      color: var(--primary-dark); cursor: pointer; transition: 0.2s; display: inline-flex; align-items: center; gap: 0.4rem;
+    }
+    .cat-btn:hover { background: var(--primary-light); border-color: var(--primary); }
+    .cat-btn.active { background: var(--primary); color: #fff; border-color: var(--primary-dark); box-shadow: 2px 2px 0 var(--accent); }
+
+    .trait-filters-row {
+      display: flex; gap: 0.8rem; align-items: center; flex-wrap: wrap;
+      padding-top: 1rem; border-top: 1.5px solid #edf2ec; font-size: 0.9rem;
+    }
+    .filter-select {
+      padding: 0.4rem 1rem; border-radius: 20px; border: 1.5px solid var(--border-subtle);
+      font-family: var(--body-font); font-weight: 600; font-size: 0.88rem; color: var(--ink);
+      background: #fff; cursor: pointer; outline: none;
+    }
+    .toggle-chip {
+      background: #fff; border: 1.5px solid var(--border-subtle); padding: 0.38rem 0.95rem;
+      border-radius: 20px; font-weight: 700; font-size: 0.85rem; color: var(--ink-soft);
+      cursor: pointer; display: inline-flex; align-items: center; gap: 0.35rem; transition: 0.2s; user-select: none;
+    }
+    .toggle-chip.active { background: #eaf4ed; color: var(--primary-dark); border-color: var(--primary); }
+    .results-count { margin-left: auto; font-size: 0.92rem; font-weight: 700; color: var(--ink-soft); }
+
+    .plant-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(290px, 1fr));
+      gap: 1.8rem; margin-bottom: 3.5rem;
+    }
+
+    .plant-card {
+      background: #fff; border-radius: 18px; border: 2px solid var(--border-subtle);
+      overflow: hidden; display: flex; flex-direction: column; text-decoration: none; color: inherit;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.04); transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s;
+      position: relative;
+    }
+    .plant-card:hover { transform: translateY(-6px); box-shadow: 0 14px 28px rgba(0,0,0,0.1); border-color: var(--primary); }
+
+    .card-thumb-wrap { position: relative; width: 100%; aspect-ratio: 4 / 3; background: #e9efe8; overflow: hidden; }
+    .card-thumb-wrap img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; z-index: 2; transition: transform 0.3s; }
+    .plant-card:hover .card-thumb-wrap img { transform: scale(1.05); }
+
+    .card-fallback {
       position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center;
-      background: linear-gradient(135deg, #1b4332, #2d6a4f); color: #fff;
+      text-align: center; padding: 1rem; background: repeating-linear-gradient(135deg, #f5f8f4 0 14px, #edf3ed 14px 28px);
+      color: var(--primary-dark); z-index: 1; border-bottom: 1.5px solid var(--border-subtle);
     }
-    .video-play-icon {
-      width: 52px; height: 52px; border-radius: 50%; background: rgba(255, 183, 3, 0.9);
-      color: #1b4332; display: flex; align-items: center; justify-content: center; font-size: 1.4rem;
-      margin-bottom: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.3); transition: transform 0.2s;
-    }
-    .media-card:hover .video-play-icon { transform: scale(1.15); background: var(--accent); }
-    .video-badge {
-      position: absolute; top: 10px; right: 10px; background: rgba(0,0,0,0.7); color: #fff;
-      font-size: 0.75rem; font-weight: 700; padding: 4px 10px; border-radius: 14px; text-transform: uppercase;
-    }
+    .card-fallback i { font-size: 2.2rem; color: var(--primary); opacity: 0.7; margin-bottom: 0.3rem; }
+    .card-fallback span { font-size: 0.8rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
 
-    .media-info {
-      padding: 1rem 1.2rem; display: flex; justify-content: space-between; align-items: center;
-      font-weight: 700; color: var(--primary-dark); font-size: 1.05rem;
-    }
+    .card-badge-bar { position: absolute; top: 10px; left: 10px; right: 10px; display: flex; justify-content: space-between; z-index: 3; pointer-events: none; }
+    .card-cat-badge { background: rgba(27, 67, 50, 0.92); color: #fff; font-size: 0.72rem; font-weight: 800; padding: 0.25rem 0.65rem; border-radius: 12px; text-transform: uppercase; letter-spacing: 0.4px; }
+    .card-native-badge { background: var(--accent); color: var(--primary-dark); font-size: 0.72rem; font-weight: 800; padding: 0.25rem 0.6rem; border-radius: 12px; text-transform: uppercase; border: 1px solid var(--primary-dark); }
 
-    /* Lightbox Modal */
-    .modal-overlay {
-      position: fixed; inset: 0; background: rgba(0,0,0,0.9); z-index: 200; display: none;
-      align-items: center; justify-content: center; padding: 1.5rem; backdrop-filter: blur(8px);
+    .card-body { padding: 1.2rem 1.3rem; display: flex; flex-direction: column; flex: 1; }
+    .card-family { font-size: 0.78rem; font-weight: 800; color: var(--ink-soft); text-transform: uppercase; letter-spacing: 0.5px; }
+    .card-title { font-family: var(--comic-font); font-size: 1.7rem; color: var(--primary-dark); line-height: 1.08; margin: 0.25rem 0 0.15rem; letter-spacing: 0.3px; }
+    .card-latin { font-family: var(--latin-font); font-style: italic; font-size: 1rem; color: var(--primary); margin-bottom: 0.8rem; }
+    
+    .card-specs {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 0.5rem; background: #f8faf7;
+      padding: 0.6rem 0.75rem; border-radius: 10px; border: 1px solid #eef2ec; font-size: 0.82rem; margin-top: auto;
     }
-    .modal-overlay.active { display: flex; }
-    .modal-media { max-height: 85vh; max-width: 90%; border-radius: 12px; box-shadow: 0 10px 40px rgba(0,0,0,0.5); }
-    .modal-close-btn {
-      position: absolute; top: 20px; right: 25px; background: none; border: none; color: #fff;
-      font-size: 2.5rem; cursor: pointer;
+    .spec-item { display: flex; align-items: center; gap: 0.35rem; font-weight: 700; color: var(--ink); }
+    .spec-item i { color: var(--primary); width: 1.2em; text-align: center; }
+
+    .card-footer {
+      padding: 0.75rem 1.3rem; background: #fdfdfd; border-top: 1px solid var(--border-subtle);
+      display: flex; justify-content: space-between; align-items: center; font-size: 0.88rem; font-weight: 800; color: var(--primary);
+    }
+    .plant-card:hover .card-footer { background: var(--primary); color: #fff; }
+    .card-footer i { transition: transform 0.2s; }
+    .plant-card:hover .card-footer i { transform: translateX(4px); }
+
+    .empty-state { text-align: center; padding: 4rem 1rem; display: none; }
+    .empty-state i { font-size: 3.5rem; color: var(--ink-soft); opacity: 0.5; margin-bottom: 1rem; }
+    .empty-state h3 { font-family: var(--comic-font); font-size: 2rem; color: var(--primary-dark); }
+
+    .floating-music-bar {
+      position: fixed; bottom: 20px; right: 20px; background: #fff; border: 2px solid var(--primary-dark);
+      border-radius: 35px; padding: 0.45rem 1.1rem; display: flex; align-items: center; gap: 0.8rem;
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15); z-index: 99;
+    }
+    .vinyl-disc { width: 34px; height: 34px; border-radius: 50%; background: var(--primary-dark); color: #fff; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; }
+    .vinyl-disc.playing { animation: spin 3s linear infinite; }
+    @keyframes spin { 100% { transform: rotate(360deg); } }
+    .music-info { display: flex; flex-direction: column; }
+    .music-title { font-weight: 700; font-size: 0.82rem; color: var(--primary-dark); }
+    .music-sub { font-size: 0.7rem; color: var(--ink-soft); }
+    .player-btn { background: none; border: none; font-size: 1.1rem; color: var(--primary); cursor: pointer; }
+    .vol-slider { width: 65px; accent-color: var(--primary); }
+
+    @media (max-width: 900px) {
+      .mobile-menu-toggle { display: block; }
+      nav#navMenu { display: none; position: absolute; top: 100%; left: 0; right: 0; background: #fff; flex-direction: column; padding: 1rem; border-bottom: 2px solid var(--border-subtle); }
+      nav#navMenu.open { display: flex; }
+      .results-count { width: 100%; margin-top: 0.4rem; text-align: right; }
     }
   </style>
 </head>
 <body>
 
-  <!-- Top Bar: Direct contact and socials -->
   <div class="top-bar">
     <div class="top-bar-contact">
-      <a href="tel:9052527619" title="Call Office"><i class="fa-solid fa-phone"></i> <span>Office: 905-252-7619</span></a>
-      <a href="tel:9052523569" title="Call or Text Cell"><i class="fa-solid fa-mobile-screen"></i> <span>Cell: 905-252-3569</span></a>
-      <a href="mailto:YourNeighbourhoodPlantGuy@Gmail.com" title="Send Email"><i class="fa-solid fa-envelope"></i> <span>YourNeighbourhoodPlantGuy@Gmail.com</span></a>
+      <a href="tel:9052527619"><i class="fa-solid fa-phone"></i> <span>Office: 905-252-7619</span></a>
+      <a href="tel:9052523569"><i class="fa-solid fa-mobile-screen"></i> <span>Cell: 905-252-3569</span></a>
+      <a href="mailto:YourNeighbourhoodPlantGuy@Gmail.com"><i class="fa-solid fa-envelope"></i> <span>YourNeighbourhoodPlantGuy@Gmail.com</span></a>
       <span class="top-bar-badge"><i class="fa-solid fa-bolt"></i> 100% Eco-Friendly • Bradford, ON</span>
     </div>
     <div class="top-bar-socials">
-      <a href="https://www.youtube.com/@trevorauton2676" target="_blank" rel="noopener noreferrer" title="YouTube"><i class="fa-brands fa-youtube"></i></a>
-      <a href="https://www.tiktok.com/@your.neighbourhoo8" target="_blank" rel="noopener noreferrer" title="TikTok"><i class="fa-brands fa-tiktok"></i></a>
-      <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" rel="noopener noreferrer" title="Threads / Instagram"><i class="fa-brands fa-instagram"></i></a>
-      <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" rel="noopener noreferrer" title="Threads"><i class="fa-brands fa-threads"></i></a>
-      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer" title="Facebook"><i class="fa-brands fa-facebook-f"></i></a>
+      <a href="https://www.youtube.com/@trevorauton2676" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-youtube"></i></a>
+      <a href="https://www.tiktok.com/@your.neighbourhoo8" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-tiktok"></i></a>
+      <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-instagram"></i></a>
+      <a href="https://www.threads.com/@yourneighbourhoodplantguy" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-threads"></i></a>
+      <a href="https://www.facebook.com" target="_blank" rel="noopener noreferrer"><i class="fa-brands fa-facebook-f"></i></a>
     </div>
   </div>
 
-  <!-- Persistent Site Header -->
   <header class="site-header">
     <div class="nav-container">
       <a class="brand-logo" href="index.html">
-        <img id="siteBrandLogo" src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" alt="Your Neighbourhood Plant Guy Logo" class="brand-avatar" width="48" height="48" />
+        <img id="siteBrandLogo" src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/PLANT%20GUY%20LOGO%20transparent.png" alt="Logo" class="brand-avatar" width="48" height="48" />
         <div>
           <div class="brand-title">Your Neighbourhood Plant Guy</div>
           <div class="brand-subtitle">Eco-Friendly Plant Care • 25 Yrs Experience</div>
@@ -140,32 +239,60 @@
     </div>
   </header>
 
-  <!-- Main Content -->
-  <div class="main-content">
+  <main class="main-content">
     <div class="header-section">
-      <h1><i class="fa-solid fa-seedling"></i> Plant Gallery</h1>
-      <p>A visual catalogue of vibrant flowering perennials, hardy shrubs, and boxwoods thriving across Bradford yards.</p>
+      <h1><i class="fa-solid fa-seedling"></i> Plant Gallery &amp; Guide Hub</h1>
+      <p>Search our living collection of cold-hardy evergreens, shade-loving perennials, flowering shrubs, and garden crops thriving in Bradford and Simcoe County.</p>
     </div>
 
-    <div class="filter-bar">
-      <button class="filter-pill active" onclick="render('all', this)"><i class="fa-solid fa-layer-group"></i> All Plants</button>
-      <button class="filter-pill" onclick="render('image', this)"><i class="fa-solid fa-camera"></i> Photos</button>
-      <button class="filter-pill" onclick="render('video', this)"><i class="fa-solid fa-film"></i> Video Clips</button>
+    <!-- Live Hub Controls -->
+    <section class="hub-controls" aria-label="Filter Plant Guides">
+      <div class="search-row">
+        <div class="search-input-wrap">
+          <i class="fa-solid fa-magnifying-glass"></i>
+          <input type="text" id="plantSearch" class="search-input" placeholder="Search by common name, Latin species, family, or variety (e.g. Limelight, Hydrangea, Pine)..." autocomplete="off" />
+          <button id="clearSearch" class="search-clear" aria-label="Clear Search">&times;</button>
+        </div>
+      </div>
+
+      <div class="category-pills" id="categoryTabs">
+        <button class="cat-btn active" data-cat="all"><i class="fa-solid fa-layer-group"></i> All Plants</button>
+        <button class="cat-btn" data-cat="evergreen"><i class="fa-solid fa-tree"></i> Evergreens</button>
+        <button class="cat-btn" data-cat="deciduous"><i class="fa-solid fa-leaf"></i> Trees &amp; Shrubs</button>
+        <button class="cat-btn" data-cat="perennial"><i class="fa-solid fa-fan"></i> Perennials &amp; Grasses</button>
+        <button class="cat-btn" data-cat="produce"><i class="fa-solid fa-carrot"></i> Fruits &amp; Vegetables</button>
+      </div>
+
+      <div class="trait-filters-row">
+        <select id="lightFilter" class="filter-select" aria-label="Filter by Sun Exposure">
+          <option value="all">☀️ All Sun Levels</option>
+          <option value="Sun">Full Sun</option>
+          <option value="Part Shade">Part Shade</option>
+          <option value="Shade">Full Shade</option>
+        </select>
+
+        <button class="toggle-chip" id="filterNative"><i class="fa-brands fa-canadian-maple-leaf" style="color:#d90429;"></i> Ontario Natives</button>
+        <button class="toggle-chip" id="filterDeer"><i class="fa-solid fa-shield-cat"></i> Deer Resistant</button>
+        <button class="toggle-chip" id="filterPet"><i class="fa-solid fa-shield-dog"></i> Non-Toxic / Pet Safe</button>
+        <button class="toggle-chip" id="filterDrought"><i class="fa-solid fa-droplet-slash"></i> Drought Tolerant</button>
+
+        <span class="results-count" id="resultsCount">Loading plants...</span>
+      </div>
+    </section>
+
+    <!-- Cards Grid -->
+    <section class="plant-grid" id="plantGrid"></section>
+
+    <!-- Empty State -->
+    <div class="empty-state" id="emptyState">
+      <i class="fa-solid fa-seedling"></i>
+      <h3>No Plants Matched Your Search</h3>
+      <p>Try clearing your keywords or resetting your filters.</p>
+      <button class="cat-btn active" onclick="resetAllFilters()"><i class="fa-solid fa-rotate-left"></i> Reset All Filters</button>
     </div>
+  </main>
 
-    <div class="media-grid" id="galleryGrid"></div>
-  </div>
-
-  <!-- Lightbox Modal for Full View -->
-  <div class="modal-overlay" id="modal" onclick="closeGalleryModal(event)">
-    <button class="modal-close-btn" aria-label="Close modal" onclick="forceCloseModal()">&times;</button>
-    <div id="mBody"></div>
-  </div>
-
-  <!-- Persistent Background Theme Song -->
   <audio id="themeAudio" loop preload="none" src="https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite/Your%20Neighbourhood%20Plant%20Guy.mp3"></audio>
-
-  <!-- Music Widget -->
   <div class="floating-music-bar">
     <div class="vinyl-disc" id="vinylDisc"><i class="fa-solid fa-music"></i></div>
     <div class="music-info">
@@ -181,107 +308,7457 @@
   <canvas id="leafCanvas" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -1;"></canvas>
 
   <script>
-    function toggleMobileNav() {
-      const menu = document.getElementById('navMenu');
-      if (menu) menu.classList.toggle('open');
+    const B2 = "https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite";
+
+    // MASTER DATABASE ARRAY
+    // Automatically populated from all your JSON files by the Python generator:
+    const PLANTS = [
+  {
+    "name": "Panicle Hydrangea",
+    "latin": "Hydrangea paniculata",
+    "family": "Hydrangeaceae",
+    "varieties": [
+      "Limelight",
+      "Fire Light",
+      "Bobo"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "6\u20138 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/Panicle Hydrangea.html"
+  },
+  {
+    "name": "Smooth Hydrangea",
+    "latin": "Hydrangea arborescens",
+    "family": "Hydrangeaceae",
+    "varieties": [
+      "Annabelle",
+      "Incrediball"
+    ],
+    "cat": "deciduous",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "3\u20135 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/Smooth Hydrangea.html"
+  },
+  {
+    "name": "Bigleaf (Mophead)",
+    "latin": "Hydrangea macrophylla",
+    "family": "Hydrangeaceae",
+    "varieties": [
+      "Endless Summer",
+      "BloomStruck"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "5\u20139",
+    "ht": "3\u20135 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/Bigleaf (Mophead).html"
+  },
+  {
+    "name": "Bigleaf (Lacecap)",
+    "latin": "Hydrangea macrophylla var. normalis",
+    "family": "Hydrangeaceae",
+    "varieties": [
+      "Twist-n-Shout"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "5\u20139",
+    "ht": "3\u20134 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/Bigleaf (Lacecap).html"
+  },
+  {
+    "name": "Mountain Hydrangea",
+    "latin": "Hydrangea serrata",
+    "family": "Hydrangeaceae",
+    "varieties": [
+      "Tuff Stuff",
+      "Tiny Tuff Stuff"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "5\u20139",
+    "ht": "2\u20134 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/Mountain Hydrangea.html"
+  },
+  {
+    "name": "Oakleaf Hydrangea",
+    "latin": "Hydrangea quercifolia",
+    "family": "Hydrangeaceae",
+    "varieties": [
+      "Ruby Slippers",
+      "Snow Queen"
+    ],
+    "cat": "deciduous",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "4\u20138 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/Oakleaf Hydrangea.html"
+  },
+  {
+    "name": "Climbing Hydrangea",
+    "latin": "Hydrangea anomala petiolaris",
+    "family": "Hydrangeaceae",
+    "varieties": [
+      "Miranda",
+      "Skylands Giant"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "4\u20138",
+    "ht": "30\u201350 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/Climbing Hydrangea.html"
+  },
+  {
+    "name": "Hybrid Tea Rose",
+    "latin": "Rosa x hybrida",
+    "family": "Rosaceae",
+    "varieties": [
+      "Peace",
+      "Mister Lincoln"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "4\u20136 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Hybrid Tea Rose.html"
+  },
+  {
+    "name": "Floribunda Rose",
+    "latin": "Rosa x hybrida",
+    "family": "Rosaceae",
+    "varieties": [
+      "Iceberg",
+      "Julia Child",
+      "Sunsprite"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "3\u20134 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Floribunda Rose.html"
+  },
+  {
+    "name": "Landscape Rose",
+    "latin": "Rosa x hybrida",
+    "family": "Rosaceae",
+    "varieties": [
+      "Knock Out series",
+      "Drift series"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "3\u20134 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Landscape Rose.html"
+  },
+  {
+    "name": "Climbing Rose",
+    "latin": "Rosa x hybrida",
+    "family": "Rosaceae",
+    "varieties": [
+      "Eden",
+      "New Dawn",
+      "Don Juan"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "8\u201312 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Climbing Rose.html"
+  },
+  {
+    "name": "Rugosa Rose",
+    "latin": "Rosa rugosa",
+    "family": "Rosaceae",
+    "varieties": [
+      "Hansa",
+      "Therese Bugnet"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "2\u20137",
+    "ht": "4\u20136 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Rugosa Rose.html"
+  },
+  {
+    "name": "Pagoda Dogwood",
+    "latin": "Cornus alternifolia",
+    "family": "Cornaceae",
+    "varieties": [
+      "Goldfinch",
+      "Argentea"
+    ],
+    "cat": "deciduous",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20137",
+    "ht": "15\u201325 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Pagoda Dogwood.html"
+  },
+  {
+    "name": "Summersweet",
+    "latin": "Clethra alnifolia",
+    "family": "Clethraceae",
+    "varieties": [
+      "Ruby Spice",
+      "Hummingbird"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "3\u20138 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Summersweet.html"
+  },
+  {
+    "name": "Witch Hazel",
+    "latin": "Hamamelis virginiana / x intermedia",
+    "family": "Hamamelidaceae",
+    "varieties": [
+      "Arnold Promise",
+      "Jelena",
+      "Diane"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "10\u201320 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Witch Hazel.html"
+  },
+  {
+    "name": "Fothergilla",
+    "latin": "Fothergilla gardenii / major",
+    "family": "Hamamelidaceae",
+    "varieties": [
+      "Mount Airy",
+      "Blue Mist",
+      "Suzanne"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "3\u20136 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Fothergilla.html"
+  },
+  {
+    "name": "Sweetspire",
+    "latin": "Itea virginica",
+    "family": "Iteaceae",
+    "varieties": [
+      "Henry's Garnet",
+      "Little Henry"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "3\u20135 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Sweetspire.html"
+  },
+  {
+    "name": "Azalea",
+    "latin": "Rhododendron x 'Northern Lights'",
+    "family": "Ericaceae",
+    "varieties": [
+      "Mandarin Lights",
+      "Golden Lights"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20137",
+    "ht": "3\u20136 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Azalea.html"
+  },
+  {
+    "name": "Smokebush",
+    "latin": "Cotinus coggygria",
+    "family": "Anacardiaceae",
+    "varieties": [
+      "Royal Purple",
+      "Grace"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "10\u201315 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Smokebush.html"
+  },
+  {
+    "name": "Red Elderberry",
+    "latin": "Sambucus racemosa",
+    "family": "Adoxaceae",
+    "varieties": [
+      "Lemony Lace"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20137",
+    "ht": "4\u20137 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Red Elderberry.html"
+  },
+  {
+    "name": "New Jersey Tea",
+    "latin": "Ceanothus americanus",
+    "family": "Rhamnaceae",
+    "varieties": [
+      "Marie Simon"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "2\u20133 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/New Jersey Tea.html"
+  },
+  {
+    "name": "Chokeberry",
+    "latin": "Aronia arbutifolia / melanocarpa",
+    "family": "Rosaceae",
+    "varieties": [
+      "Brilliantissima",
+      "Iroquois Beauty"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "3\u20138 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Chokeberry.html"
+  },
+  {
+    "name": "Potentilla",
+    "latin": "Potentilla fruticosa",
+    "family": "Rosaceae",
+    "varieties": [
+      "Goldfinger",
+      "Pink Beauty"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "2\u20137",
+    "ht": "2\u20134 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Potentilla.html"
+  },
+  {
+    "name": "Beach Plum",
+    "latin": "Prunus maritima",
+    "family": "Rosaceae",
+    "varieties": [
+      "Erie",
+      "Premier"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20137",
+    "ht": "6\u20138 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Beach Plum.html"
+  },
+  {
+    "name": "Common Lilac",
+    "latin": "Syringa vulgaris",
+    "family": "Oleaceae",
+    "varieties": [
+      "Charles Joly",
+      "Ludwig Spaeth"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20137",
+    "ht": "8\u201315 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Common Lilac.html"
+  },
+  {
+    "name": "Japanese Tree Lilac",
+    "latin": "Syringa reticulata",
+    "family": "Oleaceae",
+    "varieties": [
+      "Ivory Silk",
+      "Chantilly Lace"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20137",
+    "ht": "20\u201325 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Japanese Tree Lilac.html"
+  },
+  {
+    "name": "Korean / Dwarf Lilac",
+    "latin": "Syringa meyeri / patula",
+    "family": "Oleaceae",
+    "varieties": [
+      "Palibin",
+      "Miss Kim",
+      "Bloomerang"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20137",
+    "ht": "4\u20136 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Dwarf Lilac.html"
+  },
+  {
+    "name": "Winterberry Holly",
+    "latin": "Ilex verticillata",
+    "family": "Aquifoliaceae",
+    "varieties": [
+      "Winter Red",
+      "Berry Poppins"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "6\u201310 ft",
+    "deer": "Mild",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Winterberry Holly.html"
+  },
+  {
+    "name": "Barberry",
+    "latin": "Berberis thunbergii",
+    "family": "Berberidaceae",
+    "varieties": [
+      "Crimson Pygmy"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "3\u20135 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Barberry.html"
+  },
+  {
+    "name": "Koreanspice Viburnum",
+    "latin": "Viburnum carlesii",
+    "family": "Adoxaceae",
+    "varieties": [
+      "Cayuga",
+      "Spice Baby",
+      "Compact"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20137",
+    "ht": "4\u20136 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Koreanspice Viburnum.html"
+  },
+  {
+    "name": "Doublefile Viburnum",
+    "latin": "Viburnum plicatum f. tomentosum",
+    "family": "Adoxaceae",
+    "varieties": [
+      "Summer Snowflake",
+      "Mariesii"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "5\u20138",
+    "ht": "8\u201310 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Doublefile Viburnum.html"
+  },
+  {
+    "name": "Arrowwood Viburnum",
+    "latin": "Viburnum dentatum",
+    "family": "Adoxaceae",
+    "varieties": [
+      "Blue Muffin",
+      "Chicago Lustre"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "6\u201310 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Arrowwood Viburnum.html"
+  },
+  {
+    "name": "Elderberry",
+    "latin": "Sambucus nigra / canadensis",
+    "family": "Adoxaceae",
+    "varieties": [
+      "Black Lace",
+      "Lemony Lace"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "6\u201310 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Elderberry.html"
+  },
+  {
+    "name": "Weigela",
+    "latin": "Weigela florida",
+    "family": "Caprifoliaceae",
+    "varieties": [
+      "Wine & Roses",
+      "Spilled Wine"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "3\u20136 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Weigela.html"
+  },
+  {
+    "name": "Beautybush",
+    "latin": "Kolkwitzia amabilis",
+    "family": "Caprifoliaceae",
+    "varieties": [
+      "Pink Cloud",
+      "Jolene Jolene"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "6\u201310 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Beautybush.html"
+  },
+  {
+    "name": "Crape Myrtle",
+    "latin": "Lagerstroemia indica x fauriei",
+    "family": "Lythraceae",
+    "varieties": [
+      "Natchez",
+      "Tuscarora",
+      "Dynamite"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "6\u20139",
+    "ht": "10\u201325 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Crape Myrtle.html"
+  },
+  {
+    "name": "Red Osier Dogwood",
+    "latin": "Cornus sericea",
+    "family": "Cornaceae",
+    "varieties": [
+      "Arctic Fire",
+      "Baileyi",
+      "Flaviramea"
+    ],
+    "cat": "deciduous",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "2\u20138",
+    "ht": "5\u20138 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Red Osier Dogwood.html"
+  },
+  {
+    "name": "Burning Bush",
+    "latin": "Euonymus alatus",
+    "family": "Celastraceae",
+    "varieties": [
+      "Compactus",
+      "Unforgettable Fire"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "6\u201310 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Burning Bush.html"
+  },
+  {
+    "name": "Ninebark",
+    "latin": "Physocarpus opulifolius",
+    "family": "Rosaceae",
+    "varieties": [
+      "Diabolo",
+      "Summer Wine"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20137",
+    "ht": "4\u20138 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Ninebark.html"
+  },
+  {
+    "name": "Japanese Spirea",
+    "latin": "Spiraea japonica",
+    "family": "Rosaceae",
+    "varieties": [
+      "Goldflame",
+      "Little Princess"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "2\u20134 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Japanese Spirea.html"
+  },
+  {
+    "name": "Bridalwreath Spirea",
+    "latin": "Spiraea x vanhouttei",
+    "family": "Rosaceae",
+    "varieties": [
+      "Renaissance"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "6\u20138 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Bridalwreath Spirea.html"
+  },
+  {
+    "name": "Flowering Quince",
+    "latin": "Chaenomeles speciosa",
+    "family": "Rosaceae",
+    "varieties": [
+      "Double Take Pink",
+      "Cameo"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "4\u20136 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Flowering Quince.html"
+  },
+  {
+    "name": "Serviceberry",
+    "latin": "Amelanchier x grandiflora",
+    "family": "Rosaceae",
+    "varieties": [
+      "Autumn Brilliance"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "15\u201325 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Serviceberry.html"
+  },
+  {
+    "name": "Japanese Maple",
+    "latin": "Acer palmatum",
+    "family": "Aceraceae",
+    "varieties": [
+      "Bloodgood",
+      "Coral Tower"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "5\u20138",
+    "ht": "8\u201320 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Japanese Maple.html"
+  },
+  {
+    "name": "Red Maple",
+    "latin": "Acer rubrum",
+    "family": "Aceraceae",
+    "varieties": [
+      "October Glory",
+      "Red Sunset"
+    ],
+    "cat": "deciduous",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "40\u201360 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Red Maple.html"
+  },
+  {
+    "name": "Sugar Maple",
+    "latin": "Acer saccharum",
+    "family": "Aceraceae",
+    "varieties": [
+      "Green Mountain",
+      "Fall Fiesta"
+    ],
+    "cat": "deciduous",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "50\u201375 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Sugar Maple.html"
+  },
+  {
+    "name": "Horse Chestnut / Buckeye",
+    "latin": "Aesculus hippocastanum / glabra",
+    "family": "Sapindaceae",
+    "varieties": [
+      "Baumannii",
+      "Fort McNair"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20137",
+    "ht": "30\u201350 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Buckeye.html"
+  },
+  {
+    "name": "River Birch",
+    "latin": "Betula nigra",
+    "family": "Betulaceae",
+    "varieties": [
+      "Heritage",
+      "Dura Heat"
+    ],
+    "cat": "deciduous",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "40\u201370 ft",
+    "deer": "Good",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/River Birch.html"
+  },
+  {
+    "name": "Eastern Redbud",
+    "latin": "Cercis canadensis",
+    "family": "Fabaceae",
+    "varieties": [
+      "Forest Pansy",
+      "Ruby Falls"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "20\u201330 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Eastern Redbud.html"
+  },
+  {
+    "name": "Honey Locust",
+    "latin": "Gleditsia triacanthos v. inermis",
+    "family": "Fabaceae",
+    "varieties": [
+      "Sunburst",
+      "Shademaster"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "30\u201350 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Honey Locust.html"
+  },
+  {
+    "name": "Saucer / Star Magnolia",
+    "latin": "Magnolia x soulangeana / stellata",
+    "family": "Magnoliaceae",
+    "varieties": [
+      "Royal Star",
+      "Ann",
+      "Jane"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "10\u201325 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Star Magnolia.html"
+  },
+  {
+    "name": "Flowering Crabapple",
+    "latin": "Malus x hybrida",
+    "family": "Rosaceae",
+    "varieties": [
+      "Prairifire",
+      "Royal Raindrops"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "15\u201325 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/Flowering Crabapple.html"
+  },
+  {
+    "name": "Flowering Cherry",
+    "latin": "Prunus serrulata / x yedoensis",
+    "family": "Rosaceae",
+    "varieties": [
+      "Kwanzan",
+      "Yoshino"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "5\u20138",
+    "ht": "15\u201330 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Flowering Cherry.html"
+  },
+  {
+    "name": "Flowering Dogwood",
+    "latin": "Cornus florida",
+    "family": "Cornaceae",
+    "varieties": [
+      "Cherokee Chief",
+      "Cloud 9"
+    ],
+    "cat": "deciduous",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "5\u20139",
+    "ht": "15\u201330 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Flowering Dogwood.html"
+  },
+  {
+    "name": "Kousa Dogwood",
+    "latin": "Cornus kousa",
+    "family": "Cornaceae",
+    "varieties": [
+      "Milky Way",
+      "Venus",
+      "Samaritan"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "5\u20138",
+    "ht": "15\u201325 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Kousa Dogwood.html"
+  },
+  {
+    "name": "Oak (Red / White / Pin)",
+    "latin": "Quercus rubra / alba / palustris",
+    "family": "Fagaceae",
+    "varieties": [
+      "Northern Red",
+      "Swamp White"
+    ],
+    "cat": "deciduous",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "50\u201380 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Pin).html"
+  },
+  {
+    "name": "Weeping Willow",
+    "latin": "Salix babylonica / x sepulcralis",
+    "family": "Salicaceae",
+    "varieties": [
+      "Niobe",
+      "Chrysocoma"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "30\u201350 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Poor",
+    "file": "plants/Weeping Willow.html"
+  },
+  {
+    "name": "Sourwood",
+    "latin": "Oxydendrum arboreum",
+    "family": "Ericaceae",
+    "varieties": [
+      "Mt. Charm",
+      "Chama"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "20\u201335 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Sourwood.html"
+  },
+  {
+    "name": "Highbush Blueberry",
+    "latin": "Vaccinium corymbosum",
+    "family": "Ericaceae",
+    "varieties": [
+      "Duke",
+      "Bluecrop",
+      "Elliott"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20137",
+    "ht": "4\u20138 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Highbush Blueberry.html"
+  },
+  {
+    "name": "Red Chokeberry",
+    "latin": "Aronia arbutifolia",
+    "family": "Rosaceae",
+    "varieties": [
+      "Brilliantissima"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "6\u201310 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Red Chokeberry.html"
+  },
+  {
+    "name": "Japanese Quince",
+    "latin": "Chaenomeles japonica",
+    "family": "Rosaceae",
+    "varieties": [
+      "Chojuro",
+      "Orange Storm"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "2\u20134 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Japanese Quince.html"
+  },
+  {
+    "name": "Wayfaring Tree Viburnum",
+    "latin": "Viburnum lantana",
+    "family": "Adoxaceae",
+    "varieties": [
+      "Mohican",
+      "Variegatum"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "8\u201315 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Wayfaring Tree Viburnum.html"
+  },
+  {
+    "name": "Nannyberry Viburnum",
+    "latin": "Viburnum lentago",
+    "family": "Adoxaceae",
+    "varieties": [
+      "Pink Beauty"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "2\u20138",
+    "ht": "12\u201320 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Nannyberry Viburnum.html"
+  },
+  {
+    "name": "American Cranberrybush",
+    "latin": "Viburnum opulus v. americanum",
+    "family": "Adoxaceae",
+    "varieties": [
+      "Redwing",
+      "Wentworth"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "2\u20137",
+    "ht": "8\u201312 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/American Cranberrybush.html"
+  },
+  {
+    "name": "Siberian Peashrub",
+    "latin": "Caragana arborescens",
+    "family": "Fabaceae",
+    "varieties": [
+      "Pendula",
+      "Walker"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "2\u20137",
+    "ht": "8\u201315 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Siberian Peashrub.html"
+  },
+  {
+    "name": "False Indigo Bush",
+    "latin": "Amorpha fruticosa",
+    "family": "Fabaceae",
+    "varieties": [
+      "Native Type"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "6\u201312 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/False Indigo Bush.html"
+  },
+  {
+    "name": "Mimosa / Silk Tree",
+    "latin": "Albizia julibrissin",
+    "family": "Fabaceae",
+    "varieties": [
+      "Summer Chocolate"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "6\u20139",
+    "ht": "20\u201330 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Silk Tree.html"
+  },
+  {
+    "name": "Washington Hawthorn",
+    "latin": "Crataegus phaenopyrum",
+    "family": "Rosaceae",
+    "varieties": [
+      "Princeton Sentry"
+    ],
+    "cat": "deciduous",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "20\u201330 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Washington Hawthorn.html"
+  },
+  {
+    "name": "Cockspur Hawthorn",
+    "latin": "Crataegus crus-galli",
+    "family": "Rosaceae",
+    "varieties": [
+      "Inermis (Thornless)"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20137",
+    "ht": "15\u201325 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Cockspur Hawthorn.html"
+  },
+  {
+    "name": "Mountain Ash",
+    "latin": "Sorbus americana",
+    "family": "Rosaceae",
+    "varieties": [
+      "Cardinal Royal",
+      "Fastigiata"
+    ],
+    "cat": "deciduous",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "2\u20135",
+    "ht": "20\u201335 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Mountain Ash.html"
+  },
+  {
+    "name": "European Beech",
+    "latin": "Fagus sylvatica",
+    "family": "Rosaceae",
+    "varieties": [
+      "Purpurea",
+      "Tricolor",
+      "Asplenifolia"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20137",
+    "ht": "50\u201370 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/European Beech.html"
+  },
+  {
+    "name": "American Beech",
+    "latin": "Fagus grandifolia",
+    "family": "Rosaceae",
+    "varieties": [
+      "Native Type"
+    ],
+    "cat": "deciduous",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "50\u201380 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/American Beech.html"
+  },
+  {
+    "name": "Paper Birch",
+    "latin": "Betula papyrifera",
+    "family": "Betulaceae",
+    "varieties": [
+      "Reneson",
+      "Prairie Dream"
+    ],
+    "cat": "deciduous",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "2\u20137",
+    "ht": "40\u201360 ft",
+    "deer": "Good",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Paper Birch.html"
+  },
+  {
+    "name": "European White Birch",
+    "latin": "Betula pendula",
+    "family": "Betulaceae",
+    "varieties": [
+      "Youngii (Weeping)",
+      "Dalecarlica"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "2\u20136",
+    "ht": "30\u201350 ft",
+    "deer": "Good",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/European White Birch.html"
+  },
+  {
+    "name": "American Hornbeam",
+    "latin": "Carpinus caroliniana",
+    "family": "Betulaceae",
+    "varieties": [
+      "Firespire",
+      "Palisade"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "20\u201335 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/American Hornbeam.html"
+  },
+  {
+    "name": "European Hornbeam",
+    "latin": "Carpinus betulus",
+    "family": "Betulaceae",
+    "varieties": [
+      "Fastigiata",
+      "Frans Fontaine"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "35\u201350 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/European Hornbeam.html"
+  },
+  {
+    "name": "Hophornbeam",
+    "latin": "Ostrya virginiana",
+    "family": "Betulaceae",
+    "varieties": [
+      "Native Type"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "25\u201340 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Hophornbeam.html"
+  },
+  {
+    "name": "Amur Maple",
+    "latin": "Acer ginnala",
+    "family": "Sapindaceae",
+    "varieties": [
+      "Flame",
+      "Ruby Slippers"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "15\u201320 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Amur Maple.html"
+  },
+  {
+    "name": "Paperbark Maple",
+    "latin": "Acer griseum",
+    "family": "Sapindaceae",
+    "varieties": [
+      "Gingerbread"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "20\u201330 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Paperbark Maple.html"
+  },
+  {
+    "name": "Freeman Hybrid Maple",
+    "latin": "Acer x freemanii",
+    "family": "Sapindaceae",
+    "varieties": [
+      "Autumn Blaze",
+      "Celebration"
+    ],
+    "cat": "deciduous",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "45\u201360 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Freeman Hybrid Maple.html"
+  },
+  {
+    "name": "Boxelder",
+    "latin": "Acer negundo",
+    "family": "Sapindaceae",
+    "varieties": [
+      "Flamingo",
+      "Kelly's Gold"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "30\u201350 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Boxelder.html"
+  },
+  {
+    "name": "Golden Rain Tree",
+    "latin": "Koelreuteria paniculata",
+    "family": "Sapindaceae",
+    "varieties": [
+      "Coral Sun",
+      "Fastigiata"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "25\u201340 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Golden Rain Tree.html"
+  },
+  {
+    "name": "White Ash",
+    "latin": "Fraxinus americana",
+    "family": "Oleaceae",
+    "varieties": [
+      "Autumn Purple"
+    ],
+    "cat": "deciduous",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "50\u201370 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/White Ash.html"
+  },
+  {
+    "name": "Green Ash",
+    "latin": "Fraxinus pennsylvanica",
+    "family": "Oleaceae",
+    "varieties": [
+      "Marshall's Seedless",
+      "Patmore"
+    ],
+    "cat": "deciduous",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "50\u201365 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Green Ash.html"
+  },
+  {
+    "name": "Persian Ironwood",
+    "latin": "Parrotia persica",
+    "family": "Hamamelidaceae",
+    "varieties": [
+      "Vanessa",
+      "Persian Spire"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "20\u201335 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Persian Ironwood.html"
+  },
+  {
+    "name": "Staghorn Sumac",
+    "latin": "Rhus typhina",
+    "family": "Anacardiaceae",
+    "varieties": [
+      "Bailtiger (Tiger Eyes)",
+      "Dissecta"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "15\u201325 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Staghorn Sumac.html"
+  },
+  {
+    "name": "Fragrant Sumac",
+    "latin": "Rhus aromatica",
+    "family": "Anacardiaceae",
+    "varieties": [
+      "Gro-Low"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "2\u20136 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Fragrant Sumac.html"
+  },
+  {
+    "name": "Common Hackberry",
+    "latin": "Celtis occidentalis",
+    "family": "Cannabaceae",
+    "varieties": [
+      "Chicagoland",
+      "Prairie Pride"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "40\u201360 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Common Hackberry.html"
+  },
+  {
+    "name": "Black Walnut",
+    "latin": "Juglans nigra",
+    "family": "Juglandaceae",
+    "varieties": [
+      "Thomas",
+      "Emma K",
+      "Laciniata"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "50\u201375 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Black Walnut.html"
+  },
+  {
+    "name": "English / Persian Walnut",
+    "latin": "Juglans regia",
+    "family": "Juglandaceae",
+    "varieties": [
+      "Carpathian",
+      "Hartley",
+      "Chandler"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "40\u201360 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Persian Walnut.html"
+  },
+  {
+    "name": "Butternut / White Walnut",
+    "latin": "Juglans cinerea",
+    "family": "Juglandaceae",
+    "varieties": [
+      "Chamberlin",
+      "Craxi"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20137",
+    "ht": "40\u201360 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ White Walnut.html"
+  },
+  {
+    "name": "Shagbark Hickory",
+    "latin": "Carya ovata",
+    "family": "Juglandaceae",
+    "varieties": [
+      "Grainger",
+      "Wilcox"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "60\u201380 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Shagbark Hickory.html"
+  },
+  {
+    "name": "Pecan",
+    "latin": "Carya illinoinensis",
+    "family": "Juglandaceae",
+    "varieties": [
+      "Pawnee",
+      "Lakota",
+      "Kanza",
+      "Major"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "60\u2013100 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Pecan.html"
+  },
+  {
+    "name": "American Chestnut (Blight-Resistant)",
+    "latin": "Castanea dentata / x 'Dunstan'",
+    "family": "Fagaceae",
+    "varieties": [
+      "Dunstan",
+      "Revival",
+      "Heritage"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "40\u201360 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/American Chestnut (Blight-Resistant).html"
+  },
+  {
+    "name": "Chinese Chestnut",
+    "latin": "Castanea mollissima",
+    "family": "Fagaceae",
+    "varieties": [
+      "Nanking",
+      "Qing",
+      "Eaton"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "40\u201360 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Chinese Chestnut.html"
+  },
+  {
+    "name": "Sweet Chestnut (European)",
+    "latin": "Castanea sativa",
+    "family": "Fagaceae",
+    "varieties": [
+      "Colossal",
+      "Maraval"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "5\u20137",
+    "ht": "50\u201375 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Sweet Chestnut (European).html"
+  },
+  {
+    "name": "Chinkapin / Dwarf Chestnut",
+    "latin": "Castanea pumila",
+    "family": "Fagaceae",
+    "varieties": [
+      "Native Type"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "10\u201325 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Dwarf Chestnut.html"
+  },
+  {
+    "name": "Western Redbud",
+    "latin": "Cercis occidentalis",
+    "family": "Fabaceae",
+    "varieties": [
+      "Native Selection"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "6\u20139",
+    "ht": "12\u201318 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Western Redbud.html"
+  },
+  {
+    "name": "Chinese Redbud",
+    "latin": "Cercis chinensis",
+    "family": "Fabaceae",
+    "varieties": [
+      "Avondale",
+      "Don Egolf"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "6\u20139",
+    "ht": "8\u201312 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Chinese Redbud.html"
+  },
+  {
+    "name": "Judas Tree / European Redbud",
+    "latin": "Cercis siliquastrum",
+    "family": "Fabaceae",
+    "varieties": [
+      "Bodnant",
+      "Sterilis"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "6\u20139",
+    "ht": "15\u201325 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ European Redbud.html"
+  },
+  {
+    "name": "Oklahoma / Texas Redbud",
+    "latin": "Cercis canadensis v. texensis",
+    "family": "Fabaceae",
+    "varieties": [
+      "Oklahoma",
+      "Texas White"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "6\u20139",
+    "ht": "15\u201320 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Texas Redbud.html"
+  },
+  {
+    "name": "Sweetbay Magnolia",
+    "latin": "Magnolia virginiana",
+    "family": "Magnoliaceae",
+    "varieties": [
+      "Henry Hicks",
+      "Moonglow"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "15\u201335 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Sweetbay Magnolia.html"
+  },
+  {
+    "name": "Cucumber Tree Magnolia",
+    "latin": "Magnolia acuminata",
+    "family": "Magnoliaceae",
+    "varieties": [
+      "Elizabeth",
+      "Butterflies"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "50\u201370 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Cucumber Tree Magnolia.html"
+  },
+  {
+    "name": "Giant / Wedding Cake Dogwood",
+    "latin": "Cornus controversa",
+    "family": "Cornaceae",
+    "varieties": [
+      "Variegata (June Snow)"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "5\u20138",
+    "ht": "30\u201340 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/ Wedding Cake Dogwood.html"
+  },
+  {
+    "name": "Prairie Crabapple",
+    "latin": "Malus ioensis",
+    "family": "Rosaceae",
+    "varieties": [
+      "Plena"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "15\u201325 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/Prairie Crabapple.html"
+  },
+  {
+    "name": "Downy Serviceberry",
+    "latin": "Amelanchier arborea",
+    "family": "Rosaceae",
+    "varieties": [
+      "Robin Hill"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "15\u201325 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Downy Serviceberry.html"
+  },
+  {
+    "name": "Saskatoon Berry",
+    "latin": "Amelanchier alnifolia",
+    "family": "Rosaceae",
+    "varieties": [
+      "Regent",
+      "Smokey",
+      "Thiessen"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "2\u20136",
+    "ht": "6\u201310 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Saskatoon Berry.html"
+  },
+  {
+    "name": "Black Cherry",
+    "latin": "Prunus serotina",
+    "family": "Rosaceae",
+    "varieties": [
+      "Native Type"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "50\u201380 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Black Cherry.html"
+  },
+  {
+    "name": "Chokecherry",
+    "latin": "Prunus virginiana",
+    "family": "Rosaceae",
+    "varieties": [
+      "Canada Red",
+      "Schubert"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "2\u20137",
+    "ht": "20\u201330 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Chokecherry.html"
+  },
+  {
+    "name": "American Wild Plum",
+    "latin": "Prunus americana",
+    "family": "Rosaceae",
+    "varieties": [
+      "Native Selection"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "15\u201325 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/American Wild Plum.html"
+  },
+  {
+    "name": "Trident Maple",
+    "latin": "Acer buergerianum",
+    "family": "Sapindaceae",
+    "varieties": [
+      "Streetwise",
+      "Mighty Tower"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "20\u201330 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Trident Maple.html"
+  },
+  {
+    "name": "Tartarian Maple",
+    "latin": "Acer tataricum",
+    "family": "Sapindaceae",
+    "varieties": [
+      "Hot Wings",
+      "Pattern Perfect"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "15\u201325 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Tartarian Maple.html"
+  },
+  {
+    "name": "Fullmoon Maple",
+    "latin": "Acer shirasawanum",
+    "family": "Sapindaceae",
+    "varieties": [
+      "Autumn Moon",
+      "Aureum"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "5\u20138",
+    "ht": "8\u201315 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Fullmoon Maple.html"
+  },
+  {
+    "name": "Sassafras",
+    "latin": "Sassafras albidum",
+    "family": "Lauraceae",
+    "varieties": [
+      "Native Selection"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "30\u201350 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Sassafras.html"
+  },
+  {
+    "name": "American Persimmon",
+    "latin": "Diospyros virginiana",
+    "family": "Ebenaceae",
+    "varieties": [
+      "Prok",
+      "Yates",
+      "Meader"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "30\u201350 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/American Persimmon.html"
+  },
+  {
+    "name": "American Basswood / Linden",
+    "latin": "Tilia americana",
+    "family": "Malvaceae",
+    "varieties": [
+      "Redmond",
+      "Legend",
+      "Frontyard"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "2\u20138",
+    "ht": "60\u201380 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Linden.html"
+  },
+  {
+    "name": "Black Willow",
+    "latin": "Salix nigra",
+    "family": "Salicaceae",
+    "varieties": [
+      "Native Selection"
+    ],
+    "cat": "deciduous",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "30\u201360 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Poor",
+    "file": "plants/Black Willow.html"
+  },
+  {
+    "name": "Northern Spicebush",
+    "latin": "Lindera benzoin",
+    "family": "Lauraceae",
+    "varieties": [
+      "Green Gold",
+      "Rubra"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "6\u201312 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Northern Spicebush.html"
+  },
+  {
+    "name": "Pussy Willow",
+    "latin": "Salix discolor / caprea",
+    "family": "Salicaceae",
+    "varieties": [
+      "Pendula (Weeping)",
+      "Rosea"
+    ],
+    "cat": "deciduous",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "6\u201315 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Poor",
+    "file": "plants/Pussy Willow.html"
+  },
+  {
+    "name": "Flameleaf / Winged Sumac",
+    "latin": "Rhus copallina",
+    "family": "Anacardiaceae",
+    "varieties": [
+      "Prairie Flame"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "10\u201320 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Winged Sumac.html"
+  },
+  {
+    "name": "Blackhaw Viburnum",
+    "latin": "Viburnum prunifolium",
+    "family": "Adoxaceae",
+    "varieties": [
+      "Ovtdoor",
+      "Forest King"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "12\u201315 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Blackhaw Viburnum.html"
+  },
+  {
+    "name": "Snowberry / Coralberry",
+    "latin": "Symphoricarpos albus / orbiculatus",
+    "family": "Caprifoliaceae",
+    "varieties": [
+      "Proud Berry",
+      "Hancock"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20137",
+    "ht": "3\u20135 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Coralberry.html"
+  },
+  {
+    "name": "Northern Bush Honeysuckle",
+    "latin": "Diervilla lonicera",
+    "family": "Caprifoliaceae",
+    "varieties": [
+      "Kodiak Orange",
+      "Kodiak Black"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20137",
+    "ht": "3\u20134 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Northern Bush Honeysuckle.html"
+  },
+  {
+    "name": "Sweet Mock Orange",
+    "latin": "Philadelphus coronarius",
+    "family": "Hydrangeaceae",
+    "varieties": [
+      "Illuminati Tower"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "4\u20138 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Sweet Mock Orange.html"
+  },
+  {
+    "name": "Slender Deutzia",
+    "latin": "Deutzia gracilis",
+    "family": "Hydrangeaceae",
+    "varieties": [
+      "Nikko",
+      "Yuki Snowflake"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "5\u20138",
+    "ht": "2\u20134 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Slender Deutzia.html"
+  },
+  {
+    "name": "Mountain Laurel",
+    "latin": "Kalmia latifolia",
+    "family": "Ericaceae",
+    "varieties": [
+      "Minuet",
+      "Sarah",
+      "Olympic Fire"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "4\u20139",
+    "ht": "5\u201315 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Mountain Laurel.html"
+  },
+  {
+    "name": "Japanese Andromeda",
+    "latin": "Pieris japonica",
+    "family": "Ericaceae",
+    "varieties": [
+      "Mountain Fire",
+      "Cavalatine"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "5\u20138",
+    "ht": "4\u20138 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Japanese Andromeda.html"
+  },
+  {
+    "name": "Rhododendron",
+    "latin": "Rhododendron catawbiense",
+    "family": "Ericaceae",
+    "varieties": [
+      "Nova Zembla",
+      "Roseum Elegans"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "4\u20138",
+    "ht": "4\u20138 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Rhododendron.html"
+  },
+  {
+    "name": "Boxwood",
+    "latin": "Buxus microphylla",
+    "family": "Buxaceae",
+    "varieties": [
+      "Winter Gem",
+      "Julia Jane"
+    ],
+    "cat": "evergreen",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "3\u20134 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/Boxwood.html"
+  },
+  {
+    "name": "Hybrid Boxwood",
+    "latin": "Buxus x 'Green Mountain'",
+    "family": "Buxaceae",
+    "varieties": [
+      "Green Mountain",
+      "Green Velvet"
+    ],
+    "cat": "evergreen",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "3\u20135 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/Hybrid Boxwood.html"
+  },
+  {
+    "name": "Blue Holly",
+    "latin": "Ilex x meserveae",
+    "family": "Aquifoliaceae",
+    "varieties": [
+      "Blue Prince",
+      "Blue Princess"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20137",
+    "ht": "6\u201310 ft",
+    "deer": "Mild",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Blue Holly.html"
+  },
+  {
+    "name": "Japanese Holly",
+    "latin": "Ilex crenata",
+    "family": "Aquifoliaceae",
+    "varieties": [
+      "Sky Pencil",
+      "Soft Caress"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "5\u20137",
+    "ht": "6\u201310 ft",
+    "deer": "Mild",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Japanese Holly.html"
+  },
+  {
+    "name": "Western Red Cedar",
+    "latin": "Thuja plicata",
+    "family": "Cupressaceae",
+    "varieties": [
+      "Green Giant",
+      "Spring Grove"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "5\u20138",
+    "ht": "30\u201350 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Western Red Cedar.html"
+  },
+  {
+    "name": "Upright Juniper",
+    "latin": "Juniperus virginiana / scopulorum",
+    "family": "Cupressaceae",
+    "varieties": [
+      "Skyrocket",
+      "Blue Arrow"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "12\u201320 ft",
+    "deer": "Good",
+    "petSafe": false,
+    "drought": "Great",
+    "file": "plants/Upright Juniper.html"
+  },
+  {
+    "name": "Spreading Juniper",
+    "latin": "Juniperus horizontalis / chinensis",
+    "family": "Cupressaceae",
+    "varieties": [
+      "Blue Rug",
+      "Sea Green"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "1\u20133 ft",
+    "deer": "Good",
+    "petSafe": false,
+    "drought": "Great",
+    "file": "plants/Spreading Juniper.html"
+  },
+  {
+    "name": "Colorado Blue Spruce",
+    "latin": "Picea pungens",
+    "family": "Pinaceae",
+    "varieties": [
+      "Fat Albert",
+      "Hoopsii",
+      "Globosa"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "2\u20137",
+    "ht": "30\u201360 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Colorado Blue Spruce.html"
+  },
+  {
+    "name": "Norway Spruce",
+    "latin": "Picea abies",
+    "family": "Pinaceae",
+    "varieties": [
+      "Pendula",
+      "Nidiformis"
+    ],
+    "cat": "evergreen",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20137",
+    "ht": "40\u201360 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Norway Spruce.html"
+  },
+  {
+    "name": "Eastern White Pine",
+    "latin": "Pinus strobus",
+    "family": "Pinaceae",
+    "varieties": [
+      "Fastigiata",
+      "Nana",
+      "Blue Shag"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "50\u201380 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Eastern White Pine.html"
+  },
+  {
+    "name": "Mugo Pine",
+    "latin": "Pinus mugo",
+    "family": "Pinaceae",
+    "varieties": [
+      "Slowmound",
+      "Pumilio"
+    ],
+    "cat": "evergreen",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "2\u20137",
+    "ht": "3\u20135 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Mugo Pine.html"
+  },
+  {
+    "name": "Fraser Fir",
+    "latin": "Abies fraseri",
+    "family": "Pinaceae",
+    "varieties": [
+      "Prostrata",
+      "Piccolo"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20137",
+    "ht": "30\u201350 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Fraser Fir.html"
+  },
+  {
+    "name": "Yew",
+    "latin": "Taxus x media",
+    "family": "Taxaceae",
+    "varieties": [
+      "Hicksii",
+      "Densiformis",
+      "Tauntonii"
+    ],
+    "cat": "evergreen",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20137",
+    "ht": "4\u201310 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/Yew.html"
+  },
+  {
+    "name": "Eastern Arborvitae / Cedar",
+    "latin": "Thuja occidentalis",
+    "family": "Cupressaceae",
+    "varieties": [
+      "Emerald Green (Smaragd)"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20137",
+    "ht": "12\u201340 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/ Cedar.html"
+  },
+  {
+    "name": "Southern Magnolia",
+    "latin": "Magnolia grandiflora",
+    "family": "Magnoliaceae",
+    "varieties": [
+      "Bracken's Brown Beauty"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "6\u201310",
+    "ht": "30\u201360 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Southern Magnolia.html"
+  },
+  {
+    "name": "Japanese Boxwood",
+    "latin": "Buxus sinica v. insularis",
+    "family": "Buxaceae",
+    "varieties": [
+      "Justin Brouwers",
+      "Winter Gem"
+    ],
+    "cat": "evergreen",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "2\u20134 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/Japanese Boxwood.html"
+  },
+  {
+    "name": "American Holly",
+    "latin": "Ilex opaca",
+    "family": "Aquifoliaceae",
+    "varieties": [
+      "Danford",
+      "Saturn",
+      "Xanthocarpa"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "15\u201330 ft",
+    "deer": "Mild",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/American Holly.html"
+  },
+  {
+    "name": "Yaupon Holly",
+    "latin": "Ilex vomitoria",
+    "family": "Aquifoliaceae",
+    "varieties": [
+      "Schillings Dwarf",
+      "Pendula"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "7\u201310",
+    "ht": "4\u201315 ft",
+    "deer": "Mild",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Yaupon Holly.html"
+  },
+  {
+    "name": "Inkberry Holly",
+    "latin": "Ilex glabra",
+    "family": "Aquifoliaceae",
+    "varieties": [
+      "Gem Box",
+      "ShamRock",
+      "Densa"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "3\u20136 ft",
+    "deer": "Mild",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Inkberry Holly.html"
+  },
+  {
+    "name": "Cherry Laurel",
+    "latin": "Prunus laurocerasus",
+    "family": "Rosaceae",
+    "varieties": [
+      "Otto Luyken",
+      "Schipkaensis"
+    ],
+    "cat": "evergreen",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "6\u20139",
+    "ht": "4\u201310 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Cherry Laurel.html"
+  },
+  {
+    "name": "Firethorn",
+    "latin": "Pyracantha coccinea",
+    "family": "Rosaceae",
+    "varieties": [
+      "Mohave",
+      "Gnome",
+      "Red Cushion"
+    ],
+    "cat": "evergreen",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "6\u20139",
+    "ht": "6\u201312 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Firethorn.html"
+  },
+  {
+    "name": "Swiss Stone Pine",
+    "latin": "Pinus cembra",
+    "family": "Pinaceae",
+    "varieties": [
+      "Glauca",
+      "Algonquin Pillar"
+    ],
+    "cat": "evergreen",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "30\u201340 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Swiss Stone Pine.html"
+  },
+  {
+    "name": "Japanese White Pine",
+    "latin": "Pinus parviflora",
+    "family": "Pinaceae",
+    "varieties": [
+      "Glauca"
+    ],
+    "cat": "evergreen",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "5\u20137",
+    "ht": "25\u201340 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Japanese White Pine.html"
+  },
+  {
+    "name": "Red Pine",
+    "latin": "Pinus resinosa",
+    "family": "Pinaceae",
+    "varieties": [
+      "Don Smith"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "2\u20136",
+    "ht": "50\u201380 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Red Pine.html"
+  },
+  {
+    "name": "Jack Pine",
+    "latin": "Pinus banksiana",
+    "family": "Pinaceae",
+    "varieties": [
+      "Uncle Fogy",
+      "Schoodic"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "2\u20136",
+    "ht": "30\u201350 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Jack Pine.html"
+  },
+  {
+    "name": "Pitch Pine",
+    "latin": "Pinus rigida",
+    "family": "Pinaceae",
+    "varieties": [
+      "Native Type"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20137",
+    "ht": "40\u201360 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Pitch Pine.html"
+  },
+  {
+    "name": "Ponderosa Pine",
+    "latin": "Pinus ponderosa",
+    "family": "Pinaceae",
+    "varieties": [
+      "Hi-Yu"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20137",
+    "ht": "60\u2013100 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Ponderosa Pine.html"
+  },
+  {
+    "name": "White Spruce / Black Hills",
+    "latin": "Picea glauca",
+    "family": "Pinaceae",
+    "varieties": [
+      "Densata",
+      "Conica"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "2\u20136",
+    "ht": "40\u201360 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Black Hills.html"
+  },
+  {
+    "name": "Serbian Spruce",
+    "latin": "Picea omorika",
+    "family": "Pinaceae",
+    "varieties": [
+      "Bruns",
+      "Pendula",
+      "Nana"
+    ],
+    "cat": "evergreen",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20137",
+    "ht": "40\u201350 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Serbian Spruce.html"
+  },
+  {
+    "name": "Oriental Spruce",
+    "latin": "Picea orientalis",
+    "family": "Pinaceae",
+    "varieties": [
+      "Skylands",
+      "Firefly",
+      "Nigra"
+    ],
+    "cat": "evergreen",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20137",
+    "ht": "30\u201350 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Oriental Spruce.html"
+  },
+  {
+    "name": "Engelmann Spruce",
+    "latin": "Picea engelmannii",
+    "family": "Pinaceae",
+    "varieties": [
+      "Bush's Lace",
+      "Snake"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "2\u20136",
+    "ht": "50\u201380 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Engelmann Spruce.html"
+  },
+  {
+    "name": "White / Concolor Fir",
+    "latin": "Abies concolor",
+    "family": "Pinaceae",
+    "varieties": [
+      "Candicans",
+      "Compacta"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20137",
+    "ht": "30\u201350 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/ Concolor Fir.html"
+  },
+  {
+    "name": "Nordmann Fir",
+    "latin": "Abies nordmanniana",
+    "family": "Pinaceae",
+    "varieties": [
+      "Golden Spreader",
+      "Tortifolia"
+    ],
+    "cat": "evergreen",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20137",
+    "ht": "40\u201360 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Nordmann Fir.html"
+  },
+  {
+    "name": "Canaan Fir",
+    "latin": "Abies balsamea v. phanerolepis",
+    "family": "Pinaceae",
+    "varieties": [
+      "Native Selection"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20136",
+    "ht": "40\u201355 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Canaan Fir.html"
+  },
+  {
+    "name": "Atlas Cedar",
+    "latin": "Cedrus atlantica",
+    "family": "Pinaceae",
+    "varieties": [
+      "Glauca (Blue Atlas)"
+    ],
+    "cat": "evergreen",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "6\u20139",
+    "ht": "40\u201360 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Atlas Cedar.html"
+  },
+  {
+    "name": "Cedar of Lebanon",
+    "latin": "Cedrus libani",
+    "family": "Pinaceae",
+    "varieties": [
+      "Sargentii",
+      "Beacon Hill"
+    ],
+    "cat": "evergreen",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "5\u20137",
+    "ht": "40\u201360 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Cedar of Lebanon.html"
+  },
+  {
+    "name": "Deodar Cedar",
+    "latin": "Cedrus deodara",
+    "family": "Pinaceae",
+    "varieties": [
+      "Feelin' Blue",
+      "Karl Fuchs"
+    ],
+    "cat": "evergreen",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "7\u20139",
+    "ht": "40\u201350 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Deodar Cedar.html"
+  },
+  {
+    "name": "Lawson Cypress",
+    "latin": "Chamaecyparis lawsoniana",
+    "family": "Cupressaceae",
+    "varieties": [
+      "Yewdell",
+      "Oregon Blue",
+      "Wisselii"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "5\u20138",
+    "ht": "30\u201350 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Lawson Cypress.html"
+  },
+  {
+    "name": "Leyland Cypress",
+    "latin": "x Cuprocyparis leylandii",
+    "family": "Cupressaceae",
+    "varieties": [
+      "Gold Rider",
+      "Emerald Isle"
+    ],
+    "cat": "evergreen",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "6\u201310",
+    "ht": "40\u201360 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Leyland Cypress.html"
+  },
+  {
+    "name": "Arizona Cypress",
+    "latin": "Cupressus arizonica",
+    "family": "Cupressaceae",
+    "varieties": [
+      "Blue Ice",
+      "Carolina Sapphire"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "7\u20139",
+    "ht": "30\u201340 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Arizona Cypress.html"
+  },
+  {
+    "name": "Pacific Yew",
+    "latin": "Taxus brevifolia",
+    "family": "Taxaceae",
+    "varieties": [
+      "Native Type"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "7\u20139",
+    "ht": "15\u201330 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/Pacific Yew.html"
+  },
+  {
+    "name": "English Yew",
+    "latin": "Taxus baccata",
+    "family": "Taxaceae",
+    "varieties": [
+      "Repandens",
+      "Fastigiata",
+      "Standishii"
+    ],
+    "cat": "evergreen",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "5\u20137",
+    "ht": "30\u201350 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/English Yew.html"
+  },
+  {
+    "name": "Lodgepole / Shore Pine",
+    "latin": "Pinus contorta",
+    "family": "Pinaceae",
+    "varieties": [
+      "Taylor's Sunburst",
+      "Chief Joseph"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20137",
+    "ht": "20\u201340 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Shore Pine.html"
+  },
+  {
+    "name": "Giant Sequoia",
+    "latin": "Sequoiadendron giganteum",
+    "family": "Cupressaceae",
+    "varieties": [
+      "Hazel Smith",
+      "Glaucum"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "6\u20139",
+    "ht": "60\u2013120 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Giant Sequoia.html"
+  },
+  {
+    "name": "Coast Redwood",
+    "latin": "Sequoia sempervirens",
+    "family": "Cupressaceae",
+    "varieties": [
+      "Aptos Blue",
+      "Soquel"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "7\u201310",
+    "ht": "70\u2013120 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Coast Redwood.html"
+  },
+  {
+    "name": "Sugar Snap Pea",
+    "latin": "Pisum sativum v. macrocarpon",
+    "family": "Fabaceae",
+    "varieties": [
+      "Sugar Ann"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "105",
+    "ht": "3\u20136 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Poor",
+    "file": "plants/Sugar Snap Pea.html"
+  },
+  {
+    "name": "Snow Pea",
+    "latin": "Pisum sativum v. saccharatum",
+    "family": "Fabaceae",
+    "varieties": [
+      "Mammoth Melting Sugar"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "105",
+    "ht": "3\u20135 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Poor",
+    "file": "plants/Snow Pea.html"
+  },
+  {
+    "name": "Shelling / English Pea",
+    "latin": "Pisum sativum",
+    "family": "Fabaceae",
+    "varieties": [
+      "Little Marvel"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "105",
+    "ht": "1.5\u20133 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Poor",
+    "file": "plants/ English Pea.html"
+  },
+  {
+    "name": "Fava / Broad Bean",
+    "latin": "Vicia faba",
+    "family": "Fabaceae",
+    "varieties": [
+      "Broad Windsor"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "100",
+    "ht": "2\u20134 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/ Broad Bean.html"
+  },
+  {
+    "name": "Broccoli",
+    "latin": "Brassica oleracea v. italica",
+    "family": "Brassicaceae",
+    "varieties": [
+      "Waltham 29"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "115\u201375",
+    "ht": "1.5\u20132.5 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Broccoli.html"
+  },
+  {
+    "name": "Cauliflower",
+    "latin": "Brassica oleracea v. botrytis",
+    "family": "Brassicaceae",
+    "varieties": [
+      "Snowball Y"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "120\u201375",
+    "ht": "1.5\u20132 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Cauliflower.html"
+  },
+  {
+    "name": "Head Cabbage",
+    "latin": "Brassica oleracea v. capitata",
+    "family": "Brassicaceae",
+    "varieties": [
+      "Late Flat Dutch"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "115\u201375",
+    "ht": "1\u20131.5 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Head Cabbage.html"
+  },
+  {
+    "name": "Kale",
+    "latin": "Brassica oleracea v. acephala",
+    "family": "Brassicaceae",
+    "varieties": [
+      "Lacinato (Tuscan)"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "110\u201375",
+    "ht": "1.5\u20133 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Kale.html"
+  },
+  {
+    "name": "Brussels Sprouts",
+    "latin": "Brassica oleracea v. gemmifera",
+    "family": "Brassicaceae",
+    "varieties": [
+      "Long Island Improved"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "125\u201380",
+    "ht": "2.5\u20133.5 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Brussels Sprouts.html"
+  },
+  {
+    "name": "Radish",
+    "latin": "Raphanus sativus",
+    "family": "Brassicaceae",
+    "varieties": [
+      "Cherry Belle"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "100",
+    "ht": "0.5\u20131 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Poor",
+    "file": "plants/Radish.html"
+  },
+  {
+    "name": "Turnip & Rutabaga",
+    "latin": "Brassica rapa / napus",
+    "family": "Brassicaceae",
+    "varieties": [
+      "Purple Top White Globe"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "110",
+    "ht": "1\u20131.5 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Turnip & Rutabaga.html"
+  },
+  {
+    "name": "Arugula / Rocket",
+    "latin": "Eruca vesicaria",
+    "family": "Brassicaceae",
+    "varieties": [
+      "Astro",
+      "Wild Rocket"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "100",
+    "ht": "0.8\u20131.5 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/ Rocket.html"
+  },
+  {
+    "name": "Bok Choy / Pak Choi",
+    "latin": "Brassica rapa ssp. chinensis",
+    "family": "Brassicaceae",
+    "varieties": [
+      "Toy Choy"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "110\u201380",
+    "ht": "0.8\u20131.5 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/ Pak Choi.html"
+  },
+  {
+    "name": "Bulbing Onion",
+    "latin": "Allium cepa",
+    "family": "Alliaceae",
+    "varieties": [
+      "Yellow Spanish"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "115\u201355",
+    "ht": "1\u20131.5 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Bulbing Onion.html"
+  },
+  {
+    "name": "Scallion / Green Onion",
+    "latin": "Allium fistulosum",
+    "family": "Alliaceae",
+    "varieties": [
+      "Evergreen Hardy White"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "110\u201365",
+    "ht": "0.8\u20131.5 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/ Green Onion.html"
+  },
+  {
+    "name": "Garlic",
+    "latin": "Allium sativum",
+    "family": "Alliaceae",
+    "varieties": [
+      "Music",
+      "Chesnok Red"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "295",
+    "ht": "1.5\u20132 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Garlic.html"
+  },
+  {
+    "name": "Leek",
+    "latin": "Allium ampeloprasum",
+    "family": "Alliaceae",
+    "varieties": [
+      "Lancelot",
+      "American Flag"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "120\u201355",
+    "ht": "1.5\u20132.5 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Leek.html"
+  },
+  {
+    "name": "Shallot",
+    "latin": "Allium cepa v. aggregatum",
+    "family": "Alliaceae",
+    "varieties": [
+      "French Red"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "115",
+    "ht": "1\u20131.2 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Shallot.html"
+  },
+  {
+    "name": "Spinach",
+    "latin": "Spinacia oleracea",
+    "family": "Amaranthaceae",
+    "varieties": [
+      "Bloomsdale Long Standing"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "95",
+    "ht": "0.5\u20131 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Poor",
+    "file": "plants/Spinach.html"
+  },
+  {
+    "name": "Swiss Chard",
+    "latin": "Beta vulgaris ssp. vulgaris",
+    "family": "Amaranthaceae",
+    "varieties": [
+      "Bright Lights"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "110",
+    "ht": "1\u20131.5 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Swiss Chard.html"
+  },
+  {
+    "name": "Beetroot",
+    "latin": "Beta vulgaris",
+    "family": "Amaranthaceae",
+    "varieties": [
+      "Detroit Dark Red"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "110",
+    "ht": "0.8\u20131.2 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Beetroot.html"
+  },
+  {
+    "name": "Carrot",
+    "latin": "Daucus carota",
+    "family": "Apiaceae",
+    "varieties": [
+      "Nantes",
+      "Danvers"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "110",
+    "ht": "0.8\u20131.2 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Carrot.html"
+  },
+  {
+    "name": "Parsnip",
+    "latin": "Pastinaca sativa",
+    "family": "Apiaceae",
+    "varieties": [
+      "Hollow Crown"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "110",
+    "ht": "1.5\u20132 ft",
+    "deer": "Good",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/Parsnip.html"
+  },
+  {
+    "name": "Celery & Celeriac",
+    "latin": "Apium graveolens",
+    "family": "Apiaceae",
+    "varieties": [
+      "Tango",
+      "Utah 52"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "135\u201360",
+    "ht": "1.5\u20132 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Poor",
+    "file": "plants/Celery & Celeriac.html"
+  },
+  {
+    "name": "Lettuce (Head)",
+    "latin": "Lactuca sativa",
+    "family": "Asteraceae",
+    "varieties": [
+      "Buttercrunch"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "110\u201375",
+    "ht": "0.8\u20131.2 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Poor",
+    "file": "plants/Lettuce (Head).html"
+  },
+  {
+    "name": "Radicchio / Endive",
+    "latin": "Cichorium intybus / endivia",
+    "family": "Asteraceae",
+    "varieties": [
+      "Palla Rossa"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "115\u201375",
+    "ht": "0.8\u20131.2 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Endive.html"
+  },
+  {
+    "name": "Sweet Potato",
+    "latin": "Ipomoea batatas",
+    "family": "Convolvulaceae",
+    "varieties": [
+      "Beauregard"
+    ],
+    "cat": "produce",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "145\u201380",
+    "ht": "1\u20131.5 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Sweet Potato.html"
+  },
+  {
+    "name": "Asparagus (Perennial)",
+    "latin": "Asparagus officinalis",
+    "family": "Asparagaceae",
+    "varieties": [
+      "Jersey Knight"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "4\u20135 ft",
+    "deer": "Good",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/Asparagus (Perennial).html"
+  },
+  {
+    "name": "Rhubarb (Perennial)",
+    "latin": "Rheum rhabarbarum",
+    "family": "Polygonaceae",
+    "varieties": [
+      "Victoria"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "2\u20133 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Rhubarb (Perennial).html"
+  },
+  {
+    "name": "Sweet Corn",
+    "latin": "Zea mays",
+    "family": "Poaceae",
+    "varieties": [
+      "Golden Bantam"
+    ],
+    "cat": "produce",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "135",
+    "ht": "6\u20138 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Sweet Corn.html"
+  },
+  {
+    "name": "Okra",
+    "latin": "Abelmoschus esculentus",
+    "family": "Malvaceae",
+    "varieties": [
+      "Clemson Spineless",
+      "Burgundy",
+      "Jambalaya"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "145\u2013105",
+    "ht": "3\u20136 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Okra.html"
+  },
+  {
+    "name": "Birdhouse / Bottle Gourd",
+    "latin": "Lagenaria siceraria",
+    "family": "Cucurbitaceae",
+    "varieties": [
+      "Birdhouse"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "145\u2013105",
+    "ht": "10\u201320 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/ Bottle Gourd.html"
+  },
+  {
+    "name": "Chayote Squash",
+    "latin": "Sechium edule",
+    "family": "Cucurbitaceae",
+    "varieties": [
+      "Native Selection"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "145\u201395",
+    "ht": "10\u201320 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Chayote Squash.html"
+  },
+  {
+    "name": "Kiwano / Horned Melon",
+    "latin": "Cucumis metuliferus",
+    "family": "Cucurbitaceae",
+    "varieties": [
+      "Jelly Melon"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "145\u2013105",
+    "ht": "5\u20138 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/ Horned Melon.html"
+  },
+  {
+    "name": "Globe Artichoke",
+    "latin": "Cynara cardunculus v. scolymus",
+    "family": "Asteraceae",
+    "varieties": [
+      "Imperial Star"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "135\u201360",
+    "ht": "3\u20134 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Globe Artichoke.html"
+  },
+  {
+    "name": "Cardoon",
+    "latin": "Cynara cardunculus",
+    "family": "Asteraceae",
+    "varieties": [
+      "Porto Spineless"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "135\u201360",
+    "ht": "4\u20135 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Cardoon.html"
+  },
+  {
+    "name": "Cultivated Dandelion",
+    "latin": "Taraxacum officinale",
+    "family": "Asteraceae",
+    "varieties": [
+      "Climena"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "100",
+    "ht": "0.8\u20131.2 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Cultivated Dandelion.html"
+  },
+  {
+    "name": "Leaf Amaranth",
+    "latin": "Amaranthus cruentus / tricolor",
+    "family": "Amaranthaceae",
+    "varieties": [
+      "Red Callaloo"
+    ],
+    "cat": "produce",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "140\u2013105",
+    "ht": "3\u20136 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Leaf Amaranth.html"
+  },
+  {
+    "name": "Orach / Mountain Spinach",
+    "latin": "Atriplex hortensis",
+    "family": "Amaranthaceae",
+    "varieties": [
+      "Magenta"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "105",
+    "ht": "3\u20135 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Mountain Spinach.html"
+  },
+  {
+    "name": "Malabar Spinach",
+    "latin": "Basella alba / rubra",
+    "family": "Basellaceae",
+    "varieties": [
+      "Red Stem"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "145\u2013105",
+    "ht": "6\u201310 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Malabar Spinach.html"
+  },
+  {
+    "name": "French Purslane",
+    "latin": "Portulaca oleracea",
+    "family": "Portulacaceae",
+    "varieties": [
+      "Goldberg"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "135",
+    "ht": "0.5\u20130.8 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/French Purslane.html"
+  },
+  {
+    "name": "New Zealand Spinach",
+    "latin": "Tetragonia tetragonioides",
+    "family": "Tetragoniaceae",
+    "varieties": [
+      "Native Selection"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "135\u2013105",
+    "ht": "0.8\u20131.2 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/New Zealand Spinach.html"
+  },
+  {
+    "name": "Asian / Long Eggplant",
+    "latin": "Solanum melongena",
+    "family": "Solanaceae",
+    "varieties": [
+      "Ping Tung Long"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "145\u201380",
+    "ht": "2\u20133 ft",
+    "deer": "Good",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/ Long Eggplant.html"
+  },
+  {
+    "name": "Italian / Globe Eggplant",
+    "latin": "Solanum melongena",
+    "family": "Solanaceae",
+    "varieties": [
+      "Nadia",
+      "Black Beauty"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "145\u201380",
+    "ht": "2.5\u20133.5 ft",
+    "deer": "Good",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/ Globe Eggplant.html"
+  },
+  {
+    "name": "Heirloom / Speckled Eggplant",
+    "latin": "Solanum melongena",
+    "family": "Solanaceae",
+    "varieties": [
+      "Rosa Bianca"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "145\u201380",
+    "ht": "2\u20133 ft",
+    "deer": "Good",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/ Speckled Eggplant.html"
+  },
+  {
+    "name": "Ground Cherry",
+    "latin": "Physalis pruinosa",
+    "family": "Solanaceae",
+    "varieties": [
+      "Aunt Molly's"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "145\u201380",
+    "ht": "1.5\u20132.5 ft",
+    "deer": "Good",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/Ground Cherry.html"
+  },
+  {
+    "name": "Garden Huckleberry",
+    "latin": "Solanum scabrum",
+    "family": "Solanaceae",
+    "varieties": [
+      "Native Selection"
+    ],
+    "cat": "produce",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "145\u201380",
+    "ht": "2\u20133 ft",
+    "deer": "Good",
+    "petSafe": false,
+    "drought": "Good",
+    "file": "plants/Garden Huckleberry.html"
+  },
+  {
+    "name": "Purple Coneflower",
+    "latin": "Echinacea purpurea",
+    "family": "Asteraceae",
+    "varieties": [
+      "Magnus",
+      "Cheyenne Spirit"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "2\u20133 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Purple Coneflower.html"
+  },
+  {
+    "name": "Black-Eyed Susan",
+    "latin": "Rudbeckia fulgida / hirta",
+    "family": "Asteraceae",
+    "varieties": [
+      "Goldsturm",
+      "American Gold Rush"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "2\u20133 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Black-Eyed Susan.html"
+  },
+  {
+    "name": "Perennial Sage",
+    "latin": "Salvia nemorosa",
+    "family": "Lamiaceae",
+    "varieties": [
+      "May Night",
+      "Caradonna",
+      "Blue Hill"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "1.5\u20132.5 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Perennial Sage.html"
+  },
+  {
+    "name": "Catmint",
+    "latin": "Nepeta x faassenii",
+    "family": "Lamiaceae",
+    "varieties": [
+      "Walker's Low",
+      "Junior Walker",
+      "Cat's Pajamas"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "1.5\u20133 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Catmint.html"
+  },
+  {
+    "name": "English Lavender",
+    "latin": "Lavandula angustifolia",
+    "family": "Lamiaceae",
+    "varieties": [
+      "Munstead",
+      "Hidcote",
+      "Phenomenal"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "5\u20138",
+    "ht": "1.5\u20132.5 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/English Lavender.html"
+  },
+  {
+    "name": "Hosta",
+    "latin": "Hosta hybrida",
+    "family": "Asparagaceae",
+    "varieties": [
+      "Sum and Substance",
+      "Patriot",
+      "June"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20139",
+    "ht": "2\u20133 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Hosta.html"
+  },
+  {
+    "name": "Coral Bells",
+    "latin": "Heuchera hybrida",
+    "family": "Saxifragaceae",
+    "varieties": [
+      "Caramel",
+      "Obsidian",
+      "Palace Purple"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "1\u20131.5 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Coral Bells.html"
+  },
+  {
+    "name": "Feather Reed Grass",
+    "latin": "Calamagrostis x acutiflora",
+    "family": "Poaceae",
+    "varieties": [
+      "Karl Foerster",
+      "Overdam",
+      "Eldorado"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "4\u20136 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Feather Reed Grass.html"
+  },
+  {
+    "name": "Fountain Grass",
+    "latin": "Pennisetum alopecuroides",
+    "family": "Poaceae",
+    "varieties": [
+      "Hameln",
+      "Little Bunny",
+      "Karley Rose"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "2\u20134 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Fountain Grass.html"
+  },
+  {
+    "name": "Maiden Grass",
+    "latin": "Miscanthus sinensis",
+    "family": "Poaceae",
+    "varieties": [
+      "Gracillimus",
+      "Morning Light",
+      "Adagio"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "3\u20137 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Maiden Grass.html"
+  },
+  {
+    "name": "Great Coneflower",
+    "latin": "Rudbeckia maxima / laciniata",
+    "family": "Asteraceae",
+    "varieties": [
+      "Herbstonne",
+      "Prairie Sun"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "4\u20137 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Great Coneflower.html"
+  },
+  {
+    "name": "Blanket Flower",
+    "latin": "Gaillardia aristata",
+    "family": "Asteraceae",
+    "varieties": [
+      "Spintop Orange",
+      "Mesa Red"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "1\u20131.5 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Blanket Flower.html"
+  },
+  {
+    "name": "Sneezeweed",
+    "latin": "Helenium flexuosum",
+    "family": "Asteraceae",
+    "varieties": [
+      "Salsa",
+      "Bandera",
+      "Short 'n' Sassy"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "1.5\u20133 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Sneezeweed.html"
+  },
+  {
+    "name": "Perennial Sunflower",
+    "latin": "Helianthus salicifolius",
+    "family": "Asteraceae",
+    "varieties": [
+      "First Light",
+      "Happy Days",
+      "Sunshine Daydream"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "3\u20138 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Perennial Sunflower.html"
+  },
+  {
+    "name": "Lanceleaf Coreopsis",
+    "latin": "Coreopsis lanceolata",
+    "family": "Asteraceae",
+    "varieties": [
+      "Sterntaler",
+      "Sunfire",
+      "Sweet Dreams"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "1\u20132 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Lanceleaf Coreopsis.html"
+  },
+  {
+    "name": "Goldenrod",
+    "latin": "Solidago speciosa / rugosa",
+    "family": "Asteraceae",
+    "varieties": [
+      "Fireworks",
+      "Little Lemon",
+      "Solar Cascade"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "2\u20134 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Goldenrod.html"
+  },
+  {
+    "name": "Cup Plant / Compass Plant",
+    "latin": "Silphium perfoliatum",
+    "family": "Asteraceae",
+    "varieties": [
+      "Native Wild Form"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "6\u20139 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Compass Plant.html"
+  },
+  {
+    "name": "Ironweed",
+    "latin": "Vernonia lettermannii",
+    "family": "Asteraceae",
+    "varieties": [
+      "Iron Butterfly",
+      "Southern Cross"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "3\u20136 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Ironweed.html"
+  },
+  {
+    "name": "Meadow Blazing Star",
+    "latin": "Liatris ligulistylis",
+    "family": "Asteraceae",
+    "varieties": [
+      "Native Type"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "3\u20135 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Meadow Blazing Star.html"
+  },
+  {
+    "name": "Hollow Joe Pye Weed",
+    "latin": "Eutrochium fistulosum",
+    "family": "Asteraceae",
+    "varieties": [
+      "Ivory Towers",
+      "Carin"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "5\u20138 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Hollow Joe Pye Weed.html"
+  },
+  {
+    "name": "Sunset Hyssop",
+    "latin": "Agastache cana / rupestris",
+    "family": "Lamiaceae",
+    "varieties": [
+      "Sonoran Sunset",
+      "Desert Sunrise"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "2\u20133 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Sunset Hyssop.html"
+  },
+  {
+    "name": "Wild Bergamot",
+    "latin": "Monarda fistulosa / punctata",
+    "family": "Lamiaceae",
+    "varieties": [
+      "Claire Grace",
+      "Beebop"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "2\u20134 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Wild Bergamot.html"
+  },
+  {
+    "name": "Hoary Skullcap",
+    "latin": "Scutellaria incana",
+    "family": "Lamiaceae",
+    "varieties": [
+      "Smoky Hills"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "1\u20132.5 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Hoary Skullcap.html"
+  },
+  {
+    "name": "Wood Betony",
+    "latin": "Stachys officinalis / monieri",
+    "family": "Lamiaceae",
+    "varieties": [
+      "Hummelo",
+      "Pink Cotton Candy"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "1.5\u20132 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Wood Betony.html"
+  },
+  {
+    "name": "Mountain Mint",
+    "latin": "Pycnanthemum muticum",
+    "family": "Lamiaceae",
+    "varieties": [
+      "Native Type"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "2\u20133 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Mountain Mint.html"
+  },
+  {
+    "name": "Bellflower",
+    "latin": "Campanula persicifolia",
+    "family": "Campanulaceae",
+    "varieties": [
+      "Takion Blue",
+      "Superba",
+      "White Clips"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "1.5\u20133 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Bellflower.html"
+  },
+  {
+    "name": "Great Blue Lobelia",
+    "latin": "Lobelia siphilitica",
+    "family": "Campanulaceae",
+    "varieties": [
+      "Mistassini"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "2\u20133 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Great Blue Lobelia.html"
+  },
+  {
+    "name": "Cheddar Pink",
+    "latin": "Dianthus gratianopolitanus",
+    "family": "Caryophyllaceae",
+    "varieties": [
+      "Firewitch",
+      "Bath's Pink",
+      "Frosty Fire"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "0.5\u20131 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Cheddar Pink.html"
+  },
+  {
+    "name": "Royal Catchfly",
+    "latin": "Silene regia",
+    "family": "Caryophyllaceae",
+    "varieties": [
+      "Short and Sweet"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "1.5\u20133 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Royal Catchfly.html"
+  },
+  {
+    "name": "Blue Leadwort",
+    "latin": "Ceratostigma plumbaginoides",
+    "family": "Plumbaginaceae",
+    "varieties": [
+      "Native Type"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "0.8\u20131 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Blue Leadwort.html"
+  },
+  {
+    "name": "Sea Thrift",
+    "latin": "Armeria maritima",
+    "family": "Plumbaginaceae",
+    "varieties": [
+      "Rubrifolia",
+      "Splendens",
+      "Victor Reiter"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "0.5\u20131 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Sea Thrift.html"
+  },
+  {
+    "name": "Prairie Smoke",
+    "latin": "Geum triflorum",
+    "family": "Rosaceae",
+    "varieties": [
+      "Totally Tangerine",
+      "Mai Tai",
+      "Mrs. Bradshaw"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20137",
+    "ht": "1\u20132 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Prairie Smoke.html"
+  },
+  {
+    "name": "Goatsbeard",
+    "latin": "Aruncus dioicus",
+    "family": "Rosaceae",
+    "varieties": [
+      "Misty Lace",
+      "Horatio",
+      "Kneiffii"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20137",
+    "ht": "3\u20136 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Goatsbeard.html"
+  },
+  {
+    "name": "Wild Indigo",
+    "latin": "Baptisia australis",
+    "family": "Fabaceae",
+    "varieties": [
+      "Decadence Blueberry Sundae",
+      "Lemon Meringue"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "3\u20134 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Wild Indigo.html"
+  },
+  {
+    "name": "Sundial Lupine",
+    "latin": "Lupinus perennis",
+    "family": "Fabaceae",
+    "varieties": [
+      "Gallery Series",
+      "Russell Hybrids"
+    ],
+    "cat": "evergreen",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "1.5\u20133 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Sundial Lupine.html"
+  },
+  {
+    "name": "Leadplant",
+    "latin": "Amorpha canescens",
+    "family": "Fabaceae",
+    "varieties": [
+      "Native Wild Form"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "2\u20138",
+    "ht": "2\u20133 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Leadplant.html"
+  },
+  {
+    "name": "Butterfly Milkweed",
+    "latin": "Asclepias tuberosa / incarnata",
+    "family": "Apocynaceae",
+    "varieties": [
+      "Hello Yellow",
+      "Ice Ballet",
+      "Cinderella"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "2\u20134 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Butterfly Milkweed.html"
+  },
+  {
+    "name": "Arkansas Bluestar",
+    "latin": "Amsonia hubrichtii",
+    "family": "Apocynaceae",
+    "varieties": [
+      "Halfway to Arkansas",
+      "Blue Ice"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "2\u20133 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Arkansas Bluestar.html"
+  },
+  {
+    "name": "Chinese Astilbe",
+    "latin": "Astilbe chinensis",
+    "family": "Saxifragaceae",
+    "varieties": [
+      "Visions",
+      "Fanal",
+      "Deutschland",
+      "Bridal Veil"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "4\u20138",
+    "ht": "1.5\u20133 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Chinese Astilbe.html"
+  },
+  {
+    "name": "Foamflower",
+    "latin": "Tiarella cordifolia",
+    "family": "Saxifragaceae",
+    "varieties": [
+      "Running Tapestry",
+      "Brandywine"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20139",
+    "ht": "0.8\u20131.5 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Foamflower.html"
+  },
+  {
+    "name": "Foamy Bells",
+    "latin": "x Heucherella hybrida",
+    "family": "Saxifragaceae",
+    "varieties": [
+      "Tapestry",
+      "Sweet Tea",
+      "Solar Eclipse"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "4\u20139",
+    "ht": "1\u20131.5 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Foamy Bells.html"
+  },
+  {
+    "name": "Pigsqueak",
+    "latin": "Bergenia cordifolia",
+    "family": "Saxifragaceae",
+    "varieties": [
+      "Eroica",
+      "Bressingham White",
+      "Winterglut"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "1\u20131.5 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Pigsqueak.html"
+  },
+  {
+    "name": "Bleeding Heart",
+    "latin": "Dicentra spectabilis",
+    "family": "Papaveraceae",
+    "varieties": [
+      "Valentine",
+      "Gold Heart",
+      "Luxuriant"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20139",
+    "ht": "2\u20133 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Bleeding Heart.html"
+  },
+  {
+    "name": "Fringed Bleeding Heart",
+    "latin": "Dicentra eximia",
+    "family": "Papaveraceae",
+    "varieties": [
+      "Burning Hearts",
+      "King of Hearts"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20139",
+    "ht": "1\u20131.5 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Fringed Bleeding Heart.html"
+  },
+  {
+    "name": "Black Cohosh / Bugbane",
+    "latin": "Actaea racemosa / simplex",
+    "family": "Ranunculaceae",
+    "varieties": [
+      "Hillside Black Beauty",
+      "Chocoholic",
+      "Brunette"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20138",
+    "ht": "4\u20136 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/ Bugbane.html"
+  },
+  {
+    "name": "Lenten Rose",
+    "latin": "Helleborus x hybridus",
+    "family": "Ranunculaceae",
+    "varieties": [
+      "Royal Heritage",
+      "Pink Frost",
+      "Ivory Prince"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "4\u20139",
+    "ht": "1\u20131.5 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Lenten Rose.html"
+  },
+  {
+    "name": "Japanese Anemone",
+    "latin": "Anemone x hybrida",
+    "family": "Ranunculaceae",
+    "varieties": [
+      "Honorine Jobert",
+      "September Charm"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "2\u20134 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Japanese Anemone.html"
+  },
+  {
+    "name": "Meadow Rue",
+    "latin": "Thalictrum rochebrunianum",
+    "family": "Ranunculaceae",
+    "varieties": [
+      "Black Stockings",
+      "Splendide"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "4\u20137",
+    "ht": "4\u20136 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Meadow Rue.html"
+  },
+  {
+    "name": "Hepatica",
+    "latin": "Hepatica acutiloba",
+    "family": "Ranunculaceae",
+    "varieties": [
+      "Native Type"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20138",
+    "ht": "0.3\u20130.6 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Hepatica.html"
+  },
+  {
+    "name": "Toad Lily",
+    "latin": "Tricyrtis hirta / formosana",
+    "family": "Liliaceae",
+    "varieties": [
+      "Miyazaki",
+      "Empress",
+      "Gilt Edge"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "4\u20138",
+    "ht": "2\u20133 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Toad Lily.html"
+  },
+  {
+    "name": "Trout Lily",
+    "latin": "Erythronium americanum",
+    "family": "Liliaceae",
+    "varieties": [
+      "Pagoda"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20138",
+    "ht": "0.5\u20130.8 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Trout Lily.html"
+  },
+  {
+    "name": "White / Red Trillium",
+    "latin": "Trillium grandiflorum / erectum",
+    "family": "Trilliaceae",
+    "varieties": [
+      "Native Wild Types"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "4\u20138",
+    "ht": "1\u20131.5 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Red Trillium.html"
+  },
+  {
+    "name": "Shooting Star",
+    "latin": "Primula meadia",
+    "family": "Primulaceae",
+    "varieties": [
+      "Queen Victoria",
+      "White Comet"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20138",
+    "ht": "1\u20131.5 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Shooting Star.html"
+  },
+  {
+    "name": "Primrose",
+    "latin": "Primula vulgaris",
+    "family": "Primulaceae",
+    "varieties": [
+      "Pacific Giants",
+      "Zebra Blue"
+    ],
+    "cat": "deciduous",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "4\u20138",
+    "ht": "0.5\u20131 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Primrose.html"
+  },
+  {
+    "name": "Siberian Bugloss",
+    "latin": "Brunnera macrophylla",
+    "family": "Boraginaceae",
+    "varieties": [
+      "Jack Frost",
+      "Sea Heart",
+      "Alexander's Great"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20138",
+    "ht": "1\u20131.5 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Siberian Bugloss.html"
+  },
+  {
+    "name": "Lungwort",
+    "latin": "Pulmonaria longifolia",
+    "family": "Boraginaceae",
+    "varieties": [
+      "Raspberry Splash",
+      "Trevi Fountain",
+      "Mrs. Moon"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20138",
+    "ht": "0.8\u20131.2 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Lungwort.html"
+  },
+  {
+    "name": "Virginia Bluebells",
+    "latin": "Mertensia virginica",
+    "family": "Boraginaceae",
+    "varieties": [
+      "Native Wild Form"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20138",
+    "ht": "1.5\u20132 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Virginia Bluebells.html"
+  },
+  {
+    "name": "Virginia Spiderwort",
+    "latin": "Tradescantia virginiana",
+    "family": "Commelinaceae",
+    "varieties": [
+      "Sweet Kate",
+      "Concord Grape"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "1.5\u20132.5 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Virginia Spiderwort.html"
+  },
+  {
+    "name": "Canadian Wild Ginger",
+    "latin": "Asarum canadense",
+    "family": "Aristolochiaceae",
+    "varieties": [
+      "European Wild Ginger"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20138",
+    "ht": "0.5\u20130.8 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Canadian Wild Ginger.html"
+  },
+  {
+    "name": "Labrador Violet",
+    "latin": "Viola labradorica",
+    "family": "Violaceae",
+    "varieties": [
+      "Freckles",
+      "Royal Robe"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20138",
+    "ht": "0.3\u20130.6 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Labrador Violet.html"
+  },
+  {
+    "name": "Side-Oats Grama",
+    "latin": "Bouteloua curtipendula",
+    "family": "Poaceae",
+    "varieties": [
+      "Blonde Ambition",
+      "Honey Blue"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "1.5\u20132.5 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Side-Oats Grama.html"
+  },
+  {
+    "name": "Blue Grama Grass",
+    "latin": "Bouteloua gracilis",
+    "family": "Poaceae",
+    "varieties": [
+      "Blonde Ambition"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "1\u20132 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Blue Grama Grass.html"
+  },
+  {
+    "name": "Prairie Dropseed",
+    "latin": "Sporobolus heterolepis",
+    "family": "Poaceae",
+    "varieties": [
+      "Tara"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "2\u20133 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Prairie Dropseed.html"
+  },
+  {
+    "name": "Northern Sea Oats",
+    "latin": "Chasmanthium latifolium",
+    "family": "Poaceae",
+    "varieties": [
+      "River Mist"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "2\u20134 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Northern Sea Oats.html"
+  },
+  {
+    "name": "Tufted Hairgrass",
+    "latin": "Deschampsia cespitosa",
+    "family": "Poaceae",
+    "varieties": [
+      "Goldtau",
+      "Northern Lights",
+      "Schottland"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "2\u20133 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Tufted Hairgrass.html"
+  },
+  {
+    "name": "Autumn Moor Grass",
+    "latin": "Sesleria autumnalis",
+    "family": "Poaceae",
+    "varieties": [
+      "Greenlee Hybrid"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "1.5\u20132 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Autumn Moor Grass.html"
+  },
+  {
+    "name": "Blue Oat Grass",
+    "latin": "Helictotrichon sempervirens",
+    "family": "Poaceae",
+    "varieties": [
+      "Sapphire (Saphirtech)"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "2\u20133 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Blue Oat Grass.html"
+  },
+  {
+    "name": "Blue Fescue",
+    "latin": "Festuca glauca",
+    "family": "Poaceae",
+    "varieties": [
+      "Elijah Blue",
+      "Beyond Blue"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "0.8\u20131 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Blue Fescue.html"
+  },
+  {
+    "name": "Indiangrass",
+    "latin": "Sorghastrum nutans",
+    "family": "Poaceae",
+    "varieties": [
+      "Indian Steel",
+      "Sioux Blue"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "3\u20136 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Indiangrass.html"
+  },
+  {
+    "name": "Big Bluestem",
+    "latin": "Andropogon gerardii",
+    "family": "Poaceae",
+    "varieties": [
+      "Blackhawks",
+      "Red October",
+      "Dancing Wind"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "4\u20137 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Big Bluestem.html"
+  },
+  {
+    "name": "Purple Lovegrass",
+    "latin": "Eragrostis spectabilis",
+    "family": "Poaceae",
+    "varieties": [
+      "Native Wild Form"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "1\u20132 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Purple Lovegrass.html"
+  },
+  {
+    "name": "Japanese Blood Grass",
+    "latin": "Imperata cylindrica",
+    "family": "Poaceae",
+    "varieties": [
+      "Red Baron"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "1.5\u20132 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Japanese Blood Grass.html"
+  },
+  {
+    "name": "Palm / Tussock Sedge",
+    "latin": "Carex muskingumensis / stricta",
+    "family": "Cyperaceae",
+    "varieties": [
+      "Oehme",
+      "Ice Fountains"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "2\u20133 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/ Tussock Sedge.html"
+  },
+  {
+    "name": "Soft Rush",
+    "latin": "Juncus effusus",
+    "family": "Juncaceae",
+    "varieties": [
+      "Spiralis (Corkscrew Rush)",
+      "Blue Arrows"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "1.5\u20133 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Soft Rush.html"
+  },
+  {
+    "name": "Autumn Fern",
+    "latin": "Dryopteris erythrosora",
+    "family": "Dryopteridaceae",
+    "varieties": [
+      "Brilliance"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "5\u20139",
+    "ht": "1.5\u20132.5 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Poor",
+    "file": "plants/Autumn Fern.html"
+  },
+  {
+    "name": "Marginal Wood Fern",
+    "latin": "Dryopteris marginalis",
+    "family": "Dryopteridaceae",
+    "varieties": [
+      "Native Type"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20138",
+    "ht": "1.5\u20132 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Poor",
+    "file": "plants/Marginal Wood Fern.html"
+  },
+  {
+    "name": "Male Fern",
+    "latin": "Dryopteris filix-mas",
+    "family": "Dryopteridaceae",
+    "varieties": [
+      "Linearis Polydactyla",
+      "Barnesii"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20138",
+    "ht": "2\u20133 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Poor",
+    "file": "plants/Male Fern.html"
+  },
+  {
+    "name": "Maidenhair Fern",
+    "latin": "Adiantum pedatum",
+    "family": "Pteridaceae",
+    "varieties": [
+      "Native Type"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20138",
+    "ht": "1.5\u20132 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Poor",
+    "file": "plants/Maidenhair Fern.html"
+  },
+  {
+    "name": "Cinnamon Fern",
+    "latin": "Osmundastrum cinnamomeum",
+    "family": "Osmundaceae",
+    "varieties": [
+      "Native Type"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20139",
+    "ht": "3\u20135 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Poor",
+    "file": "plants/Cinnamon Fern.html"
+  },
+  {
+    "name": "Interrupted Fern",
+    "latin": "Claytosmunda claytoniana",
+    "family": "Osmundaceae",
+    "varieties": [
+      "Native Type"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20138",
+    "ht": "2\u20134 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Poor",
+    "file": "plants/Interrupted Fern.html"
+  },
+  {
+    "name": "Royal Fern",
+    "latin": "Osmunda regalis",
+    "family": "Osmundaceae",
+    "varieties": [
+      "Purpurascens"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20139",
+    "ht": "3\u20136 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Poor",
+    "file": "plants/Royal Fern.html"
+  },
+  {
+    "name": "Sensitive Fern",
+    "latin": "Onoclea sensibilis",
+    "family": "Onocleaceae",
+    "varieties": [
+      "Native Type"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20138",
+    "ht": "1.5\u20133 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Poor",
+    "file": "plants/Sensitive Fern.html"
+  },
+  {
+    "name": "Deer Fern",
+    "latin": "Struthiopteris spicant",
+    "family": "Blechnaceae",
+    "varieties": [
+      "Native Type"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "5\u20138",
+    "ht": "1\u20131.5 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Poor",
+    "file": "plants/Deer Fern.html"
+  },
+  {
+    "name": "Maidenhair Spleenwort",
+    "latin": "Asplenium trichomanes",
+    "family": "Aspleniaceae",
+    "varieties": [
+      "Native Type"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20138",
+    "ht": "0.3\u20130.7 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Poor",
+    "file": "plants/Maidenhair Spleenwort.html"
+  },
+  {
+    "name": "New England Aster",
+    "latin": "Symphyotrichum novae-angliae",
+    "family": "Asteraceae",
+    "varieties": [
+      "Purple Dome",
+      "Alma Potschke",
+      "October Skies"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "2\u20135 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/New England Aster.html"
+  },
+  {
+    "name": "Smooth Blue Aster",
+    "latin": "Symphyotrichum laeve",
+    "family": "Asteraceae",
+    "varieties": [
+      "Bluebird"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "2\u20134 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Smooth Blue Aster.html"
+  },
+  {
+    "name": "Aromatic Aster",
+    "latin": "Symphyotrichum oblongifolium",
+    "family": "Asteraceae",
+    "varieties": [
+      "Raydon's Favorite",
+      "October Skies"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "1.5\u20133 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Aromatic Aster.html"
+  },
+  {
+    "name": "Golden Alexanders",
+    "latin": "Zizia aurea",
+    "family": "Asteraceae",
+    "varieties": [
+      "Native Type"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "1.5\u20132.5 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Golden Alexanders.html"
+  },
+  {
+    "name": "Oxeye Sunflower",
+    "latin": "Heliopsis helianthoides",
+    "family": "Asteraceae",
+    "varieties": [
+      "Bleeding Hearts",
+      "Summer Sun",
+      "Tuscan Sun"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "3\u20135 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Oxeye Sunflower.html"
+  },
+  {
+    "name": "Pussytoes",
+    "latin": "Antennaria dioica / plantaginifolia",
+    "family": "Asteraceae",
+    "varieties": [
+      "Rubra",
+      "Mt. Washington"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "0.3\u20130.8 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Pussytoes.html"
+  },
+  {
+    "name": "Globe Thistle",
+    "latin": "Echinops ritro",
+    "family": "Asteraceae",
+    "varieties": [
+      "Veitch's Blue",
+      "Taplow Blue"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "3\u20134 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Globe Thistle.html"
+  },
+  {
+    "name": "Sea Holly",
+    "latin": "Eryngium planum / x zabelii",
+    "family": "Asteraceae",
+    "varieties": [
+      "Blue Hobbit",
+      "Big Blue",
+      "Jade Frost"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "1.5\u20133 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Sea Holly.html"
+  },
+  {
+    "name": "Rattlesnake Master",
+    "latin": "Eryngium yuccifolium",
+    "family": "Asteraceae",
+    "varieties": [
+      "Native Wild Form"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "3\u20135 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Rattlesnake Master.html"
+  },
+  {
+    "name": "Bigelow's Sneezeweed",
+    "latin": "Helenium bigelovii",
+    "family": "Asteraceae",
+    "varieties": [
+      "Rubinzwerg",
+      "Butterpat"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "2\u20134 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Bigelow's Sneezeweed.html"
+  },
+  {
+    "name": "Border Dahlia",
+    "latin": "Dahlia hybrida",
+    "family": "Asteraceae",
+    "varieties": [
+      "Fascination",
+      "City of Leiden"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "8\u201311",
+    "ht": "1.5\u20133 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Border Dahlia.html"
+  },
+  {
+    "name": "Hardy Hibiscus / Rose Mallow",
+    "latin": "Hibiscus moscheutos",
+    "family": "Malvaceae",
+    "varieties": [
+      "Lord Baltimore",
+      "Cranberry Crush",
+      "Summerific"
+    ],
+    "cat": "deciduous",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "3\u20136 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Rose Mallow.html"
+  },
+  {
+    "name": "Wall Germander",
+    "latin": "Teucrium chamaedrys",
+    "family": "Lamiaceae",
+    "varieties": [
+      "Prostratum",
+      "Nanum"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "0.8\u20131.5 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Wall Germander.html"
+  },
+  {
+    "name": "Lamb's Ear",
+    "latin": "Stachys byzantina",
+    "family": "Lamiaceae",
+    "varieties": [
+      "Helene von Stein",
+      "Silver Carpet"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "0.8\u20131.5 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Lamb's Ear.html"
+  },
+  {
+    "name": "Garden Hyssop",
+    "latin": "Hyssopus officinalis",
+    "family": "Lamiaceae",
+    "varieties": [
+      "Roseus",
+      "Albus"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "1.5\u20132 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Garden Hyssop.html"
+  },
+  {
+    "name": "Creeping / Woolly Thyme",
+    "latin": "Thymus serpyllum",
+    "family": "Lamiaceae",
+    "varieties": [
+      "Elfin",
+      "Red Creeping",
+      "Pink Chintz"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "0.2\u20130.5 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/ Woolly Thyme.html"
+  },
+  {
+    "name": "Siberian Dragonhead",
+    "latin": "Dracocephalum grandiflorum",
+    "family": "Lamiaceae",
+    "varieties": [
+      "Fuji Blue"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "0.8\u20131.2 ft",
+    "deer": "Great",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Siberian Dragonhead.html"
+  },
+  {
+    "name": "Culver's Root",
+    "latin": "Veronicastrum virginicum",
+    "family": "Plantaginaceae",
+    "varieties": [
+      "Fascination",
+      "Lavender Towers",
+      "Album"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "4\u20136 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Culver's Root.html"
+  },
+  {
+    "name": "Showy Beardtongue",
+    "latin": "Penstemon grandiflorus",
+    "family": "Plantaginaceae",
+    "varieties": [
+      "War Axe",
+      "Prairie Jewel"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "1.5\u20133 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Showy Beardtongue.html"
+  },
+  {
+    "name": "Spiked Speedwell",
+    "latin": "Veronica spicata",
+    "family": "Plantaginaceae",
+    "varieties": [
+      "Royal Candles",
+      "Red Fox",
+      "Venice Blue"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "1\u20132 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Spiked Speedwell.html"
+  },
+  {
+    "name": "Purple Mullein",
+    "latin": "Verbascum phoeniceum",
+    "family": "Scrophulariaceae",
+    "varieties": [
+      "Southern Charm",
+      "Violetta"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "2\u20133 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Purple Mullein.html"
+  },
+  {
+    "name": "Celandine / Wood Poppy",
+    "latin": "Stylophorum diphyllum",
+    "family": "Papaveraceae",
+    "varieties": [
+      "Native Wild Form"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "4\u20139",
+    "ht": "1\u20131.5 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/ Wood Poppy.html"
+  },
+  {
+    "name": "Blue / Yellow Corydalis",
+    "latin": "Corydalis flexuosa / lutea",
+    "family": "Papaveraceae",
+    "varieties": [
+      "China Blue",
+      "Blackberry Wine"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "5\u20138",
+    "ht": "0.8\u20131.2 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/ Yellow Corydalis.html"
+  },
+  {
+    "name": "Dutchman's Breeches",
+    "latin": "Dicentra cucullaria",
+    "family": "Papaveraceae",
+    "varieties": [
+      "Native Wild Form"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20137",
+    "ht": "0.5\u20131 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Dutchman's Breeches.html"
+  },
+  {
+    "name": "Globe Flower",
+    "latin": "Trollius europaeus",
+    "family": "Ranunculaceae",
+    "varieties": [
+      "Golden Queen",
+      "Cheddar",
+      "Superbus"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20137",
+    "ht": "1.5\u20132.5 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Globe Flower.html"
+  },
+  {
+    "name": "False Rue Anemone",
+    "latin": "Enemion biternatum",
+    "family": "Ranunculaceae",
+    "varieties": [
+      "Native Wild Form"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20138",
+    "ht": "0.4\u20130.8 ft",
+    "deer": "Great",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/False Rue Anemone.html"
+  },
+  {
+    "name": "Mossy Saxifrage",
+    "latin": "Saxifraga x arendsii",
+    "family": "Saxifragaceae",
+    "varieties": [
+      "Purple Robe",
+      "Harvest Moon"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20137",
+    "ht": "0.5\u20131 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Mossy Saxifrage.html"
+  },
+  {
+    "name": "American Alumroot",
+    "latin": "Heuchera americana / villosa",
+    "family": "Saxifragaceae",
+    "varieties": [
+      "Autumn Bride",
+      "Dale's Strain"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "1\u20132 ft",
+    "deer": "Mild",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/American Alumroot.html"
+  },
+  {
+    "name": "Yellow Woodland Violet",
+    "latin": "Viola pubescens",
+    "family": "Violaceae",
+    "varieties": [
+      "Native Wild Form"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20138",
+    "ht": "0.5\u20131 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Yellow Woodland Violet.html"
+  },
+  {
+    "name": "Bird's Foot Violet",
+    "latin": "Viola pedata",
+    "family": "Violaceae",
+    "varieties": [
+      "Eco Artist Palette"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "0.3\u20130.6 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Bird's Foot Violet.html"
+  },
+  {
+    "name": "Snowdrop",
+    "latin": "Galanthus nivalis",
+    "family": "Amaryllidaceae",
+    "varieties": [
+      "Flore Pleno",
+      "S. Arnott"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20138",
+    "ht": "0.3\u20130.6 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Snowdrop.html"
+  },
+  {
+    "name": "Summer Snowflake",
+    "latin": "Leucojum aestivum",
+    "family": "Amaryllidaceae",
+    "varieties": [
+      "Gravetye Giant"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20139",
+    "ht": "1\u20131.5 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Summer Snowflake.html"
+  },
+  {
+    "name": "Rozanne / Wild Cranesbill",
+    "latin": "Geranium rozanne / maculatum",
+    "family": "Geraniaceae",
+    "varieties": [
+      "Rozanne",
+      "Johnson's Blue",
+      "Espresso"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "1\u20131.5 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Wild Cranesbill.html"
+  },
+  {
+    "name": "Bloody Cranesbill",
+    "latin": "Geranium sanguineum",
+    "family": "Geraniaceae",
+    "varieties": [
+      "Max Frei",
+      "Striatum",
+      "Album"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "0.8\u20131.2 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Bloody Cranesbill.html"
+  },
+  {
+    "name": "Bigroot Geranium",
+    "latin": "Geranium macrorrhizum",
+    "family": "Geraniaceae",
+    "varieties": [
+      "Bevan's Variety",
+      "Ingwersen's Variety"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "1\u20131.5 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Bigroot Geranium.html"
+  },
+  {
+    "name": "Blue-Eyed Grass",
+    "latin": "Sisyrinchium angustifolium",
+    "family": "Iridaceae",
+    "varieties": [
+      "Lucerne",
+      "Suwannee"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "0.8\u20131.2 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Blue-Eyed Grass.html"
+  },
+  {
+    "name": "Copper Iris",
+    "latin": "Iris fulva",
+    "family": "Iridaceae",
+    "varieties": [
+      "Native Wild Form"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "2\u20133 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Copper Iris.html"
+  },
+  {
+    "name": "Martagon / Turk's Cap Lily",
+    "latin": "Lilium martagon",
+    "family": "Liliaceae",
+    "varieties": [
+      "Claude Shride",
+      "Arabian Knight"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Shade",
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "3\u20135 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/ Turk's Cap Lily.html"
+  },
+  {
+    "name": "Michigan Lily",
+    "latin": "Lilium michiganense",
+    "family": "Liliaceae",
+    "varieties": [
+      "Native Selection"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "3\u20136 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Michigan Lily.html"
+  },
+  {
+    "name": "Wood Lily",
+    "latin": "Lilium philadelphicum",
+    "family": "Liliaceae",
+    "varieties": [
+      "Native Selection"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "1.5\u20133 ft",
+    "deer": "Poor",
+    "petSafe": false,
+    "drought": "Mild",
+    "file": "plants/Wood Lily.html"
+  },
+  {
+    "name": "Daylily",
+    "latin": "Hemerocallis hybrida",
+    "family": "Asphodelaceae",
+    "varieties": [
+      "Stella de Oro",
+      "Purple de Oro",
+      "Happy Returns"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "1.5\u20133 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Daylily.html"
+  },
+  {
+    "name": "Red Hot Poker / Torch Lily",
+    "latin": "Kniphofia uvaria",
+    "family": "Asphodelaceae",
+    "varieties": [
+      "Flamenco",
+      "Pineapple Express",
+      "Mango Popsicle"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "2\u20134 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Torch Lily.html"
+  },
+  {
+    "name": "Rock Soapwort",
+    "latin": "Saponaria ocymoides",
+    "family": "Caryophyllaceae",
+    "varieties": [
+      "Bressingham",
+      "Camellia"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "0.3\u20130.8 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Rock Soapwort.html"
+  },
+  {
+    "name": "Balloon Flower",
+    "latin": "Platycodon grandiflorus",
+    "family": "Campanulaceae",
+    "varieties": [
+      "Astra Blue",
+      "Fuji Pink",
+      "Hakone Blue"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "1\u20132 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Balloon Flower.html"
+  },
+  {
+    "name": "Hens and Chicks",
+    "latin": "Sempervivum tectorum",
+    "family": "Crassulaceae",
+    "varieties": [
+      "Red Rubin",
+      "Cobweb",
+      "Greenii"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "0.2\u20130.5 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Hens and Chicks.html"
+  },
+  {
+    "name": "Two-row Stonecrop",
+    "latin": "Sedum spurium / kamtschaticum",
+    "family": "Crassulaceae",
+    "varieties": [
+      "Dragon's Blood",
+      "Tricolor",
+      "Angelina"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20138",
+    "ht": "0.2\u20130.5 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Great",
+    "file": "plants/Two-row Stonecrop.html"
+  },
+  {
+    "name": "Cliff Maids / Lewisia",
+    "latin": "Lewisia cotyledon",
+    "family": "Portulacaceae",
+    "varieties": [
+      "Elise",
+      "Little Plum"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "5\u20138",
+    "ht": "0.5\u20130.8 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/ Lewisia.html"
+  },
+  {
+    "name": "Hardy Ice Plant",
+    "latin": "Delosperma cooperi / dyeri",
+    "family": "Aizoaceae",
+    "varieties": [
+      "Fire Spinner",
+      "Jewel of Desert",
+      "Table Mountain"
+    ],
+    "cat": "perennial",
+    "native": false,
+    "light": [
+      "Sun"
+    ],
+    "zone": "5\u20139",
+    "ht": "0.2\u20130.4 ft",
+    "deer": "Good",
+    "petSafe": true,
+    "drought": "Good",
+    "file": "plants/Hardy Ice Plant.html"
+  },
+  {
+    "name": "Creeping Phlox / Moss Phlox",
+    "latin": "Phlox subulata",
+    "family": "Polemoniaceae",
+    "varieties": [
+      "Emerald Blue",
+      "Fort Hill",
+      "Candy Stripe"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Sun"
+    ],
+    "zone": "3\u20139",
+    "ht": "0.3\u20130.5 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/ Moss Phlox.html"
+  },
+  {
+    "name": "Garden Phlox",
+    "latin": "Phlox paniculata",
+    "family": "Polemoniaceae",
+    "varieties": [
+      "David",
+      "Jeana",
+      "Flame Pink",
+      "Bright Eyes"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Part Shade",
+      "Sun"
+    ],
+    "zone": "4\u20138",
+    "ht": "2\u20134 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Garden Phlox.html"
+  },
+  {
+    "name": "Woodland Phlox",
+    "latin": "Phlox divaricata",
+    "family": "Polemoniaceae",
+    "varieties": [
+      "Blue Moon",
+      "May Breeze",
+      "Clouds of Perfume"
+    ],
+    "cat": "perennial",
+    "native": true,
+    "light": [
+      "Shade",
+      "Part Shade"
+    ],
+    "zone": "3\u20139",
+    "ht": "0.8\u20131.2 ft",
+    "deer": "Poor",
+    "petSafe": true,
+    "drought": "Mild",
+    "file": "plants/Woodland Phlox.html"
+  }
+];
+
+    // State Variables
+    let activeCategory = "all";
+    let activeLight = "all";
+    let isNativeOnly = false;
+    let isDeerOnly = false;
+    let isPetSafeOnly = false;
+    let isDroughtOnly = false;
+    let searchQuery = "";
+
+    const grid = document.getElementById("plantGrid");
+    const searchInput = document.getElementById("plantSearch");
+    const clearBtn = document.getElementById("clearSearch");
+    const countLabel = document.getElementById("resultsCount");
+    const emptyState = document.getElementById("emptyState");
+    const lightSelect = document.getElementById("lightFilter");
+    const nativeBtn = document.getElementById("filterNative");
+    const deerBtn = document.getElementById("filterDeer");
+    const petBtn = document.getElementById("filterPet");
+    const droughtBtn = document.getElementById("filterDrought");
+
+    function getCategoryLabel(cat) {
+      switch(cat) {
+        case "evergreen": return "Evergreen";
+        case "deciduous": return "Tree / Shrub";
+        case "perennial": return "Perennial";
+        case "produce":   return "Edible Crop";
+        default:          return "Plant Guide";
+      }
     }
 
-    const B2 = 'https://f005.backblazeb2.com/file/YourNeighbourhoodPlantGuyWebsite';
-    const items = [
-      { name: 'Barberry', type: 'video', file: 'Barberry 2.mp4' },
-      { name: 'Barberry', type: 'image', file: 'Barberry.jpg' },
-      { name: 'Beech', type: 'image', file: 'Beech 1.jpg' },
-      { name: 'Cup Plant', type: 'video', file: 'Cup Plant 1.mp4' },
-      { name: 'Dead Nettle', type: 'image', file: 'Dead Nettle.jpg' },
-      { name: 'Euonymus', type: 'video', file: 'Euynonomous.mp4' },
-      { name: 'False Sunflower', type: 'video', file: 'False Sunflower.mp4' },
-      { name: 'Hydrangea', type: 'video', file: 'Hydrangea.mp4' },
-      { name: 'Juniper', type: 'video', file: 'Juniper 1.mp4' },
-      { name: 'Onion Plant', type: 'image', file: 'Onion.jpg' },
-      { name: 'Peony Bloom', type: 'video', file: 'Peony 2.mp4' },
-      { name: 'Peony Close-up', type: 'image', file: 'Peony 3.jpg' },
-      { name: 'Peony Garden', type: 'video', file: 'Peony.mp4' },
-      { name: 'Phlox', type: 'video', file: 'Phlox.mp4' },
-      { name: 'Potentilla', type: 'video', file: 'Potentillia.mp4' },
-      { name: 'Roses Special', type: 'image', file: 'Roses 1 (2).jpg' },
-      { name: 'Roses Growth', type: 'video', file: 'Roses 1 (4).mp4' },
-      { name: 'Roses Collection', type: 'image', file: 'Roses 1 (6).jpg' }
-    ];
+    function renderCards() {
+      grid.innerHTML = "";
+      
+      const filtered = PLANTS.filter(p => {
+        if (searchQuery) {
+          const match = p.name.toLowerCase().includes(searchQuery) ||
+                        p.latin.toLowerCase().includes(searchQuery) ||
+                        p.family.toLowerCase().includes(searchQuery) ||
+                        (p.varieties && p.varieties.some(v => v.toLowerCase().includes(searchQuery)));
+          if (!match) return false;
+        }
 
-    function render(filter = 'all', btn) {
-      if (btn) {
-        document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
-        btn.classList.add('active');
-      }
-      const grid = document.getElementById('galleryGrid');
-      grid.innerHTML = '';
-      items.filter(i => filter === 'all' || i.type === filter).forEach(item => {
-        const url = `${B2}/${encodeURIComponent(item.file)}`;
-        const card = document.createElement('div');
-        card.className = 'media-card';
-        
-        card.onclick = () => {
-          const m = document.getElementById('modal');
-          const mb = document.getElementById('mBody');
-          // Stream video ONLY upon user click, conserving Backblaze bandwidth
-          mb.innerHTML = item.type === 'video' 
-            ? `<video src="${url}" controls autoplay preload="metadata" class="modal-media"></video>`
-            : `<img src="${url}" class="modal-media" alt="${item.name}" />`;
-          m.classList.add('active');
-        };
+        if (activeCategory !== "all" && p.cat !== activeCategory) return false;
+        if (activeLight !== "all" && !p.light.includes(activeLight)) return false;
+        if (isNativeOnly && !p.native) return false;
+        if (isDeerOnly && !["Good", "Great"].includes(p.deer)) return false;
+        if (isPetSafeOnly && !p.petSafe) return false;
+        if (isDroughtOnly && !["Good", "Great"].includes(p.drought)) return false;
 
-        // For video cards in the grid: Use an optimized lightweight preview card without fetching .mp4 streams
-        const thumbContent = item.type === 'video'
-          ? `<div class="video-card-thumb">
-               <span class="video-badge"><i class="fa-solid fa-play"></i> Video Clip</span>
-               <div class="video-play-icon"><i class="fa-solid fa-play"></i></div>
-               <span style="font-size:0.85rem; font-weight:700; letter-spacing:0.5px;">Click to Watch</span>
-             </div>`
-          : `<img src="${url}" alt="${item.name}" loading="lazy" decoding="async" />`;
+        return true;
+      });
+
+      countLabel.textContent = `Showing ${filtered.length} of ${PLANTS.length} plants`;
+      emptyState.style.display = filtered.length === 0 ? "block" : "none";
+
+      filtered.forEach(p => {
+        const card = document.createElement("a");
+        card.className = "plant-card";
+        card.href = p.file;
+
+        const imgUrl = `${B2}/${encodeURIComponent(p.name + " 1.jpg")}`;
+        const catBadge = getCategoryLabel(p.cat);
+        const nativeBadge = p.native ? '<span class="card-native-badge"><i class="fa-brands fa-canadian-maple-leaf"></i> Native</span>' : '';
 
         card.innerHTML = `
-          <div class="media-thumb-wrap">
-            ${thumbContent}
+          <div class="card-thumb-wrap">
+            <div class="card-badge-bar">
+              <span class="card-cat-badge">${catBadge}</span>
+              ${nativeBadge}
+            </div>
+            <div class="card-fallback">
+              <i class="fa-solid fa-leaf"></i>
+              <span>${p.name}</span>
+            </div>
+            <img src="${imgUrl}" alt="${p.name}" loading="lazy" decoding="async" onerror="this.remove()" />
           </div>
-          <div class="media-info">
-            <span>${item.name}</span>
-            <i class="${item.type === 'video' ? 'fa-solid fa-film' : 'fa-solid fa-image'}" style="color: var(--primary);"></i>
+          <div class="card-body">
+            <span class="card-family">${p.family}</span>
+            <h3 class="card-title">${p.name}</h3>
+            <div class="card-latin">${p.latin}</div>
+            <div class="card-specs">
+              <div class="spec-item"><i class="fa-solid fa-sun"></i> ${p.light.join(", ")}</div>
+              <div class="spec-item"><i class="fa-solid fa-arrows-up-down"></i> ${p.ht}</div>
+              <div class="spec-item"><i class="fa-solid fa-map-pin"></i> Zone ${p.zone}</div>
+              <div class="spec-item"><i class="fa-solid fa-shield-cat"></i> Deer: ${p.deer}</div>
+            </div>
+          </div>
+          <div class="card-footer">
+            <span>View Care Guide</span>
+            <i class="fa-solid fa-arrow-right"></i>
           </div>
         `;
         grid.appendChild(card);
       });
     }
 
-    function closeGalleryModal(e) {
-      if (e.target.id === 'modal') forceCloseModal();
+    searchInput.addEventListener("input", (e) => {
+      searchQuery = e.target.value.trim().toLowerCase();
+      clearBtn.classList.toggle("active", searchQuery.length > 0);
+      renderCards();
+    });
+
+    clearBtn.addEventListener("click", () => {
+      searchInput.value = "";
+      searchQuery = "";
+      clearBtn.classList.remove("active");
+      renderCards();
+    });
+
+    document.querySelectorAll(".cat-btn").forEach(btn => {
+      btn.addEventListener("click", function() {
+        document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
+        this.classList.add("active");
+        activeCategory = this.dataset.cat;
+        renderCards();
+      });
+    });
+
+    lightSelect.addEventListener("change", (e) => {
+      activeLight = e.target.value;
+      renderCards();
+    });
+
+    function setupToggle(btn, stateSetter) {
+      btn.addEventListener("click", function() {
+        this.classList.toggle("active");
+        stateSetter(this.classList.contains("active"));
+        renderCards();
+      });
     }
 
-    function forceCloseModal() {
-      const m = document.getElementById('modal');
-      m.classList.remove('active');
-      document.getElementById('mBody').innerHTML = '';
+    setupToggle(nativeBtn, v => isNativeOnly = v);
+    setupToggle(deerBtn, v => isDeerOnly = v);
+    setupToggle(petBtn, v => isPetSafeOnly = v);
+    setupToggle(droughtBtn, v => isDroughtOnly = v);
+
+    function resetAllFilters() {
+      searchInput.value = "";
+      searchQuery = "";
+      clearBtn.classList.remove("active");
+      activeCategory = "all";
+      activeLight = "all";
+      lightSelect.value = "all";
+      isNativeOnly = isDeerOnly = isPetSafeOnly = isDroughtOnly = false;
+      document.querySelectorAll(".toggle-chip").forEach(c => c.classList.remove("active"));
+      document.querySelectorAll(".cat-btn").forEach(b => b.classList.remove("active"));
+      document.querySelector('[data-cat="all"]').classList.add("active");
+      renderCards();
     }
 
-    render();
+    renderCards();
 
-    // Audio Controller
+    function toggleMobileNav() {
+      document.getElementById('navMenu').classList.toggle('open');
+    }
+
     const audio = document.getElementById('themeAudio');
     const playIcon = document.getElementById('playIcon');
     const disc = document.getElementById('vinylDisc');
 
     function toggleThemeSong() {
       if (audio.paused) {
-        audio.play().then(() => {
-          playIcon.className = 'fa-solid fa-pause';
-          disc.classList.add('playing');
-        }).catch(() => {});
+        audio.play().then(() => { playIcon.className = 'fa-solid fa-pause'; disc.classList.add('playing'); }).catch(() => {});
       } else {
-        audio.pause();
-        playIcon.className = 'fa-solid fa-play';
-        disc.classList.remove('playing');
+        audio.pause(); playIcon.className = 'fa-solid fa-play'; disc.classList.remove('playing');
       }
     }
-
     function adjustVolume(v) { audio.volume = parseFloat(v); }
 
     (function initFallingLeaves() {
@@ -289,11 +7766,7 @@
       if (!canvas) return;
       const ctx = canvas.getContext('2d');
       let leaves = [];
-
-      function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-      }
+      function resize() { canvas.width = window.innerWidth; canvas.height = window.innerHeight; }
       window.addEventListener('resize', resize);
       resize();
 
@@ -329,21 +7802,15 @@
         }
       }
 
-      for (let i = 0; i < 22; i++) leaves.push(new Leaf());
+      for (let i = 0; i < 20; i++) leaves.push(new Leaf());
 
       function animate() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        leaves.forEach(l => {
-          l.update();
-          l.draw();
-        });
+        leaves.forEach(l => { l.update(); l.draw(); });
         requestAnimationFrame(animate);
       }
       animate();
     })();
   </script>
-
-<p class="hood-links">Neighbourhoods we serve: <a href="dreamfields.html">Dreamfields</a> · <a href="summerlyn.html">Summerlyn Village</a> · <a href="grandview.html">Grandview & Line 8</a> · <a href="downtown.html">Downtown Bradford</a> · <a href="bradford-valley.html">Bradford Valley</a> · <a href="holland-marsh.html">Holland Marsh</a></p>
-
 </body>
 </html>
